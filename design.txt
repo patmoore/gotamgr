@@ -1,0 +1,22 @@
+tree search to find optimal build strategy
+
+process:
+
+Phase 0: hard-coded:
+
+build a ram
+
+
+Phase 1: assume all buildings built. assume all non-gold building upgrades
+
+Input:
+1. enter inventory
+2. enter fealty buildings
+3. enter target goods and quantity
+
+Output:
+1. calculate silver needed
+2. calculate materials needed.
+3. calculate total time needed.
+4. display color coded legs
+
