@@ -10,7 +10,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     wood : function(inventory) { return 2; },
                     iron : function(inventory) { return 2; }
@@ -20,7 +20,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     shortsword : function(inventory) { return 1; },
                     iron : function(inventory) { return 2; }
@@ -30,7 +30,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     wood : function(inventory) { return 3; },
                     iron : function(inventory) { return 2; },
@@ -41,7 +41,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     smallfolk : function(inventory) { return 1; }
                 },
@@ -50,7 +50,7 @@ Meteor.startup(function() {
                         return 190; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,6,0); // handle discount
+                        return timeInSeconds(0,6,0); // handle discount
                     },
                     wood : function(inventory) { return 3; },
                     iron : function(inventory) { return 3; },
@@ -61,7 +61,7 @@ Meteor.startup(function() {
                         return 190; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,6,0); // handle discount
+                        return timeInSeconds(0,6,0); // handle discount
                     },
                     shortsword : function(inventory) { return 2; },
                     wood : function(inventory) { return 2; },
@@ -72,7 +72,7 @@ Meteor.startup(function() {
                         return 800; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,14,0); // handle discount
+                        return timeInSeconds(0,14,0); // handle discount
                     },
                     broadsword : function(inventory) { return 2; },
                     steel : function(inventory) { return 9; },
@@ -83,7 +83,7 @@ Meteor.startup(function() {
                         return 800; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,14,0); // handle discount
+                        return timeInSeconds(0,14,0); // handle discount
                     },
                     hefty_broadsword : function(inventory) { return 3; },
                     steel : function(inventory) { return 11; },
@@ -93,7 +93,7 @@ Meteor.startup(function() {
                 furnace : {
                     seconds : function(inventory) {
                         // needs
-                        return timeCalc(0,2,0);
+                        return timeInSeconds(0,2,0);
                     }
                 },
                 anvil : {
@@ -129,53 +129,203 @@ Meteor.startup(function() {
             builds : {
                 stone : {
                     seconds : function(inventory) { 
-                        return timeCalc(0,0,20); // handle discount
+                        return timeInSeconds(0,0,20); // handle discount
                     },
                 },
                 horse : {
                     seconds : function(inventory) { 
-                        return timeCalc(0,0,20); // handle discount
+                        return timeInSeconds(0,0,20); // handle discount
                     },
                 },
                 iron : {
                     seconds : function(inventory) { 
-                        return timeCalc(0,0,20); // handle discount
+                        return timeInSeconds(0,0,20); // handle discount
                     },
                 },
                 fish : {
                     seconds : function(inventory) { 
-                        return timeCalc(0,0,20); // handle discount
+                        return timeInSeconds(0,0,20); // handle discount
                     },
                 },
                 fur : {
                     seconds : function(inventory) { 
-                        return timeCalc(0,0,20); // handle discount
+                        return timeInSeconds(0,0,20); // handle discount
                     },
                 },
                 smallfolk : {
                     seconds : function(inventory) { 
-                        return timeCalc(0,0,20); // handle discount
+                        return timeInSeconds(0,0,20); // handle discount
                     },
                 },
                 ore : {
                     seconds : function(inventory) { 
-                        return timeCalc(0,0,20); // handle discount
+                        return timeInSeconds(0,0,20); // handle discount
                     },
                 },
                 wood : {
                     seconds : function(inventory) { 
-                        return timeCalc(0,0,20); // handle discount
+                        return timeInSeconds(0,0,20); // handle discount
                     },
                 },
                 cloth : {
                     seconds : function(inventory) { 
-                        return timeCalc(0,0,20); // handle discount
+                        return timeInSeconds(0,0,20); // handle discount
                     },
                 },
                 grains : {
                     seconds : function(inventory) { 
-                        return timeCalc(0,0,20); // handle discount
+                        return timeInSeconds(0,0,20); // handle discount
                     },
+                },
+
+                brewhouse_0 : {
+                    silver : function(inventory) {
+                        return 1000;
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,55); // handle discount
+                    },
+                    gold : function(inventory) { return 10; },
+                    cloth : function(inventory) { return 1; },
+                },
+                brewhouse_1 : {
+                    silver : function(inventory) {
+                        return 2000;
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,1,10); // handle discount
+                    },
+                    brewhouse_0 : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 1; },
+                },
+                brewhouse_2 : {
+                    silver : function(inventory) {
+                        return 3000;
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,1,10); // handle discount
+                    },
+                    brewhouse_1 : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 1; },
+                },
+                brewhouse_3 : {
+                    silver : function(inventory) {
+                        return 3000;
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,1,10); // handle discount
+                    },
+                    brewhouse_2 : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 1; },
+                },
+                brewhouse_4 : {
+                    silver : function(inventory) {
+                        return 4000;
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,1,50); // handle discount
+                    },
+                    brewhouse_3 : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 1; },
+                },
+                brewhouse_5 : {
+                    silver : function(inventory) {
+                        return 5000;
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,2,15); // handle discount
+                    },
+                    brewhouse_4 : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 1; },
+                },
+            }
+        },
+
+        embassy : {
+            builds : {
+                eavesdropper : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) { 
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    smallfolk : function(inventory) { return 1; },
+                },
+                milk_of_the_poppy : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) { 
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    grains : function(inventory) { return 4; },
+                    fish : function(inventory) { return 2; },
+                },
+                linen_clothing : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) { 
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    cloth : function(inventory) { return 4; },
+                    fur : function(inventory) { return 2; },
+                },
+                emissary : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) { 
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    eavesdropper : function(inventory) { return 1; },
+                    silk_garment : function(inventory) { return 2; },
+                    fur : function(inventory) { return 3; },
+                },
+                dreamwine : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) { 
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    milk_of_the_poppy : function(inventory) { return 1; },
+                    grains : function(inventory) { return 8; },
+                    fish : function(inventory) { return 4; },
+                },
+                silk_garment : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) { 
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    linen_clothing : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 8; },
+                    fur : function(inventory) { return 4; },
+                },
+                nightshade : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) { 
+                        return timeInSeconds(0,15,0); // handle discount
+                    },
+                    dreamwine : function(inventory) { return 2; },
+                    dyed_textile : function(inventory) { return 7; },
+                    fine_wood : function(inventory) { return 7; },
+                },
+                delicate_silk_garment : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) { 
+                        return timeInSeconds(0,15,0); // handle discount
+                    },
+                    silk_garment : function(inventory) { return 2; },
+                    dyed_textile : function(inventory) { return 10; },
+                    precious_ore : function(inventory) { return 4; },
                 },
             }
         },
@@ -187,7 +337,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     smallfolk : function(inventory) { return 1; },
                 },
@@ -196,7 +346,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     trader : function(inventory) { return 1; },
                     leather_bound_book : function(inventory) { return 1; },
@@ -207,7 +357,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     ore : function(inventory) { return 4; },
                     cloth : function(inventory) { return 1; },
@@ -217,7 +367,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     cloth : function(inventory) { return 2; },
                     fur : function(inventory) { return 2; },
@@ -228,7 +378,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     ore : function(inventory) { return 3; },
                     fur : function(inventory) { return 1; },
@@ -239,7 +389,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     ore : function(inventory) { return 5; },
                 },
@@ -248,147 +398,67 @@ Meteor.startup(function() {
                         return 10; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,1,0); // handle discount
+                        return timeInSeconds(0,1,0); // handle discount
                     },
                     grains : function(inventory) { return 4; },
+                    exchange_0 : function(inventory) { return 1; },
                 },
                 ore : {
                     silver : function(inventory) {
                         return 10; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,1,0); // handle discount
+                        return timeInSeconds(0,1,0); // handle discount
                     },
                     smallfolk : function(inventory) { return 4; },
+                    exchange_0 : function(inventory) { return 1; },
                 },
                 wood : {
                     silver : function(inventory) {
                         return 10; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,1,0); // handle discount
+                        return timeInSeconds(0,1,0); // handle discount
                     },
                     horse : function(inventory) { return 4; },
+                    exchange_0 : function(inventory) { return 1; },
                 },
                 iron : {
                     silver : function(inventory) {
                         return 10; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,1,0); // handle discount
+                        return timeInSeconds(0,1,0); // handle discount
                     },
                     fur : function(inventory) { return 4; },
+                    exchange_0 : function(inventory) { return 1; },
                 },
                 alloy_chain : {
                     silver : function(inventory) {
                         return 800; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,15,0); // handle discount
+                        return timeInSeconds(0,15,0); // handle discount
                     },
                     silver_chain : function(inventory) { return 5; },
                     lead : function(inventory) { return 10; },
                     precious_ore : function(inventory) { return 10; },
+                    exchange_0 : function(inventory) { return 1; },
                 },
                 alloy_pendant : {
                     silver : function(inventory) {
                         return 800; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,15,0); // handle discount
+                        return timeInSeconds(0,15,0); // handle discount
                     },
                     gold_necklace : function(inventory) { return 2; },
                     precious_ore : function(inventory) { return 9; },
-                    lead : function(inventory) { return 5; }
-                }
-            }
-        },
-
-        embassy : {
-            builds : {
-                eavesdropper : {
-                    silver : function(inventory) {
-                        return 60; // handle discount
-                    },
-                    seconds : function(inventory) { 
-                        return timeCalc(0,3,0); // handle discount
-                    },
-                    smallfolk : function(inventory) { return 1; },
+                    lead : function(inventory) { return 5; },
+                    exchange_0 : function(inventory) { return 1; },
                 },
-                milk_of_the_poppy : {
-                    silver : function(inventory) {
-                        return 60; // handle discount
-                    },
-                    seconds : function(inventory) { 
-                        return timeCalc(0,3,0); // handle discount
-                    },
-                    grains : function(inventory) { return 4; },
-                    fish : function(inventory) { return 2; },
-                },
-                linen_clothing : {
-                    silver : function(inventory) {
-                        return 60; // handle discount
-                    },
-                    seconds : function(inventory) { 
-                        return timeCalc(0,3,0); // handle discount
-                    },
-                    cloth : function(inventory) { return 4; },
-                    fur : function(inventory) { return 2; },
-                },
-                emissary : {
-                    silver : function(inventory) {
-                        return 200; // handle discount
-                    },
-                    seconds : function(inventory) { 
-                        return timeCalc(0,6,0); // handle discount
-                    },
-                    eavesdropper : function(inventory) { return 1; },
-                    silk_garment : function(inventory) { return 2; },
-                    fur : function(inventory) { return 3; },
-                },
-                dreamwine : {
-                    silver : function(inventory) {
-                        return 200; // handle discount
-                    },
-                    seconds : function(inventory) { 
-                        return timeCalc(0,6,0); // handle discount
-                    },
-                    milk_of_the_poppy : function(inventory) { return 1; },
-                    grains : function(inventory) { return 8; },
-                    fish : function(inventory) { return 4; },
-                },
-                silk_garment : {
-                    silver : function(inventory) {
-                        return 200; // handle discount
-                    },
-                    seconds : function(inventory) { 
-                        return timeCalc(0,6,0); // handle discount
-                    },
-                    linen_clothing : function(inventory) { return 1; },
-                    cloth : function(inventory) { return 8; },
-                    fur : function(inventory) { return 4; },
-                },
-                nightshade : {
-                    silver : function(inventory) {
-                        return 800; // handle discount
-                    },
-                    seconds : function(inventory) { 
-                        return timeCalc(0,15,0); // handle discount
-                    },
-                    dreamwine : function(inventory) { return 2; },
-                    dyed_textile : function(inventory) { return 7; },
-                    fine_wood : function(inventory) { return 7; },
-                },
-                delicate_silk_garment : {
-                    silver : function(inventory) {
-                        return 800; // handle discount
-                    },
-                    seconds : function(inventory) { 
-                        return timeCalc(0,15,0); // handle discount
-                    },
-                    silk_garment : function(inventory) { return 2; },
-                    dyed_textile : function(inventory) { return 10; },
-                    precious_ore : function(inventory) { return 4; },
+                exchange_0 : {
+                    gold : function(inventory) { return 5; },
                 },
             }
         },
@@ -400,7 +470,7 @@ Meteor.startup(function() {
                         return 10; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,1,0); // handle discount
+                        return timeInSeconds(0,1,0); // handle discount
                     },
                     fish : function(inventory) { return 2; },
                     grains : function(inventory) { return 2; },
@@ -411,7 +481,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     smallfolk : function(inventory) { return 1; },
                     fish : function(inventory) { return 5; },
@@ -422,7 +492,7 @@ Meteor.startup(function() {
                         return 14; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,0,45); // handle discount
+                        return timeInSeconds(0,0,45); // handle discount
                     },
                     fish : function(inventory) { return 2; },
                     grains : function(inventory) { return 2; },
@@ -433,7 +503,7 @@ Meteor.startup(function() {
                         return 14; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,0,45); // handle discount
+                        return timeInSeconds(0,0,45); // handle discount
                     },
                     fish : function(inventory) { return 2; },
                     grains : function(inventory) { return 2; },
@@ -444,7 +514,7 @@ Meteor.startup(function() {
                         return 14; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,0,45); // handle discount
+                        return timeInSeconds(0,0,45); // handle discount
                     },
                     fish : function(inventory) { return 2; },
                     grains : function(inventory) { return 2; },
@@ -455,7 +525,7 @@ Meteor.startup(function() {
                         return 150; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,5,0); // handle discount
+                        return timeInSeconds(0,5,0); // handle discount
                     },
                     devout : function(inventory) { return 1; },
                     wood_shield : function(inventory) { return 1; },
@@ -466,7 +536,7 @@ Meteor.startup(function() {
                         return 800; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,15,0); // handle discount
+                        return timeInSeconds(0,15,0); // handle discount
                     },
                     oracle : function(inventory) { return 1; },
                     steel : function(inventory) { return 5; },
@@ -477,11 +547,851 @@ Meteor.startup(function() {
                         return 500; // handle discount
                     },
                     seconds : function(inventory) {
-                        return timeCalc(0,5,0); // handle discount
+                        return timeInSeconds(0,5,0); // handle discount
                     },
                     merchants_mark : function(inventory) { return 2; },
                     frauds_imprint : function(inventory) { return 2; },
                     bailiffs_mark : function(inventory) { return 2; },
+                },
+            }
+        },
+        godswood : {
+            builds : {
+                mead : {
+                    silver : function(inventory) {
+                        return 10; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,1,0); // handle discount
+                    },
+                    grains : function(inventory) { return 3; },
+                    wood : function(inventory) { return 1; },
+                    stone : function(inventory) { return 1; }
+                },
+                common_boon : {
+                    silver : function(inventory) {
+                        return 10; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,30); // handle discount
+                    },
+                    fish : function(inventory) { return 1; },
+                    grains : function(inventory) { return 1; },
+                    fur : function(inventory) { return 1; }
+                },
+                uncommon_boon : {
+                    silver : function(inventory) {
+                        return 15; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,45); // handle discount
+                    },
+                    fish : function(inventory) { return 2; },
+                    grains : function(inventory) { return 2; },
+                    horse : function(inventory) { return 2; }
+                },
+                seer : {
+                    silver : function(inventory) {
+                        return 40; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    smallfolk : function(inventory) { return 1; },
+                    fish : function(inventory) { return 5; },
+                    leather_bound_book : function(inventory) { return 1; }
+                },
+                woods_witch: {
+                    silver : function(inventory) {
+                        return 14; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,45); // handle discount
+                    },
+                    seer : function(inventory) { return 1; },
+                    milk_of_the_poppy : function(inventory) { return 1; },
+                    dagger : function(inventory) { return 1; }
+                },
+                rare_boon : {
+                    silver : function(inventory) {
+                        return 30; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,1,30); // handle discount
+                    },
+                    fish : function(inventory) { return 4; },
+                    grains : function(inventory) { return 4; },
+                    stone : function(inventory) { return 4; },
+                },
+                forest_armor : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,15,0); // handle discount
+                    },
+                    weirwood : function(inventory) { return 5; },
+                    lead : function(inventory) { return 10; },
+                    breastplate : function(inventory) { return 2; },
+                },
+                warriors_imprint : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,5,0); // handle discount
+                    },
+                    blacksmith_mark : function(inventory) { return 2; },
+                    raider_notch : function(inventory) { return 2; },
+                    symbol_of_help : function(inventory) { return 2; },
+                },
+            }
+        },
+        rhllor_temple : {
+            builds : {
+                nettle_poultice : {
+                    silver : function(inventory) {
+                        return 50; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    grains : function(inventory) { return 4; },
+                    fish : function(inventory) { return 3; },
+                    cloth : function(inventory) { return 2; }
+                },
+                red_robe : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,2,30); // handle discount
+                    },
+                    cloth : function(inventory) { return 3; },
+                    ore : function(inventory) { return 1; },
+                    grains : function(inventory) { return 2; }
+                },
+                incense : {
+                    silver : function(inventory) {
+                        return 15; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,45); // handle discount
+                    },
+                    black_ash : function(inventory) { return 1; },
+                    pure_water : function(inventory) { return 1; },
+                    fine_wood : function(inventory) { return 1; }
+                },
+
+//                // just a chance
+//                flickering_fire : {
+//                    silver : function(inventory) {
+//                        return 60; // handle discount
+//                    },
+//                    seconds : function(inventory) {
+//                        return timeInSeconds(0,3,0); // handle discount
+//                    },
+//                    wood : function(inventory) { return 3; },
+//                    grains : function(inventory) { return 2; },
+//                    iron : function(inventory) { return 1; }
+//                },
+                asshai_book: {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,5,30); // handle discount
+                    },
+                    leather_bound_book : function(inventory) { return 1; },
+                    milk_of_the_poppy : function(inventory) { return 1; },
+                    longsword : function(inventory) { return 1; }
+                },
+                offering : {
+                    silver : function(inventory) {
+                        return 2300; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(1,1,0); // handle discount
+                    },
+                    ceremonial_bowl : function(inventory) { return 3; },
+                    ceremonial_dagger : function(inventory) { return 2; },
+                    sacrifice : function(inventory) { return 9; },
+                },
+                red_priest : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,15,0); // handle discount
+                    },
+                    red_robe : function(inventory) { return 2; },
+                    smallfolk : function(inventory) { return 2; },
+                    grains : function(inventory) { return 4; },
+                },
+                defense_boon : {
+                    silver : function(inventory) {
+                        return 15; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,40); // handle discount
+                    },
+                    fish : function(inventory) { return 2; },
+                    horse : function(inventory) { return 2; },
+                    smallfolk : function(inventory) { return 2; },
+                },
+//                // just a chance
+//                pyre : {
+//                    silver : function(inventory) {
+//                        return 800; // handle discount
+//                    },
+//                    seconds : function(inventory) {
+//                        return timeInSeconds(0,15,0); // handle discount
+//                    },
+//                    hard_wood : function(inventory) { return 2; },
+//                    fine_wood : function(inventory) { return 2; },
+//                    wildfire : function(inventory) { return 1; }
+//                },
+                attack_boon : {
+                    silver : function(inventory) {
+                        return 300; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,7,0); // handle discount
+                    },
+                    fish : function(inventory) { return 3; },
+                    grains : function(inventory) { return 3; },
+                    smallfolk : function(inventory) { return 3; },
+                },
+                oracle : {
+                    silver : function(inventory) {
+                        return 20; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,1,10); // handle discount
+                    },
+                    red_priest : function(inventory) { return 1; },
+                    woods_witch : function(inventory) { return 1; },
+                    septa : function(inventory) { return 1; },
+                },
+                shadowbinders_mask : {
+                    silver : function(inventory) {
+                        return 700; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,13,0); // handle discount
+                    },
+                    dyed_textile : function(inventory) { return 8; },
+                    precious_ore : function(inventory) { return 5; },
+                    red_priest : function(inventory) { return 2; },
+                },
+                mark_of_the_little_birds : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,5,0); // handle discount
+                    },
+                    agents_sign : function(inventory) { return 2; },
+                    saboteurs_sign : function(inventory) { return 2; },
+                    cutpurses_sign : function(inventory) { return 2; },
+                },
+            }
+        },
+        holdfast : {
+            builds : {
+                doublet : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    cloth : function(inventory) { return 2; },
+                    fur : function(inventory) { return 2; },
+                },
+                leather_armor : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    doublet : function(inventory) { return 1; },
+                    fur : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 1; },
+                },
+                scale_armor : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    doublet : function(inventory) { return 1; },
+                    iron : function(inventory) { return 2; },
+                },
+                jerkin : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    doublet : function(inventory) { return 2; },
+                    cloth : function(inventory) { return 3; },
+                    fur : function(inventory) { return 3; }
+                },
+                splint_armor : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    scale_armor : function(inventory) { return 2; },
+                    iron : function(inventory) { return 4; },
+                    cloth : function(inventory) { return 2; },
+                },
+                pikeman : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    militia : function(inventory) { return 3; },
+                    pike : function(inventory) { return 3; }
+                },
+                grand_shield : {
+                    silver : function(inventory) {
+                        return 600; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,10,0); // handle discount
+                    },
+                    metal_shield : function(inventory) { return 2; },
+                    steel : function(inventory) { return 6; },
+                    dyed_textile : function(inventory) { return 6; }
+                },
+                masterwork_splint_armor : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,14,0); // handle discount
+                    },
+                    splint_armor : function(inventory) { return 2; },
+                    steel : function(inventory) { return 9; },
+                    dyed_textile : function(inventory) { return 5; },
+                },
+            }
+        },
+        workshop : {
+            builds : {
+                roughspun_cloak : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    cloth : function(inventory) { return 4; },
+                    fur : function(inventory) { return 2; },
+                },
+                dirk : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    iron : function(inventory) { return 2; },
+                    wood : function(inventory) { return 3; },
+                    cloth : function(inventory) { return 1; },
+                },
+                saboteur : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    eavesdropper : function(inventory) { return 1; },
+                    satin_cloak : function(inventory) { return 1; },
+                    blindeye : function(inventory) { return 1; },
+                },
+                satin_cloak : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    roughspun_cloak : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 4; },
+                    fur : function(inventory) { return 8; }
+                },
+                blindeye : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    dirk : function(inventory) { return 1; },
+                    grains : function(inventory) { return 8; },
+                    fish : function(inventory) { return 4; },
+                },
+                cart_of_tools : {
+                    silver : function(inventory) {
+                        return 400; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    cart : function(inventory) { return 1; },
+                    dirk : function(inventory) { return 3; },
+                    blindeye : function(inventory) { return 3; }
+                },
+                delicate_satin_cloak : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,14,0); // handle discount
+                    },
+                    satin_cloak : function(inventory) { return 2; },
+                    dyed_textile : function(inventory) { return 10; },
+                    lead : function(inventory) { return 4; }
+                },
+                widows_blood : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,14,0); // handle discount
+                    },
+                    blindeye : function(inventory) { return 2; },
+                    lead : function(inventory) { return 7; },
+                    dyed_textile : function(inventory) { return 7; },
+                },
+            }
+        },
+        treasury : {
+            builds : {
+                vellum_cloak : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    parchment_scroll : function(inventory) { return 1; },
+                    leather_bound_book : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 6; }
+                },
+                bill_of_sale : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    coinage : function(inventory) { return 1; },
+                    leather_bound_book : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 6; }
+                },
+                lockbox : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    purse : function(inventory) { return 1; },
+                    ore : function(inventory) { return 6; },
+                },
+                gold_torc : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    silver_torc : function(inventory) { return 1; },
+                    gold_ring : function(inventory) { return 1; },
+                    ore : function(inventory) { return 6; }
+                },
+                gold_bracelet : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    silver_bracelet : function(inventory) { return 1; },
+                    gold_ring : function(inventory) { return 1; },
+                    ore : function(inventory) { return 6; },
+                },
+                gold_necklace : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    silver_necklace : function(inventory) { return 1; },
+                    gold_ring : function(inventory) { return 1; },
+                    ore : function(inventory) { return 6; },
+                },
+                secure_lockbox : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,14,0); // handle discount
+                    },
+                    lockbox : function(inventory) { return 2; },
+                    steel : function(inventory) { return 5; },
+                    precious_ore : function(inventory) { return 9; }
+                },
+                dark_diamond_ring : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,14,0); // handle discount
+                    },
+                    gold_ring : function(inventory) { return 6; },
+                    precious_ore : function(inventory) { return 10; },
+                    steel : function(inventory) { return 4; },
+                },
+            }
+        },
+        // tyrell
+        arbor : {
+            builds : {
+                grains : {
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,20); // handle discount
+                    },
+                },
+                horse : {
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,20); // handle discount
+                    },
+                    grains : function(inventory) { return 3; }
+                },
+                standard_carrier : {
+                    silver : function(inventory) {
+                        return 50; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    militia : function(inventory) { return 1; },
+                    eavesdropper : function(inventory) { return 1; },
+                    trader : function(inventory) { return 1; },
+                },
+                arbor_gold : {
+                    silver : function(inventory) {
+                        return 75; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,4,0); // handle discount
+                    },
+                    mead : function(inventory) { return 3; },
+                    grains : function(inventory) { return 15; },
+                },
+                black_diamond_ring : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,12,0); // handle discount
+                    },
+                    gold_ring : function(inventory) { return 5; },
+                    leather_bound_book : function(inventory) { return 3; },
+                },
+                greathelm : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,12,0); // handle discount
+                    },
+                    barred_helm : function(inventory) { return 2; },
+                    iron : function(inventory) { return 8; },
+                    fur : function(inventory) { return 6; },
+                },
+                poisoned_cask : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,12,0); // handle discount
+                    },
+                    blindeye : function(inventory) { return 2; },
+                    wood : function(inventory) { return 8; },
+                    iron : function(inventory) { return 6; }
+                },
+                pure_water : {
+                    silver : function(inventory) {
+                        return 20; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,2,0); // handle discount
+                    },
+                    grains : function(inventory) { return 4; },
+                    wood : function(inventory) { return 4; },
+                    cloth : function(inventory) { return 4; },
+                },
+                bascinet : {
+                    silver : function(inventory) {
+                        return 2500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(1,1,0); // handle discount
+                    },
+                    greathelm : function(inventory) { return 3; },
+                    lead : function(inventory) { return 15; },
+                    steel : function(inventory) { return 15; },
+                },
+                undetectable_poison : {
+                    silver : function(inventory) {
+                        return 2500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(1,1,0); // handle discount
+                    },
+                    poisoned_cask : function(inventory) { return 3; },
+                    fine_wood : function(inventory) { return 15; },
+                    hard_wood : function(inventory) { return 15; },
+                },
+                seal_of_the_rose : {
+                    silver : function(inventory) {
+                        return 5500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,15,0); // handle discount
+                    },
+                    treasurers_imprint : function(inventory) { return 3; },
+                    merchants_mark : function(inventory) { return 3; },
+                    bailiffs_mark : function(inventory) { return 3; },
+                },
+            }
+        },
+        siege_works : {
+            builds : {
+                ladder : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    wood : function(inventory) { return 2; },
+                    smallfolk : function(inventory) { return 2; },
+                    fish : function(inventory) { return 2; },
+                },
+                trebuchet : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    stone : function(inventory) { return 2; },
+                    ore : function(inventory) { return 2; },
+                    cloth : function(inventory) { return 2; },
+                },
+                turtle : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    fur : function(inventory) { return 2; },
+                    horse : function(inventory) { return 2; },
+                    grains : function(inventory) { return 2; },
+                },
+                ram : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    turtle : function(inventory) { return 1; },
+                    iron : function(inventory) { return 6; },
+                    horse : function(inventory) { return 6; },
+                },
+                catapult : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    trebuchet : function(inventory) { return 2; },
+                    stone : function(inventory) { return 4; },
+                    grains : function(inventory) { return 2; },
+                },
+                scorpion : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,5,0); // handle discount
+                    },
+                    cloth : function(inventory) { return 6; },
+                    wood : function(inventory) { return 6; },
+                    grains : function(inventory) { return 6; },
+                },
+                siege_tower : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,12,0); // handle discount
+                    },
+                    ram : function(inventory) { return 1; },
+                    ladder : function(inventory) { return 1; },
+                    smallfolk : function(inventory) { return 14; },
+                },
+                mangonel : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,12,0); // handle discount
+                    },
+                    catapult : function(inventory) { return 2; },
+                    stone : function(inventory) { return 10; },
+                    fish : function(inventory) { return 4; },
+                },
+                spitfire : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,9,0); // handle discount
+                    },
+                    scorpion : function(inventory) { return 2; },
+                    cloth : function(inventory) { return 7; },
+                    ore : function(inventory) { return 7; },
+                },
+                manacles : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    lead : function(inventory) { return 2; },
+                    iron : function(inventory) { return 6; },
+                    ore : function(inventory) { return 6; },
+                },
+                valuable_prisoner : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    manacles : function(inventory) { return 1; },
+                    saboteur : function(inventory) { return 1; },
+                    smallfolk : function(inventory) { return 12; },
+                },
+            }
+        },
+        warehouse : {
+            builds : {
+                parchment_scroll : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    leather_bound_book : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 1; },
+                    fur : function(inventory) { return 1; },
+                },
+                coinage : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    gold_ring : function(inventory) { return 1; },
+                    ore : function(inventory) { return 2; },
+                },
+                silver_necklace : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    silver_chain : function(inventory) { return 1; },
+                    ore : function(inventory) { return 2; },
+                },
+                cart : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    wood : function(inventory) { return 5; },
+                    iron : function(inventory) { return 1; },
+                },
+                wagon : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    cart : function(inventory) { return 1; },
+                    horse : function(inventory) { return 1; },
+                    fish : function(inventory) { return 6; },
+                },
+                caravan : {
+                    silver : function(inventory) {
+                        return 450; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    wagon : function(inventory) { return 3; },
+                    merchant : function(inventory) { return 3; },
+                    grains : function(inventory) { return 6; },
+                },
+                alloy_bracelet : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,14,0); // handle discount
+                    },
+                    gold_bracelet : function(inventory) { return 2; },
+                    lead : function(inventory) { return 8; },
+                    precious_ore : function(inventory) { return 6; },
+                },
+                alloy_necklace : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,14,0); // handle discount
+                    },
+                    gold_necklace : function(inventory) { return 2; },
+                    lead : function(inventory) { return 8; },
+                    precious_ore : function(inventory) { return 6; },
                 },
             }
         },
@@ -492,7 +1402,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     wood : function(inventory) { return 3; },
                     cloth : function(inventory) { return 2; },
@@ -503,7 +1413,7 @@ Meteor.startup(function() {
                         return 60; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,3,0); // handle discount
+                        return timeInSeconds(0,3,0); // handle discount
                     },
                     iron : function(inventory) { return 5; },
                     wood : function(inventory) { return 1; },
@@ -513,7 +1423,7 @@ Meteor.startup(function() {
                         return 200; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,6,0); // handle discount
+                        return timeInSeconds(0,6,0); // handle discount
                     },
                     halfhelm : function(inventory) { return 2; },
                     fur : function(inventory) { return 5; },
@@ -524,10 +1434,701 @@ Meteor.startup(function() {
                         return 200; // handle discount
                     },
                     seconds : function(inventory) { 
-                        return timeCalc(0,6,0); // handle discount
+                        return timeInSeconds(0,6,0); // handle discount
                     },
                     shortbow : function(inventory) { return 3; },
-                    militia : function(inventory) { return 5; },
+                    militia : function(inventory) { return 3; },
+                },
+                composite_bow : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    shortbow : function(inventory) { return 2; },
+                    wood : function(inventory) { return 3; },
+                    cloth : function(inventory) { return 3; },
+                },
+                archer : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    composite_bow : function(inventory) { return 2; },
+                    militia : function(inventory) { return 2; },
+                    bowman : function(inventory) { return 2; },
+                },
+                partisan : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    pike : function(inventory) { return 2; },
+                    steel : function(inventory) { return 5; },
+                    hard_wood : function(inventory) { return 9; },
+                },
+                taut_composite_bow : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,14,0); // handle discount
+                    },
+                    composite_bow : function(inventory) { return 2; },
+                    hard_wood : function(inventory) { return 8; },
+                    fine_wood : function(inventory) { return 6; },
+                },
+            }
+        },
+        shanty : {
+            builds : {
+                fingerless_gloves : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    cloth : function(inventory) { return 3; },
+                    fur : function(inventory) { return 3; },
+                },
+                leather_belt : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    cloth : function(inventory) { return 2; },
+                    wood : function(inventory) { return 4; },
+                },
+                thief : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    eavesdropper : function(inventory) { return 1; },
+                    grains : function(inventory) { return 5; },
+                    ore : function(inventory) { return 3; },
+                },
+                moleskin_gloves : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    fingerless_gloves : function(inventory) { return 1; },
+                    fur : function(inventory) { return 6; },
+                    cloth : function(inventory) { return 6; },
+                },
+                woven_belt : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    leather_belt : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 10; },
+                    fur : function(inventory) { return 2; },
+                },
+                courtesan : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    thief : function(inventory) { return 1; },
+                    moleskin_gloves : function(inventory) { return 1; },
+                    woven_belt : function(inventory) { return 1; },
+                },
+                wolfsbane : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    blindeye : function(inventory) { return 1; },
+                    dreamwine : function(inventory) { return 1; },
+                    fine_wood : function(inventory) { return 14; },
+                },
+                madam : {
+                    silver : function(inventory) {
+                        return 2500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(1,0,0); // handle discount
+                    },
+                    courtesan : function(inventory) { return 3; },
+                    dyed_textile : function(inventory) { return 15; },
+                    precious_ore : function(inventory) { return 15; },
+                },
+            }
+        },
+        armory : {
+            builds : {
+                shield_bearers : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    militia : function(inventory) { return 2; },
+                    metal_shield : function(inventory) { return 2; },
+                },
+                pike : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    longsword : function(inventory) { return 2; },
+                    wood : function(inventory) { return 4; },
+                    iron : function(inventory) { return 2; },
+                },
+                wood_shield : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    wood : function(inventory) { return 5; },
+                    iron : function(inventory) { return 1; },
+                },
+                metal_shield : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    wood_shield : function(inventory) { return 2; },
+                    iron : function(inventory) { return 6; },
+                },
+                breastplate : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    leather_armor : function(inventory) { return 2; },
+                    iron : function(inventory) { return 4; },
+                    fur : function(inventory) { return 2; },
+                },
+                phalanx : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,12,0); // handle discount
+                    },
+                    shield_bearers : function(inventory) { return 2; },
+                    pikeman : function(inventory) { return 2; },
+                    halfhelm : function(inventory) { return 4; },
+                },
+                grand_breastplate : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,14,0); // handle discount
+                    },
+                    breastplate : function(inventory) { return 2; },
+                    steel : function(inventory) { return 8; },
+                    lead : function(inventory) { return 6; },
+                },
+                elite_phalanx : {
+                    silver : function(inventory) {
+                        return 2500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(1,2,0); // handle discount
+                    },
+                    phalanx : function(inventory) { return 3; },
+                    steel : function(inventory) { return 20; },
+                    hard_wood : function(inventory) { return 10; },
+                },
+            }
+        },
+        watchtower : {
+            builds : {
+                unremarkable_tunic : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    cloth : function(inventory) { return 3; },
+                    fur : function(inventory) { return 3; },
+                },
+                light_crossbow : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    wood : function(inventory) { return 3; },
+                    cloth : function(inventory) { return 2; },
+                    fur : function(inventory) { return 1; },
+                },
+                crossbowman : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    militia : function(inventory) { return 3; },
+                    light_crossbow : function(inventory) { return 3; },
+                },
+                guards_uniform : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    unremarkable_tunic : function(inventory) { return 1; },
+                    fur : function(inventory) { return 5; },
+                    cloth : function(inventory) { return 7; },
+                },
+                heavy_crossbow : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,6,0); // handle discount
+                    },
+                    light_crossbow : function(inventory) { return 1; },
+                    wood : function(inventory) { return 7; },
+                    cloth : function(inventory) { return 5; },
+                },
+                assassin : {
+                    silver : function(inventory) {
+                        return 450; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,12,0); // handle discount
+                    },
+                    thief : function(inventory) { return 1; },
+                    heavy_crossbow : function(inventory) { return 1; },
+                    guards_uniform : function(inventory) { return 1; },
+                },
+                expert_crossbowman : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,15,0); // handle discount
+                    },
+                    crossbowman : function(inventory) { return 1; },
+                    heavy_crossbow : function(inventory) { return 1; },
+                    hard_wood : function(inventory) { return 14; },
+                },
+                guild_assassin : {
+                    silver : function(inventory) {
+                        return 2500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(1,4,0); // handle discount
+                    },
+                    assassin : function(inventory) { return 3; },
+                    dyed_textile : function(inventory) { return 15; },
+                    fine_wood : function(inventory) { return 15; },
+                },
+            }
+        },
+        artisan_quarters : {
+            builds : {
+                purse : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    gold_ring : function(inventory) { return 1; },
+                    ore : function(inventory) { return 2; },
+                },
+                silver_bracelet : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    silver_brooch : function(inventory) { return 1; },
+                    ore : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 1; },
+                },
+                silver_torc : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    silver_chain : function(inventory) { return 1; },
+                    ore : function(inventory) { return 1; },
+                    fur : function(inventory) { return 1; },
+                },
+                mercer : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    merchant : function(inventory) { return 6; },
+                    cloth : function(inventory) { return 8; },
+                    ore : function(inventory) { return 4; }
+                },
+                spicer : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    merchant : function(inventory) { return 6; },
+                    grains : function(inventory) { return 8; },
+                    ore : function(inventory) { return 4; }
+                },
+                furrier : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    merchant : function(inventory) { return 6; },
+                    fur : function(inventory) { return 8; },
+                    ore : function(inventory) { return 4; }
+                },
+                master_mercer : {
+                    silver : function(inventory) {
+                        return 2500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(1,0,0); // handle discount
+                    },
+                    mercer : function(inventory) { return 3; },
+                    dyed_textile : function(inventory) { return 20; },
+                    precious_ore : function(inventory) { return 10; }
+                },
+                master_spicer : {
+                    silver : function(inventory) {
+                        return 2500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(1,0,0); // handle discount
+                    },
+                    spicer : function(inventory) { return 3; },
+                    fine_wood : function(inventory) { return 20; },
+                    precious_ore : function(inventory) { return 10; }
+                },
+                master_furrier : {
+                    silver : function(inventory) {
+                        return 2500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(1,0,0); // handle discount
+                    },
+                    furrier : function(inventory) { return 3; },
+                    lead : function(inventory) { return 20; },
+                    precious_ore : function(inventory) { return 10; }
+                },
+            }
+        },
+        stables : {
+            builds : {
+                ostler : {
+                    silver : function(inventory) {
+                        return 50; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    smallfolk : function(inventory) { return 1; },
+                    fur : function(inventory) { return 2; },
+                    grains : function(inventory) { return 3; },
+                },
+                blue_gem : {
+                    silver : function(inventory) {
+                        return 20; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,30); // handle discount
+                    },
+                    peddler : function(inventory) { return 2; },
+                    ore : function(inventory) { return 2; },
+                    stone : function(inventory) { return 1; },
+                },
+                warhorse : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    horse : function(inventory) { return 1; },
+                    ostler : function(inventory) { return 1; },
+                    leather_armor : function(inventory) { return 1; },
+                },
+                harrier : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    militia : function(inventory) { return 1; },
+                    horse : function(inventory) { return 1; },
+                    grains : function(inventory) { return 5; }
+                },
+                scout : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    eavesdropper : function(inventory) { return 1; },
+                    horse : function(inventory) { return 1; },
+                    grains : function(inventory) { return 5; }
+                },
+                peddler : {
+                    silver : function(inventory) {
+                        return 60; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,3,0); // handle discount
+                    },
+                    trader : function(inventory) { return 1; },
+                    horse : function(inventory) { return 1; },
+                    grains : function(inventory) { return 5; }
+                },
+                steelshod_warhorse : {
+                    silver : function(inventory) {
+                        return 750; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,13,0); // handle discount
+                    },
+                    warhorse : function(inventory) { return 2; },
+                    ostler : function(inventory) { return 1; },
+                    steel : function(inventory) { return 4; }
+                },
+                mounted_escort : {
+                    silver : function(inventory) {
+                        return 700; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    harrier : function(inventory) { return 3; },
+                    scout : function(inventory) { return 3; },
+                    fine_wood : function(inventory) { return 14; }
+                },
+            }
+        },
+        tourney_arena : {
+            builds : {
+                red_gem : {
+                    silver : function(inventory) {
+                        return 15; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,24); // handle discount
+                    },
+                    peddler : function(inventory) { return 2; },
+                    ore : function(inventory) { return 2; },
+                    iron : function(inventory) { return 1; },
+                },
+                foot_soldier : {
+                    silver : function(inventory) {
+                        return 200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,4,30); // handle discount
+                    },
+                    smallfolk : function(inventory) { return 1; },
+                    longsword : function(inventory) { return 1; },
+                    guards_uniform : function(inventory) { return 1; },
+                },
+                armored_knight : {
+                    silver : function(inventory) {
+                        return 400; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,8,0); // handle discount
+                    },
+                    foot_soldier : function(inventory) { return 1; },
+                    breastplate : function(inventory) { return 1; },
+                    barred_helm : function(inventory) { return 1; },
+                },
+                mounted_knight : {
+                    silver : function(inventory) {
+                        return 300; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,5,0); // handle discount
+                    },
+                    armored_knight : function(inventory) { return 1; },
+                    warhorse : function(inventory) { return 1; },
+                    purse : function(inventory) { return 1; }
+                },
+                lancer : {
+                    silver : function(inventory) {
+                        return 300; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,5,0); // handle discount
+                    },
+                    mounted_knight : function(inventory) { return 1; },
+                    pike : function(inventory) { return 1; },
+                    silk_garment : function(inventory) { return 1; }
+                },
+                heavy_knight : {
+                    silver : function(inventory) {
+                        return 300; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,5,0); // handle discount
+                    },
+                    lancer : function(inventory) { return 1; },
+                    gold_torc : function(inventory) { return 1; },
+                    metal_shield : function(inventory) { return 1; }
+                },
+                grand_barred_helm : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,12,0); // handle discount
+                    },
+                    barred_helm : function(inventory) { return 2; },
+                    steel : function(inventory) { return 8; },
+                    lead : function(inventory) { return 6; }
+                },
+                elite_cavalryman : {
+                    silver : function(inventory) {
+                        return 1600; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    heavy_knight : function(inventory) { return 1; },
+                    steelshod_warhorse : function(inventory) { return 1; },
+                    masterwork_greatsword : function(inventory) { return 1; }
+                },
+            }
+        },
+        alchemists_guild : {
+            builds : {
+                fire_archer : {
+                    silver : function(inventory) {
+                        return 400; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    archer : function(inventory) { return 1; },
+                    wood : function(inventory) { return 2; },
+                    iron : function(inventory) { return 2; },
+                },
+                smuggling_vessel : {
+                    silver : function(inventory) {
+                        return 500; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,4,30); // handle discount
+                    },
+                    wood : function(inventory) { return 17; },
+                    cloth : function(inventory) { return 9; },
+                    thief : function(inventory) { return 4; },
+                },
+                pure_water : {
+                    silver : function(inventory) {
+                        return 5; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,0,30); // handle discount
+                    },
+                    black_ash : function(inventory) { return 1; },
+                    mead : function(inventory) { return 1; },
+                    cloth : function(inventory) { return 3; },
+                },
+                blazing_fire_archer : {
+                    silver : function(inventory) {
+                        return 2200; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(1,0,0); // handle discount
+                    },
+                    fire_archer : function(inventory) { return 3; },
+                    flickering_fire : function(inventory) { return 3; },
+                    hard_wood : function(inventory) { return 12; }
+                },
+                sparkling_jewel : {
+                    silver : function(inventory) {
+                        return 15; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,2,0); // handle discount
+                    },
+                    black_ash : function(inventory) { return 6; },
+                    precious_ore : function(inventory) { return 6; },
+                    ore : function(inventory) { return 6; }
+                },
+                heavy_knight : {
+                    silver : function(inventory) {
+                        return 300; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,5,0); // handle discount
+                    },
+                    lancer : function(inventory) { return 1; },
+                    gold_torc : function(inventory) { return 1; },
+                    metal_shield : function(inventory) { return 1; }
+                },
+                grand_barred_helm : {
+                    silver : function(inventory) {
+                        return 800; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,12,0); // handle discount
+                    },
+                    barred_helm : function(inventory) { return 2; },
+                    steel : function(inventory) { return 8; },
+                    lead : function(inventory) { return 6; }
+                },
+                elite_cavalryman : {
+                    silver : function(inventory) {
+                        return 1600; // handle discount
+                    },
+                    seconds : function(inventory) {
+                        return timeInSeconds(0,11,0); // handle discount
+                    },
+                    heavy_knight : function(inventory) { return 1; },
+                    steelshod_warhorse : function(inventory) { return 1; },
+                    masterwork_greatsword : function(inventory) { return 1; }
                 },
             }
         },
@@ -537,6 +2138,18 @@ Meteor.startup(function() {
                     // always available
                     silver : function(inventory) {
                         return 450;
+                    },
+                },
+                gold_ring : {
+                    // always available
+                    silver : function(inventory) {
+                        return 1000;
+                    },
+                },
+                longsword : {
+                    // always available
+                    silver : function(inventory) {
+                        return 1000;
                     },
                 },
                 barred_helm : {

@@ -1,0 +1,22 @@
+counting house : 12
+smithy: 5
+villiage : 10 
+embassy: 5
+market: 5
+sept : 5
+godwood: 5
+rhillor : 5
+holdfast: 5
+workshop : 5;
+treasury: 5
+6 fielty * 5 = 30
+siege 3 * 2= 6
+warehouse = 5
+practice yard = 5
+shanty = 5
+armory 5
+watchtower 5
+artisan 5 ( but not very intersting )
+stables 5
+tourney 5
+alchemy 5
