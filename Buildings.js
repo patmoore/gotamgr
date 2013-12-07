@@ -2721,6 +2721,18 @@ Meteor.startup(function() {
                         return 1000;
                     },
                 },
+                woven_belt : {
+                    // always available
+                    silver : function(inventory) {
+                        return 742;
+                    },
+                },
+                gold_brooch : {
+                    // always available
+                    silver : function(inventory) {
+                        return 2500;
+                    },
+                },
                 coinage : {
                     silver : function(inventory) {
                         return 300;
