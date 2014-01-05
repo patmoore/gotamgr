@@ -1,1 +1,12 @@
 /* CSS declarations go here */
+.table {
+    display:table;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-cell {
+    display : table-cell;
+}

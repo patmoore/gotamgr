@@ -1,13 +1,23 @@
 <head>
-  <title>gota-builder</title>
+  <title>Game Of Thrones Builder</title>
 </head>
 
 <body>
-  {{> hello}}
+    <h2>Inventory</h2>
+    {{>buildableList}}
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="buildableList">
+    <div class="table">
+        {{#each allBuildables}}
+        <div class="table-row">
+            <div class="table-cell">Have: <input type="text" size="4" name="inventory_{{this}}"></div>
+            <div class="table-cell">Want: <input type="text" size="4" name="want_{{this}}"></div>
+            <div class="table-cell">Need: {{buildit this }}</div>
+            <div class="table-cell">{{remove_ this}}
+                (Built By: {{buildings this }})
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </template>
