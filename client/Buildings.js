@@ -1,6 +1,7 @@
 function timeInSeconds(days, hours, mins) {
     return ((((days*24)+hours)*60)+mins)*60;
 };
+
 Buildings = {
     smithy: {
         builds : {
