@@ -1770,6 +1770,7 @@ Buildings = {
                 wood : function(inventory) { return 2; },
                 smallfolk : function(inventory) { return 2; },
                 fish : function(inventory) { return 2; },
+                ladder_fabrication_0 : function(inventory) { return 1; }
             },
             trebuchet : {
                 silver : function(inventory) {
@@ -1781,6 +1782,7 @@ Buildings = {
                 stone : function(inventory) { return 2; },
                 ore : function(inventory) { return 2; },
                 cloth : function(inventory) { return 2; },
+                trebuchet_fabrication_0 : function(inventory) { return 1; }
             },
             turtle : {
                 silver : function(inventory) {
@@ -1880,7 +1882,123 @@ Buildings = {
                 manacles : function(inventory) { return 1; },
                 saboteur : function(inventory) { return 1; },
                 smallfolk : function(inventory) { return 12; },
+            }
+        },
+        upgrades : {
+            ladder_fabrication_0 : {
+                // +1 battle
             },
+            ladder_fabrication_1 : {
+                // +1 battle
+                ladder_fabrication_0 : function(inventory) { return 1; },
+                silver : function(inventory) {
+                    return 1800; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,21); // handle discount
+                },
+                wood : function(inventory) { return 1; },
+                smallfolk : function(inventory) { return 1; },
+            },
+            trebuchet_fabrication_0 : {
+                // +1 trade
+            },
+            trebuchet_fabrication_1 : {
+                // +1 trade
+                trebuchet_fabrication_0 : function(inventory) { return 1; },
+                silver : function(inventory) {
+                    return 1800; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,21); // handle discount
+                },
+                fur : function(inventory) { return 1; },
+                horse : function(inventory) { return 1; },
+            },
+            turtle_fabrication_0 : {
+                // +1 intrigue
+            },
+            turtle_fabrication_1 : {
+                // +1 intrigue
+                turtle_fabrication_0 : function(inventory) { return 1; },
+                silver : function(inventory) {
+                    return 1800; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,21); // handle discount
+                },
+                fur : function(inventory) { return 1; },
+                horse : function(inventory) { return 1; },
+            },
+            ram_fabrication_0 : {
+                // +2 fight
+                silver : function(inventory) {
+                    return 1000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,27); // handle discount
+                },
+                horse : function(inventory) { return 1; },
+                iron : function(inventory) { return 1; }
+            },
+//            ram_fabrication_1 : {
+//                // +1 fight
+//                ram_fabrication_0 : function(inventory) { return 1; },
+//                silver : function(inventory) {
+//                    return 1800; // handle discount
+//                },
+//                seconds : function(inventory) {
+//                    return timeInSeconds(0,0,21); // handle discount
+//                },
+//                fur : function(inventory) { return 1; },
+//                horse : function(inventory) { return 1; },
+//            },
+            catapult_fabrication_0 : {
+                // +2 fight
+                silver : function(inventory) {
+                    return 1000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,27); // handle discount
+                },
+                stone : function(inventory) { return 1; },
+                grain : function(inventory) { return 1; }
+            },
+//            catapult_fabrication_1 : {
+//                // +2 trade
+//                catapult_fabrication_0 : function(inventory) { return 1; },
+//                silver : function(inventory) {
+//                    return 1800; // handle discount
+//                },
+//                seconds : function(inventory) {
+//                    return timeInSeconds(0,0,21); // handle discount
+//                },
+//                fur : function(inventory) { return 1; },
+//                horse : function(inventory) { return 1; },
+//            }
+            scorpion_fabrication_0 : {
+                // +2 intrigue
+                silver : function(inventory) {
+                    return 1000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,27); // handle discount
+                },
+                cloth : function(inventory) { return 1; },
+                wood : function(inventory) { return 1; }
+            },
+//            scorpion_fabrication_1 : {
+//                // +2 intrigue
+//                scorpion_fabrication_0 : function(inventory) { return 1; },
+//                silver : function(inventory) {
+//                    return 1800; // handle discount
+//                },
+//                seconds : function(inventory) {
+//                    return timeInSeconds(0,0,21); // handle discount
+//                },
+//                fur : function(inventory) { return 1; },
+//                horse : function(inventory) { return 1; },
+//            }
         }
     },
     warehouse : {
@@ -1969,6 +2087,36 @@ Buildings = {
                 gold_necklace : function(inventory) { return 2; },
                 lead : function(inventory) { return 8; },
                 precious_ore : function(inventory) { return 6; },
+            },
+        },
+        upgrades : {
+            hired_guards_0 : {
+                // +1 fight
+                // enables bowman
+            },
+            hired_guards_1 : {
+                // +1 trade
+                // +3% prod trade units
+                silver : function(inventory) {
+                    return 1600; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,15); // handle discount
+                },
+                horse : function(inventory) { return 1; },
+                fur : function(inventory) { return 1; },
+            },
+            hired_guards_2 : {
+                // +1 trade
+                // +3% prod trade units
+                silver : function(inventory) {
+                    return 2400; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,18); // handle discount
+                },
+                horse : function(inventory) { return 1; },
+                fur : function(inventory) { return 1; },
             },
         }
     },
@@ -2060,6 +2208,36 @@ Buildings = {
                 hard_wood : function(inventory) { return 8; },
                 fine_wood : function(inventory) { return 6; },
             },
+        },
+        upgrades : {
+            bows_quivers_and_arrows : {
+                // +1 fight
+                // enables bowman
+            },
+            wooden_swords_0 : {
+                // +1 fight
+                // +2% improved battle units
+                silver : function(inventory) {
+                    return 800; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,12); // handle discount
+                },
+                wood : function(inventory) { return 1; },
+                iron : function(inventory) { return 1; },
+            },
+            wooden_swords_1 : {
+                // +1 fight
+                // +2% improved battle units
+                silver : function(inventory) {
+                    return 1600; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,15);
+                },
+                wood : function(inventory) { return 1; },
+                iron : function(inventory) { return 1; },
+            },
         }
     },
     shanty : {
@@ -2149,6 +2327,36 @@ Buildings = {
                 courtesan : function(inventory) { return 3; },
                 dyed_textile : function(inventory) { return 15; },
                 precious_ore : function(inventory) { return 15; },
+            },
+        },
+        upgrades : {
+            tenements : {
+                // +1 intrigue
+                // +3% buildtime on steal weapons, armor, and units (everything built by shanty)
+            },
+            urchins_0 : {
+                // +1 intrigue
+                // +3% improved steal weapons, armor, and units (everything built by shanty)
+                silver : function(inventory) {
+                    return 1000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,12); // handle discount
+                },
+                cloth : function(inventory) { return 1; },
+                smallfolk : function(inventory) { return 1; },
+            },
+            urchins_1 : {
+                // +1 intrigue
+                // +3% improved steal weapons, armor, and units (everything built by shanty)
+                silver : function(inventory) {
+                    return 2000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,12); // handle discount
+                },
+                cloth : function(inventory) { return 1; },
+                smallfolk : function(inventory) { return 1; },
             },
         }
     },
@@ -2242,6 +2450,7 @@ Buildings = {
         }
     },
     watchtower : {
+        // 20 min., 1000 silver
         builds : {
             unremarkable_tunic : {
                 silver : function(inventory) {
@@ -2826,9 +3035,9 @@ _.each(Buildings, function(building, building_name) {
     // map buildables to buildings
     _.each(building.builds, function(buildable_needs, buildable) {
         if ( typeof(Buildables[buildable]) === "undefined") {
-            Buildables[buildable] = [ building ];
+            Buildables[buildable] = { buildings : [ building ] };
         } else {
-            Buildables[buildable].push(building);
+            Buildables[buildable].buildings.push(building);
         }
     });
 });

@@ -16,7 +16,7 @@ BuildScheduler = function() {
     _.each(Buildings.shop.builds, function(component_quantity_fn, component) {
         that.terminals[component] = true;
     });
-}
+};
 _.extend(BuildScheduler.prototype, {
     /**
      *
@@ -31,8 +31,14 @@ _.extend(BuildScheduler.prototype, {
         var terminals = that.cloneIt(that.terminals);
         _.each(build_request, function(quantity, buildable, build_request){
             // need to look for each building: we assume that each item can be built by only 1 building.
-            var buildings_that_can = Buildables[buildable];
-            switch(buildings_that_can.length){
+            var buildings_that_can = typeof(Buildables[buildable]) ==="undefined"?[] : Buildables[buildable].buildings;
+            var number_of_buildings;
+            if ( typeof(buildings_that_can) === "undefined") {
+                number_of_buildings = 0;
+            } else {
+                number_of_buildings = buildings_that_can.length;
+            }
+            switch(number_of_buildings){
             case 0:
                 // no buildings builds the component (terminal component)
                 that.addTo(inventory_needs, buildable, quantity);
@@ -100,4 +106,13 @@ _.extend(BuildScheduler.prototype, {
             object[key] += value;
         }
     }
+});
+Meteor.startup(function() {
+    var buildScheduler = new BuildScheduler();
+    Deps.autorun(function(){
+        var inventory = Session.get("inventory");
+        var want = Session.get("want");
+        var inventory_used = buildScheduler.schedule(want, inventory);
+        Session.set("inventory_used", inventory_used);
+    });
 });

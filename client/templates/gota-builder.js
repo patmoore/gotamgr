@@ -1,15 +1,18 @@
-Template.buildableList.allBuildables = function () {
-    return Object.keys(Buildables).sort();
-};
+Template.buildableList.helpers({
+    allBuildables : function () {
+        return Object.keys(Buildables).sort();
+    },
+    terminalBuildables : function () {
+        return Object.keys(Buildables).sort();
+    },
+});
 
 Template.buildableList.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
+    'click button.showNeed' : function () {
+        Session.set("show", "need");
+    },
+    'click button.showAll' : function () {
+        Session.set("show", "all");
     }
 });
 
-Template.buildableList.buildIt = function(options) {
-
-}
