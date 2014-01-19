@@ -22,7 +22,12 @@ _.extend(BuildScheduler.prototype, {
      *
      * @param build_request object with key : quantity needed.
      */
-    schedule: function(build_request, inventory) {
+    needCalculate: function(build_request, inventory, depth) {
+        if ( typeof(depth) ==="undefined" ) {
+            depth = 100;
+        } else if ( depth <= 0 ) {
+            return;
+        }
         'use strict';
         var that = this;
         // breath-first search collect the immediate quantity of all required components for the items
@@ -30,6 +35,10 @@ _.extend(BuildScheduler.prototype, {
 
         var terminals = that.cloneIt(that.terminals);
         _.each(build_request, function(quantity, buildable, build_request){
+            if ( quantity < 1 ) {
+                // handle 0 quantities
+                return;
+            }
             // need to look for each building: we assume that each item can be built by only 1 building.
             var buildings_that_can = typeof(Buildables[buildable]) ==="undefined"?[] : Buildables[buildable].buildings;
             var number_of_buildings;
@@ -73,7 +82,7 @@ _.extend(BuildScheduler.prototype, {
             // we can't satisfy the build_request because additional components to 1+ of the build components need to be built first.
             // if any canNOT be satisfied then collect all the needed components
             // this is because a component may be consumed by a component eariler in the build cycle.
-            var subcomponents_used = this.schedule(inventory_needs, inventory);
+            var subcomponents_used = this.needCalculate(inventory_needs, inventory, depth-1);
             _.each(subcomponents_used, function(quantity, buildable) {
                 that.addTo(inventory_used, buildable, quantity);
             });
@@ -93,8 +102,10 @@ _.extend(BuildScheduler.prototype, {
         });
         return inventory_used;
     },
-    buildIt: function(build_request, inventory) {
+
+    schedule : function(buildingPlan, build_request, inventory) {
     },
+
     cloneIt: function(object) {
         var cloned = JSON.parse(JSON.stringify(object));
         return cloned;
@@ -107,12 +118,38 @@ _.extend(BuildScheduler.prototype, {
         }
     }
 });
+
+/**
+ *
+ * minEndTime : time from the schedule end time. so the last item in a chain is 0
+ * dependent : what is dependent on this BuildOrder
+ * duration
+ * @constructor
+ */
+BuildOrder = function() {
+
+};
+
+_.extend(BuildOrder.prototype, {
+    chainMinTime : function() {
+        if ( typeof(this.dependent) === "undefined") {
+            return this.minEndTime;
+        } else {
+            return this.minEndTime + this.dependent.chainMinTime();
+        }
+    },
+    componentMinTime : function() {
+        return this.chainMinTime() + this.duration;
+    }
+});
+
 Meteor.startup(function() {
     var buildScheduler = new BuildScheduler();
     Deps.autorun(function(){
         var inventory = Session.get("inventory");
         var want = Session.get("want");
-        var inventory_used = buildScheduler.schedule(want, inventory);
+        var depth = Session.get("depth");
+        var inventory_used = buildScheduler.needCalculate(want, inventory, depth);
         Session.set("inventory_used", inventory_used);
     });
 });

@@ -10,11 +10,8 @@
 <template name="buildableList">
     <button class="showNeed">Show Need</button>
     <button class="showAll">Show All</button>
-    <div class="table">
-        {{#each terminalBuildables}}
-        {{>inventoryItem this}}
-        {{/each}}
-    </div>
+    <input class="depth">
+
     <div class="table">
         {{#each allBuildables}}
             {{>inventoryItem this}}

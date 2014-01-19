@@ -1,4 +1,6 @@
 Meteor.startup(function() {
-    // check to see if this user has a builder database.
-    
+    Meteor.publish('buildingSchedule',
+        function() {
+
+        });
 });

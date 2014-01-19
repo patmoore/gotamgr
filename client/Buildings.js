@@ -100,7 +100,8 @@ Buildings = {
                 steel : function(inventory) { return 11; },
                 hard_wood : function(inventory) { return 7; },
             },
-
+        },
+        upgrades : {
             furnace : {
                 seconds : function(inventory) {
                     // needs
@@ -196,7 +197,8 @@ Buildings = {
                     return timeInSeconds(0,0,20); // handle discount
                 },
             },
-
+        },
+        upgrades : {
             brewhouse_0 : {
                 silver : function(inventory) {
                     return 1000;
@@ -478,6 +480,8 @@ Buildings = {
                 lead : function(inventory) { return 5; },
                 exchange_0 : function(inventory) { return 1; },
             },
+        },
+        upgrades : {
             exchange_0 : {
                 gold : function(inventory) { return 5; },
             },
@@ -860,7 +864,8 @@ Buildings = {
                 },
                 doublet : function(inventory) { return 2; },
                 cloth : function(inventory) { return 3; },
-                fur : function(inventory) { return 3; }
+                fur : function(inventory) { return 3; },
+                earthworks_0 : function(inventory) { return 1; }
             },
             splint_armor : {
                 silver : function(inventory) {
@@ -905,6 +910,45 @@ Buildings = {
                 steel : function(inventory) { return 9; },
                 dyed_textile : function(inventory) { return 5; },
             },
+        },
+        upgrades : {
+            earthworks_0 : {
+                // +2 battle
+                // jerkin
+                silver : function(inventory) {
+                    return 600; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,7,30); // handle discount
+                },
+                stone : function(inventory) { return 1; },
+                grain : function(inventory) { return 1; },
+            },
+            palisades_0 : {
+                // +1 battle
+                // +2% battle armor
+                silver : function(inventory) {
+                    return 600; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,7,30); // handle discount
+                },
+                stone : function(inventory) { return 1; },
+                grain : function(inventory) { return 1; },
+            },
+            arrowslits_0 : {
+                // +2 battle
+                // splint armor, masterwork splint armor
+                silver : function(inventory) {
+                    return 600; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,7,30); // handle discount
+                },
+                stone : function(inventory) { return 1; },
+                grain : function(inventory) { return 1; },
+            },
+
         }
     },
     workshop : {
@@ -1087,6 +1131,47 @@ Buildings = {
                 precious_ore : function(inventory) { return 10; },
                 steel : function(inventory) { return 4; },
             },
+        },
+        upgrades : {
+            vault_0 : {
+                // +2 trade
+                // -2% silver trade weapons
+                ladder_fabrication_0 : function(inventory) { return 1; },
+                silver : function(inventory) {
+                    return 380; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,7,30); // handle discount
+                },
+                ore : function(inventory) { return 1; },
+                fur : function(inventory) { return 1; },
+            },
+            vault_1 : {
+                // +2 trade
+                // -2% silver trade weapons
+                ladder_fabrication_0 : function(inventory) { return 1; },
+                silver : function(inventory) {
+                    return 760; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,10); // handle discount
+                },
+                ore : function(inventory) { return 1; },
+                fur : function(inventory) { return 1; },
+            },
+            vault_2 : {
+                // +2 trade
+                // -2% silver trade weapons
+                ladder_fabrication_0 : function(inventory) { return 1; },
+                silver : function(inventory) {
+                    return 1040; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,12,30); // handle discount
+                },
+                ore : function(inventory) { return 1; },
+                fur : function(inventory) { return 1; },
+            },
         }
     },
     // tyrell
@@ -1097,12 +1182,14 @@ Buildings = {
                     return timeInSeconds(0,0,20); // handle discount
                 },
             },
+            /*
             horse : {
                 seconds : function(inventory) {
                     return timeInSeconds(0,0,20); // handle discount
                 },
                 grains : function(inventory) { return 3; }
             },
+            */
             standard_carrier : {
                 silver : function(inventory) {
                     return 60; // handle discount
@@ -1209,12 +1296,14 @@ Buildings = {
                     return timeInSeconds(0,0,20); // handle discount
                 },
             },
+            /*
             iron : {
                 seconds : function(inventory) {
                     return timeInSeconds(0,0,20); // handle discount
                 },
                 ore : function(inventory) { return 3; }
             },
+            */
             jeweler : {
                 silver : function(inventory) {
                     return 200; // handle discount
@@ -1311,12 +1400,14 @@ Buildings = {
                     return timeInSeconds(0,0,20); // handle discount
                 },
             },
+            /*
             wood : {
                 seconds : function(inventory) {
                     return timeInSeconds(0,0,20); // handle discount
                 },
                 ore : function(inventory) { return 3; }
             },
+            */
             horseman : {
                 silver : function(inventory) {
                     return 60; // handle discount
@@ -1424,12 +1515,14 @@ Buildings = {
                     return timeInSeconds(0,0,20); // handle discount
                 },
             },
+            /*
             stone : {
                 seconds : function(inventory) {
                     return timeInSeconds(0,0,20); // handle discount
                 },
                 wood : function(inventory) { return 3; }
             },
+            */
             fool : {
                 silver : function(inventory) {
                     return 60; // handle discount
@@ -1538,12 +1631,14 @@ Buildings = {
                     return timeInSeconds(0,0,20); // handle discount
                 },
             },
+            /*
             cloth : {
                 seconds : function(inventory) {
                     return timeInSeconds(0,0,20); // handle discount
                 },
                 fur : function(inventory) { return 3; }
             },
+            */
             tracker : {
                 silver : function(inventory) {
                     return 60; // handle discount
@@ -1642,6 +1737,11 @@ Buildings = {
                 raiders_notch : function(inventory) { return 3; },
                 symbol_of_help : function(inventory) { return 3; },
             },
+        },
+        upgrades : {
+            ice_house : {
+
+            }
         }
     },
     shipyard : {
@@ -1651,12 +1751,14 @@ Buildings = {
                     return timeInSeconds(0,0,20); // handle discount
                 },
             },
+            /*
             cloth : {
                 seconds : function(inventory) {
                     return timeInSeconds(0,0,20); // handle discount
                 },
                 fish : function(inventory) { return 3; }
             },
+            */
             sailor : {
                 silver : function(inventory) {
                     return 60; // handle discount
@@ -1950,8 +2052,8 @@ Buildings = {
 //                seconds : function(inventory) {
 //                    return timeInSeconds(0,0,21); // handle discount
 //                },
-//                fur : function(inventory) { return 1; },
 //                horse : function(inventory) { return 1; },
+//                iron : function(inventory) { return 1; },
 //            },
             catapult_fabrication_0 : {
                 // +2 fight
@@ -1973,8 +2075,8 @@ Buildings = {
 //                seconds : function(inventory) {
 //                    return timeInSeconds(0,0,21); // handle discount
 //                },
-//                fur : function(inventory) { return 1; },
-//                horse : function(inventory) { return 1; },
+//                stone : function(inventory) { return 1; },
+//                grain : function(inventory) { return 1; },
 //            }
             scorpion_fabrication_0 : {
                 // +2 intrigue
@@ -1998,7 +2100,30 @@ Buildings = {
 //                },
 //                fur : function(inventory) { return 1; },
 //                horse : function(inventory) { return 1; },
-//            }
+//            },
+            siege_tower_fabrication_0 : {
+                // +2 battle
+                silver : function(inventory) {
+                    return 1100; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,1,6,30); // handle discount
+                },
+                cloth : function(inventory) { return 1; },
+                wood : function(inventory) { return 1; }
+            },
+            siege_tower_fabrication_1 : {
+                // +2 battle
+                siege_tower_fabrication_0 : function(inventory) { return 1; },
+                silver : function(inventory) {
+                    return 2200; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,2,11); // handle discount
+                },
+                fur : function(inventory) { return 1; },
+                horse : function(inventory) { return 1; },
+            }
         }
     },
     warehouse : {
@@ -2118,6 +2243,18 @@ Buildings = {
                 horse : function(inventory) { return 1; },
                 fur : function(inventory) { return 1; },
             },
+            storeroom : {
+                // +3 trade
+                // + 3% PROD TRADE ARMOR
+                silver : function(inventory) {
+                    return 1000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,40); // handle discount
+                },
+                horse : function(inventory) { return 1; },
+                fur : function(inventory) { return 1; },
+            }
         }
     },
     practice_yard : {
@@ -2538,6 +2675,32 @@ Buildings = {
                 dyed_textile : function(inventory) { return 15; },
                 fine_wood : function(inventory) { return 15; },
             },
+        },
+        upgrades : {
+            first_story_0 : {
+                // +1 intrigue
+                // +3% improved steal weapons, armor, and units (everything built by shanty)
+                silver : function(inventory) {
+                    return 1000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,10,30); // handle discount
+                },
+                stone : function(inventory) { return 1; },
+                fish : function(inventory) { return 1; },
+            },
+            first_story_1 : {
+                // +1 intrigue
+                silver : function(inventory) {
+                    return 00; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,0,0); // handle discount
+                },
+                cloth : function(inventory) { return 1; },
+                fish : function(inventory) { return 1; },
+            },
+
         }
     },
     artisan_quarters : {
@@ -3041,3 +3204,4 @@ _.each(Buildings, function(building, building_name) {
         }
     });
 });
+

@@ -13,6 +13,10 @@ Template.buildableList.events({
     },
     'click button.showAll' : function () {
         Session.set("show", "all");
+    },
+    'change input.depth' : function(eventMap) {
+        var depth = eventMap.srcElement.value;
+        Session.set("depth", depth);
     }
 });
 

@@ -36,6 +36,9 @@ Template.inventoryItem.events({
    'change input[type=text].want' :function(eventMap) {
        var want = Session.get("want");
        want[this] = +eventMap.srcElement.value;
+       if ( want[this] === 0) {
+           delete want[this];
+       }
        Session.set("want", want);
    }
 });
