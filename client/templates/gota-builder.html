@@ -3,13 +3,21 @@
 </head>
 
 <body>
+    <div class="container">
     <h2>Inventory</h2>
     {{>buildableList}}
+    </div>
 </body>
 
 <template name="buildableList">
-    <button class="showNeed">Show Need</button>
-    <button class="showAll">Show All</button>
+    <select class="chosen-select showFilter">
+        <option value="all">Show All</option>
+        <option value="need">Show Need</option>
+    </select>
+    <select class="ahowOrder chosen-select">
+        <option value="resources">Resources First</option>
+        <option value="alphabetical">Alphabetical</option>
+    </select>
     <input class="depth">
 
     <div class="table">

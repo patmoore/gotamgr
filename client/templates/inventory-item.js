@@ -16,9 +16,11 @@ Template.inventoryItem.helpers({
     },
     buildings: function(options) {
         var buildingNames = [];
-        Buildables[options].buildings.forEach(function(building) {
-            buildingNames.push(building.name);
-        });
+        if ( typeof(Buildables[options].buildings) !== "undefined" ) {
+            Buildables[options].buildings.forEach(function(building) {
+                buildingNames.push(building.name);
+            });
+        }
         return buildingNames.sort().join(',');
     },
     buildit: function(options) {

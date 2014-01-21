@@ -34,6 +34,24 @@ _.extend(BuildScheduler.prototype, {
         var inventory_needs = {};
 
         var terminals = that.cloneIt(that.terminals);
+        var haveEverything = true;
+        // find the difference between needed and have so that items that are already in inventory reduce
+        // demands appropriately.
+        var build_delta = {};
+        _.each(build_request, function(quantity, buildable, build_request){
+            if ( quantity < 1 ) {
+                // handle 0 quantities
+                return;
+            }
+            if ( typeof(inventory[buildable]) ==="undefined") {
+                build_delta[buildable] = quantity;
+            } else {
+                build_delta[buildable] = quantity - inventory[buildable];
+            }
+            if (build_delta[buildable] > 0 ) {
+                haveEveryThing = false;
+            }
+        });
         _.each(build_request, function(quantity, buildable, build_request){
             if ( quantity < 1 ) {
                 // handle 0 quantities
@@ -67,7 +85,7 @@ _.extend(BuildScheduler.prototype, {
         });
 
         // find if all items in build request can be satisfied with inventory
-        var haveEverything = _.reduce(inventory_needs, function(memo, quantity, buildable) {
+        haveEverything = _.reduce(inventory_needs, function(memo, quantity, buildable) {
             // determine for each item if there is less than need.
             // reduce to true or false.
             if ( memo === true && terminals[buildable] !== true) {
@@ -103,7 +121,29 @@ _.extend(BuildScheduler.prototype, {
         return inventory_used;
     },
 
-    schedule : function(buildingPlan, build_request, inventory) {
+    /**
+     *  depth-first
+     * @param buildingPlan
+     * @param build_request
+     * @param inventory
+     */
+    schedule : function(buildingPlan, build_request, inventory, minEndTime, dependent) {
+        if ( typeof(minEndTime) ==="undefined") {
+            minEndTime = 0;
+        }
+        _.each(build_request, function(quantity, buildable, build_request) {
+            var building = Buildables[buildable].buildings[0];
+            for(var count =0; count < quantity; count++) {
+                var buildOrder = new BuildOrder(minEndTime, building.builds[buildable].seconds, dependent);
+                if ( typeof(buildingPlan[building]) === "undefined" ) {
+                    buildingPlan[building] = [ buildOrder ];
+                } else {
+                    buildingPlan[building].push(buildOrder);
+                }
+                var dependencies =
+                this.schedule(dependencies,  build_request, inventory, buildOrder);
+            }
+        });
     },
 
     cloneIt: function(object) {
@@ -121,17 +161,20 @@ _.extend(BuildScheduler.prototype, {
 
 /**
  *
- * minEndTime : time from the schedule end time. so the last item in a chain is 0
- * dependent : what is dependent on this BuildOrder
- * duration
+ * minEndTime : time(seconds) from the scheduled end time (X) (which is unknown). So the last item to be built has minEndTime of 0 (i.e. X-0)
+ * X is max(minEndTime) + duration of the item with the max(minEndTIme)
+ * dependent : what is dependent on this BuildOrder being built
+ * duration (seconds)
  * @constructor
  */
-BuildOrder = function() {
-
+BuildOrder = function(minEndTime, duration, dependent) {
+    this.minEndTime = minEndTime;
+    this.duration = duration;
+    this.dependent = dependent;
 };
 
 _.extend(BuildOrder.prototype, {
-    chainMinTime : function() {
+    dependentMinTime : function() {
         if ( typeof(this.dependent) === "undefined") {
             return this.minEndTime;
         } else {

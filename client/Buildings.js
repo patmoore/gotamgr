@@ -3191,6 +3191,7 @@ Buildings = {
 };
 
 Buildables = [];
+Buildables['silver'] = { buildings : {}};
 _.each(Buildings, function(building, building_name) {
     // add name of building to building object
     building.name = building_name.replace('_', ' ', 'g');

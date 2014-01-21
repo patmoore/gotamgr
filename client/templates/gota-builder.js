@@ -8,11 +8,11 @@ Template.buildableList.helpers({
 });
 
 Template.buildableList.events({
-    'click button.showNeed' : function () {
-        Session.set("show", "need");
+    'change select.showFilter' : function (eventMap) {
+        Session.set("show", eventMap.srcElement.value);
     },
-    'click button.showAll' : function () {
-        Session.set("show", "all");
+    'change select.showOrder' : function(eventMap) {
+        Session.set("showOrder", eventMap.srcElement.value);
     },
     'change input.depth' : function(eventMap) {
         var depth = eventMap.srcElement.value;
