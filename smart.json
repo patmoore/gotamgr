@@ -8,7 +8,10 @@
       "branch": "master",
       "git": "https://github.com/patmoore/meteor-flat-ui.git"
     },
-    "observatory": {},
+    "meteor-collection-management": {
+        "branch": "master",
+        "git": "git@github.com:whalepath/meteor-collection-management.git"
+    },
     "iron-router": {},
     "npm": {},
     "jquery-ui": {}
