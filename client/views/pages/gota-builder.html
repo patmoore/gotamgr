@@ -1,20 +1,10 @@
-<head>
-  <title>Game Of Thrones Builder</title>
-</head>
-
-<body>
-    <div class="container">
-    <h2>Inventory</h2>
-    {{>buildableList}}
-    </div>
-</body>
-
 <template name="buildableList">
+    <h2>Inventory</h2>
     <select class="chosen-select showFilter">
         <option value="all">Show All</option>
         <option value="need">Show Need</option>
     </select>
-    <select class="ahowOrder chosen-select">
+    <select class="showOrder chosen-select">
         <option value="resources">Resources First</option>
         <option value="alphabetical">Alphabetical</option>
     </select>

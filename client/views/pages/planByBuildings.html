@@ -1,0 +1,12 @@
+<template name="planByBuildings">
+    <div>Return at : tuesday ,</div>
+    <div class="table">
+    {{#each buildings}}
+        <div class="table-row">
+            <div class="table-col">In progress: {{inProgress}} Scheduled to be completed at __:__ ( in +hrs +min adjust)  <button class="completed">Completed</button></div>
+            <div class="table-col">Next: {{nextItem}}</div>
+            <div class="table-col">Begin: {{time}}</div>
+        </div>
+    {{/each}}
+    </div>
+</template>
