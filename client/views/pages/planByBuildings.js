@@ -1,5 +1,6 @@
-Template.planByBuildings.helpers({
-   buildings: function() {
 
-   }
+Template.planByBuildings.helpers({
+    buildings: function() {
+
+    }
 });
