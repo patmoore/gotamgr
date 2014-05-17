@@ -8,14 +8,14 @@ Template.buildableList.helpers({
 });
 
 Template.buildableList.events({
-    'change select.showFilter' : function (eventMap) {
-        Session.set("show", eventMap.srcElement.value);
+    'change select.showFilter' : function () {
+        Session.set("show", event.srcElement.value);
     },
-    'change select.showOrder' : function(eventMap) {
-        Session.set("showOrder", eventMap.srcElement.value);
+    'change select.showOrder' : function() {
+        Session.set("showOrder", event.srcElement.value);
     },
-    'change input.depth' : function(eventMap) {
-        var depth = eventMap.srcElement.value;
+    'change input.depth' : function() {
+        var depth = event.srcElement.value;
         Session.set("depth", depth);
     }
 });

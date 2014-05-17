@@ -30,14 +30,14 @@ Template.inventoryItem.helpers({
 
 });
 Template.inventoryItem.events({
-   'change input[type=text].have' : function(eventMap) {
+   'change input[type=text].have' : function() {
        var inventory = Session.get("inventory");
-       inventory[this] = +eventMap.srcElement.value;
+       inventory[this] = +event.srcElement.value;
        Session.set("inventory", inventory);
    },
-   'change input[type=text].want' :function(eventMap) {
+   'change input[type=text].want' :function() {
        var want = Session.get("want");
-       want[this] = +eventMap.srcElement.value;
+       want[this] = +event.srcElement.value;
        if ( want[this] === 0) {
            delete want[this];
        }

@@ -7,10 +7,12 @@
     <select class="showOrder chosen-select">
         <option value="resources">Resources First</option>
         <option value="alphabetical">Alphabetical</option>
+        <option value="building">Buildings</option>
     </select>
     <input class="depth">
 
     <div class="table">
+
         {{#each allBuildables}}
             {{>inventoryItem this}}
         {{/each}}
