@@ -30,17 +30,12 @@ Template.inventoryItem.helpers({
 
 });
 Template.inventoryItem.events({
-   'change input[type=text].have' : function() {
-       var inventory = Session.get("inventory");
-       inventory[this] = +event.srcElement.value;
-       Session.set("inventory", inventory);
-   },
-   'change input[type=text].want' :function() {
-       var want = Session.get("want");
-       want[this] = +event.srcElement.value;
-       if ( want[this] === 0) {
-           delete want[this];
-       }
-       Session.set("want", want);
-   }
+    'change input.have' : function() {
+        var value = +event.srcElement.value;
+        PlayerManager.changePlayerInventory(this, value);
+    },
+    'change input.want' :function() {
+        var value = +event.srcElement.value;
+        PlayerManager.updatePlayerBuildPlan(this, value);
+    },
 });

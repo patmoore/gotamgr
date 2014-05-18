@@ -10,3 +10,11 @@
 .table-cell {
     display : table-cell;
 }
+
+.gota_h1 {
+    margin-bottom: 0px;
+}
+
+.gota_login {
+    float: right;
+}

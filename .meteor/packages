@@ -15,3 +15,7 @@ service-configuration
 http
 spiderable
 meteor-collection-management
+accounts-ui
+accounts-password
+bootstrap
+email
