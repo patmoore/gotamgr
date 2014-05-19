@@ -32,7 +32,7 @@ Template.inventoryItem.helpers({
 Template.inventoryItem.events({
     'change input.have' : function() {
         var value = +event.srcElement.value;
-        PlayerManager.changePlayerInventory(this, value);
+        InventoryManager.changePlayerInventory(this, value);
     },
     'change input.want' :function() {
         var value = +event.srcElement.value;
