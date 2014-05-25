@@ -1,6 +1,5 @@
 <template name="buildableList">
-    {{> gota_header}}
-    <h2>Inventory</h2>
+    <h2>Build Plan</h2>
     <select class="chosen-select showFilter">
         <option value="all">Show All</option>
         <option value="need">Show Need</option>
@@ -19,4 +18,14 @@
         {{/each}}
     </div>
 
+    <div>
+        {{#with buildPlan}}
+        <div>
+            {{#each buildOrders}}
+                <div>Duration: {{buildTime}}</div>
+                <div></div>
+            {{/each}}
+        </div>
+        {{/with}}
+    </div>
 </template>

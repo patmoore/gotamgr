@@ -1,3 +1,4 @@
+var buildPlanHandle = null;
 Template.buildableList.helpers({
     allBuildables : function () {
         return Object.keys(Buildables).sort();
@@ -5,6 +6,9 @@ Template.buildableList.helpers({
     terminalBuildables : function () {
         return Object.keys(Buildables).sort();
     },
+    buildPlan: function() {
+
+    }
 });
 
 Template.buildableList.events({
