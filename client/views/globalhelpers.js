@@ -61,14 +61,14 @@ clearChangedInputFieldData = function(template, error, data) {
     }
 }
 
-// HACK should be better way of adding to all templates.
 Meteor.startup(function() {
-    _.each(
-        [
-            'buildableList'
-        ],
-        function(templateName) {
-            Template[templateName].events(DefaultEventHandlers);
+    // TODO: make the matching based more on the template name.
+    // so that we know for certain that this is a good match
+    _.each(Template, function(template, templateName) {
+        if ( templateName != '__define__' && templateName != 'Layout') {
+            // skip the names that are really supplied by the iron-router/blaze layout code
+            template.events(DefaultEventHandlers);
         }
-    );
+
+    });
 });
