@@ -1,10 +1,11 @@
-<template name="home">
+<template name="playerHome">
     <section>
         <div class="container form-container">
             <div class="row mtl pll prl">
-                <h1>Sign in!</h1>
-
-                <a href="{{pathFor playerHome}}">Home</a>
+            {{#with currentPlayer}}
+                {{#each currentPlayerBuildPlans}}
+                {{/each}}
+            {{/with}}
             </div>
         </div>
     </section>

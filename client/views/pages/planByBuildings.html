@@ -1,7 +1,12 @@
 <template name="planByBuildings">
-    {{#each Buildings}}
-        {{name}}
-    {{/each}}
+    <section>
+        <div class="container">
+            <div class="table">
+                {{#each buildings}}
+                    <div class="row">
+                        {{buildingName}}
+                    </div>
+                {{/each}}
     <!--<div>Return at : tuesday ,</div>-->
     <!--<div class="table">-->
     <!--{{#each buildings}}-->
@@ -11,5 +16,7 @@
             <!--<div class="table-col">Begin: {{time}}</div>-->
         <!--</div>-->
     <!--{{/each}}-->
-    <!--</div>-->
+            </div>
+        </div>
+    </section>
 </template>
