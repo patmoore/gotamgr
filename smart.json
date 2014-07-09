@@ -12,6 +12,10 @@
         "branch": "master",
         "git": "git@github.com:whalepath/meteor-collection-management.git"
     },
+    "externallibraries-client": {
+        "branch": "master",
+        "git": "git@github.com:whalepath/externallibraries-client.git"
+    },
     "iron-router": {},
     "npm": {},
     "jquery-ui": {}

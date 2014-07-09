@@ -1,12 +1,10 @@
 .admin-nav {
   position:fixed;
-  top:0;
-  left:0;
-  bottom:0;
-  width:80px;
-  background:#303030;
-  opacity: .9;
-  filter:alpha(opacity=90); /* For IE8 and earlier */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 96px;
+  background: #303030;
   z-index: 50;
 
   hr {
@@ -16,10 +14,10 @@
   .btn-toolbar {
     height: 100%;
     .btn {
-      font-size:36px;
-      padding:21px;
-      background:none;
-      border:none;
+      font-size: 36px;
+      padding: 10px 0;
+      background: none;
+      border: none;
       color: #999;
       line-height: 1;
 
@@ -27,11 +25,20 @@
         font-size: 30px;
         margin: 4px;
       }
+
+      h5 {
+        font-size: 18px;
+      }
     }
 
     #bottomBtnGroup {
       position: absolute;
       bottom: 0;
+      width: 100%;
+
+      .btn {
+        width: 100%;
+      }
     }
 
     .btn-group-vertical {
@@ -43,7 +50,7 @@
     }
 
     .profile {
-      padding: 8px;
+      padding: 8px 24px;
       font-size: 0;
 
       .round-corner-img {
@@ -53,6 +60,10 @@
         border-radius: 4px;
         overflow: hidden;
         margin-left: -1px;
+
+        img {
+          height: 47px;
+        }
       }
     }
   }
@@ -64,6 +75,50 @@
     background:#252525;
     color:#fff;
   }
+}
+
+.admin-tabs {
+  width: 100%;
+  height: 66px;
+  background: #353535;
+  z-index: 50;
+  border-bottom: 3px solid #35aadc;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    min-width: 150px;
+    height: 100%;
+    color: #fff;
+    margin: 0;
+
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      color: #999;
+      padding: 18px 14px;
+
+      &:hover {
+        background: #303030;
+      }
+    }
+
+    &.active > a {
+      background: #303030;
+      color: #fff;
+    }
+  }
+
+  .tab-title {
+    background: #35aadc;
+    padding: 18px;
+  }
+}
+
+.admin-content {
+  margin: 20px 0 0 0;
+  padding: 0 40px;
 }
 
 .admin-footer {
@@ -84,13 +139,21 @@
     }
   }
   .navbar-brand {
-    padding: 0;
+    padding: 0 30px 0 0;
     float: right;
 
     img {
       height: 30px;
     }
   }
+}
+
+.admin-main-container {
+  position: absolute;
+  left: 96px;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
 #profileSummary {
