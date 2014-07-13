@@ -2,9 +2,11 @@ Meteor.startup(function() {
     _.extend(PlayerManagerType.prototype, {
         ctor: function () {
             var thatManager = this;
-            Deps.autorun(function () {
-                debugger;
-                thatManager.currentPlayerHandle = thatManager.currentPlayer();
+            thatManager.startup(function() {
+                Deps.autorun(function () {
+                    debugger;
+                    thatManager._currentPlayerHandle = thatManager.currentPlayerHandle();
+                });
             });
         }
     });

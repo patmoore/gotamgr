@@ -1,5 +1,5 @@
 var buildPlanHandle = null;
-Template.buildableList.helpers({
+Template.player_buildableList.helpers({
     allBuildables : function () {
         return Object.keys(Buildables).sort();
     },
@@ -11,7 +11,7 @@ Template.buildableList.helpers({
     }
 });
 
-Template.buildableList.events({
+Template.player_buildableList.events({
     'change select.showFilter' : function () {
         Session.set("show", event.srcElement.value);
     },

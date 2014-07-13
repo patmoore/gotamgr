@@ -1,10 +1,15 @@
 Meteor.startup(function() {
+    var currentPlayerBuildPlansDeps = new Deps.Dependency();
     _.extend(BuildPlanManagerType.prototype, {
         ctor: function () {
             var thatManager = this;
-            Deps.autorun(function () {
-                thatManager.currentPlayerBuildPlansHandle = thatManager.currentPlayerBuildPlans();
+            thatManager.startup(function () {
+                Deps.autorun(function () {
+                    currentPlayerBuildPlansDeps.changed();
+                    thatManager._currentPlayerBuildPlansHandle = thatManager.currentPlayerBuildPlansHandle();
+                });
             });
-        }
+        },
+
     });
 });

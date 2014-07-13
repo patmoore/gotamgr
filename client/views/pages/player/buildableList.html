@@ -1,0 +1,42 @@
+<template name="player_buildableList">
+    <section>
+        <div class="container">
+            <div class="table">
+                <div class="row">
+                    <h2>Build Plan</h2>
+                    <div class="col-md-3">
+                        <select class="chosen-select showFilter">
+                            <option value="all">Show All</option>
+                            <option value="need">Show Need</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="showOrder chosen-select">
+                            <option value="resources">Resources First</option>
+                            <option value="alphabetical">Alphabetical</option>
+                            <option value="building">Buildings</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="table">
+                        {{#each allBuildables}}
+                            {{>inventoryItem this}}
+                        {{/each}}
+                    </div>
+
+                    <div>
+                        {{#with buildPlan}}
+                        <div>
+                            {{#each buildOrders}}
+                                <div>Duration: {{buildTime}}</div>
+                                <div></div>
+                            {{/each}}
+                        </div>
+                        {{/with}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
