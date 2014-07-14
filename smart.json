@@ -9,15 +9,16 @@
       "git": "https://github.com/patmoore/meteor-flat-ui.git"
     },
     "meteor-collection-management": {
-        "branch": "master",
-        "git": "git@github.com:whalepath/meteor-collection-management.git"
+      "branch": "master",
+      "git": "git@github.com:whalepath/meteor-collection-management.git"
     },
     "externallibraries-client": {
-        "branch": "master",
-        "git": "git@github.com:whalepath/externallibraries-client.git"
+      "branch": "master",
+      "git": "git@github.com:whalepath/externallibraries-client.git"
     },
     "iron-router": {},
     "npm": {},
-    "jquery-ui": {}
+    "jquery-ui": {},
+    "livequery": {}
   }
 }

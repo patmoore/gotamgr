@@ -1,6 +1,7 @@
-var buildPlanHandle = null;
 Template.player_buildableList.helpers({
     allBuildables : function () {
+        var playerInventory = InventoryManager.playerInventory().oneResult();
+
         return Object.keys(Buildables).sort();
     },
     terminalBuildables : function () {
@@ -12,6 +13,9 @@ Template.player_buildableList.helpers({
 });
 
 Template.player_buildableList.events({
+    'click .clearInventory': function() {
+        InventoryManager.clearPlayerInventory();
+    },
     'change select.showFilter' : function () {
         Session.set("show", event.srcElement.value);
     },

@@ -1,10 +1,10 @@
 <template name="inventoryItem">
     {{#if show}}
     <div class="table-row row">
-        <div class="table-cell">Have: <input type="text" size="4" name="have" class="have"></div>
-        <div class="table-cell">Want: <input type="text" size="4" name="want" class="want"></div>
-        <div class="table-cell">Need: {{buildit this }}</div>
-        <div class="table-cell">{{remove_ this}}
+        <div class="table-cell col-md-3">Have: <input id="" type="number" size="4" name="have" class="inventoryHave"></div>
+        <!--<div class="table-cell col-md-3">Want: <input type="number" size="4" name="want" class="inventoryWant"></div>-->
+        <!--<div class="table-cell col-md-3">Need: {{buildit this }}</div>-->
+        <div class="table-cell col-md-3">{{remove_ this}}
             (Built By: {{buildings this }})
         </div>
     </div>

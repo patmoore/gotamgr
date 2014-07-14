@@ -23,11 +23,6 @@ Template.inventoryItem.helpers({
         }
         return buildingNames.sort().join(',');
     },
-    buildit: function(options) {
-        var inventory_used = Session.get("inventory_used");
-        return inventory_used[this];
-    }
-
 });
 Template.inventoryItem.events({
     'change input.have' : function() {
