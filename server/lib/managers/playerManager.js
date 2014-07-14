@@ -1,7 +1,23 @@
 Meteor.startup(function(){
     _.extend(PlayerManagerType.prototype, {
-        updatePlayerBuildPlan: function() {
-
-        }
+        ctor: function() {
+            var thatManager = this;
+            /**
+             * TODO: use the new manager code.
+             * The current logged in user's information
+             */
+            thatManager.startup({
+                execute: function() {
+                    // set this up *after* all the managers are initialized.
+                    Accounts.onCreateUser(
+                        function (options, user) {
+                            var player = new Player({userId:user._id});
+                            player._save();
+                            InventoryManager.createPlayerInventory(player);
+                            return user;
+                        });
+                }
+            });
+        },
     });
 });

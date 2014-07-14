@@ -11,14 +11,9 @@ Meteor.startup(function(){
             var currentPlayer = PlayerManager.currentPlayer();
             var buildPlan = new BuildPlan({
                 playerId:currentPlayer.id,
-                userId: userId
+                userId: userId,
+                buildOrders: {}
             });
-
-            var buildOrder = new BuildOrder();
-            buildPlan.buildOrders = [ buildOrder ];
-            BuildPlanManager.createBuildOrders({trader: 1}, buildOrder);
-            console.log(buildOrder.componentBuildTime);
-            console.log(buildOrder.allBuildOrders);
         }
     });
 });
