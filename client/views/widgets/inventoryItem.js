@@ -25,7 +25,7 @@ Template.inventoryItem.helpers({
     },
 });
 Template.inventoryItem.events({
-    'change input.have' : function() {
+    'change input.inventoryHave' : function() {
         var value = +event.srcElement.value;
         InventoryManager.changePlayerInventory(this, value);
     },

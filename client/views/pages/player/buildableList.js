@@ -1,6 +1,6 @@
 Template.player_buildableList.helpers({
     allBuildables : function () {
-        var playerInventory = InventoryManager.playerInventory().oneResult();
+        var playerInventory = InventoryManager.playerInventoryHandle().oneResult();
 
         return Object.keys(Buildables).sort();
     },
