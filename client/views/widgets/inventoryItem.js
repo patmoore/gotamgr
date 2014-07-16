@@ -3,8 +3,6 @@ Template.inventoryItem.helpers({
         var show = Session.get("show");
         switch(show) {
         case "need":
-            var inventory_used = Session.get("inventory_used");
-            var want = Session.get("want");
             return (typeof(inventory_used[this]) !== "undefined" && inventory_used[this] > 0)
                 || (typeof(want[this]) !== "undefined" && want[this] > 0);
         default :
@@ -25,11 +23,12 @@ Template.inventoryItem.helpers({
     },
 });
 Template.inventoryItem.events({
-    'change input.inventoryHave' : function() {
+    'blur input.inventoryHave' : function() {
         var value = +event.srcElement.value;
-        InventoryManager.changePlayerInventory(this, value);
+        var inventoryKey = $(event.srcElement).data('inventory-key');
+        InventoryManager.changePlayerInventory(inventoryKey, value);
     },
-    'change input.want' :function() {
+    'blur input.want' :function() {
         var value = +event.srcElement.value;
         PlayerManager.updatePlayerBuildPlan(this, value);
     },

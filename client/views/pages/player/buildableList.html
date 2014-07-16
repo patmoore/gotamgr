@@ -24,7 +24,12 @@
                 <div class="row">
                     <div class="table">
                         {{#each allBuildables}}
-                            {{>inventoryItem this}}
+                        <div class="table-row row">
+                            <div class="col-md-3">Have: <input type="number" size="4" class="inventoryHave" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></div>
+                            <div class="col-md-3">{{this.displayName}}
+                                (Built By: {{buildings this }})
+                            </div>
+                        </div>
                         {{/each}}
                     </div>
 

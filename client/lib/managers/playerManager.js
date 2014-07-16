@@ -4,7 +4,6 @@ Meteor.startup(function() {
             var thatManager = this;
             thatManager.startup(function() {
                 Deps.autorun(function () {
-                    debugger;
                     thatManager._currentPlayerHandle = thatManager.currentPlayerHandle();
                 });
             });
