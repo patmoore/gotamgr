@@ -32,7 +32,6 @@ Template.player_buildableList.events({
     'blur input.inventoryHave' : function() {
         var value = +event.srcElement.value;
         var inventoryKey = $(event.srcElement).data('inventory-key');
-        debugger;
         InventoryManager.changePlayerInventory(inventoryKey, value);
     },
     'click .clearInventory': function() {
