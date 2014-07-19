@@ -10,7 +10,7 @@
                             <option value="need">Show Need</option>
                         </select>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3">Group by:
                         <select class="showOrder chosen-select">
                             <option value="resources">Resources First</option>
                             <option value="alphabetical">Alphabetical</option>
@@ -18,20 +18,15 @@
                         </select>
                     </div>
                     <div class="col-md-3">
+                        <button id="saveInventory">Save Inventory</button>
                         <button id="clearInventory">Clear Inventory</button>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="table">
-                        {{#each allBuildables}}
-                        <div class="table-row row">
-                            <div class="col-md-3">Have: <input type="number" size="4" class="inventoryHave" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></div>
-                            <div class="col-md-3">{{this.displayName}}
-                                (Built By: {{buildings this }})
-                            </div>
-                        </div>
-                        {{/each}}
-                    </div>
+                    {{#each buildables}}
+                        <div class="col-md-3">Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></div>
+                        <div class="col-md-3">{{this}} (Built By: {{buildings this }})</div>
+                    {{/each}}
 
                     <div>
                         {{#with buildPlan}}

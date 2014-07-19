@@ -1,10 +1,10 @@
-Template.alliance_home.helpers({
+Template.su_alliance.helpers({
     alliances: function() {
         return Alliances.alliances();
     }
 });
 
-Template.alliance_home.events({
+Template.su_alliance.events({
    'click .selectAlliance': function() {
 
    }

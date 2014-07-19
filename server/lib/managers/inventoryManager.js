@@ -13,12 +13,24 @@ Meteor.startup(function() {
         changePlayerInventory: function(inventoryIndex, newAmount) {
             var thatManager = this;
             debugger;
-            var player = PlayerManager.currentPlayerOne();
+            var player = PlayerManager.findOneCurrentPlayer();
             var inventory = Inventory.databaseTable.findOneByPlayerId(player.id);
             if ( inventory == null) {
                 inventory = thatManager.createPlayerInventory(player);
             }
             inventory.current[inventoryIndex] = newAmount;
+            inventory._save();
+            return inventory;
+        },
+        updatePlayerInventory: function(changedInventory) {
+            var thatManager = this;
+            debugger;
+            var player = PlayerManager.findOneCurrentPlayer();
+            var inventory = Inventory.databaseTable.findOneByPlayerId(player.id);
+            if ( inventory == null) {
+                inventory = thatManager.createPlayerInventory(player);
+            }
+            _.extend(inventory.current, changedInventory);
             inventory._save();
             return inventory;
         },

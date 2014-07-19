@@ -1,0 +1,11 @@
+<template name="alliance_players">
+    <section>
+        <div class="container form-horizontal">
+            {{#each players}}
+            <div class="row">
+                {{characterFirstName}}&nbsp;{{characterLastName}}
+            </div>
+            {{/each}}
+        </div>
+    </section>
+</template>
