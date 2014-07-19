@@ -1,12 +1,12 @@
-<template name="alliance_players">
+<template name="alliance_inventory">
     <section>
         {{#with selectedAlliance}}
         <div class="container form-horizontal">
             <h2>{{displayName}}</h2>
             <div class="table">
-                {{#each players}}
+                {{#each buildables}}
                 <div class="row">
-                    {{characterFirstName}}&nbsp;{{characterLastName}}
+                    <div class="table-cell">{{displayName}}</div><div class="table-cell">{{total}}</div>
                 </div>
                 {{/each}}
             </div>

@@ -4,7 +4,7 @@ Template.alliance_players.helpers({
         var handle = AllianceManager.selectedAllianceHandle(allianceId);
         return handle.findOne();
     },
-    players : function() {
+    buildables : function() {
         var allianceId = Router.current(true).params.allianceId;
         var handle = AllianceManager.alliancePlayersHandle(allianceId);
         var results = handle.findFetch();

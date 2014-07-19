@@ -10,11 +10,11 @@
     },
     "meteor-collection-management": {
       "branch": "master",
-      "git": "git@github.com:whalepath/meteor-collection-management.git"
+      "git": "file:///Users/patmoore/whalepath/meteor-collection-management"
     },
     "externallibraries-client": {
       "branch": "master",
-      "git": "git@github.com:whalepath/externallibraries-client.git"
+      "git": "file:///Users/patmoore/whalepath/externallibraries-client"
     },
     "iron-router": {},
     "npm": {},
