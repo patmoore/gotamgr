@@ -19,5 +19,12 @@ Meteor.startup(function(){
                 }
             });
         },
+        updatePlayerProfile: function(updatedPlayerProfile) {
+            var thatManager = this.thatManager;
+            var userId = thatManager.userId;
+            var player = thatManager.findOneCurrentPlayer();
+            Player.prototype.upsertFromUntrusted.call(player, updatedPlayerProfile);
+            return player;
+        }
     });
 });
