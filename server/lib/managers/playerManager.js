@@ -11,7 +11,8 @@ Meteor.startup(function(){
                     // set this up *after* all the managers are initialized.
                     Accounts.onCreateUser(
                         function (options, user) {
-                            var player = new Player({userId:user._id});
+                            var userId = user._id;
+                            var player = new Player({userId:userId});
                             player._save();
                             InventoryManager.createPlayerInventory(player);
                             return user;

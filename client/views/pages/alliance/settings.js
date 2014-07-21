@@ -1,6 +1,6 @@
-Template.player_settings.events({
+Template.alliance_settings.events({
     'click button.saveChanges' : function() {
         var changes = getChangedInputData();
-        PlayerManager.updatePlayerProfile(changes);
+        AllianceManager.updateAllianceSettings(changes);
     }
 });
