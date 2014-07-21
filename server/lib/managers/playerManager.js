@@ -25,6 +25,9 @@ Meteor.startup(function(){
             var userId = thatManager.userId;
             var player = thatManager.findOneCurrentPlayer();
             Player.prototype.upsertFromUntrusted.call(player, updatedPlayerProfile);
+            if ( updatedPlayerProfile.allianceInviteCode != null) {
+                AllianceManager._assignPlayerToAlliance(player);
+            }
             return player;
         }
     });
