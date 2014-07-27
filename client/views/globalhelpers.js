@@ -27,8 +27,20 @@ _.each({
             return { checked: 'checked'};
         }
         return null;
+    },
+    /**
+     * {{#each arrayify myobject}}
+     *
+     * @param obj
+     * @returns {Array|*}
+     */
+    arrayify: function(obj){
+        var result = [];
+        for (var key in obj) {
+            result.push({key:key,value:obj[key]});
+        }
+        return result;
     }
-
 }, function(func, helperKey) {
     UI.registerHelper(helperKey, func);
 });
