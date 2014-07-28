@@ -19,6 +19,7 @@
     "iron-router": {},
     "npm": {},
     "jquery-ui": {},
-    "livequery": {}
+    "livequery": {},
+    "SlickGrid": {}
   }
 }
