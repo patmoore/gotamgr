@@ -26,8 +26,10 @@ Meteor.startup(function(){
         buildCamp: function(campData) {
             var player = PlayerManager.findOneCurrentPlayer();
             var allianceId = player.allianceId;
-            CampManager.buildCamp(allianceId);
-        }
+            return CampManager.buildCamp(allianceId);
+        },
+
+
 
     });
 });
