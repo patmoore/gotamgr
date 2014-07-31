@@ -30,7 +30,6 @@ _.extend(Template.su_navbar, {
                     var allNonoptionalsFound = _.every(nonoptionals, function(nonoptional){
                         return nonoptional.name in routeController.params;
                     });
-                    debugger;
                     return allNonoptionalsFound;
                 }
             }

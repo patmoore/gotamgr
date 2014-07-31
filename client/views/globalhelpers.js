@@ -144,7 +144,10 @@ Meteor.startup(function() {
     // TODO: make the matching based more on the template name.
     // so that we know for certain that this is a good match
     _.each(Template, function(template, templateName) {
-        if ( templateName != '__define__' && templateName != 'Layout') {
+        if ( template == null ) {
+            throw new Meteor.Error("No template for template named: "+templateName);
+        }
+        if ( templateName.substr(0,2) != '__' && _.has(template, templateName) && templateName != 'Layout' && typeof template.events === 'function') {
             // skip the names that are really supplied by the iron-router/blaze layout code
             template.events(DefaultEventHandlers);
         }

@@ -1,10 +1,10 @@
 
 Template.player_planByBuildings.helpers({
     buildings: function() {
-        return _.keys(Buildings).sort();
+        return Buildings.symbols();
     },
     buildingName: function() {
-        return Buildings[this].name;
+        return this.displayName;
     },
     buildOrder: function() {
         var buildOrder = BuildPlanManager.currentBuildOrder();
