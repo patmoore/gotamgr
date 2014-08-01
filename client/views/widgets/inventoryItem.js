@@ -16,11 +16,16 @@ Template.inventoryItem.helpers({
         var buildingNames = [];
         if ( typeof(Buildables[options].buildings) !== "undefined" ) {
             Buildables[options].buildings.forEach(function(building) {
-                buildingNames.push(building.name);
+                buildingNames.push(building.displayName);
             });
         }
         return buildingNames.sort().join(',');
     },
+    buildableNeededForCamp: function(buildable) {
+        var buildablesByCamp = BuildablesByCamp[buildable];
+        debugger;
+        return buildablesByCamp;
+    }
 });
 Template.inventoryItem.events({
     'blur input.inventoryHave' : function() {

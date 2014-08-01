@@ -9,11 +9,13 @@ Template.player_buildableList.helpers({
         default:
             buildables = Buildables;
         }
-        var results = Object.keys(buildables);
-        results.sort();
+        var results = buildables.symbols();
+//        results.sort(function(left, right) {
+//            if ( left.toString() < )
+//        });
 //        results.sort(function(leftBuildableKey, rightBuildableKey) {
 //            var leftBuildableBuildingName =
-//            if ( Buildables[leftBuildableKey].buildings[0].name === Buildables[rightBuildableKey].buildings[0].name ) {
+//            if ( Buildables[leftBuildableKey].buildings[0].displayName === Buildables[rightBuildableKey].buildings[0].displayName ) {
 //
 //            }
 //        });
@@ -33,15 +35,29 @@ Template.player_buildableList.helpers({
             return 0;
         }
     },
-    buildings: function(buildableKey) {
+    buildings: function(buildable) {
         var buildingNames = [];
-        if ( typeof(Buildables[buildableKey].buildings) !== "undefined" ) {
-            Buildables[buildableKey].buildings.forEach(function(building) {
-                buildingNames.push(building.name);
+        if ( buildable == null ) {
+            debugger;
+        }
+        if ( typeof(buildable.buildings) !== "undefined" ) {
+            buildable.buildings.forEach(function(building) {
+                buildingNames.push(building.displayName);
             });
         }
-        return buildingNames.sort().join(',');
+        var buildingsString = buildingNames.sort().join(',');
+        return buildingsString;
     },
+    buildableNeededForCamp: function(buildableKey) {
+        var alliance = AllianceManager.currentPlayerAllianceHandle().findOne();
+        if ( alliance !== undefined ) {
+            debugger;
+            var buildablesByCamp = BuildablesByCamp[buildableKey];
+            return buildablesByCamp != null;
+        } else {
+            return false;
+        }
+    }
 });
 
 Template.player_buildableList.events({
