@@ -5,10 +5,12 @@
             <div class="table">
                 <div class="row">
                     <h2>Inventory</h2>
-                    <div class="col-md-3">
+                    <div class="col-md-3">Show
                         <select class="chosen-select showFilter">
-                            <option value="all">Show All</option>
-                            <option value="need">Show Need</option>
+                            <option value="all">All</option>
+                            <option value="need">All Needed</option>
+                            <option value="camp">Needed for camps</option>
+                            <option value="personal">Personally Needed</option>
                         </select>
                     </div>
                     <div class="col-md-3">Group by:
@@ -25,8 +27,9 @@
                 </div>
                 {{#each buildables}}
                     <div class="row">
+                        <div class="col-md-1">{{this}}</div>
                         <div class="col-md-1">Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></div>
-                        <div class="col-md-3">{{this}} (Built By: {{buildings this }}) {{buildableNeededForCamp this}}</div>
+                        <div class="col-md-3">{{#if buildings this}}Built By: {{buildings this }}{{/if}} {{buildableNeededForCamp this}}</div>
                         <div class="col-md-3">
                         {{#with buildPlan}}
                         <div>

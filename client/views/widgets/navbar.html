@@ -2,7 +2,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> <!--   -->
         <ul class="admin-tabs">
             {{#each routes}}
-                <li class="{{tabActiveClass}}"><a href="{{pathFor name params=data data=data allianceId=this.allianceId playerId=this.playerId}}">
+                <li class="{{tabActiveClass}}"><a href="{{pathFor name params=data}}">
                     <i class="glyphicon {{additionalClass}}"></i>&nbsp; {{displayName}}</a>
                 </li>
             {{/each}}

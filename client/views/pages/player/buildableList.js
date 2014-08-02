@@ -1,6 +1,28 @@
+var playerInventoryHandle = null;
+var allianceHandle = null;
+var playerInventoryHandleDep = new Deps.Dependency();
+var allianceHandleDep = new Deps.Dependency();
+Template.player_buildableList.rendered = function() {
+    this.autorun(function() {
+        playerInventoryHandle = InventoryManager.playerInventoryHandle();
+        if (playerInventoryHandle.ready()) {
+            playerInventoryHandleDep.changed();
+        }
+    });
+    this.autorun(function() {
+        allianceHandle = AllianceManager.currentPlayerAllianceHandle();
+        if (allianceHandle.ready()) {
+            allianceHandleDep.changed();
+        }
+    });
+}
 Template.player_buildableList.helpers({
     buildables : function () {
-        var playerInventory = InventoryManager.playerInventoryHandle().findOne();
+        playerInventoryHandleDep.depend();
+        if ( playerInventoryHandle == null ) {
+            return [];
+        }
+        var playerInventory = playerInventoryHandle.findOne();
         var buildables;
         var showFilter = $('.showFilter').val();
         switch(showFilter) {
@@ -21,14 +43,15 @@ Template.player_buildableList.helpers({
 //        });
         return results;
     },
-    terminalBuildables : function () {
-        return Object.keys(Buildables).sort();
-    },
     buildPlan: function() {
 
     },
     inventoryItemValue: function() {
-        var playerInventory = InventoryManager.playerInventoryHandle().findOne();
+        playerInventoryHandleDep.depend();
+        if ( playerInventoryHandle == null ) {
+            return 0;
+        }
+        var playerInventory = playerInventoryHandle.findOne();
         if (playerInventory != null) {
             return playerInventory.current[this];
         } else {
@@ -49,9 +72,13 @@ Template.player_buildableList.helpers({
         return buildingsString;
     },
     buildableNeededForCamp: function(buildableKey) {
-        var alliance = AllianceManager.currentPlayerAllianceHandle().findOne();
+        allianceHandleDep.depend();
+        if ( allianceHandle == null ) {
+            return [];
+        }
+
+        var alliance = allianceHandle.findOne();
         if ( alliance !== undefined ) {
-            debugger;
             var buildablesByCamp = BuildablesByCamp[buildableKey];
             return buildablesByCamp != null;
         } else {
