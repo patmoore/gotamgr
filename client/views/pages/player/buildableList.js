@@ -1,7 +1,9 @@
 var playerInventoryHandle = null;
 var allianceHandle = null;
+var campsHandle = null;
 var playerInventoryHandleDep = new Deps.Dependency();
 var allianceHandleDep = new Deps.Dependency();
+var campsHandleDep = new Deps.Dependency();
 Template.player_buildableList.rendered = function() {
     this.autorun(function() {
         playerInventoryHandle = InventoryManager.playerInventoryHandle();
@@ -13,6 +15,14 @@ Template.player_buildableList.rendered = function() {
         allianceHandle = AllianceManager.currentPlayerAllianceHandle();
         if (allianceHandle.ready()) {
             allianceHandleDep.changed();
+        }
+    });
+    this.autorun(function() {
+        if ( allianceHandle && allianceHandle.ready() ) {
+            campsHandle = CampManager.allianceCampsHandle(allianceHandle.findOne());
+            if (campsHandle.ready()) {
+                campsHandleDep.changed();
+            }
         }
     });
 }
@@ -72,18 +82,24 @@ Template.player_buildableList.helpers({
         return buildingsString;
     },
     buildableNeededForCamp: function(buildableKey) {
-        allianceHandleDep.depend();
-        if ( allianceHandle == null ) {
+        campsHandleDep.depend();
+        if ( campsHandle == null || !campsHandle.ready()) {
             return [];
         }
+        var buildablesByCamp = BuildablesByCamp[buildableKey];
+        var camps = campsHandle.findFetch();
+        var needed;
+        _.each(camps, function(camp) {
+            var skillGeneral = camp.skillSpecialization.skillGeneral;
+            var buildableForSkillGeneral = buildablesByCamp[skillGeneral];
+            if ( buildableForSkillGeneral && buildableForSkillGeneral.length >= camp.currentLevel) {
 
-        var alliance = allianceHandle.findOne();
-        if ( alliance !== undefined ) {
-            var buildablesByCamp = BuildablesByCamp[buildableKey];
-            return buildablesByCamp != null;
-        } else {
-            return false;
-        }
+                debugger;
+            } else {
+                debugger;
+            }
+        });
+        return buildablesByCamp != null;
     }
 });
 
