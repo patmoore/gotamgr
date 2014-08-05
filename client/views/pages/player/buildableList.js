@@ -19,7 +19,9 @@ Template.player_buildableList.rendered = function() {
     });
     this.autorun(function() {
         if ( allianceHandle && allianceHandle.ready() ) {
-            campsHandle = CampManager.allianceCampsHandle(allianceHandle.findOne());
+            debugger;
+            var alliance = allianceHandle.findOne();
+            campsHandle = CampManager.allianceCampsHandle(alliance.id);
             if (campsHandle.ready()) {
                 campsHandleDep.changed();
             }
@@ -93,13 +95,12 @@ Template.player_buildableList.helpers({
             var skillGeneral = camp.skillSpecialization.skillGeneral;
             var buildableForSkillGeneral = buildablesByCamp[skillGeneral];
             if ( buildableForSkillGeneral && buildableForSkillGeneral.length >= camp.currentLevel) {
-
                 debugger;
             } else {
                 debugger;
             }
         });
-        return buildablesByCamp != null;
+        return needed;
     }
 });
 

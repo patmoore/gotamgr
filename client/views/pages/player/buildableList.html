@@ -2,35 +2,37 @@
     <nav class="navbar"><!-- spacer--></nav>
     <section>
         <div class="container form-horizontal">
-            <div class="table">
-                <div class="row">
-                    <h2>Inventory</h2>
-                    <div class="col-md-3">Show
-                        <select class="chosen-select showFilter">
-                            <option value="all">All</option>
-                            <option value="need">All Needed</option>
-                            <option value="camp">Needed for camps</option>
-                            <option value="personal">Personally Needed</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">Group by:
-                        <select class="showOrder chosen-select">
-                            <option value="resources">Resources First</option>
-                            <option value="alphabetical">Alphabetical</option>
-                            <option value="building">Buildings</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <button id="saveInventory">Save Inventory</button>
-                        <button id="clearInventory">Clear Inventory</button>
-                    </div>
+            <div class="row">
+                <h2>Inventory</h2>
+                <div class="col-md-3">Show
+                    <select class="chosen-select showFilter">
+                        <option value="all">All</option>
+                        <option value="need">All Needed</option>
+                        <option value="camp">Needed for camps</option>
+                        <option value="personal">Personally Needed</option>
+                    </select>
                 </div>
+                <div class="col-md-3">Group by:
+                    <select class="showOrder chosen-select">
+                        <option value="resources">Resources First</option>
+                        <option value="alphabetical">Alphabetical</option>
+                        <option value="building">Buildings</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button id="saveInventory">Save Inventory</button>
+                    <button id="clearInventory">Clear Inventory</button>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table class="table-striped table table-condensed">
+                    <tbody>
                 {{#each buildables}}
-                    <div class="row">
-                        <div class="col-md-1">{{this}}</div>
-                        <div class="col-md-1">Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></div>
-                        <div class="col-md-3">{{#if buildings this}}Built By: {{buildings this }}{{/if}} {{buildableNeededForCamp this}}</div>
-                        <div class="col-md-3">
+                    <tr>
+                        <td class="text-capitalize">{{this}}</td>
+                        <td>Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
+                        <td>{{#if buildings this}}Built By: <span class="text-capitalize">{{buildings this }}</span>{{/if}} {{buildableNeededForCamp this}}</td>
+                        <td>
                         {{#with buildPlan}}
                         <div>
                             {{#each buildOrders}}
@@ -39,9 +41,11 @@
                             {{/each}}
                         </div>
                         {{/with}}
-                    </div>
-                </div>
+                        </td>
+                    </tr>
                 {{/each}}
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>

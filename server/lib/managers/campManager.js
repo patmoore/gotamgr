@@ -10,8 +10,9 @@ Meteor.startup(function(){
 Meteor.startup(function() {
     var honorable = Alliance.databaseTable.findOneByAllianceInviteCode('honorable');
     if ( honorable != null ) {
-        camp = CampManager.buildCamp({
+        camp = Camp.prototype.upsertFromUntrusted({
             allianceId:honorable.id,
+            campRegion: CampRegion.IronIslands,
             skillSpecialization: SkillSpecialization.Aid,
             currentLevel: 1
         });
