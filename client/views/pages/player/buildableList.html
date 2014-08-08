@@ -29,9 +29,26 @@
                     <tbody>
                 {{#each buildables}}
                     <tr>
-                        <td class="text-capitalize">{{this}}</td>
+                        <td class="text-capitalize">{{this}}<br>{{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}</td>
                         <td>Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
-                        <td>{{#if buildings this}}Built By: <span class="text-capitalize">{{buildings this }}</span>{{/if}} {{buildableNeededForCamp this}}</td>
+                        <td>
+                            {{#with buildableNeededForCamp}}
+                            {{#if totalNeeded}}
+                                {{#each arrayify neededByCamp}}
+                                    Camp Region: {{key}}
+                                    {{#with value}}
+                                        Total Needed: {{totalNeeded}}
+                                        {{#each fromCurrentLevel}}
+                                            {{this}}
+                                        {{/each}}
+                                    {{/with}}
+                                    <br>
+                                {{/each}}
+                                <br/>
+                                Total Needed: {{totalNeeded}}
+                            {{/if}}
+                            {{/with}}
+                        </td>
                         <td>
                         {{#with buildPlan}}
                         <div>

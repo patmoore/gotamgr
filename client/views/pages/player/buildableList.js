@@ -19,7 +19,6 @@ Template.player_buildableList.rendered = function() {
     });
     this.autorun(function() {
         if ( allianceHandle && allianceHandle.ready() ) {
-            debugger;
             var alliance = allianceHandle.findOne();
             campsHandle = CampManager.allianceCampsHandle(alliance.id);
             if (campsHandle.ready()) {
@@ -83,24 +82,34 @@ Template.player_buildableList.helpers({
         var buildingsString = buildingNames.sort().join(',');
         return buildingsString;
     },
-    buildableNeededForCamp: function(buildableKey) {
-        campsHandleDep.depend();
-        if ( campsHandle == null || !campsHandle.ready()) {
-            return [];
-        }
+    buildableNeededForCamp: function() {
+        var buildableKey = this;
         var buildablesByCamp = BuildablesByCamp[buildableKey];
-        var camps = campsHandle.findFetch();
-        var needed;
-        _.each(camps, function(camp) {
-            var skillGeneral = camp.skillSpecialization.skillGeneral;
-            var buildableForSkillGeneral = buildablesByCamp[skillGeneral];
-            if ( buildableForSkillGeneral && buildableForSkillGeneral.length >= camp.currentLevel) {
-                debugger;
-            } else {
-                debugger;
+        var neededByCamp = {};
+        var totalNeeded = 0;
+        if ( buildablesByCamp ) {
+            campsHandleDep.depend();
+            if (campsHandle && campsHandle.ready()) {
+                var camps = campsHandle.findFetch();
+                _.each(camps, function (camp) {
+                    var skillGeneral = camp.skillSpecialization.skillGeneral;
+                    var buildableForSkillGeneral = buildablesByCamp[skillGeneral];
+                    if (buildableForSkillGeneral && buildableForSkillGeneral.length >= camp.currentLevel) {
+                        var totalNeededForCamp = _.reduce(buildableForSkillGeneral.slice(camp.currentLevel),
+                            function(memo, num){
+                                return memo + num;
+                            },0);
+                        totalNeeded += totalNeededForCamp;
+                        neededByCamp[camp.campRegion] = {
+                            fromCurrentLevel: buildableForSkillGeneral.slice(camp.currentLevel),
+                            currentLevel: camp.currentLevel,
+                            totalNeeded: totalNeededForCamp
+                        };
+                    }
+                });
             }
-        });
-        return needed;
+        }
+        return {totalNeeded: totalNeeded, neededByCamp: neededByCamp};
     }
 });
 
