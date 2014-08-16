@@ -44,6 +44,15 @@ _.each({
 }, function(func, helperKey) {
     UI.registerHelper(helperKey, func);
 });
+
+getRouterParams = function() {
+    var router = Router.current(true);
+    if ( router ) {
+        return router.params;
+    } else {
+        return {};
+    }
+}
 // HACK PATM 16 may 2014: Sadly UI.body.events() does not work to add these event handlers. :-(
 DefaultEventHandlers = {
     /**
@@ -141,16 +150,28 @@ clearChangedInputFieldData = function(template, error, data) {
 }
 
 Meteor.startup(function() {
-    // TODO: make the matching based more on the template name.
-    // so that we know for certain that this is a good match
-    _.each(Template, function(template, templateName) {
-        if ( template == null ) {
-            throw new Meteor.Error("No template for template named: "+templateName);
+    var filtered = _.filter(Template, function(template, templateName) {
+        if ( template && _.has(Template, templateName)
+            // private properties
+            && templateName.substr(0,2) != '__'
+            // explicitly always filter 'prototype'
+            && templateName != 'prototype'
+            // templates that do not follow the naming convention we use of '<directory>_<template>' - templates that other packages provide
+            && templateName.indexOf('_', 2) > 2
+            // filter properties that probably really are not templates
+            && typeof template.events === 'function'
+            ) {
+            return true;
+        } else {
+            return false;
         }
-        if ( templateName.substr(0,2) != '__' && _.has(template, templateName) && templateName != 'Layout' && typeof template.events === 'function') {
+    });
+    _.each(filtered, function(template, templateName) {
+        try {
             // skip the names that are really supplied by the iron-router/blaze layout code
             template.events(DefaultEventHandlers);
+        }catch(e) {
+            console.log("problems with setting event on: " +templateName);
         }
-
     });
 });
