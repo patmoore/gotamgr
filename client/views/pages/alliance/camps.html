@@ -2,12 +2,23 @@
     <nav class="navbar"><!-- spacer--></nav>
     <section>
         <div class="container form-horizontal">
-            <div class="table">
-                <div class="row">
-                    <select>
-
-                    </select>
-                </div>
+            <div class="row col-md-8">
+                <table class="table table-striped">
+                    <tbody>
+                    {{#each camps}}
+                        <tr>
+                            <td>{{campRegion}}&nbsp;{{currentLevel}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <select>
+                    {{#each availableCampLocations}}
+                    <option value="{{dbCode}}">{{displayName}} ({{campRegion.displayName}})</option>
+                    {{/each}}
+                </select>
             </div>
         </div>
     </section>

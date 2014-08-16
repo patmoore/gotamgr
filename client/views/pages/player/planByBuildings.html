@@ -2,12 +2,17 @@
     <nav class="navbar"><!-- spacer--></nav>
     <section>
         <div class="container">
-            <div class="table">
+            <table class="table table-stripped">
+                <tbody>
                 {{#each buildings}}
-                    <div class="row">
-                        {{buildingName}}
-                    </div>
+                <tr>
+                    <td>{{displayNameName}}</td>
+                    <td>{{buildingNow}} <button>Built</button></td>
+                    <td>{{#each buildOrder}}{{/each}}</td>
+                </tr>
                 {{/each}}
+                </tbody>
+            </table>
     <!--<div>Return at : tuesday ,</div>-->
     <!--<div class="table">-->
     <!--{{#each buildings}}-->
@@ -17,7 +22,6 @@
             <!--<div class="table-col">Begin: {{time}}</div>-->
         <!--</div>-->
     <!--{{/each}}-->
-            </div>
         </div>
     </section>
 </template>

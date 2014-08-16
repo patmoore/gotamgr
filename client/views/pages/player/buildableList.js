@@ -20,9 +20,15 @@ Template.player_buildableList.rendered = function() {
     this.autorun(function() {
         if ( allianceHandle && allianceHandle.ready() ) {
             var alliance = allianceHandle.findOne();
-            campsHandle = CampManager.allianceCampsHandle(alliance.id);
-            if (campsHandle.ready()) {
+            if (alliance == null) {
+                // not part of an alliance (yet)
+                campsHandle = null;
                 campsHandleDep.changed();
+            } else {
+                campsHandle = CampManager.allianceCampsHandle(alliance.id);
+                if (campsHandle.ready()) {
+                    campsHandleDep.changed();
+                }
             }
         }
     });

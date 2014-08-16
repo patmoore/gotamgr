@@ -9,7 +9,7 @@ Meteor.startup(function(){
             return Inventory.databaseTable.findByPlayerId(playerIds);
         },
         _assignPlayerToAlliance: function(player) {
-            var alliance = Alliance.databaseTable.findOneAllianceInviteCode(player.allianceInviteCode);
+            var alliance = Alliance.databaseTable.findOneByAllianceInviteCode(player.allianceInviteCode);
             if ( alliance ) {
                 player.allianceId = alliance._id;
                 player._save();
@@ -25,17 +25,13 @@ Meteor.startup(function(){
 
         buildCamp: function(campData) {
             var player = PlayerManager.findOneCurrentPlayer();
-            var allianceId = player.allianceId;
-            campData.allianceId = allianceId;
-            return CampManager.buildCamp(campData);
+            if ( player != null ) {
+                var allianceId = player.allianceId;
+                var camp = CampManager._buildCamp(allianceId, campData);
+                return camp;
+            } else {
+                throw new Meteor.Error('No signed on player');
+            }
         },
     });
 });
-
-Meteor.startup(function() {
-    var honorable = Alliance.databaseTable.findOneByAllianceInviteCode('honorable');
-    if ( honorable == null ) {
-        honorable = new Alliance({displayName: 'The Honorable', allianceInviteCode: 'honorable'});
-        honorable._save();
-    }
-})

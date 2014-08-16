@@ -1,7 +1,9 @@
 Template.player_settings.events({
-    'click button.saveChanges' : function() {
-        var changes = getChangedInputData();
-        PlayerManager.updatePlayerProfile(changes);
+    'click button.saveChanges' : function(event, template) {
+        var changes = getChangedInputFieldData(template);
+        PlayerManager.updatePlayerProfile(changes, function(error, result){
+            clearChangedInputFieldData(template, error, result);
+        });
     }
 });
 

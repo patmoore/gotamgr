@@ -46,7 +46,6 @@ _.extend(Template.su_navbar, {
         if ( routeController == null){
             return void(0);
         } else {
-            debugger;
             return routeController.params;
         }
     },
