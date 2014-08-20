@@ -16,7 +16,9 @@
       "branch": "master",
       "git": "git@github.com:whalepath/externallibraries-client.git"
     },
-    "iron-router": {},
+    "iron-router": {
+      "version": "0.8.2"
+    },
     "npm": {},
     "jquery-ui": {},
     "livequery": {},
