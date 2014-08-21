@@ -4,13 +4,13 @@
         {{#with selectedAlliance}}
         <div class="container form-horizontal">
             <h2>{{displayName}}</h2>
-            <div class="table">
+            <table class="table table-striped">
                 {{#each buildables}}
-                <div class="row">
-                    <div class="table-cell">{{displayName}}</div><div class="table-cell">{{total}}</div>
-                </div>
+                <tr class="row">
+                    <td>{{displayName}}</td><td>{{total}}</td>
+                </tr>
                 {{/each}}
-            </div>
+            </table>
         </div>
         {{/with}}
     </section>

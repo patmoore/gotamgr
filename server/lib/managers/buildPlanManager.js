@@ -7,13 +7,18 @@ Meteor.startup(function(){
             buildPlan._save();
         },
         createBuildPlan: function() {
+            debugger;
             var userId = this.userId;
-            var currentPlayer = PlayerManager.currentPlayer();
+            var currentPlayer = PlayerManager.findOneCurrentPlayer();
             var buildPlan = new BuildPlan({
                 playerId:currentPlayer.id,
                 userId: userId,
                 buildOrders: {}
             });
+            buildPlan._save();
+            currentPlayer.buildPlanIds = (currentPlayer.buildPlanIds || []).push(buildPlan.id);
+            currentPlayer._save();
+            return buildPlan;
         }
     });
 });

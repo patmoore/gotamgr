@@ -1,0 +1,31 @@
+<template name="player_buildPlan">
+    <nav class="navbar"><!-- spacer--></nav>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <button class="createNewBuildPlan">Create New Build Order</button>
+                    {{#each buildPlans}}
+                    {{id}}
+                    {{/each}}
+                </div>
+
+                <div class="col-md-9">
+                    {{#if selectedBuildOrder}} {{#with selectedBuildOrder}}
+                    <input type="number" name="quantity" data-inputfield >
+                    <select name="buildable" data-inputfield>
+                        {{#each buildables}}
+                        <option value="{{dbCode}}">{{displayName}}</option>
+                        {{/each}}
+                    </select>
+                    <button class="addToBuildInventory">Add</button>
+                    <hr>
+                    {{#each buildOrderItem}}
+                    {{/each}}
+                    {{/with}}{{/if}}
+                </div>
+            </div>
+
+        </div>
+    </section>
+</template>

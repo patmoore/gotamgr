@@ -4,9 +4,12 @@
         <div class="container form-container">
             <div class="row mtl pll prl">
             {{#with currentPlayer}}
-                {{#each currentPlayerBuildPlans}}
+                <h2>Current Build Needs</h2>
+                {{#if currentPlayerBuildPlans}}
+                    {{#each currentPlayerBuildPlans}}
 
-                {{/each}}
+                    {{/each}}
+                {{/if}}
             {{/with}}
             </div>
         </div>

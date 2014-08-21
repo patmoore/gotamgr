@@ -4,21 +4,21 @@
         <div class="container form-horizontal">
             <div class="row">
                 <h2>Inventory</h2>
-                <div class="col-md-3">Show
-                    <select class="chosen-select showFilter">
-                        <option value="all">All</option>
-                        <option value="need">All Needed</option>
-                        <option value="camp">Needed for camps</option>
-                        <option value="personal">Personally Needed</option>
-                    </select>
-                </div>
-                <div class="col-md-3">Group by:
-                    <select class="showOrder chosen-select">
-                        <option value="resources">Resources First</option>
-                        <option value="alphabetical">Alphabetical</option>
-                        <option value="building">Buildings</option>
-                    </select>
-                </div>
+                <!--<div class="col-md-3">Show-->
+                    <!--<select class="chosen-select showFilter">-->
+                        <!--<option value="all">All</option>-->
+                        <!--<option value="need">All Needed</option>-->
+                        <!--<option value="camp">Needed for camps</option>-->
+                        <!--<option value="personal">Personally Needed</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div class="col-md-3">Group by:-->
+                    <!--<select class="showOrder chosen-select">-->
+                        <!--<option value="resources">Resources First</option>-->
+                        <!--<option value="alphabetical">Alphabetical</option>-->
+                        <!--<option value="building">Buildings</option>-->
+                    <!--</select>-->
+                <!--</div>-->
                 <div class="col-md-3">
                     <button id="saveInventory">Save Inventory</button>
                     <button id="clearInventory">Clear Inventory</button>
@@ -32,22 +32,24 @@
                         <td class="text-capitalize">{{this}}<br>{{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}</td>
                         <td>Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
                         <td>
-                            {{#with buildableNeededForCamp}}
-                            {{#if totalNeeded}}
-                                {{#each arrayify neededByCamp}}
-                                    Camp Region: {{key}}
-                                    {{#with value}}
-                                        Total Needed: {{totalNeeded}}
-                                        {{#each fromCurrentLevel}}
-                                            {{this}}
-                                        {{/each}}
-                                    {{/with}}
-                                    <br>
-                                {{/each}}
-                                <br/>
-                                Total Needed: {{totalNeeded}}
+                            {{#if buildableNeededForCamp}}
+                                {{#with buildableNeededForCamp}}
+                                {{#if totalNeeded}}
+                                    {{#each arrayify neededByCamp}}
+                                        Camp Region: {{key}}
+                                        {{#with value}}
+                                            Total Needed: {{totalNeeded}}
+                                            {{#each fromCurrentLevel}}
+                                                {{this}}
+                                            {{/each}}
+                                        {{/with}}
+                                        <br>
+                                    {{/each}}
+                                    <br/>
+                                    Total Needed: {{totalNeeded}}
+                                {{/if}}
+                                {{/with}}
                             {{/if}}
-                            {{/with}}
                         </td>
                         <td>
                         {{#with buildPlan}}

@@ -34,6 +34,11 @@ Template.player_buildableList.rendered = function() {
     });
 }
 Template.player_buildableList.helpers({
+    waitOn: function() {
+        var handles = [];
+        handles.push(InventoryManager.currentInventoryHandle(Meteor.userId()));
+        return handles;
+    },
     buildables : function () {
         playerInventoryHandleDep.depend();
         if ( playerInventoryHandle == null ) {
