@@ -21,5 +21,6 @@ Template.alliance_inventory.helpers({
     },
     total: function() {
         debugger;
+        return 0;
     }
 });

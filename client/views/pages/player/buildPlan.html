@@ -4,15 +4,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <button class="createNewBuildPlan">Create New Build Order</button>
+                    <button class="createNewBuildPlan">Create New Build Plan</button>
                     {{#each buildPlans}}
-                    {{id}}
+                    {{displayName}}<br>
+                    <a href="{{pathFor 'player_buildPlan' buildPlanId=id}}">{{id}}</a><br>
+                    {{createdAt}}<br>
                     {{/each}}
                 </div>
 
                 <div class="col-md-9">
                     {{#if selectedBuildOrder}} {{#with selectedBuildOrder}}
-                    <input type="number" name="quantity" data-inputfield >
+                    {{id}}
+                    <hr>
+                    <input type="number" name="quantity" data-inputfield > of
                     <select name="buildable" data-inputfield>
                         {{#each buildables}}
                         <option value="{{dbCode}}">{{displayName}}</option>

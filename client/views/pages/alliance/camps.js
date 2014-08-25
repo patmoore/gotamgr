@@ -11,6 +11,12 @@ Template.alliance_camps.helpers({
     }
 });
 
+Template.alliance_camps.events({
+   'click .buildCamp': function(event, template) {
+       AllianceManager.buildCamp();
+   }
+});
+
 Template.alliance_camps.rendered = function() {
     var template = this;
     this.autorun(function(){

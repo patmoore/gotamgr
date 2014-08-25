@@ -2,6 +2,14 @@
     <nav class="navbar"><!-- spacer--></nav>
     <section>
         <div class="container form-horizontal">
+            <div class="row col-md-4">
+                <select>
+                    {{#each availableCampLocations}}
+                    <option value="{{dbCode}}">{{displayName}} ({{campRegion.displayName}})</option>
+                    {{/each}}
+                </select>
+                <button class="buildCamp">Build Camp</button>
+            </div>
             <div class="row col-md-8">
                 <table class="table table-striped">
                     <tbody>
@@ -12,13 +20,6 @@
                     {{/each}}
                     </tbody>
                 </table>
-            </div>
-            <div class="row">
-                <select>
-                    {{#each availableCampLocations}}
-                    <option value="{{dbCode}}">{{displayName}} ({{campRegion.displayName}})</option>
-                    {{/each}}
-                </select>
             </div>
         </div>
     </section>

@@ -36,7 +36,7 @@ Template.player_buildableList.rendered = function() {
 Template.player_buildableList.helpers({
     waitOn: function() {
         var handles = [];
-        handles.push(InventoryManager.currentInventoryHandle(Meteor.userId()));
+        handles.push(InventoryManager.playerInventoryHandle());
         return handles;
     },
     buildables : function () {

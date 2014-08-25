@@ -3,6 +3,10 @@ Template.player_buildPlan.events({
         BuildPlanManager.createBuildPlan(function(error,response) {
             debugger;
         });
+    },
+    'click .addToBuildInventory': function(event, template) {
+        var buildPlanChanges = getChangedInputFieldData(template);
+        BuildPlanManager.addToBuildInventory(buildPlanChanges);
     }
 });
 
@@ -19,5 +23,8 @@ Template.player_buildPlan.helpers({
     buildPlans: function() {
         var currentPlayerBuildPlans = BuildPlanManager.currentPlayerBuildPlansHandle();
         return currentPlayerBuildPlans.findFetch();
+    },
+    buildables: function() {
+        return Buildables.symbols();
     }
 });
