@@ -1,4 +1,4 @@
-<template name="player_buildableList">
+<template name="player_inventory">
     <nav class="navbar"><!-- spacer--></nav>
     <section>
         <div class="container form-horizontal">
@@ -36,9 +36,10 @@
                                 {{#with buildableNeededForCamp}}
                                 {{#if totalNeeded}}
                                     {{#each arrayify neededByCamp}}
-                                        Camp Region: {{key}}
+                                        Camp Location: {{key}}
                                         {{#with value}}
-                                            Total Needed: {{totalNeeded}}
+                                            ( {{currentLevel}} )
+                                            Total Needed: {{totalNeeded}}:
                                             {{#each fromCurrentLevel}}
                                                 {{this}}
                                             {{/each}}

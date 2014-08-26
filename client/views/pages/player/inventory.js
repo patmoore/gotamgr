@@ -4,7 +4,7 @@ var campsHandle = null;
 var playerInventoryHandleDep = new Deps.Dependency();
 var allianceHandleDep = new Deps.Dependency();
 var campsHandleDep = new Deps.Dependency();
-Template.player_buildableList.rendered = function() {
+Template.player_inventory.rendered = function() {
     this.autorun(function() {
         playerInventoryHandle = InventoryManager.playerInventoryHandle();
         if (playerInventoryHandle.ready()) {
@@ -33,7 +33,7 @@ Template.player_buildableList.rendered = function() {
         }
     });
 }
-Template.player_buildableList.helpers({
+Template.player_inventory.helpers({
     waitOn: function() {
         var handles = [];
         handles.push(InventoryManager.playerInventoryHandle());
@@ -64,9 +64,6 @@ Template.player_buildableList.helpers({
 //            }
 //        });
         return results;
-    },
-    buildPlan: function() {
-
     },
     inventoryItemValue: function() {
         playerInventoryHandleDep.depend();
@@ -107,11 +104,11 @@ Template.player_buildableList.helpers({
                     var buildableForSkillGeneral = buildablesByCamp[skillGeneral];
                     if (buildableForSkillGeneral && buildableForSkillGeneral.length >= camp.currentLevel) {
                         var totalNeededForCamp = _.reduce(buildableForSkillGeneral.slice(camp.currentLevel),
-                            function(memo, num){
+                            function (memo, num) {
                                 return memo + num;
-                            },0);
+                            }, 0);
                         totalNeeded += totalNeededForCamp;
-                        neededByCamp[camp.campRegion] = {
+                        neededByCamp[camp.campLocation] = {
                             fromCurrentLevel: buildableForSkillGeneral.slice(camp.currentLevel),
                             currentLevel: camp.currentLevel,
                             totalNeeded: totalNeededForCamp
@@ -120,11 +117,15 @@ Template.player_buildableList.helpers({
                 });
             }
         }
-        return {totalNeeded: totalNeeded, neededByCamp: neededByCamp};
+        if ( totalNeeded > 0 ) {
+            return {totalNeeded: totalNeeded, neededByCamp: neededByCamp};
+        } else {
+            return void(0);
+        }
     }
 });
 
-Template.player_buildableList.events({
+Template.player_inventory.events({
 //    'blur input.inventoryHave' : function() {
 //        var value = +event.srcElement.value;
 //        var inventoryKey = $(event.srcElement).data('inventory-key');

@@ -1,6 +1,7 @@
 Template.player_buildPlan.events({
     'click .createNewBuildPlan': function(event, template) {
-        BuildPlanManager.createBuildPlan(function(error,response) {
+        var buildPlanChanges = getChangedInputFieldData(template);
+        BuildPlanManager.createBuildPlan(buildPlanChanges, function(error,response) {
             debugger;
         });
     },
@@ -16,13 +17,14 @@ Template.player_buildPlan.helpers({
         handlers.push(BuildPlanManager.currentPlayerBuildPlansHandle());
         return handlers;
     },
+    data: function() {
+        return {
+            currentPlayerBuildPlans: BuildPlanManager.findFetchCurrentPlayerBuildPlans()
+        };
+    },
     selectedBuildOrder: function() {
         var buildPlanId = getRouterParams().buildPlanId;
         return BuildPlan.databaseTable.findOneById(buildPlanId);
-    },
-    buildPlans: function() {
-        var currentPlayerBuildPlans = BuildPlanManager.currentPlayerBuildPlansHandle();
-        return currentPlayerBuildPlans.findFetch();
     },
     buildables: function() {
         return Buildables.symbols();

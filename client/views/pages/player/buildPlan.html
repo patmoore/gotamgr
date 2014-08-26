@@ -4,10 +4,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <button class="createNewBuildPlan">Create New Build Plan</button>
-                    {{#each buildPlans}}
-                    {{displayName}}<br>
-                    <a href="{{pathFor 'player_buildPlan' buildPlanId=id}}">{{id}}</a><br>
+                    <label for="buildPlanDisplayName">Build Plan</label><input name="displayName" data-inputfield placeholder="Easy to remember name">
+                    <button class="createNewBuildPlan">New</button>
+                    {{#each currentPlayerBuildPlans}}
+                    <!-- TODO: how to do drag/drop reordering -->
+                    <br>
+                    <a href="{{pathFor 'player_buildPlan' buildPlanId=id}}">{{displayName}} {{id}}</a><br>
                     {{createdAt}}<br>
                     {{/each}}
                 </div>
@@ -15,6 +17,7 @@
                 <div class="col-md-9">
                     {{#if selectedBuildOrder}} {{#with selectedBuildOrder}}
                     {{id}}
+                    {{displayName}}
                     <hr>
                     <input type="number" name="quantity" data-inputfield > of
                     <select name="buildable" data-inputfield>
@@ -26,7 +29,10 @@
                     <hr>
                     {{#each buildOrderItem}}
                     {{/each}}
-                    {{/with}}{{/if}}
+                    {{/with}}
+                    {{else}}
+                    Build Plans are a set of items that you would like to plan to build.
+                    {{/if}}
                 </div>
             </div>
 

@@ -1,10 +1,8 @@
 Meteor.startup(function(){
     _.extend(BuildPlanManagerType.prototype, {
-        updatePlayerBuildPlan: function(changedPlayerBuildPlan) {
+        updatePlayerBuildPlan: function(buildPlanId, changedPlayerBuildPlan) {
             var userId = Meteor.userId();
-            var buildPlan = BuildPlan.databaseTable.findByUserId(userId);
-            _.extend(buildPlan, changedPlayerBuildPlan);
-            buildPlan._save();
+            BuildPlan.prototype.upsertFromUntrusted(changedPlayerBuildPlan, buildPlanId);
         },
         createBuildPlan: function() {
             debugger;
@@ -19,13 +17,24 @@ Meteor.startup(function(){
                     buildOrders: {}
                 });
                 buildPlan._save();
-                currentPlayer.buildPlanIds = (currentPlayer.buildPlanIds || []).push(buildPlan.id);
                 currentPlayer._save();
             }
             return buildPlan;
         },
-        addToBuildInventory: function(buildPlanId, buildPlanChanges) {
-
+        addToBuildInventory: function(buildPlanId, buildDemands) {
+            var currentPlayer = PlayerManager.findOneCurrentPlayer();
+            var buildPlan = BuildPlan.databaseTable.findOneById(buildPlanId);
+            if ( buildPlan ) {
+                buildPlan.buildDemands = buildPlan.buildDemands || {};
+                _.each(buildDemands, function(quantity, buildable){
+                    if ( buildPlan.buildDemands == null) {
+                        buildPlan.buildDemands.buildable = quantity;
+                    } else {
+                        buildPlan.buildDemands.buildable += quantity;
+                    }
+                });
+                buildPlan._save();
+            }
         }
     });
 });
