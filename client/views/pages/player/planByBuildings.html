@@ -3,11 +3,22 @@
     <section>
         <div class="container">
             <table class="table table-stripped">
+                <thead>
+                    <tr><td>Building Name</td><td>Now building</td></tr>
+                </thead>
                 <tbody>
                 {{#each buildings}}
                 <tr>
                     <td>{{displayName}}</td>
-                    <td>{{buildingNow}} <button>Built</button></td>
+                    <td>
+                        {{#if buildingNow}}{{buildingNow}}<button>Built</button>
+                        {{else}}
+                        <select placeholder="Nothing">{{#each buildablesByBuilding}}
+                            <option value="{{key}}">{{displayName}}</option>
+                        {{/each}}</select>
+                        {{/if}}
+                    </td>
+                    <td></td>
                     <td>{{#each buildOrder}}{{/each}}</td>
                 </tr>
                 {{/each}}

@@ -19,53 +19,53 @@
                         <!--<option value="building">Buildings</option>-->
                     <!--</select>-->
                 <!--</div>-->
+                <div class="col-md-9">
+                    <table class="table-striped table table-condensed">
+                        <tbody>
+                    {{#each buildables}}
+                        <tr>
+                            <td class="text-capitalize">{{this}}<br>{{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}</td>
+                            <td>Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
+                            <td>
+                                {{#if buildableNeededForCamp}}
+                                    {{#with buildableNeededForCamp}}
+                                    {{#if totalNeeded}}
+                                        {{#each arrayify neededByCamp}}
+                                            Camp Location: {{key}}
+                                            {{#with value}}
+                                                ( {{currentLevel}} )
+                                                Total Needed: {{totalNeeded}}:
+                                                {{#each fromCurrentLevel}}
+                                                    {{this}}
+                                                {{/each}}
+                                            {{/with}}
+                                            <br>
+                                        {{/each}}
+                                        <br/>
+                                        Total Needed: {{totalNeeded}}
+                                    {{/if}}
+                                    {{/with}}
+                                {{/if}}
+                            </td>
+                            <td>
+                            {{#with buildPlan}}
+                            <div>
+                                {{#each buildOrders}}
+                                    <div>Duration: {{buildTime}}</div>
+                                    <div></div>
+                                {{/each}}
+                            </div>
+                            {{/with}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                        </tbody>
+                    </table>
+                </div>
                 <div class="col-md-3">
                     <button id="saveInventory">Save Inventory</button>
                     <button id="clearInventory">Clear Inventory</button>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <table class="table-striped table table-condensed">
-                    <tbody>
-                {{#each buildables}}
-                    <tr>
-                        <td class="text-capitalize">{{this}}<br>{{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}</td>
-                        <td>Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
-                        <td>
-                            {{#if buildableNeededForCamp}}
-                                {{#with buildableNeededForCamp}}
-                                {{#if totalNeeded}}
-                                    {{#each arrayify neededByCamp}}
-                                        Camp Location: {{key}}
-                                        {{#with value}}
-                                            ( {{currentLevel}} )
-                                            Total Needed: {{totalNeeded}}:
-                                            {{#each fromCurrentLevel}}
-                                                {{this}}
-                                            {{/each}}
-                                        {{/with}}
-                                        <br>
-                                    {{/each}}
-                                    <br/>
-                                    Total Needed: {{totalNeeded}}
-                                {{/if}}
-                                {{/with}}
-                            {{/if}}
-                        </td>
-                        <td>
-                        {{#with buildPlan}}
-                        <div>
-                            {{#each buildOrders}}
-                                <div>Duration: {{buildTime}}</div>
-                                <div></div>
-                            {{/each}}
-                        </div>
-                        {{/with}}
-                        </td>
-                    </tr>
-                {{/each}}
-                    </tbody>
-                </table>
             </div>
         </div>
     </section>
