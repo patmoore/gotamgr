@@ -3,14 +3,15 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 list-group">
                     <label for="buildPlanDisplayName">Build Plan</label><input name="displayName" data-inputfield placeholder="Easy to remember name">
                     <button class="createNewBuildPlan">New</button>
                     {{#each currentPlayerBuildPlans}}
                     <!-- TODO: how to do drag/drop reordering -->
-                    <br>
-                    <a href="{{pathFor 'player_buildPlan' buildPlanId=id}}">{{displayName}} {{id}}</a><br>
-                    {{createdAt}}<br>
+                    <div class="list-group-item">
+                    <a href="{{pathFor 'player_buildPlan' buildPlanId=id}}">{{displayName}} {{id}}</a>
+                    {{createdAt}}
+                    </div>
                     {{/each}}
                 </div>
 
@@ -19,6 +20,7 @@
                     {{id}}
                     {{displayName}}
                     <hr>
+                    <button class="addToBuildInventory saveChanges"></button>
                     I need to build
                     <input type="number" name="quantity" data-inputfield > of
                     <select name="buildable" data-inputfield>
@@ -28,8 +30,13 @@
                     </select>
                     <button class="addToBuildInventory">Add</button>
                     <hr>
-                    {{#each buildOrderItem}}
+                    <div class="list-group">
+                    {{#each arrayify buildDemands}}
+                        <div class="list-group-item">
+                            <input name="{{key}}" value="{{value}}" type="number"> {{key}}
+                        </div>
                     {{/each}}
+                    </div>
                     {{/with}}
                     {{else}}
                     Build Plans are a set of items that you would like to plan to build.

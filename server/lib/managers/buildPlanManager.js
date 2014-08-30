@@ -18,6 +18,8 @@ Meteor.startup(function(){
                 });
                 buildPlan._save();
                 buildPlan = buildPlan.upsertFromUntrusted(buildPlanInfo);
+            } else {
+                throw new Meteor(403, "Not signed in");
             }
             return buildPlan;
         },

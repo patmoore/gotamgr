@@ -7,7 +7,6 @@ Template.player_buildPlan.events({
         var rawBuildPlanChanges = getInputFieldData(template);
         delete rawBuildPlanChanges.displayName;
         var buildPlanChanges = {};
-        debugger;
         buildPlanChanges[rawBuildPlanChanges.buildable] = rawBuildPlanChanges.quantity;
         delete rawBuildPlanChanges.buildable;
         delete rawBuildPlanChanges.quantity;
@@ -33,7 +32,9 @@ Template.player_buildPlan.helpers({
         return BuildPlan.databaseTable.findOneById(buildPlanId);
     },
     buildables: function() {
-        return Buildables.symbols();
+        return _.filter(Buildables.symbols(), function(element) {
+            return !_.isEmpty(element.buildings);
+        });
     },
     buildOrderItem: function() {
 

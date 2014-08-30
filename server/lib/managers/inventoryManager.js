@@ -36,7 +36,7 @@ Meteor.startup(function() {
         },
         clearPlayerInventory: function() {
             var thatManager = this;
-            var player = PlayerManager.currentPlayer();
+            var player = PlayerManager.findOneCurrentPlayer();
             Inventory.databaseTable.remove({playerId:player.id});
             var inventory = thatManager.createPlayerInventory(player);
             return inventory;
