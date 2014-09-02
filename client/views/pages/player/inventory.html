@@ -4,6 +4,9 @@
         <div class="container form-horizontal">
             <div class="row">
                 <h2>Inventory</h2>
+                <div class="col-md-12" >
+                    Enter or adjust your current inventory.
+                </div>
                 <!--<div class="col-md-3">Show-->
                     <!--<select class="chosen-select showFilter">-->
                         <!--<option value="all">All</option>-->
@@ -21,6 +24,13 @@
                 <!--</div>-->
                 <div class="col-md-9">
                     <table class="table-striped table table-condensed">
+                        <thead>
+                        <tr>
+                            <td>Buildable</td>
+                            <td>Quantity</td>
+                            <td>Alliance Camp needs</td>
+                        </tr>
+                        </thead>
                         <tbody>
                     {{#each buildables}}
                         <tr>

@@ -7,10 +7,11 @@ Template.player_buildPlan.events({
         var rawBuildPlanChanges = getInputFieldData(template);
         delete rawBuildPlanChanges.displayName;
         var buildPlanChanges = {};
-        buildPlanChanges[rawBuildPlanChanges.buildable] = rawBuildPlanChanges.quantity;
+        if ( _.isNumber(rawBuildPlanChanges.quantity) ) {
+            buildPlanChanges[rawBuildPlanChanges.buildable] = rawBuildPlanChanges.quantity;
+        }
         delete rawBuildPlanChanges.buildable;
         delete rawBuildPlanChanges.quantity;
-        debugger;
         _.extend(buildPlanChanges, rawBuildPlanChanges);
         BuildPlanManager.addToBuildInventory(this.id, buildPlanChanges, clearChangedInputFieldData.bind(null, template));
     }

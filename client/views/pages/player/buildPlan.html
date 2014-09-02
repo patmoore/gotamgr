@@ -3,16 +3,18 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-md-3 list-group">
+                <div class="col-md-3 ">
                     <label for="buildPlanDisplayName">Build Plan</label><input name="displayName" data-inputfield placeholder="Easy to remember name">
                     <button class="createNewBuildPlan">New</button>
-                    {{#each currentPlayerBuildPlans}}
-                    <!-- TODO: how to do drag/drop reordering -->
-                    <div class="list-group-item">
-                    <a href="{{pathFor 'player_buildPlan' buildPlanId=id}}">{{displayName}} {{id}}</a>
-                    {{createdAt}}
+                    <div>Current Build Plans</div>
+                    <div class="list-group">
+                        {{#each currentPlayerBuildPlans}}
+                        <!-- TODO: how to do drag/drop reordering -->
+                        <div class="list-group-item">
+                        <a href="{{pathFor 'player_buildPlan' buildPlanId=id}}">{{displayName}} {{id}}</a>
+                        </div>
+                        {{/each}}
                     </div>
-                    {{/each}}
                 </div>
 
                 <div class="col-md-9">
@@ -33,7 +35,7 @@
                     <div class="list-group">
                     {{#each arrayify buildDemands}}
                         <div class="list-group-item">
-                            <input name="{{key}}" value="{{value}}" type="number"> {{key}}
+                            <input name="{{key}}" value="{{value}}" type="number" data-inputfield> {{key}}
                         </div>
                     {{/each}}
                     </div>
