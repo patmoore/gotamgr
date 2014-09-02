@@ -38,7 +38,7 @@ livedata@1.0.7
 localstorage@1.0.0
 logging@1.0.2
 meteor-chosen@0.0.0
-meteor-collection-management@1.0.1
+meteor-collection-management@1.0.2
 meteor@1.0.2
 minifiers@1.0.2
 minimongo@1.0.1
