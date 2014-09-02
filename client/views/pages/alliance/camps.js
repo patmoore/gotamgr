@@ -8,6 +8,10 @@ Template.alliance_camps.helpers({
         var availableLocationsForAlliance = CampManager.availableLocationsForAlliance(params.allianceId);
         debugger;
         return availableLocationsForAlliance;
+    },
+    allianceOfficer: function() {
+        var player = PlayerManager.findOneCurrentPlayer();
+        return player && player.allianceOfficer;
     }
 });
 

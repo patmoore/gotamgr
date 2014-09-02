@@ -3,7 +3,11 @@
     <section>
         <div class="container form-horizontal">
             Alliance Invite Code:
+            {{#if allianceLeader}}
             <input type="text" name="allianceInviteCode" data-inputfield>
+            {{else}}
+            {{allianceInviteCode}}
+            {{/if}}
         </div>
     </section>
 </template>

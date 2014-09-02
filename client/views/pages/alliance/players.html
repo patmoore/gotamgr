@@ -4,13 +4,23 @@
         {{#with selectedAlliance}}
         <div class="container form-horizontal">
             <h2>{{displayName}}</h2>
-            <div class="table">
-                {{#each players}}
-                <div class="row">
-                    {{characterFirstName}}&nbsp;{{characterLastName}}
-                </div>
-                {{/each}}
-            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr><td>Character Name</td><td>Role</td></tr>
+                </thead>
+                <tbody>
+                    {{#each players}}
+                    <tr>
+                        <td>{{characterFirstName}}&nbsp;{{characterLastName}}</td>
+                        {{#if this.allianceOfficer}}
+                        <td><select name="roleInAlliance">{{#each AllianceRole}}<option value="{{this.dbCode}}">{{this.displayName}}</option>{{/each}}</select></td>
+                        {{else}}
+                        <td>{{roleInAlliance.displayName}}</td>
+                        {{/if}}
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
         {{/with}}
     </section>
