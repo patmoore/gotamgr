@@ -2,6 +2,7 @@
     <nav class="navbar"><!-- spacer--></nav>
     <section>
         <div class="container form-horizontal">
+            {{#if allianceOfficer}}
             <div class="row col-md-4">
                 <select>
                     {{#each availableCampLocations}}
@@ -10,6 +11,7 @@
                 </select>
                 <button class="buildCamp">Build Camp</button>
             </div>
+            {{/if}}
             <div class="row col-md-8">
                 <table class="table table-striped">
                     <tbody>
