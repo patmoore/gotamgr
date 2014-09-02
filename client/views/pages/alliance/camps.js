@@ -12,6 +12,10 @@ Template.alliance_camps.helpers({
     allianceOfficer: function() {
         var player = PlayerManager.findOneCurrentPlayer();
         return player && player.allianceOfficer;
+    },
+    allianceLeader: function() {
+        var player = PlayerManager.findOneCurrentPlayer();
+        return player && player.allianceOfficer;
     }
 });
 

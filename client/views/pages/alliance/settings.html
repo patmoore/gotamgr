@@ -1,13 +1,28 @@
 <template name="alliance_settings">
     <nav class="navbar"><!-- spacer--></nav>
     <section>
+        {{#with selectedAlliance}}
         <div class="container form-horizontal">
-            Alliance Invite Code:
+            <div class="row">
+                Alliance Name :
+                {{#if allianceLeader}}<input type="text" name="displayName" data-inputfield>{{else}}
+                {{displayName}}
+                {{/if}}
+            </div>
+            <div class="row">
+                Alliance Invite Code:
+                {{#if allianceLeader}}
+                <input type="text" name="allianceInviteCode" data-inputfield>
+                {{else}}
+                {{allianceInviteCode}}
+                {{/if}}
+            </div>
             {{#if allianceLeader}}
-            <input type="text" name="allianceInviteCode" data-inputfield>
-            {{else}}
-            {{allianceInviteCode}}
+            <div class="row">
+                <input type="text" name="allianceOfficerInviteCode" data-inputfield>
+            </div>
             {{/if}}
         </div>
+        {{/with}}
     </section>
 </template>
