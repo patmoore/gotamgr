@@ -1,18 +1,16 @@
-<template name="alliance_camps">
+<template name="alliance_camp">
     <nav class="navbar"><!-- spacer--></nav>
     <section>
         <div class="container form-horizontal">
-            {{#if allianceOfficer}}
             <div class="row col-md-4">
+                {{#if allianceOfficer}}
                 <select>
                     {{#each availableCampLocations}}
                     <option value="{{dbCode}}">{{displayName}} ({{campRegion.displayName}})</option>
                     {{/each}}
                 </select>
                 <button class="buildCamp">Build Camp</button>
-            </div>
-            {{/if}}
-            <div class="row col-md-8">
+                {{/if}}
                 <table class="table table-striped">
                     <tbody>
                     {{#each camps}}
@@ -23,6 +21,11 @@
                     </tbody>
                 </table>
             </div>
+            {{#if selectedCamp}}
+            <div class="row col-md-8">
+
+            </div>
+            {{/if}}
         </div>
     </section>
 </template>

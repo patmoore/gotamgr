@@ -47,12 +47,16 @@ _.each({
 
 getRouterParams = function() {
     var router = Router.current(true);
-    if ( router ) {
-        return router.params;
+    if ( router && router.params) {
+        var paramsObj = _.object(_.map(Object.keys(router.params), function(e) {
+            return [e, router.params[e]];
+        }));
+        return paramsObj;
     } else {
         return {};
     }
-}
+};
+
 // HACK PATM 16 may 2014: Sadly UI.body.events() does not work to add these event handlers. :-(
 DefaultEventHandlers = {
     /**

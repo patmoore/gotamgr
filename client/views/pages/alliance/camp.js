@@ -1,7 +1,8 @@
 var allianceCampsHandle;
 var allianceCampsDeps = new Deps.Dependency;
 
-Template.alliance_camps.helpers({
+Template.alliance_camp.helpers({
+    waitOn:
     availableCampLocations: function() {
         allianceCampsDeps.depends();
         var params = getRouterParams();
@@ -16,16 +17,17 @@ Template.alliance_camps.helpers({
     allianceLeader: function() {
         var player = PlayerManager.findOneCurrentPlayer();
         return player && player.allianceOfficer;
-    }
+    },
+    selectedCamp:
 });
 
-Template.alliance_camps.events({
+Template.alliance_camp.events({
    'click .buildCamp': function(event, template) {
        AllianceManager.buildCamp();
    }
 });
 
-Template.alliance_camps.rendered = function() {
+Template.alliance_camp.rendered = function() {
     var template = this;
     this.autorun(function(){
         debugger;
