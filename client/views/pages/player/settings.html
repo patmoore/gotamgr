@@ -4,21 +4,18 @@
         <div class="container form-horizontal">
             {{#with selectedPlayer}}
             <div class="row">
-                <div class="row">
+                <div class="col-md-6">
                     Character:
                     <input name="characterFirstName" type="text" size="16" data-inputfield placeholder="First Name" value="{{characterFirstName}}">
                     <input name="characterLastName" type="text" size="16" data-inputfield placeholder="Last Name" value="{{characterLastName}}">
                 </div>
-                <div class="row">
+                <div class="col-md-6">
                     {{#if alliance}}
                     <a href="{{pathFor 'alliance_home' allianceId=alliance.id}}">Alliance: {{alliance.displayName}}</a>
                     {{else}}
                     Enter Alliance Invite Code <input name="allianceInviteCode" type="text" size="16" data-inputfield >
                     {{/if}}
                 </div>
-            </div>
-            <div class="row">
-
             </div>
             <button class="saveChanges"></button>
             {{/with}}
