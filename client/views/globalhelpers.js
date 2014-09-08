@@ -154,17 +154,20 @@ clearChangedInputFieldData = function(template, error, data) {
 }
 
 Meteor.startup(function() {
-    var filtered = _.filter(Template, function(template, templateName) {
+    var filtered = {};
+    _.each(_.keys(Template), function(templateName) {
+        var template = Template[templateName];
         if ( template && _.has(Template, templateName)
             // private properties
             && templateName.substr(0,2) != '__'
             // explicitly always filter 'prototype'
             && templateName != 'prototype'
             // templates that do not follow the naming convention we use of '<directory>_<template>' - templates that other packages provide
-            && templateName.indexOf('_', 2) > 2
+            && templateName.indexOf('_', 2) > 1
             // filter properties that probably really are not templates
             && typeof template.events === 'function'
             ) {
+            filtered[templateName] = template;
             return true;
         } else {
             return false;

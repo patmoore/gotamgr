@@ -18,13 +18,13 @@
                 </div>
 
                 <div class="col-md-9">
-                    {{#if selectedBuildOrder}} {{#with selectedBuildOrder}}
+                    {{#if selectedBuildPlan}} {{#with selectedBuildPlan}}
                     {{id}}
                     {{displayName}}
                     <hr>
                     <button class="addToBuildInventory saveChanges"></button>
                     I need to build
-                    <input type="number" name="quantity" data-inputfield > of
+                    <input type="number" name="quantity" data-inputfield >
                     <select name="buildable" data-inputfield>
                         {{#each buildables}}
                         <option value="{{dbCode}}">{{displayName}}</option>
@@ -39,6 +39,14 @@
                         </div>
                     {{/each}}
                     </div>
+                    <table class="table-striped">
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     {{/with}}
                     {{else}}
                     Build Plans are a set of items that you would like to plan to build.
