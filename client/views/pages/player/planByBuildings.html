@@ -13,8 +13,12 @@
                     <td>
                         {{#if buildingNow}}{{buildingNow}}<button>Built</button>
                         {{else}}
-                        <select placeholder="Nothing">{{#each buildablesByBuilding}}
-                            <option value="{{key}}">{{displayName}}</option>
+                        <select >
+                            <!--
+                            <option value="" disabled selected>Nothing</option>
+                            -->
+                            {{#each buildablesByBuilding}}
+                            <option value="{{key}}" >{{displayName}}</option>
                         {{/each}}</select>
                         {{/if}}
                     </td>

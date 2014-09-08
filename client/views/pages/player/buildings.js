@@ -1,6 +1,14 @@
 Template.player_buildings.helpers({
+    initializeData: function() {
+        var playerHandle = PlayerManager.currentPlayerHandle();
+        var playerInventoryHandle = InventoryManager.playerInventoryHandle();
+        return {
+            player: playerHandle,
+            playerInventory: one(playerInventory)
+        };
+    },
     allBuildables : function () {
-        var playerInventory = InventoryManager.playerInventory().findOne();
+        var playerInventory = this.playerInventory;
 
         return Object.keys(Buildables).sort();
     },

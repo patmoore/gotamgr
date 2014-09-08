@@ -1,14 +1,10 @@
 
 Template.player_planByBuildings.helpers({
-    waitOn: function() {
+    initializeData: function() {
         var buildPlansHandle = BuildPlanManager.currentPlayerBuildPlansHandle();
-        return [buildPlansHandle];
-    },
-    data: function() {
-        var buildPlans = BuildPlanManager.findFetchCurrentPlayerBuildPlans();
         return {
-            buildPlans : buildPlans
-        }
+            buildPlans: buildPlansHandle,
+        };
     },
     buildings: function() {
         return Buildings.symbols();
@@ -23,8 +19,10 @@ Template.player_planByBuildings.helpers({
     buildingNow: function() {
     },
     buildablesByBuilding: function() {
-        return _.map(this.builds, function(element, key) {
+
+        var buildables = [{ key:"", displayName:"Nothing" }].concat(_.map(this.builds, function(element, key) {
             return {key:key, displayName: Buildables[key].displayName};
-        });
+        }));
+        return buildables;
     }
 });

@@ -18,19 +18,20 @@ Template.player_buildPlan.events({
 });
 
 Template.player_buildPlan.helpers({
-    waitOn: function() {
-        var handlers = [];
-        handlers.push(BuildPlanManager.currentPlayerBuildPlansHandle());
-        return handlers;
-    },
-    data: function() {
+    initializeData: function(params) {
+        var playerHandle = PlayerManager.currentPlayerHandle();
+        var playerInventoryHandle = InventoryManager.playerInventoryHandle();
+        var currentPlayerBuildPlans = BuildPlanManager.currentPlayerBuildPlansHandle();
+        var buildPlanId = params.buildPlanId;
+        if ( buildPlanId ) {
+            var selectedBuildPlan = BuildPlan.databaseTable.findOneById(buildPlanId);
+        }
         return {
-            currentPlayerBuildPlans: BuildPlanManager.findFetchCurrentPlayerBuildPlans()
+            player: playerHandle,
+            playerInventory: one(playerInventory),
+            currentPlayerBuildPlans: currentPlayerBuildPlans,
+            selectedBuildPlan: selectedBuildPlan
         };
-    },
-    selectedBuildOrder: function() {
-        var buildPlanId = getRouterParams().buildPlanId;
-        return BuildPlan.databaseTable.findOneById(buildPlanId);
     },
     buildables: function() {
         return _.filter(Buildables.symbols(), function(element) {
