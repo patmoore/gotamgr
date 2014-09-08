@@ -21,7 +21,7 @@ ddp@1.0.8
 deps@1.0.3
 ejson@1.0.1
 email@1.0.2
-externallibraries-client@1.0.1
+externallibraries-client@1.0.2
 follower-livedata@1.0.1
 geojson-utils@1.0.0
 html-tools@1.0.0
@@ -39,7 +39,7 @@ livedata@1.0.9
 localstorage@1.0.0
 logging@1.0.2
 meteor-chosen@0.0.0
-meteor-collection-management@1.0.5
+meteor-collection-management@1.0.6
 meteor-platform@1.0.2
 meteor@1.0.3
 minifiers@1.0.2
