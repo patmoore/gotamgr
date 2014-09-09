@@ -19,19 +19,19 @@ Template.player_buildPlan.events({
 
 Template.player_buildPlan.helpers({
     initializeData: function(params) {
-        var playerHandle = PlayerManager.currentPlayerHandle();
-        var playerInventoryHandle = InventoryManager.playerInventoryHandle();
-        var currentPlayerBuildPlans = BuildPlanManager.currentPlayerBuildPlansHandle();
+        debugger;
         var buildPlanId = params.buildPlanId;
-        if ( buildPlanId ) {
-            var selectedBuildPlan = BuildPlan.databaseTable.findOneById(buildPlanId);
-        }
-        return {
-            player: playerHandle,
-            playerInventory: one(playerInventory),
-            currentPlayerBuildPlans: currentPlayerBuildPlans,
-            selectedBuildPlan: selectedBuildPlan
+        var data = {
+            player: PlayerManager.currentPlayerHandle(),
+            playerInventory: one(InventoryManager.playerInventoryHandle()),
+            currentPlayerBuildPlans: BuildPlanManager.currentPlayerBuildPlansHandle()
         };
+
+        if ( buildPlanId ) {
+            data.selectedBuildPlan = BuildPlan.databaseTable.findOneById(buildPlanId);
+        }
+        debugger;
+        return data;
     },
     buildables: function() {
         return _.filter(Buildables.symbols(), function(element) {
