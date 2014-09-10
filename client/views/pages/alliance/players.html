@@ -1,27 +1,38 @@
 <template name="alliance_players">
     <nav class="navbar"><!-- spacer--></nav>
     <section>
-        {{#with selectedAlliance}}
         <div class="container form-horizontal">
-            <h2>{{displayName}}</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr><td>Character Name</td><td>Role</td></tr>
-                </thead>
-                <tbody>
-                    {{#each players}}
-                    <tr>
-                        <td>{{characterFirstName}}&nbsp;{{characterLastName}}</td>
-                        {{#if this.allianceOfficer}}
-                        <td><select name="allianceRole">{{#each AllianceRole}}<option value="{{this.dbCode}}">{{this.displayName}}</option>{{/each}}</select></td>
-                        {{else}}
-                        <td>{{allianceRole.displayName}}</td>
-                        {{/if}}
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
+            <h2>{{selectedAlliance.displayName}}</h2>
+            <div class="row">
+                <div class="col-md-9">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><td>Character Name</td><td>Role</td></tr>
+                        </thead>
+                        <tbody>
+                            {{#each players}}
+                            <tr>
+                                <td>{{characterFirstName}}&nbsp;{{characterLastName}}</td>
+                                {{#if this.allianceOfficer}}
+                                <td>
+                                    <select name="allianceRole" data-inputfield>
+                                        {{#each AllianceRole}}<option value="{{this.dbCode}}">{{this.displayName}}</option>{{/each}}
+                                    </select>
+                                </td>
+                                {{else}}
+                                <td>{{allianceRole.displayName}}</td>
+                                {{/if}}
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{#if this.allianceOfficer}}
+                <div class="col-md-3">
+                    <button class="saveChanges"></button>
+                </div>
+                {{/if}}
+            </div>
         </div>
-        {{/with}}
     </section>
 </template>
