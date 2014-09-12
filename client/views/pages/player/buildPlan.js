@@ -19,10 +19,9 @@ Template.player_buildPlan.events({
 
 Template.player_buildPlan.helpers({
     initializeData: function(params) {
-        debugger;
         var buildPlanId = params.buildPlanId;
         var data = {
-            player: PlayerManager.currentPlayerHandle(),
+            player: one(PlayerManager.currentPlayerHandle()),
             playerInventory: one(InventoryManager.playerInventoryHandle()),
             currentPlayerBuildPlans: BuildPlanManager.currentPlayerBuildPlansHandle()
         };
@@ -30,7 +29,6 @@ Template.player_buildPlan.helpers({
         if ( buildPlanId ) {
             data.selectedBuildPlan = BuildPlan.databaseTable.findOneById(buildPlanId);
         }
-        debugger;
         return data;
     },
     buildables: function() {

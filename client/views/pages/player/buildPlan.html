@@ -11,7 +11,7 @@
                         {{#each currentPlayerBuildPlans}}
                         <!-- TODO: how to do drag/drop reordering -->
                         <div class="list-group-item">
-                        <a href="{{pathFor 'player_buildPlan' buildPlanId=id}}">{{displayName}} {{id}}</a>
+                        <a href="{{pathFor 'player_buildPlan' playerId=../player.id buildPlanId=id}}">{{player.id}}{{displayName}} {{id}}</a>
                         </div>
                         {{/each}}
                     </div>
