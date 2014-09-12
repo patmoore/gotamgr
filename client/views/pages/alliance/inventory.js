@@ -1,4 +1,7 @@
 Template.alliance_inventory.helpers({
+    initializeData: function(params) {
+
+    },
     selectedAlliance: function() {
         var allianceId = Router.current(true).params.allianceId;
         var handle = AllianceManager.selectedAllianceHandle(allianceId);
