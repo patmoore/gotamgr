@@ -14,6 +14,11 @@ Template.player_buildPlan.events({
         delete rawBuildPlanChanges.quantity;
         _.extend(buildPlanChanges, rawBuildPlanChanges);
         BuildPlanManager.addToBuildInventory(this.id, buildPlanChanges, clearChangedInputFieldData.bind(null, template));
+    },
+    'click .deletePlayerBuildPlan': function(event, template) {
+        var $element = $(event.currentTarget);
+        var buildPlanId = $element.data('build-plan-id');
+        BuildPlanManager.deletePlayerBuildPlan(buildPlanId);
     }
 });
 

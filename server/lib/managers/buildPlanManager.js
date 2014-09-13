@@ -4,6 +4,10 @@ Meteor.startup(function(){
             var userId = Meteor.userId();
             BuildPlan.prototype.upsertFromUntrusted(changedPlayerBuildPlan, buildPlanId);
         },
+        deletePlayerBuildPlan: function(buildPlanId) {
+            var userId = Meteor.userId();
+            BuildPlan.databaseTable.remove({_id:buildPlanId});
+        },
         createBuildPlan: function(buildPlanInfo) {
             var thatManager = this.thatManager;
             debugger;
