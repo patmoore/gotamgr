@@ -88,42 +88,56 @@ DefaultEventHandlers = {
     }
 };
 
+var _getInputFieldData = function(jQuerySelected) {
+    var changeMap = {};
+    jQuerySelected.each(function(index, element) {
+        var $element = $(element);
+        var key = $element.data('inputfield');
+        if (!key) {
+            key = $element.attr('name');
+        }
+        var elemValue = $element.val();
+        var elemType = $element.attr('type');
+        var type = $element.data('type') || elemType;
+
+        if (elemType === 'radio' && !isRadioChecked(element)) {
+            return;
+        }
+
+        var value;
+        if ( type === 'number' ) {
+            value = Number(elemValue);
+        } else if ( type === 'boolean') {
+            value = elemValue === 'true';
+        } else {
+            value = elemValue;
+        }
+        changeMap[key] = value;
+    });
+    return changeMap;
+}
 /**
  * get the values of fields that have a data-inputfield that have changed
  * TODO: would like to not make this so global.
  * @param template
  */
 getChangedInputFieldData = function(template) {
-    var changeMap = {};
-    ($ || template.$)('.userChanged[data-inputfield]').each(function(index, element) {
-        var $element = $(element);
-        var key = $element.data('inputfield');
-        if ( !key ) {
-            key = $element.attr('name');
-        }
-        changeMap[key] = $element.val();
-    });
+    var changeMap = _getInputFieldData(($ || template.$)('.userChanged[data-inputfield]'));
     return changeMap;
 }
 
 getInputFieldData = function(template) {
-    var changeMap = {};
-    ($ || template.$)('[data-inputfield]').each(function(index, element) {
-        var $element = $(element);
-        var key = $element.data('inputfield');
-        if ( !key ) {
-            key = $element.attr('name');
-        }
-        changeMap[key] = $element.val();
-    });
+    //TODO: doesn't work for radio buttons, always return the last value
+    var changeMap = _getInputFieldData(($ || template.$)('[data-inputfield]'));
     return changeMap;
 }
-
 
 /**
  * TODO: would like to not make this so global.
  * @param template
  */
+// this doesn't work properly for fancy selects. see
+// http://silviomoreto.github.io/bootstrap-select/
 setInputFieldData = function(template, source) {
     var changeMap = {};
     ($ || template.$)('[data-inputfield]').each(function(index, element) {
@@ -133,6 +147,7 @@ setInputFieldData = function(template, source) {
             key = $element.attr('name');
         }
         if (_.has(source, key)) {
+            // TODO: How to handle radio selections?
             $element.val(source[key]);
         }
     });
