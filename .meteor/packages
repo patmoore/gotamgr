@@ -23,4 +23,5 @@ externallibraries-client
 sergeyt:livequery@1.3.7
 browser-policy
 iron:router
+mrt:moment
 

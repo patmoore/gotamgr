@@ -7,7 +7,7 @@
                 <h2>Current Build Needs</h2>
                 {{#if currentPlayerBuildPlans}}
                     {{#each currentPlayerBuildPlans}}
-                        <div>{{id}}</div>
+                        <div><a href="{{pathFor 'player_buildPlan' playerId=playerId buildPlanId=id}}">{{displayName}}</a></div>
                     {{/each}}
                 {{/if}}
             {{/with}}

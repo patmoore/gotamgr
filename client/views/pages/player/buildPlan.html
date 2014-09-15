@@ -11,8 +11,8 @@
                         {{#each currentPlayerBuildPlans}}
                         <!-- TODO: how to do drag/drop reordering -->
                         <div class="list-group-item">
-                            <a href="{{pathFor 'player_buildPlan' playerId=../player.id buildPlanId=id}}">{{player.id}}{{displayName}} {{id}}</a>
-                            <button class="deletePlayerBuildPlan" data-build-plan-id="{{id}}">X</button>
+                            <a href="{{pathFor 'player_buildPlan' playerId=../player.id buildPlanId=id}}">{{displayName}}</a>
+                            <button class="btn btn-lg glyphicon glyphicon-trash deletePlayerBuildPlan" data-build-plan-id="{{id}}">Remove</button>
                         </div>
                         {{/each}}
                     </div>
@@ -20,10 +20,14 @@
 
                 <div class="col-md-9">
                     {{#if selectedBuildPlan}} {{#with selectedBuildPlan}}
-                    {{id}}
-                    {{displayName}}
+                    <div class="">
+                        <div class="block">{{displayName}}</div>
+                        <div>
+                            <button class="btn btn-lg addToBuildInventory saveChanges"></button>
+                        </div>
+                    </div>
                     <hr>
-                    <button class="addToBuildInventory saveChanges"></button>
+                    <div>
                     I need to build
                     <input type="number" name="quantity" data-inputfield >
                     <select name="buildable" data-inputfield>
@@ -31,8 +35,8 @@
                         <option value="{{dbCode}}">{{displayName}}</option>
                         {{/each}}
                     </select>
-                    <button class="addToBuildInventory">Add</button>
-                    <hr>
+                    <button class="btn btn-lg glyphicon glyphicon-plus addToBuildInventory">Add</button>
+                    </div>
                     <div class="list-group">
                     {{#each arrayify buildDemands}}
                         <div class="list-group-item">
@@ -40,14 +44,7 @@
                         </div>
                     {{/each}}
                     </div>
-                    <table class="table-striped">
-                        <thead></thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    {{> _buildOrder}}
                     {{/with}}
                     {{else}}
                     Build Plans are a set of items that you would like to plan to build.
@@ -57,4 +54,21 @@
 
         </div>
     </section>
+</template>
+
+
+<template name="_buildOrder">
+    <table class="table">
+        <thead></thead>
+        <tbody>
+        {{#each componentBuildOrders}}
+        {{debugTemplateHere}}
+        <tr>
+            <td>{{buildOrderDisplayName}}
+                {{> _buildOrder}}
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </template>

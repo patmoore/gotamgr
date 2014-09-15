@@ -5,6 +5,12 @@
  * Global helpers are overridden by a templates
  */
 _.each({
+    /**
+     * Insert {{debugTemplateHere}} in a template.
+     */
+    debugTemplateHere: function() {
+        debugger;
+    },
     isSelected: function(option, arr) {
         if (arr) {
             if (typeof(arr) === 'string' || typeof(arr) === 'number') {

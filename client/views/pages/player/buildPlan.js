@@ -1,7 +1,9 @@
 Template.player_buildPlan.events({
     'click .createNewBuildPlan': function(event, template) {
-        var buildPlanChanges = getChangedInputFieldData(template);
-        BuildPlanManager.createBuildPlan(buildPlanChanges, clearChangedInputFieldData.bind(null, template));
+        var buildPlanChanges = getInputFieldData(template);
+        if ( !_.isEmpty(buildPlanChanges.displayName)) {
+            BuildPlanManager.createBuildPlan({displayName: buildPlanChanges.displayName}, clearChangedInputFieldData.bind(null, template));
+        }
     },
     'click .addToBuildInventory': function(event, template) {
         var rawBuildPlanChanges = getInputFieldData(template);
@@ -37,11 +39,10 @@ Template.player_buildPlan.helpers({
         return data;
     },
     buildables: function() {
-        return _.filter(Buildables.symbols(), function(element) {
-            return !_.isEmpty(element.buildings);
-        });
+        return BuildableInBuildings;
     },
-    buildOrderItem: function() {
-
+    buildOrderDisplayName: function() {
+        var buildOrderDisplayName = Buildables[this.buildable];
+        return buildOrderDisplayName;
     }
 });

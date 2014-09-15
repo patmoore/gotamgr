@@ -42,8 +42,9 @@ Meteor.startup(function(){
                 });
 
                 debugger;
+                delete buildPlan.componentBuildOrders;
                 // Now recalculate
-                thatManager.createBuildOrders(buildPlan.buildDemands, buildPlan.buildOrders);
+                thatManager.createBuildOrders(buildPlan.buildDemands, buildPlan);
                 debugger;
                 buildPlan._save();
             }
