@@ -10,7 +10,6 @@ Meteor.startup(function(){
         },
         createBuildPlan: function(buildPlanInfo) {
             var thatManager = this.thatManager;
-            debugger;
             var userId = this.userId;
             var buildPlan;
             if ( userId ) {

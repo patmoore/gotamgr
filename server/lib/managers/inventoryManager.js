@@ -12,7 +12,6 @@ Meteor.startup(function() {
         },
         changePlayerInventory: function(inventoryIndex, newAmount) {
             var thatManager = this;
-            debugger;
             var player = PlayerManager.findOneCurrentPlayer();
             var inventory = Inventory.databaseTable.findOneByPlayerId(player.id);
             if ( inventory == null) {
@@ -24,7 +23,6 @@ Meteor.startup(function() {
         },
         updatePlayerInventory: function(changedInventory) {
             var thatManager = this;
-            debugger;
             var player = PlayerManager.findOneCurrentPlayer();
             var inventory = Inventory.databaseTable.findOneByPlayerId(player.id);
             if ( inventory == null) {

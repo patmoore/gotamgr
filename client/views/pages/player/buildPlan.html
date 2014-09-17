@@ -63,7 +63,7 @@
         <tbody>
         {{#each componentBuildOrders}}
         <tr>
-            <td>{{quantity}} {{buildOrderDisplayName}} {{this.totalBuildTimeString}}, {{this.componentBuildTimeString}}
+            <td>{{quantity}} {{buildOrderDisplayName}} {{#if this.totalBuildTimeString}} {{this.totalBuildTimeString}} {{#if this.componentBuildTimeString}}= {{this.buildTimeString}} + {{this.componentBuildTimeString}}{{/if}} {{/if}}
                 {{> _buildOrder}}
             </td>
         </tr>

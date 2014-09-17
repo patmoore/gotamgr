@@ -3,7 +3,6 @@ var allianceCampsDeps = new Deps.Dependency;
 
 Template.alliance_camp.helpers({
     initializeData: function(params) {
-        debugger;
         var allianceCampsHandle = CampManager.allianceCampsHandle(params.allianceId);
         var availableLocationsForAlliance;
         if ( allianceCampsHandle.ready() ) {
