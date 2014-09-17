@@ -44,7 +44,7 @@
                         </div>
                     {{/each}}
                     </div>
-                    {{> _buildOrder}}
+                    {{> _buildOrder componentBuildOrders=componentBuildOrders}}
                     {{/with}}
                     {{else}}
                     Build Plans are a set of items that you would like to plan to build.
@@ -62,9 +62,8 @@
         <thead></thead>
         <tbody>
         {{#each componentBuildOrders}}
-        {{debugTemplateHere}}
         <tr>
-            <td>{{buildOrderDisplayName}}
+            <td>{{quantity}} {{buildOrderDisplayName}} {{this.totalBuildTimeString}}, {{this.componentBuildTimeString}}
                 {{> _buildOrder}}
             </td>
         </tr>
