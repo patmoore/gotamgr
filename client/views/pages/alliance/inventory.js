@@ -11,7 +11,7 @@ Template.alliance_inventory.helpers({
             return void(0);
         }
     },
-    buildables : function() {
+    storables : function() {
         var allianceId = Router.current(true).params.allianceId;
         var handle = AllianceManager.alliancePlayersInventoryHandle(allianceId);
         if ( handle.ready() ) {

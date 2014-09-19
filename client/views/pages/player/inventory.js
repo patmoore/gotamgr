@@ -41,27 +41,27 @@ Template.player_inventory.helpers({
         }
     },
 
-    buildables : function () {
+    storables : function () {
         playerInventoryHandleDep.depend();
         if ( playerInventoryHandle == null ) {
             return [];
         }
         var playerInventory = playerInventoryHandle.findOne();
-        var buildables;
+        var storables;
         var showFilter = $('.showFilter').val();
         switch(showFilter) {
         case 'need':
         case 'all':
         default:
-            buildables = Buildables;
+            storables = Storables;
         }
-        var results = buildables.symbols();
+        var results = storables.symbols();
 //        results.sort(function(left, right) {
 //            if ( left.toString() < )
 //        });
-//        results.sort(function(leftBuildableKey, rightBuildableKey) {
-//            var leftBuildableBuildingName =
-//            if ( Buildables[leftBuildableKey].buildings[0].displayName === Buildables[rightBuildableKey].buildings[0].displayName ) {
+//        results.sort(function(leftStorableKey, rightStorableKey) {
+//            var leftStorableBuildingName =
+//            if ( Storables[leftStorableKey].buildings[0].displayName === Storables[rightStorableKey].buildings[0].displayName ) {
 //
 //            }
 //        });
@@ -79,39 +79,39 @@ Template.player_inventory.helpers({
             return 0;
         }
     },
-    buildings: function(buildable) {
+    buildings: function(storable) {
         var buildingNames = [];
-        if ( buildable == null ) {
+        if ( storable == null ) {
             debugger;
         }
-        if ( typeof(buildable.buildings) !== "undefined" ) {
-            buildable.buildings.forEach(function(building) {
+        if ( typeof(storable.buildings) !== "undefined" ) {
+            storable.buildings.forEach(function(building) {
                 buildingNames.push(building.displayName);
             });
         }
         var buildingsString = buildingNames.sort().join(',');
         return buildingsString;
     },
-    buildableNeededForCamp: function() {
-        var buildableKey = this;
-        var buildablesByCamp = BuildablesByCamp[buildableKey];
+    storableNeededForCamp: function() {
+        var storableKey = this;
+        var storablesByCamp = StorablesByCamp[storableKey];
         var neededByCamp = {};
         var totalNeeded = 0;
-        if ( buildablesByCamp ) {
+        if ( storablesByCamp ) {
             campsHandleDep.depend();
             if (campsHandle && campsHandle.ready()) {
                 var camps = campsHandle.findFetch();
                 _.each(camps, function (camp) {
                     var skillGeneral = camp.skillSpecialization.skillGeneral;
-                    var buildableForSkillGeneral = buildablesByCamp[skillGeneral];
-                    if (buildableForSkillGeneral && buildableForSkillGeneral.length >= camp.currentLevel) {
-                        var totalNeededForCamp = _.reduce(buildableForSkillGeneral.slice(camp.currentLevel),
+                    var storableForSkillGeneral = storablesByCamp[skillGeneral];
+                    if (storableForSkillGeneral && storableForSkillGeneral.length >= camp.currentLevel) {
+                        var totalNeededForCamp = _.reduce(storableForSkillGeneral.slice(camp.currentLevel),
                             function (memo, num) {
                                 return memo + num;
                             }, 0);
                         totalNeeded += totalNeededForCamp;
                         neededByCamp[camp.campLocation] = {
-                            fromCurrentLevel: buildableForSkillGeneral.slice(camp.currentLevel),
+                            fromCurrentLevel: storableForSkillGeneral.slice(camp.currentLevel),
                             currentLevel: camp.currentLevel,
                             totalNeeded: totalNeededForCamp
                         };

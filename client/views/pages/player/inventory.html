@@ -26,19 +26,19 @@
                     <table class="table-striped table table-condensed">
                         <thead>
                         <tr>
-                            <td>Buildable</td>
+                            <td>Storable</td>
                             <td>Quantity</td>
                             <td>Alliance Camp needs</td>
                         </tr>
                         </thead>
                         <tbody>
-                    {{#each buildables}}
+                    {{#each storables}}
                         <tr>
                             <td class="text-capitalize">{{this}}<br>{{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}</td>
                             <td>Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
                             <td>
-                                {{#if buildableNeededForCamp}}
-                                    {{#with buildableNeededForCamp}}
+                                {{#if storableNeededForCamp}}
+                                    {{#with storableNeededForCamp}}
                                     {{#if totalNeeded}}
                                         {{#each arrayify neededByCamp}}
                                             Camp Location: {{key}}

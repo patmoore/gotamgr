@@ -33,10 +33,10 @@ Meteor.startup(function(){
             var buildPlan = BuildPlan.databaseTable.findOneById(buildPlanId);
             if ( buildPlan ) {
                 buildPlan.buildDemands = buildPlan.buildDemands || {};
-                _.each(buildDemands, function(quantity, buildable){
-                    buildPlan.buildDemands[buildable] = Number(quantity);
-                    if ( buildPlan.buildDemands[buildable] < 1 || _.isNaN(buildPlan.buildDemands[buildable] ) ) {
-                        delete buildPlan.buildDemands[buildable];
+                _.each(buildDemands, function(quantity, storable){
+                    buildPlan.buildDemands[storable] = Number(quantity);
+                    if ( buildPlan.buildDemands[storable] < 1 || _.isNaN(buildPlan.buildDemands[storable] ) ) {
+                        delete buildPlan.buildDemands[storable];
                     }
                 });
 

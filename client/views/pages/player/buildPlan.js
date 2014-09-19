@@ -10,9 +10,9 @@ Template.player_buildPlan.events({
         delete rawBuildPlanChanges.displayName;
         var buildPlanChanges = {};
         if (_.isNumber(rawBuildPlanChanges.quantity)) {
-            buildPlanChanges[rawBuildPlanChanges.buildable] = rawBuildPlanChanges.quantity;
+            buildPlanChanges[rawBuildPlanChanges.storable] = rawBuildPlanChanges.quantity;
         }
-        delete rawBuildPlanChanges.buildable;
+        delete rawBuildPlanChanges.storable;
         delete rawBuildPlanChanges.quantity;
         _.extend(buildPlanChanges, rawBuildPlanChanges);
         BuildPlanManager.addToBuildInventory(this.id, buildPlanChanges, clearChangedInputFieldData.bind(null, template));
@@ -38,8 +38,8 @@ Template.player_buildPlan.helpers({
         }
         return data;
     },
-    buildables: function () {
-        return BuildableInBuildings;
+    storables: function () {
+        return StorableInBuildings;
     },
     componentBuildOrders: function () {
         var buildPlan = this;
@@ -50,11 +50,11 @@ Template.player_buildPlan.helpers({
 });
 Template._buildOrder.helpers({
     buildOrderDisplayName: function () {
-        var buildable = getInventoryEnum(this.buildable);
-        if ( buildable == null ) {
+        var storable = getInventoryEnum(this.storable);
+        if ( storable == null ) {
             debugger;
         } else {
-            return buildable.displayName;
+            return storable.displayName;
         }
     },
 });

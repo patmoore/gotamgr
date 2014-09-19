@@ -14,17 +14,17 @@ Template.inventoryItem.helpers({
     },
     buildings: function(options) {
         var buildingNames = [];
-        if ( typeof(Buildables[options].buildings) !== "undefined" ) {
-            Buildables[options].buildings.forEach(function(building) {
+        if ( typeof(Storables[options].buildings) !== "undefined" ) {
+            Storables[options].buildings.forEach(function(building) {
                 buildingNames.push(building.displayName);
             });
         }
         return buildingNames.sort().join(',');
     },
-    buildableNeededForCamp: function(buildable) {
-        var buildablesByCamp = BuildablesByCamp[buildable];
+    storableNeededForCamp: function(storable) {
+        var storablesByCamp = StorablesByCamp[storable];
         debugger;
-        return buildablesByCamp;
+        return storablesByCamp;
     }
 });
 Template.inventoryItem.events({

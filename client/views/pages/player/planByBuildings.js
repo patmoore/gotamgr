@@ -20,10 +20,10 @@ Template.player_planByBuildings.helpers({
 //         = this.buildPlans[params.buildPlanId];
 
     },
-    buildablesByBuilding: function() {
-        var buildables = [{ key:"", displayName:"Nothing" }].concat(_.map(this.builds, function(element, key) {
-            return {key:key, displayName: Buildables[key].displayName};
+    storablesByBuilding: function() {
+        var storables = [{ key:"", displayName:"Nothing" }].concat(_.map(this.builds, function(element, key) {
+            return {key:key, displayName: Storables[key].displayName};
         }));
-        return buildables;
+        return storables;
     }
 });

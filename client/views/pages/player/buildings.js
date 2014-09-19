@@ -7,13 +7,13 @@ Template.player_buildings.helpers({
             playerInventory: one(playerInventory)
         };
     },
-    allBuildables : function () {
+    allStorables : function () {
         var playerInventory = this.playerInventory;
 
-        return Object.keys(Buildables).sort();
+        return Object.keys(Storables).sort();
     },
-    terminalBuildables : function () {
-        return Object.keys(Buildables).sort();
+    terminalStorables : function () {
+        return Object.keys(Storables).sort();
     },
     buildPlan: function() {
 
