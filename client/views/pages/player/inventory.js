@@ -34,11 +34,13 @@ Template.player_inventory.rendered = function() {
     });
 }
 Template.player_inventory.helpers({
-    waitOn: function() {
-        var handles = [];
-        handles.push(InventoryManager.playerInventoryHandle());
-        return handles;
+    initializeData : function() {
+        return {
+            currentPlayer: one(PlayerManager.currentPlayerHandle()),
+            currentPlayerInventory : InventoryManager.playerInventoryHandle()
+        }
     },
+
     buildables : function () {
         playerInventoryHandleDep.depend();
         if ( playerInventoryHandle == null ) {

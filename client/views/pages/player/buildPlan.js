@@ -28,7 +28,7 @@ Template.player_buildPlan.helpers({
     initializeData: function (params) {
         var buildPlanId = params.buildPlanId;
         var data = {
-            player: one(PlayerManager.currentPlayerHandle()),
+            currentPlayer: one(PlayerManager.currentPlayerHandle()),
             playerInventory: one(InventoryManager.playerInventoryHandle()),
             currentPlayerBuildPlans: BuildPlanManager.currentPlayerBuildPlansHandle()
         };
