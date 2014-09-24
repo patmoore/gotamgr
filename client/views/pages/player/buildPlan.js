@@ -38,19 +38,25 @@ Template.player_buildPlan.helpers({
         }
         return data;
     },
-    storables: function () {
+    generateBuildOrders: function() {
+        var buildPlan = this;
+        // Now recalculate
+        BuildPlanManager.createBuildPlansBuildOrders(buildPlan);
+    },
+    StorableInBuildings: function () {
         return StorableInBuildings;
     },
     componentBuildOrders: function () {
         var buildPlan = this;
-        // Now recalculate
-        BuildPlanManager.createBuildOrders(buildPlan.buildDemands, buildPlan);
         return buildPlan.componentBuildOrders;
+    },
+    StorableByDbCode: function(dbCode){
+        return Storables.enumOf(dbCode);
     }
 });
 Template._buildOrder.helpers({
     buildOrderDisplayName: function () {
-        var storable = getInventoryEnum(this.storable);
+        var storable = Storables.enumOf(this.storable);
         if ( storable == null ) {
             debugger;
         } else {

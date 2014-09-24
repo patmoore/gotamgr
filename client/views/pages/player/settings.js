@@ -8,36 +8,15 @@ Template.player_settings.events({
 });
 
 Template.player_settings.helpers({
-    waitOn: function() {
+    initializeData: function() {
         var currentPlayerHandle = PlayerManager.currentPlayerHandle();
-        var selectedAllianceHandle = null;
+        var initialData = {
+            currentPlayer: one(currentPlayerHandle)
+        };
         if ( currentPlayerHandle.ready()) {
             var currentPlayer = currentPlayerHandle.findOne();
-            selectedAllianceHandle = AllianceManager.selectedAllianceHandle(currentPlayer.allianceId);
+            initialData.alliance = AllianceManager.selectedAllianceHandle(currentPlayer.allianceId);
         }
-        return [ currentPlayerHandle, selectedAllianceHandle ];
-    },
-    selectedPlayer: function() {
-        var handle = PlayerManager.currentPlayerHandle();
-        if ( handle.ready() ) {
-            var player = PlayerManager.findOneCurrentPlayer();
-            // TODO: use setInputFieldData - doesn't work because elements don't exist.
-//            setInputFieldData(null, player);
-            return player;
-        } else {
-            return null;
-        }
-
-    },
-    alliance: function() {
-        var player = PlayerManager.findOneCurrentPlayer();
-        if ( player ) {
-            var handle = AllianceManager.selectedAllianceHandle(player.allianceId);
-            if ( handle.ready()) {
-                var alliance = Alliance.databaseTable.findOneById(player.allianceId);
-                return alliance;
-            }
-        }
-        return null;
+        return initialData;
     }
 });

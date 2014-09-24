@@ -20,6 +20,7 @@
 
                 <div class="col-md-9">
                     {{#if selectedBuildPlan}} {{#with selectedBuildPlan}}
+                    {{generateBuildOrders}}
                     <div class="">
                         <div class="block">{{displayName}}</div>
                         <div>
@@ -31,7 +32,7 @@
                     I need to build
                     <input type="number" name="quantity" data-inputfield >
                     <select name="storable" data-inputfield>
-                        {{#each storables}}
+                        {{#each StorableInBuildings}}
                         <option value="{{dbCode}}">{{displayName}}</option>
                         {{/each}}
                     </select>
@@ -40,9 +41,16 @@
                     <div class="list-group">
                     {{#each arrayify buildDemands}}
                         <div class="list-group-item">
-                            <input name="{{key}}" value="{{value}}" type="number" data-inputfield> {{key}}
+                            <input name="{{key}}" value="{{value}}" type="number" data-inputfield> {{StorableByDbCode key}}
                         </div>
                     {{/each}}
+                    </div>
+                    <div>Totals:
+                        <table class="table-striped">
+                            <tbody>
+                        {{#each arrayify totalsByStorable}}<tr><td>{{value}}</td><td>{{StorableByDbCode key}}</td></tr>{{/each}}
+                            </tbody>
+                        </table>
                     </div>
                     {{> _buildOrder componentBuildOrders=componentBuildOrders}}
                     {{/with}}
