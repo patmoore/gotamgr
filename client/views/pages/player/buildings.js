@@ -3,7 +3,7 @@ Template.player_buildings.helpers({
         var playerHandle = PlayerManager.currentPlayerHandle();
         var playerInventoryHandle = InventoryManager.playerInventoryHandle();
         return {
-            player: playerHandle,
+            player: one(playerHandle),
             playerInventory: one(playerInventory)
         };
     },

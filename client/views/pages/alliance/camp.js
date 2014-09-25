@@ -9,18 +9,17 @@ Template.alliance_camp.helpers({
             availableLocationsForAlliance = CampManager.availableLocationsForAlliance(params.allianceId);
         }
         return {
+            currentPlayer: one(PlayerManager.currentPlayerHandle()),
             availableLocationsForAlliance : availableLocationsForAlliance,
             allianceCamps : allianceCampsHandle,
             allianceId : params.allianceId
         };
     },
     allianceOfficer: function() {
-        var player = PlayerManager.findOneCurrentPlayer();
-        return player && player.allianceOfficer;
+        return this.currentPlayer && this.currentPlayer.allianceOfficer;
     },
     allianceLeader: function() {
-        var player = PlayerManager.findOneCurrentPlayer();
-        return player && player.allianceOfficer;
+        return this.currentPlayer && this.currentPlayer.allianceLeader;
     }
 });
 
@@ -34,7 +33,6 @@ Template.alliance_camp.events({
 Template.alliance_camp.rendered = function() {
     var template = this;
     this.autorun(function(){
-        debugger;
         var params = getRouterParams();
         allianceCampsHandle = CampManager.allianceCampsHandle(params.allianceId);
         if ( allianceCampsHandle && allianceCampsHandle.ready()) {

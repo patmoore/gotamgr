@@ -5,6 +5,11 @@
         <div class="container form-horizontal">
             <h2>{{displayName}}</h2>
             <table class="table table-striped">
+                <thead><tr><th>Item</th><th>Total</th>
+                    {{#each alliancePlayers}}
+                        {{displayName}}
+                    {{/each}}
+                </tr></thead>
                 {{#each storables}}
                 <tr class="row">
                     <td>{{displayName}}</td><td>{{total}}</td>
