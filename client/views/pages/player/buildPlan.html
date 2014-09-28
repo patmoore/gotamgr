@@ -66,8 +66,8 @@
 
 
 <template name="_buildOrder">
+    {{#if componentBuildOrders}}
     <table class="table">
-        <thead></thead>
         <tbody>
         {{#each componentBuildOrders}}
         <tr>
@@ -78,4 +78,5 @@
         {{/each}}
         </tbody>
     </table>
+    {{/if}}
 </template>
