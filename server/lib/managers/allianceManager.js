@@ -12,6 +12,30 @@ Meteor.startup(function(){
             var alliance = Alliance.databaseTable.findOneByAllianceInviteCode(player.allianceInviteCode);
             if ( alliance ) {
                 player.allianceId = alliance._id;
+                player.allianceRole = AllianceRole.member;
+                player._save();
+            } else {
+                alliance = Alliance.databaseTable.findOneByAllianceOfficerInviteCode(player.allianceInviteCode);
+                // special case: first officer is leader.
+                var playerCount = Player.databaseTable.findByAllianceId(alliance.id).count();
+                if ( playerCount == 0 ) {
+                    player.allianceRole = AllianceRole.leader;
+                } else {
+                    player.allianceRole = AllianceRole.officer;
+                }
+                player.allianceRole = AllianceRole.officer;
+                player.allianceId = alliance._id;
+                player._save();
+            }
+        },
+        leaveAllianceMethod: function(player) {
+            if ( player.allianceId ) {
+                var alliance = Alliance.databaseTable.findOneById(player.allianceId);
+                // TODO : any clean up needed? - send message to leader?
+                // TODO: how to handle leader leaving? assign new leader
+                player.allianceId = null;
+                player.allianceRole = null;
+                player.allianceInviteCode = null;
                 player._save();
             }
         },
@@ -19,8 +43,10 @@ Meteor.startup(function(){
             // TODO: make sure that player is an officer.
             var thatManager = this.thatManager;
             var player = PlayerManager.findOneCurrentPlayer(this.userId);
-            var alliance = Alliance.databaseTable.findOneAllianceInviteCode(player.allianceId);
-            alliance.upsertFromUntrusted(changes);
+            if ( player.isOfficer()  ) {
+                var alliance = Alliance.databaseTable.findOneById(player.allianceId);
+                alliance.upsertFromUntrusted(changes);
+            }
         },
 
         buildCamp: function(campData) {
@@ -33,5 +59,17 @@ Meteor.startup(function(){
                 throw new Meteor.Error('No signed on player');
             }
         },
+        createAllianceMethod: function() {
+            var thatManager = this.thatManager;
+            var player = PlayerManager.findOneCurrentPlayer(this.userId);
+            thatManager.leaveAllianceMethod(player);
+            // TODO: change alliance.
+            var alliance = new Alliance({allianceOfficerInviteCode: player.id});
+            alliance._save();
+            player.allianceId = alliance.id;
+            player.allianceInviteCode = alliance.allianceOfficerInviteCode;
+            player.allianceRole = AllianceRole.leader;
+            player._save();
+        }
     });
 });

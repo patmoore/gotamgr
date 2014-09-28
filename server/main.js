@@ -6,10 +6,14 @@ Accounts.config({
 
 
 Meteor.startup(function() {
+    debugger;
     var honorable = Alliance.databaseTable.findOneByAllianceInviteCode('honorable');
     if ( honorable == null ) {
-        honorable = new Alliance({displayName: 'The Honorable', allianceInviteCode: 'honorable'});
-        honorable._save();
+        honorable = new Alliance();
+    }
+    honorable.upsertFromUntrusted({displayName: 'The Honorable',
+        allianceInviteCode: 'honorable'
+    });
         camp = CampManager._buildCamp(honorable.id, {
             campLocation: CampLocation.IronmansBay,
             skillSpecialization: SkillSpecialization.Aid,
@@ -30,5 +34,5 @@ Meteor.startup(function() {
             skillSpecialization: SkillSpecialization.Barter,
             currentLevel: 1
         });
-    }
+
 });

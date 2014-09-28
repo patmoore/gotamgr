@@ -11,10 +11,7 @@ Meteor.startup(function(){
                     // set this up *after* all the managers are initialized.
                     Accounts.onCreateUser(
                         function (options, user) {
-                            var userId = user._id;
-                            var player = new Player({userId:userId});
-                            player._save();
-                            InventoryManager.createPlayerInventory(player);
+                            thatManager._createPlayer(user);
                             return user;
                         });
                 }
@@ -29,6 +26,12 @@ Meteor.startup(function(){
                 AllianceManager._assignPlayerToAlliance(player);
             }
             return player;
+        },
+        _createPlayer: function(user) {
+            var userId = user._id;
+            var player = new Player({userId:userId});
+            player._save();
+            InventoryManager.createPlayerInventory(player);
         }
     });
 });

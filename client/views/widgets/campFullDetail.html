@@ -1,0 +1,98 @@
+<template name="camp_fullDetail">
+    <div>
+        <table>
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>
+                    {{#if allianceOfficer}}
+                        <input name="displayName" type="text" value="{{displayName}}" data-inputfield>
+                    {{else}}
+                        {{displayName}}
+                    {{/if}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Location:
+                </td>
+                <td>
+                    {{campLocation}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nature of Camp:
+                </td>
+                <td>
+                    {{skillSpecialization}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Camp Level
+                </td>
+                <td>
+                    {{#if allianceOfficer}}
+                    <input name="currentLebvel" type="number" value="{{currentLevel}}" data-inputfield>
+                    {{else}}
+                    {{currentLevel}}
+                    {{/if}}
+                </td>
+            </tr>
+            <tr>
+                <td>Component Needs</td>
+                <td>
+                    {{#each upcomingStorableNeeds}}
+                        {{this}}
+                    {{/each}}
+                </td>
+            </tr>
+            {{#if allianceOfficer}}
+            <tr>
+                <td>
+                    Officer Only Notes (Note: A computer-knowledgeable individual could read the notes)
+                </td>
+                <td>
+                    <textarea name="officerOnlyNotes" data-inputfield>{{officerOnlyNotes}}</textarea>
+                </td>
+            </tr>
+            {{/if}}
+            <tr>
+                <td>
+                    Alliance Notes
+                </td>
+                <td>
+                    {{#if allianceOfficer}}
+                    <textarea name="allianceNotes" data-inputfield>{{allianceNotes}}</textarea>
+                    {{else}}
+                    {{allianceNotes}}
+                    {{/if}}
+                </td>
+            </tr>
+            <tr>
+                <td>Priority</td>
+                <td>
+                    {{#if allianceOfficer}}
+                    <input name="priority" type="number" data-inputfield>{{allianceNotes}}
+                    {{else}}
+                    {{priority}}
+                    {{/if}}
+                </td>
+            </tr>
+        {{priority}}
+            <tr>
+                <td>Ok to garrison</td>
+                <td>
+                    {{#if allianceOfficer}}
+                    <input name="garrison" type="checkbox" data-inputfield>
+                    {{else}}
+                    {{garrison}}
+                    {{/if}}
+                </td>
+            </tr>
+        </tbody>
+        </table>
+        <button class="saveChanges"></button>
+    </div>
+</template>

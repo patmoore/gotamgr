@@ -1,5 +1,6 @@
 Template.alliance_inventory.helpers({
     initializeData: function(params) {
+        var allianceId = params.allianceId;
         var selectedAllianceHandle = AllianceManager.selectedAllianceHandle(allianceId);
         return {
             alliance: one(selectedAllianceHandle),

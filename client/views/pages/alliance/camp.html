@@ -4,18 +4,23 @@
         <div class="container form-horizontal">
             <div class="row col-md-4">
                 {{#if allianceOfficer}}
+                <div>
                 <select>
                     {{#each availableCampLocations}}
                     <option value="{{dbCode}}">{{displayName}} ({{campRegion.displayName}})</option>
                     {{/each}}
                 </select>
                 <button class="buildCamp">Build Camp</button>
+                </div>
                 {{/if}}
                 <table class="table table-striped">
                     <tbody>
-                    {{#each camps}}
+                    {{#each allianceCamps}}
                         <tr>
-                            <td>{{campRegion}}&nbsp;{{currentLevel}}</td>
+                            <td>
+                                {{displayName}}
+                                {{campRegion}}&nbsp;{{currentLevel}}
+                            </td>
                         </tr>
                     {{/each}}
                     </tbody>
