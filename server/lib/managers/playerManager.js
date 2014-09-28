@@ -24,7 +24,7 @@ Meteor.startup(function(){
             var thatManager = this.thatManager;
             var userId = thatManager.userId;
             var player = thatManager.findOneCurrentPlayer();
-            Player.prototype.upsertFromUntrusted.call(player, updatedPlayerProfile);
+            player.upsertFromUntrusted(updatedPlayerProfile);
             if ( updatedPlayerProfile.allianceInviteCode != null) {
                 AllianceManager._assignPlayerToAlliance(player);
             }

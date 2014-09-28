@@ -1,6 +1,6 @@
 Template.player_settings.events({
     'click button.saveChanges' : function(event, template) {
-        var changes = getChangedInputFieldData(template);
+        var changes = getInputFieldData(template);
         PlayerManager.updatePlayerProfile(changes, function(error, result){
             clearChangedInputFieldData(template, error, result);
         });
@@ -15,7 +15,7 @@ Template.player_settings.helpers({
         };
         if ( currentPlayerHandle.ready()) {
             var currentPlayer = currentPlayerHandle.findOne();
-            initialData.alliance = AllianceManager.selectedAllianceHandle(currentPlayer.allianceId);
+            initialData.alliance = one(AllianceManager.selectedAllianceHandle(currentPlayer.allianceId));
         }
         return initialData;
     }
