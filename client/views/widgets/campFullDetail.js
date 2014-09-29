@@ -1,9 +1,11 @@
 Template.camp_fullDetail.helpers({
     upcomingStorableNeeds: function() {
-        debugger;
         var skillGeneral = this.skillSpecialization.skillGeneral;
-        var campStorable = CampStorable[skillGeneral];
+        var campStorable = CampStorable[skillGeneral.dbCode];
         return campStorable.slice(this.currentLevel);
+    },
+    storable : function() {
+        return Storables[this.key];
     }
 });
 

@@ -40,14 +40,6 @@
                     {{/if}}
                 </td>
             </tr>
-            <tr>
-                <td>Component Needs</td>
-                <td>
-                    {{#each upcomingStorableNeeds}}
-                        {{this}}
-                    {{/each}}
-                </td>
-            </tr>
             {{#if allianceOfficer}}
             <tr>
                 <td>
@@ -80,7 +72,6 @@
                     {{/if}}
                 </td>
             </tr>
-        {{priority}}
             <tr>
                 <td>Ok to garrison</td>
                 <td>
@@ -89,6 +80,18 @@
                     {{else}}
                     {{garrison}}
                     {{/if}}
+                </td>
+            </tr>
+            <tr>
+                <td>Component Needs</td>
+                <td>
+                    {{#each upcomingStorableNeeds}}
+                        <div>
+                        {{#each arrayify this}}
+                            {{value}} {{storable.displayName}}
+                        {{/each}}
+                        </div>
+                    {{/each}}
                 </td>
             </tr>
         </tbody>

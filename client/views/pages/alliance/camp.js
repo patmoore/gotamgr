@@ -8,12 +8,16 @@ Template.alliance_camp.helpers({
         if ( allianceCampsHandle.ready() ) {
             availableLocationsForAlliance = CampManager.availableLocationsForAlliance(params.allianceId);
         }
-        return {
+        var initialData = {
             currentPlayer: one(PlayerManager.currentPlayerHandle()),
             availableLocationsForAlliance : availableLocationsForAlliance,
             allianceCamps : allianceCampsHandle,
-            allianceId : params.allianceId
+            allianceId : params.allianceId,
         };
+        if ( params.campId ) {
+            initialData.selectedCamp = Camp.databaseTable.findOneById(params.campId);
+        }
+        return initialData;
     },
     allianceOfficer: function() {
         return this.currentPlayer && this.currentPlayer.allianceOfficer;

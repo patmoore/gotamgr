@@ -6,25 +6,37 @@ Meteor.startup(function(){
             var camp = Camp.prototype.upsertFromUntrusted(campData,
                 {
                     allianceId:allianceId,
-                    campLocation: campLocation
+                    campLocation: campLocation.dbCode
                 },
                 {
-                    allianceId:allianceId
+                    forcedValues:{
+                        allianceId:allianceId
+                    }
                 }
             );
             return camp;
         },
         updateCampInformationMethod: function(campInformation) {
-            var player = PlayerManager.findOneCurrentPlayer(this.userId);
+            var thatManager = this.thatManager;
+            var camp = thatManager._securityCheckOnCamp(this.userId, campInformation);
             var camp = Camp.databaseTable.findOneById(campInformation.id);
-            if ( camp.allianceId !== player.allianceId ) {
+            camp.upsertFromUntrusted(campInformation);
+            return camp;
+        },
+        deleteCampMethod: function(campInformation) {
+            var thatManager = this.thatManager;
+            var camp = thatManager._securityCheckOnCamp(this.userId, campInformation);
+            Camp.databaseTable.remove({_id:camp.id});
+        },
+        _securityCheckOnCamp: function(userId, campInformation) {
+            var player = PlayerManager.findOneCurrentPlayer(userId);
+            var camp = Camp.databaseTable.findOneById(campInformation.id);
+            if (camp.allianceId !== player.allianceId) {
                 throw new Meteor.Error(403, "Player not in correct alliance for camp");
-            } else if ( ! player.allianceOfficer ) {
+            } else if (!player.allianceOfficer) {
                 throw new Meteor.Error(403, "Player not alliance officer");
-            } else {
-                camp.upsertFromUntrusted(campInformation);
-                return camp;
             }
+            return camp;
         }
     });
 });
