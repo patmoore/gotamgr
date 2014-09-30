@@ -16,7 +16,9 @@
                                 {{#if this.allianceOfficer}}
                                 <td>
                                     <select name="allianceRole" data-inputfield>
-                                        {{#each AllianceRole}}<option value="{{this.dbCode}}">{{this.displayName}}</option>{{/each}}
+                                        {{#each AllianceRole}}
+                                        <option value="{{this.dbCode}}" {{isSelected this.dbCode ../allianceRole.dbCode}}>
+                                            {{this.displayName}}</option>{{/each}}
                                     </select>
                                 </td>
                                 {{else}}

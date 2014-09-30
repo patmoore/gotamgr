@@ -3,27 +3,26 @@ var allianceCampsDeps = new Deps.Dependency;
 
 Template.alliance_camp.helpers({
     initializeData: function(params) {
+        var initialData = initializeDataWithPlayer(params);
         var allianceCampsHandle = CampManager.allianceCampsHandle(params.allianceId);
         var availableLocationsForAlliance;
         if ( allianceCampsHandle.ready() ) {
             availableLocationsForAlliance = CampManager.availableLocationsForAlliance(params.allianceId);
         }
-        var initialData = {
-            currentPlayer: one(PlayerManager.currentPlayerHandle()),
+        _.extend(initialData, {
             availableLocationsForAlliance : availableLocationsForAlliance,
             allianceCamps : allianceCampsHandle,
-            allianceId : params.allianceId,
-        };
+        });
         if ( params.campId ) {
             initialData.selectedCamp = Camp.databaseTable.findOneById(params.campId);
         }
         return initialData;
     },
     allianceOfficer: function() {
-        return this.currentPlayer && this.currentPlayer.allianceOfficer;
+        return this.player && this.player.allianceOfficer;
     },
     allianceLeader: function() {
-        return this.currentPlayer && this.currentPlayer.allianceLeader;
+        return this.player && this.player.allianceLeader;
     }
 });
 

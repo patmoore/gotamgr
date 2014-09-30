@@ -7,7 +7,6 @@
  */
 _.extend(Template.su_navbar, {
     routes: function() {
-        var routePrefix = this.routePrefix || 'su_';
         var routeController = Router.current(true);
         if ( routeController == null) {
             return;
@@ -15,11 +14,11 @@ _.extend(Template.su_navbar, {
         var route = routeController.route;
         var currentNavigationAlias = route.options.navigationAlias;
 
-        var preliminaryPageNames = _.filter(_.keys(Router.routes), function(pageKey) { return pageKey.indexOf(routePrefix) === 0; });
-        var pageNames = _.filter(preliminaryPageNames, function(pageKey) {
-            var route = Router.routes[pageKey];
+        var preliminaryPageNames = _.keys(Router.routes);
+        var routes = _.filter(Router.routes, function(route) {
             // only display page in the toplevel navigation if the route has the same navigationAlias
-            if ( currentNavigationAlias === route.options.navigationAlias) {
+            if ( currentNavigationAlias === route.options.navigationAlias
+                || (_.isArray(route.options.navigationAliases) && _.contains(route.options.navigationAliases, currentNavigationAlias))) {
                 // look for any key (used to construct the path) that is not optional - TODO: look for the keys being set. (so we could display)
                 var nonoptionals = _.where(route.keys, {optional:false});
                 if ( nonoptionals === undefined) {
@@ -35,11 +34,8 @@ _.extend(Template.su_navbar, {
             }
             return false;
         });
-        return _.map(pageNames,
-            function(name){
-                return Router.routes[name];
-            }
-        );
+        debugger;
+        return routes;
     },
     data: function() {
         var routeController = Router.current(true);

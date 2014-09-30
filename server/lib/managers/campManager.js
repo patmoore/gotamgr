@@ -17,20 +17,22 @@ Meteor.startup(function(){
             return camp;
         },
         updateCampInformationMethod: function(campInformation) {
+            check(campInformation, Object);
+            check(campInformation.id, String);
             var thatManager = this.thatManager;
-            var camp = thatManager._securityCheckOnCamp(this.userId, campInformation);
-            var camp = Camp.databaseTable.findOneById(campInformation.id);
+            var camp = thatManager._securityCheckOnCamp(this.userId, campInformation.id);
             camp.upsertFromUntrusted(campInformation);
             return camp;
         },
-        deleteCampMethod: function(campInformation) {
+        deleteCampMethod: function(campId) {
+            check(campId, String);
             var thatManager = this.thatManager;
-            var camp = thatManager._securityCheckOnCamp(this.userId, campInformation);
+            var camp = thatManager._securityCheckOnCamp(this.userId, campId);
             Camp.databaseTable.remove({_id:camp.id});
         },
         _securityCheckOnCamp: function(userId, campInformation) {
             var player = PlayerManager.findOneCurrentPlayer(userId);
-            var camp = Camp.databaseTable.findOneById(campInformation.id);
+            var camp = Camp.databaseTable.findOneById(campId);
             if (camp.allianceId !== player.allianceId) {
                 throw new Meteor.Error(403, "Player not in correct alliance for camp");
             } else if (!player.allianceOfficer) {

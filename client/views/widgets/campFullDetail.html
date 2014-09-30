@@ -1,5 +1,7 @@
 <template name="camp_fullDetail">
     <div>
+        <form>
+            <input type="hidden" value="{{id}}">
         <table>
         <tbody>
             <tr>
@@ -96,6 +98,7 @@
             </tr>
         </tbody>
         </table>
-        <button class="saveChanges"></button>
+        <button class="saveChanges"></button> <button class="deleteCamp">Delete Camp</button>
+        </form>
     </div>
 </template>

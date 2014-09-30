@@ -1,12 +1,11 @@
 Template.alliance_inventory.helpers({
     initializeData: function(params) {
+        var initialData = initializeDataWithPlayer(params);
         var allianceId = params.allianceId;
-        var selectedAllianceHandle = AllianceManager.selectedAllianceHandle(allianceId);
-        return {
-            alliance: one(selectedAllianceHandle),
+        _.extend(initialData, {
             alliancePlayers: AllianceManager.alliancePlayers(allianceId),
             alliancePlayersInventory: AllianceManager.alliancePlayersInventoryHandle(allianceId)
-        };
+        });
     },
     total: function() {
         debugger;

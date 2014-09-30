@@ -11,7 +11,14 @@ Template.camp_fullDetail.helpers({
 
 Template.camp_fullDetail.events({
     'click .saveChanges': function(event, template) {
-        var inputDataFields = getInputDataFields(template);
+        var inputDataFields = getInputFieldData(template);
         CampManager.updateCampInformation(inputDataFields);
+    },
+    'click .deleteCamp': function(event, template) {
+        var inputDataFields = getInputFieldData(template);
+        var campId = inputDataFields.campId;
+        CampManager.deleteCamp(campId, function(error, data){
+
+        });
     }
 })
