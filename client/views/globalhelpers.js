@@ -11,6 +11,29 @@ _.each({
     debugTemplateHere: function() {
         debugger;
     },
+
+    // If you want to use a template with multiple routes, use this check as e.g.
+    // {{#if currentRouteNameEquals 'customer_foo'}}
+    // stuff
+    // {{/if}}
+    // {{#if currentRouteNameEquals 'su_foo'}}
+    // other stuff
+    // {{/if}}
+    // or something similar
+    currentRouteNameEquals: function(targetRouteName) {
+        var currentRouteName = Router.current().route.name;
+        return targetRouteName == currentRouteName;
+    },
+
+    /**
+     * in <select> html use:
+     * <option value="{{this.dbCode}}" {{isSelected this.dbCode selectedChallengeEntryStatus}}>
+     *
+     *     to set the selected option
+     * @param option
+     * @param arr
+     * @returns {*}
+     */
     isSelected: function(option, arr) {
         if (arr) {
             if (typeof(arr) === 'string' || typeof(arr) === 'number') {
@@ -28,12 +51,29 @@ _.each({
         return null;
     },
 
+    /**
+     * Used to check the currently selected radio:
+     *
+     * <input type="radio" value="{{RewardType.usd.dbCode}}" data-toggle="radio" data-inputfield name="rewardRewardType"
+     *  {{radioChecked RewardType.usd rewardType true}}> {{RewardType.usd.displayName}}
+     *
+     * @param value
+     * @param target
+     * @param isDefault
+     * @returns {*}
+     */
     radioChecked: function(value, target, isDefault) {
-        if ((!target && isDefault === true) || target == value) {
+        if ((target == null && isDefault === true) || target == value) {
             return { checked: 'checked'};
         }
         return null;
     },
+
+    // radioChecked(null, null, false) => checked b/c null == null
+    radioCheckedByDefault: function() {
+        return { checked: 'checked'};
+    },
+
     /**
      * {{#each arrayify myobject}}
      *
