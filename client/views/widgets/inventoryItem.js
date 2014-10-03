@@ -21,6 +21,15 @@ Template.inventoryItem.helpers({
         }
         return buildingNames.sort().join(',');
     },
+    adventures: function(options) {
+        var adventureNames = [];
+        if ( typeof(Storables[options].adventure) !== "undefined" ) {
+            Storables[options].adventure.forEach(function(adventure) {
+                adventureNames.push("V:"+adventure.volume+"L:"+adventure.level);
+            });
+        }
+        return adventureNames.sort().join(',');
+    },
     storableNeededForCamp: function(storable) {
         var storablesByCamp = StorablesByCamp[storable];
         debugger;

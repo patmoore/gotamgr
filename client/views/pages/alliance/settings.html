@@ -1,6 +1,7 @@
 <template name="alliance_settings">
     <nav class="navbar"><!-- spacer--></nav>
     <section>
+        {{#if allianceOfficer}}
         {{#with selectedAlliance}}
         <div class="container form-horizontal">
             <div class="row">
@@ -22,7 +23,11 @@
                 <input type="text" name="allianceOfficerInviteCode" data-inputfield>
             </div>
             {{/if}}
+            <div class="row">
+                <button class="saveChanges btn mbm btn-success"></button>
+            </div>
         </div>
         {{/with}}
+        {{/if}}
     </section>
 </template>

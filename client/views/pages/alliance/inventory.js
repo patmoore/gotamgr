@@ -3,12 +3,12 @@ Template.alliance_inventory.helpers({
         var initialData = initializeDataWithPlayer(params);
         var allianceId = params.allianceId;
         _.extend(initialData, {
-            alliancePlayers: AllianceManager.alliancePlayers(allianceId),
+            listAlliancePlayers: AllianceManager.alliancePlayersHandle(allianceId),
             alliancePlayersInventory: AllianceManager.alliancePlayersInventoryHandle(allianceId)
         });
     },
-    total: function() {
-        debugger;
-        return 0;
+    totalNeeded: function() {
+        // this is the storables
+        return 4;
     }
 });

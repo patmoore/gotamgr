@@ -92,6 +92,15 @@ Template.player_inventory.helpers({
         var buildingsString = buildingNames.sort().join(',');
         return buildingsString;
     },
+    adventures: function(storable) {
+        var adventureNames = [];
+        if ( typeof(storable.adventure) !== "undefined" ) {
+            storable.adventure.forEach(function(adventure) {
+                adventureNames.push("V:"+adventure.volume+"L:"+adventure.level);
+            });
+        }
+        return adventureNames.sort().join(',');
+    },
     storableNeededForCamp: function() {
         var storableKey = this;
         var storablesByCamp = StorablesByCamp[storableKey];

@@ -8,6 +8,7 @@ Template.alliance_camp.helpers({
         var availableLocationsForAlliance;
         if ( allianceCampsHandle.ready() ) {
             availableLocationsForAlliance = CampManager.availableLocationsForAlliance(params.allianceId);
+            debugger;
         }
         _.extend(initialData, {
             availableLocationsForAlliance : availableLocationsForAlliance,

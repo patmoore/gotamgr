@@ -7,10 +7,11 @@
                 <div>
                 <select>
                     {{#each availableCampLocations}}
+                    {{debugTemplateHere}}
                     <option value="{{dbCode}}">{{displayName}} ({{campRegion.displayName}})</option>
                     {{/each}}
                 </select>
-                <button class="buildCamp">Build Camp</button>
+                <button class="buildCamp btn mbm btn-success">Build Camp</button>
                 </div>
                 {{/if}}
                 <table class="table table-striped">

@@ -5,14 +5,14 @@
             <div class="row">
                 <div class="col-md-3 ">
                     <label for="buildPlanDisplayName">Build Plan</label><input name="displayName" data-inputfield placeholder="Easy to remember name">
-                    <button class="createNewBuildPlan">New</button>
+                    <button class="createNewBuildPlan btn mbm btn-success">New</button>
                     <div>Current Build Plans</div>
                     <div class="list-group">
                         {{#each currentPlayerBuildPlans}}
                         <!-- TODO: how to do drag/drop reordering -->
                         <div class="list-group-item">
                             <a href="{{pathFor 'player_buildPlan' playerId=../currentPlayer.id buildPlanId=id}}">{{displayName}}</a>
-                            <button class="btn btn-lg glyphicon glyphicon-trash deletePlayerBuildPlan" data-build-plan-id="{{id}}">Remove</button>
+                            <button class="btn btn-lg mbm btn-danger glyphicon glyphicon-trash deletePlayerBuildPlan" data-build-plan-id="{{id}}">Remove</button>
                         </div>
                         {{/each}}
                     </div>
@@ -24,7 +24,7 @@
                     <div class="">
                         <div class="block">{{displayName}}</div>
                         <div>
-                            <button class="btn btn-lg addToBuildInventory saveChanges"></button>
+                            <button class="btn btn-lg mbm btn-success addToBuildInventory saveChanges"></button>
                         </div>
                     </div>
                     <hr>
@@ -36,7 +36,7 @@
                         <option value="{{dbCode}}">{{displayName}}</option>
                         {{/each}}
                     </select>
-                    <button class="btn btn-lg glyphicon glyphicon-plus addToBuildInventory">Add</button>
+                    <button class="btn btn-lg mbm btn-success glyphicon glyphicon-plus addToBuildInventory">Add</button>
                     </div>
                     <div class="list-group">
                     {{#each arrayify buildDemands}}

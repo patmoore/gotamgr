@@ -34,7 +34,10 @@
                         <tbody>
                     {{#each storables}}
                         <tr>
-                            <td class="text-capitalize">{{this}}<br>{{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}</td>
+                            <td class="text-capitalize">{{this}}<br>
+                                {{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}
+                                {{#if adventures this}}<small>Built By: <span class="text-capitalize">{{adventures this }}</span></small>{{/if}}
+                            </td>
                             <td>Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
                             <td>
                                 {{#if storableNeededForCamp}}
@@ -73,8 +76,8 @@
                     </table>
                 </div>
                 <div class="col-md-3">
-                    <button id="saveInventory">Save Inventory</button>
-                    <button id="clearInventory">Clear Inventory</button>
+                    <button id="saveInventory btn mbm btn-success">Save Inventory</button>
+                    <button id="clearInventory btn mbm btn-success">Clear Inventory</button>
                 </div>
             </div>
         </div>

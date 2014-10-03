@@ -1,18 +1,32 @@
 <template name="alliance_inventory">
     <nav class="navbar"><!-- spacer--></nav>
     <section>
-        {{#with selectedAlliance}}
+        here 1
+        {{#with alliance}}
         <div class="container form-horizontal">
+            here2
             <h2>{{displayName}}</h2>
             <table class="table table-striped">
-                <thead><tr><th>Item</th><th>Total</th>
-                    {{#each alliancePlayers}}
-                        {{displayName}}
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Total</th>
+                        <th>Immediate<br>Future</th>
+                        <th>Expected From You</th>
+                    {{#each alliancePlayersInventory}}
+                        <th>{{displayName}} qq</th>
                     {{/each}}
                 </tr></thead>
                 {{#each storables}}
                 <tr class="row">
-                    <td>{{displayName}}</td><td>{{total}}</td>
+                    <td>{{displayName}}</td>
+                    <td>{{totalNeeded}}</td>
+                    <td>{{immediateFuture}}</td>
+                    <td>{{expectedFromYou}}</td>
+                    {{#each alliancePlayersInventory}}
+                    <th></th>
+                    {{/each}}
+
                 </tr>
                 {{/each}}
             </table>
