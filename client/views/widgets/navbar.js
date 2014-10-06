@@ -34,7 +34,6 @@ _.extend(Template.su_navbar, {
             }
             return false;
         });
-        debugger;
         return routes;
     },
     data: function() {

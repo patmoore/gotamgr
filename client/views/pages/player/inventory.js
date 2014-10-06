@@ -89,7 +89,7 @@ Template.player_inventory.helpers({
                 buildingNames.push(building.displayName);
             });
         }
-        var buildingsString = buildingNames.sort().join(',');
+        var buildingsString = buildingNames.sort().join(', ');
         return buildingsString;
     },
     adventures: function(storable) {
@@ -99,7 +99,7 @@ Template.player_inventory.helpers({
                 adventureNames.push("V:"+adventure.volume+"L:"+adventure.level);
             });
         }
-        return adventureNames.sort().join(',');
+        return adventureNames.sort().join(', ');
     },
     storableNeededForCamp: function() {
         var storableKey = this;

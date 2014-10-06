@@ -45,14 +45,21 @@
                         </div>
                     {{/each}}
                     </div>
-                    <div>Totals:
-                        <table class="table-striped">
-                            <tbody>
-                        {{#each arrayify totalsByStorable}}<tr><td>{{value}}</td><td>{{StorableByDbCode key}}</td></tr>{{/each}}
-                            </tbody>
-                        </table>
+                    <div class="col-md-3">
+                        <div>Totals:
+                            <hr>
+                            <table class="table-striped">
+                                <tbody>
+                            {{#each arrayify totalsByStorable}}<tr><td>{{value}}</td><td>{{StorableByDbCode key}}</td></tr>{{/each}}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                    <div class="col-md-9">
+                        Breakdown:
+                        <hr>
                     {{> _buildOrder componentBuildOrders=componentBuildOrders}}
+                    </div>
                     {{/with}}
                     {{else}}
                     Build Plans are a set of items that you would like to plan to build.

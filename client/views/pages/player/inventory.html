@@ -4,8 +4,14 @@
         <div class="container form-horizontal">
             <div class="row">
                 <h2>Inventory</h2>
-                <div class="col-md-12" >
-                    Enter or adjust your current inventory.
+                <div class="row">
+                    <div class="col-md-5" >
+                        Enter or adjust your current inventory.
+                    </div>
+                    <div class="col-md-7">
+                        <button id="saveInventory" class="btn mbm btn-success">Save Inventory</button>
+                        <button id="clearInventory" class="btn mbm btn-danger">Clear Inventory</button>
+                    </div>
                 </div>
                 <!--<div class="col-md-3">Show-->
                     <!--<select class="chosen-select showFilter">-->
@@ -22,62 +28,60 @@
                         <!--<option value="building">Buildings</option>-->
                     <!--</select>-->
                 <!--</div>-->
-                <div class="col-md-9">
-                    <table class="table-striped table table-condensed">
-                        <thead>
-                        <tr>
-                            <td>Storable</td>
-                            <td>Quantity</td>
-                            <td>Alliance Camp needs</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                    {{#each storables}}
-                        <tr>
-                            <td class="text-capitalize">{{this}}<br>
-                                {{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}
-                                {{#if adventures this}}<small>Built By: <span class="text-capitalize">{{adventures this }}</span></small>{{/if}}
-                            </td>
-                            <td>Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
-                            <td>
-                                {{#if storableNeededForCamp}}
-                                    {{#with storableNeededForCamp}}
-                                    {{#if totalNeeded}}
-                                        {{#each arrayify neededByCamp}}
-                                            Camp Location: {{key}}
-                                            {{#with value}}
-                                                ( {{currentLevel}} )
-                                                Total Needed: {{totalNeeded}}:
-                                                {{#each fromCurrentLevel}}
-                                                    {{this}}
-                                                {{/each}}
-                                            {{/with}}
-                                            <br>
-                                        {{/each}}
-                                        <br/>
-                                        Total Needed: {{totalNeeded}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table-striped table table-condensed">
+                            <thead>
+                            <tr>
+                                <td>Storable</td>
+                                <td>Quantity</td>
+                                <td>Alliance Camp needs</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                        {{#each storables}}
+                            <tr>
+                                <td class="text-capitalize">{{this}}<br>
+                                    {{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}
+                                    {{#if adventures this}}<small>Adventures: <span class="text-capitalize">{{adventures this }}</span></small>{{/if}}
+                                </td>
+                                <td>Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
+                                <td>
+                                    {{#if storableNeededForCamp}}
+                                        {{#with storableNeededForCamp}}
+                                        {{#if totalNeeded}}
+                                            {{#each arrayify neededByCamp}}
+                                                Camp Location: {{key}}
+                                                {{#with value}}
+                                                    ( {{currentLevel}} )
+                                                    Total Needed: {{totalNeeded}}:
+                                                    {{#each fromCurrentLevel}}
+                                                        {{this}}
+                                                    {{/each}}
+                                                {{/with}}
+                                                <br>
+                                            {{/each}}
+                                            <br/>
+                                            Total Needed: {{totalNeeded}}
+                                        {{/if}}
+                                        {{/with}}
                                     {{/if}}
-                                    {{/with}}
-                                {{/if}}
-                            </td>
-                            <td>
-                            {{#with buildPlan}}
-                            <div>
-                                {{#each buildOrders}}
-                                    <div>Duration: {{buildTime}}</div>
-                                    <div></div>
-                                {{/each}}
-                            </div>
-                            {{/with}}
-                            </td>
-                        </tr>
-                    {{/each}}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-3">
-                    <button id="saveInventory btn mbm btn-success">Save Inventory</button>
-                    <button id="clearInventory btn mbm btn-success">Clear Inventory</button>
+                                </td>
+                                <td>
+                                {{#with buildPlan}}
+                                <div>
+                                    {{#each buildOrders}}
+                                        <div>Duration: {{buildTime}}</div>
+                                        <div></div>
+                                    {{/each}}
+                                </div>
+                                {{/with}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
