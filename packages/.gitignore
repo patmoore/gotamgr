@@ -1,16 +1,5 @@
 /meteor-chosen
 /meteor-flat-ui
-/observatory
-/iron-router
-/npm
-/jquery-ui
-/observatory-apollo
-/observatory-galileo
 /meteor-collection-management
-/blaze-layout
 /externallibraries-client
-/livequery
-/SlickGrid
-/iron-layout
-/iron-core
-/iron-dynamic-template
+/jquery-ui

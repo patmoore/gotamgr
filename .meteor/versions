@@ -3,7 +3,6 @@ accounts-password@1.0.2
 accounts-ui-unstyled@1.1.2
 accounts-ui@1.1.1
 application-configuration@1.0.2
-arunoda:npm@0.2.6
 autoupdate@1.1.1
 base64@1.0.0
 binary-heap@1.0.0
@@ -45,6 +44,8 @@ meteor-chosen@0.0.0
 meteor-collection-management@1.0.23
 meteor-platform@1.1.1
 meteor@1.1.1
+meteorhacks:async@1.0.0
+meteorhacks:npm@1.2.0
 minifiers@1.1.0
 minimongo@1.0.3
 mobile-status-bar@1.0.0
@@ -52,6 +53,7 @@ mongo@1.0.6
 mrt:jquery-ui@1.9.2
 mrt:moment@2.8.1
 npm-bcrypt@0.7.7
+npm-container@1.0.0
 observe-sequence@1.0.2
 ordered-dict@1.0.0
 random@1.0.0

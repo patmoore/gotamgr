@@ -4,9 +4,8 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-arunoda:npm@0.2.6
 jquery
-mrt:jquery-ui@1.9.2
+mrt:jquery-ui
 less
 underscore
 meteor-chosen
@@ -20,8 +19,11 @@ bootstrap
 email
 accounts-base
 externallibraries-client
-sergeyt:livequery@1.3.7
+sergeyt:livequery
 browser-policy
 iron:router
 mrt:moment
+meteorhacks:npm
 
+
+npm-container
