@@ -8,7 +8,6 @@ Template.alliance_camp.helpers({
         var availableLocationsForAlliance;
         if ( allianceCampsHandle.ready() ) {
             availableLocationsForAlliance = CampManager.availableLocationsForAlliance(params.allianceId);
-            debugger;
         }
         _.extend(initialData, {
             availableLocationsForAlliance : availableLocationsForAlliance,
@@ -30,6 +29,7 @@ Template.alliance_camp.helpers({
 Template.alliance_camp.events({
    'click .buildCamp': function(event, template) {
        var jsonInput = getInputFieldData();
+       var allianceId = getRouterParams().allianceId;
        AllianceManager.buildCamp(allianceId, jsonInput);
    }
 });

@@ -6,8 +6,7 @@
                 {{#if allianceOfficer}}
                 <div>
                 <select>
-                    {{#each availableCampLocations}}
-                    {{debugTemplateHere}}
+                    {{#each availableLocationsForAlliance}}
                     <option value="{{dbCode}}">{{displayName}} ({{campRegion.displayName}})</option>
                     {{/each}}
                 </select>
