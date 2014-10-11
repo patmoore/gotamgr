@@ -1,6 +1,3 @@
-var allianceCampsHandle;
-var allianceCampsDeps = new Deps.Dependency;
-
 Template.alliance_camp.helpers({
     initializeData: function(params) {
         var initialData = initializeDataWithPlayer(params);
@@ -33,14 +30,3 @@ Template.alliance_camp.events({
        AllianceManager.buildCamp(allianceId, jsonInput);
    }
 });
-
-Template.alliance_camp.rendered = function() {
-    var template = this;
-    this.autorun(function(){
-        var params = getRouterParams();
-        allianceCampsHandle = CampManager.allianceCampsHandle(params.allianceId);
-        if ( allianceCampsHandle && allianceCampsHandle.ready()) {
-            allianceCampsDeps.changed();
-        }
-    });
-}

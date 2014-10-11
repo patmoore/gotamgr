@@ -15,10 +15,13 @@ Template.camp_fullDetail.events({
         CampManager.updateCampInformation(inputDataFields);
     },
     'click .deleteCamp': function(event, template) {
+        var params = getRouterParams();
         var inputDataFields = getInputFieldData(template);
         var campId = inputDataFields.campId;
         CampManager.deleteCamp(campId, function(error, data){
-
+            if ( !error) {
+                Router.go('alliance_camp', {allianceId:params.allianceId});
+            }
         });
     }
 })

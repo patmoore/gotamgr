@@ -2,106 +2,112 @@
     <div>
         <form>
             <input type="hidden" value="{{id}}" name="campId" data-inputfield>
-        <table>
-        <tbody>
-            <tr>
-                <td>Name</td>
-                <td>
-                    {{#if allianceOfficer}}
+
+            <div>
+                <button class="saveChanges btn mbm btn-success"></button>
+                <button class="deleteCamp btn mbm btn-danger">Delete Camp</button>
+            </div>
+
+            <table>
+                <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        {{#if allianceOfficer}}
                         <input name="displayName" type="text" value="{{displayName}}" data-inputfield>
-                    {{else}}
+                        {{else}}
                         {{displayName}}
-                    {{/if}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Location:
-                </td>
-                <td>
-                    {{campLocation}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Nature of Camp:
-                </td>
-                <td>
-                    {{skillSpecialization}}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Camp Level
-                </td>
-                <td>
-                    {{#if allianceOfficer}}
-                    <input name="currentLebvel" type="number" value="{{currentLevel}}" data-inputfield>
-                    {{else}}
-                    {{currentLevel}}
-                    {{/if}}
-                </td>
-            </tr>
-            {{#if allianceOfficer}}
-            <tr>
-                <td>
-                    Officer Only Notes (Note: A computer-knowledgeable individual could read the notes)
-                </td>
-                <td>
-                    <textarea name="officerOnlyNotes" data-inputfield>{{officerOnlyNotes}}</textarea>
-                </td>
-            </tr>
-            {{/if}}
-            <tr>
-                <td>
-                    Alliance Notes
-                </td>
-                <td>
-                    {{#if allianceOfficer}}
-                    <textarea name="allianceNotes" data-inputfield>{{allianceNotes}}</textarea>
-                    {{else}}
-                    {{allianceNotes}}
-                    {{/if}}
-                </td>
-            </tr>
-            <tr>
-                <td>Priority</td>
-                <td>
-                    {{#if allianceOfficer}}
-                    <input name="priority" type="number" data-inputfield>{{allianceNotes}}
-                    {{else}}
-                    {{priority}}
-                    {{/if}}
-                </td>
-            </tr>
-            <tr>
-                <td>Ok to garrison</td>
-                <td>
-                    {{#if allianceOfficer}}
-                    <input name="garrison" type="checkbox" data-inputfield>
-                    {{else}}
-                    {{garrison}}
-                    {{/if}}
-                </td>
-            </tr>
-            <tr>
-                <td>Component Needs</td>
-                <td>
-                    {{#each upcomingStorableNeeds}}
-                        <div>
-                        {{#each arrayify this}}
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Location:
+                    </td>
+                    <td>
+                        {{campLocation}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Nature of Camp:
+                    </td>
+                    <td>
+                        {{skillSpecialization}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Camp Level
+                    </td>
+                    <td>
+                        {{#if allianceOfficer}}
+                        <input name="currentLebvel" type="number" value="{{currentLevel}}" data-inputfield>
+                        {{else}}
+                        {{currentLevel}}
+                        {{/if}}
+                    </td>
+                </tr>
+                {{#if allianceOfficer}}
+                <tr>
+                    <td>
+                        Officer Only Notes (Note: A computer-knowledgeable individual could read the notes)
+                    </td>
+                    <td>
+                        <textarea name="officerOnlyNotes" data-inputfield>{{officerOnlyNotes}}</textarea>
+                    </td>
+                </tr>
+                {{/if}}
+                <tr>
+                    <td>
+                        Alliance Notes
+                    </td>
+                    <td>
+                        {{#if allianceOfficer}}
+                        <textarea name="allianceNotes" data-inputfield>{{allianceNotes}}</textarea>
+                        {{else}}
+                        {{allianceNotes}}
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Priority</td>
+                    <td>
+                        {{#if allianceOfficer}}
+                        <input name="priority" type="number" data-inputfield>{{allianceNotes}}
+                        {{else}}
+                        {{priority}}
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ok to garrison</td>
+                    <td>
+                        {{#if allianceOfficer}}
+                        <input name="garrison" type="checkbox" data-inputfield>
+                        {{else}}
+                        {{garrison}}
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Component Needs</td>
+                    <td>
+                        <table><thead></thead><tbody>
+                        {{#each upcomingStorableNeeds}}
+                        <tr>
+                            {{#each arrayify this}}
+                            <td class="mbm">
                             {{value}} {{storable.displayName}}
+                            </td>
+                            {{/each}}
+                        </tr>
                         {{/each}}
-                        </div>
-                    {{/each}}
-                </td>
-            </tr>
-        </tbody>
-        </table>
-        <div>
-            <button class="saveChanges btn mbm btn-success"></button>
-            <button class="deleteCamp btn mbm btn-danger">Delete Camp</button>
-        </div>
+                        </tbody></table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </form>
     </div>
 </template>

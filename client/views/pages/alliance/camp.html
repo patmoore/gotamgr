@@ -19,7 +19,7 @@
                         <tr>
                             <td>
                                 <a href="{{pathFor 'alliance_camp' allianceId=allianceId campId=id}}">{{displayName}}
-                                {{campLocation}}&nbsp;{{skillSpecialization}}&nbsp;{{currentLevel}}</a>
+                                    {{campLocation}} ({{campLocation.campRegion.displayName}})&nbsp;{{skillSpecialization}}&nbsp;{{currentLevel}}</a>
                             </td>
                         </tr>
                     {{/each}}

@@ -33,6 +33,7 @@ Meteor.startup(function(){
                     _id: callInfo.args[0].id,
                     allianceId: player.allianceId
                 });
+                return true;
             }
         },
         deleteCamp: {
@@ -49,6 +50,7 @@ Meteor.startup(function(){
                     _id: callInfo.args[0],
                     allianceId: player.allianceId
                 });
+                return true;
             }
         },
     });

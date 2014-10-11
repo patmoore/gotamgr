@@ -1,11 +1,8 @@
 <template name="alliance_inventory">
     <nav class="navbar"><!-- spacer--></nav>
     <section>
-        here 1
-        {{#with alliance}}
         <div class="container form-horizontal">
-            here2
-            <h2>{{displayName}}</h2>
+            <h2>{{alliance.displayName}}</h2>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -17,6 +14,7 @@
                         <th>{{displayName}} qq</th>
                     {{/each}}
                 </tr></thead>
+                <tbody>
                 {{#each storables}}
                 <tr class="row">
                     <td>{{displayName}}</td>
@@ -29,8 +27,8 @@
 
                 </tr>
                 {{/each}}
+                </tbody>
             </table>
         </div>
-        {{/with}}
     </section>
 </template>
