@@ -7,14 +7,13 @@ Template.player_buildPlan.events({
     },
     'click .addToBuildInventory': function (event, template) {
         var rawBuildPlanChanges = getInputFieldData(template);
-        delete rawBuildPlanChanges.displayName;
+        var storable = rawBuildPlanChanges.storable;
+        var quantity = rawBuildPlanChanges.storable_quantity;
         var buildPlanChanges = {};
-        if (_.isNumber(rawBuildPlanChanges.quantity)) {
-            buildPlanChanges[rawBuildPlanChanges.storable] = rawBuildPlanChanges.quantity;
+        if (_.isNumber(quantity)) {
+            buildPlanChanges[storable] = quantity;
         }
-        delete rawBuildPlanChanges.storable;
-        delete rawBuildPlanChanges.quantity;
-        _.extend(buildPlanChanges, rawBuildPlanChanges);
+        _.extend(buildPlanChanges, _.omit(rawBuildPlanChanges, 'displayName', 'storable', 'storable_quantity'));
         BuildPlanManager.addToBuildInventory(this.id, buildPlanChanges, clearChangedInputFieldData.bind(null, template));
     },
     'click .deletePlayerBuildPlan': function (event, template) {

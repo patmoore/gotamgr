@@ -21,6 +21,8 @@
 .saveChanges:before {
     content: "Save Changes";
 }
+/*
 .userChanged:after {
     content: "(changed)";
 }
+*/

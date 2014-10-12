@@ -3,20 +3,22 @@
         <form>
             <input type="hidden" value="{{id}}" name="campId" data-inputfield>
 
+            {{#if this.allianceOfficer}}
             <div>
                 <button class="saveChanges btn mbm btn-success"></button>
                 <button class="deleteCamp btn mbm btn-danger">Delete Camp</button>
             </div>
+            {{/if}}
 
             <table>
                 <tbody>
                 <tr>
                     <td>Name</td>
                     <td>
-                        {{#if allianceOfficer}}
-                        <input name="displayName" type="text" value="{{displayName}}" data-inputfield>
+                        {{#if this.allianceOfficer}}
+                        <input name="displayName" type="text" value="{{camp.displayName}}" data-inputfield>
                         {{else}}
-                        {{displayName}}
+                        {{camp.displayName}}
                         {{/if}}
                     </td>
                 </tr>
@@ -25,7 +27,7 @@
                         Location:
                     </td>
                     <td>
-                        {{campLocation}}
+                        {{camp.campLocation}}
                     </td>
                 </tr>
                 <tr>
@@ -33,7 +35,7 @@
                         Nature of Camp:
                     </td>
                     <td>
-                        {{skillSpecialization}}
+                        {{camp.skillSpecialization}}
                     </td>
                 </tr>
                 <tr>
@@ -41,52 +43,52 @@
                         Camp Level
                     </td>
                     <td>
-                        {{#if allianceOfficer}}
-                        <input name="currentLebvel" type="number" value="{{currentLevel}}" data-inputfield>
+                        {{#if this.allianceOfficer}}
+                        <input name="currentLevel" type="number" value="{{camp.currentLevel}}" data-inputfield>
                         {{else}}
-                        {{currentLevel}}
+                        {{camp.currentLevel}}
                         {{/if}}
                     </td>
                 </tr>
-                {{#if allianceOfficer}}
+                {{#if this.allianceOfficer}}
                 <tr>
                     <td>
-                        Officer Only Notes (Note: A computer-knowledgeable individual could read the notes)
+                        Officer Only Notes<br><small>(Note: A computer-knowledgeable individual could read the notes)</small>
                     </td>
                     <td>
-                        <textarea name="officerOnlyNotes" data-inputfield>{{officerOnlyNotes}}</textarea>
+                        <textarea name="officerOnlyNotes" data-inputfield>{{camp.officerOnlyNotes}}</textarea>
                     </td>
                 </tr>
                 {{/if}}
                 <tr>
                     <td>
-                        Alliance Notes
+                        Alliance Member Notes
                     </td>
                     <td>
-                        {{#if allianceOfficer}}
-                        <textarea name="allianceNotes" data-inputfield>{{allianceNotes}}</textarea>
+                        {{#if this.allianceOfficer}}
+                        <textarea name="allianceMemberNotes" data-inputfield>{{camp.allianceMemberNotes}}</textarea>
                         {{else}}
-                        {{allianceNotes}}
+                        {{camp.allianceMemberNotes}}
                         {{/if}}
                     </td>
                 </tr>
                 <tr>
                     <td>Priority</td>
                     <td>
-                        {{#if allianceOfficer}}
-                        <input name="priority" type="number" data-inputfield>{{allianceNotes}}
+                        {{#if this.allianceOfficer}}
+                        <input name="priority" type="number" data-inputfield value="{{camp.priority}}">
                         {{else}}
-                        {{priority}}
+                        {{camp.priority}}
                         {{/if}}
                     </td>
                 </tr>
                 <tr>
                     <td>Ok to garrison</td>
                     <td>
-                        {{#if allianceOfficer}}
-                        <input name="garrison" type="checkbox" data-inputfield>
+                        {{#if this.allianceOfficer}}
+                        <input name="garrison" type="checkbox" {{radioChecked camp.garrison true}} data-inputfield>
                         {{else}}
-                        {{garrison}}
+                        {{garrisonDisplay}}
                         {{/if}}
                     </td>
                 </tr>
@@ -98,7 +100,12 @@
                         <tr>
                             {{#each arrayify this}}
                             <td class="mbm">
-                            {{value}} {{storable.displayName}}
+                                {{#if ../../allianceOfficer}}
+                                {{>storable_selection quantity=value selectedStorable=storable storableKey='fff' storables=Storables}}
+                                {{else}}
+                                {{value}}
+                                {{storable.displayName}}
+                                {{/if}}
                             </td>
                             {{/each}}
                         </tr>

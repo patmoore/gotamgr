@@ -1,0 +1,8 @@
+<template name="storable_selection">
+    <input type="number" name="{{storableKey}}_quantity" value="{{quantity}}" data-inputfield >
+    <select name="{{storableKey}}" data-inputfield>
+        {{#each this.storables}}
+        <option value="{{dbCode}}" {{isSelected this.dbCode selectedStorable.dbCode}}>{{displayName}}</option>
+        {{/each}}
+    </select>
+</template>

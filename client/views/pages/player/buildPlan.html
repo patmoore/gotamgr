@@ -30,12 +30,7 @@
                     <hr>
                     <div>
                     I need to build
-                    <input type="number" name="quantity" data-inputfield >
-                    <select name="storable" data-inputfield>
-                        {{#each StorableInBuildings}}
-                        <option value="{{dbCode}}">{{displayName}}</option>
-                        {{/each}}
-                    </select>
+                    {{>storable_selection storableKey='storable' storables=StorableInBuildings }}
                     <button class="btn btn-lg mbm btn-success glyphicon glyphicon-plus addToBuildInventory">Add</button>
                     </div>
                     <div class="list-group">

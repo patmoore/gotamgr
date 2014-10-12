@@ -4,6 +4,11 @@ Meteor.startup(function(){
         /* called only via Alliance Manager */
         _buildCamp: function(allianceId, campData) {
             var campLocation = campData.campLocation;
+
+            // make a copy of the camp storable needs ( so that an alliance can adjust as needed the requirements )
+            var skillGeneralDbCode = campData.skillSpecialization.skillGeneral.dbCode;
+            campData.storableNeeds = EJSON.parse(EJSON.stringify(CampStorable[skillGeneralDbCode]));
+
             var camp = Camp.prototype.upsertFromUntrusted(campData,
                 {
                     allianceId:allianceId,

@@ -1,11 +1,19 @@
 Template.camp_fullDetail.helpers({
     upcomingStorableNeeds: function() {
-        var skillGeneral = this.skillSpecialization.skillGeneral;
-        var campStorable = CampStorable[skillGeneral.dbCode];
-        return campStorable.slice(this.currentLevel);
+        debugger;
+        var skillGeneral = this.camp.skillSpecialization.skillGeneral;
+        var campStorable = this.camp.storableNeeds;//CampStorable[skillGeneral.dbCode];
+        return campStorable.slice(this.camp.currentLevel);
+    },
+
+    garrisonDisplay: function() {
+        return this.camp.garrison? "Yes":"No";
     },
     storable : function() {
         return Storables[this.key];
+    },
+    Storables : function() {
+        return Storables.symbols();
     }
 });
 

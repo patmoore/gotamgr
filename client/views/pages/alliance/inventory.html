@@ -11,13 +11,13 @@
                         <th>Immediate<br>Future</th>
                         <th>Expected From You</th>
                     {{#each alliancePlayersInventory}}
-                        <th>{{displayName}} qq</th>
+                        <th>{{alliancePlayerDisplayName}}</th>
                     {{/each}}
                 </tr></thead>
                 <tbody>
-                {{#each storables}}
+                {{#each arrayify storables}}
                 <tr class="row">
-                    <td>{{displayName}}</td>
+                    <td>{{value.displayName}}</td>
                     <td>{{totalNeeded}}</td>
                     <td>{{immediateFuture}}</td>
                     <td>{{expectedFromYou}}</td>

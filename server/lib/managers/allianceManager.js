@@ -1,13 +1,5 @@
 Meteor.startup(function(){
     _.extend(AllianceManagerType.prototype, {
-        alliancePlayersInventoryCursor: function(allianceId) {
-            var thatManager = this.thatManager;
-            var players = thatManager.findFetchAlliancePlayers(allianceId);
-            var playerIds = _.map(players, function(player) {
-                return player.id;
-            });
-            return Inventory.databaseTable.findByPlayerId(playerIds);
-        },
         _assignPlayerToAlliance: function(player) {
             var alliance = Alliance.databaseTable.findOneByAllianceInviteCode(player.allianceInviteCode);
             if ( alliance ) {

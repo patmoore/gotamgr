@@ -28,9 +28,7 @@
             </div>
             {{#if selectedCamp}}
             <div class="row col-md-8">
-                {{#with selectedCamp}}
-                {{> camp_fullDetail }}
-                {{/with}}
+                {{> camp_fullDetail camp=selectedCamp allianceOfficer=allianceOfficer}}
             </div>
             {{/if}}
         </div>
