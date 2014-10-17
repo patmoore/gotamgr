@@ -8,11 +8,10 @@ jquery
 mrt:jquery-ui
 less
 underscore
-meteor-chosen
 service-configuration
 http
 spiderable
-meteor-collection-management
+patmoore:meteor-collection-management
 accounts-ui
 accounts-password
 bootstrap
