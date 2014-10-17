@@ -14,25 +14,4 @@ Meteor.startup(function() {
     honorable.upsertFromUntrusted({displayName: 'The Honorable',
         allianceInviteCode: 'honorable'
     });
-        camp = CampManager._buildCamp(honorable.id, {
-            campLocation: CampLocation.IronmansBay,
-            skillSpecialization: SkillSpecialization.Aid,
-            currentLevel: 1
-        });
-        camp = CampManager._buildCamp(honorable.id, {
-            campLocation: CampLocation.IronmansBay,
-            skillSpecialization: SkillSpecialization.Aid,
-            currentLevel: 1
-        });
-        camp = CampManager._buildCamp(honorable.id, {
-            campLocation: CampLocation.GreatWyk,
-            skillSpecialization: SkillSpecialization.Spy,
-            currentLevel: 1
-        });
-        camp = CampManager._buildCamp(honorable.id, {
-            campLocation: CampLocation.Harlaw,
-            skillSpecialization: SkillSpecialization.Barter,
-            currentLevel: 1
-        });
-
 });
