@@ -26,7 +26,6 @@ Template.alliance_camp.helpers({
 Template.alliance_camp.events({
    'click .buildCamp': function(event, template) {
        var jsonInput = getInputFieldData();
-       var allianceId = getRouterParams().allianceId;
-       AllianceManager.buildCamp(allianceId, jsonInput);
+       CampManager.buildCamp(jsonInput);
    }
 });

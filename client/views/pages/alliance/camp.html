@@ -2,17 +2,7 @@
     <nav class="navbar"><!-- spacer--></nav>
     <section>
         <div class="container form-horizontal">
-            <div class="row col-md-4">
-                {{#if allianceOfficer}}
-                <div>
-                <select>
-                    {{#each availableLocationsForAlliance}}
-                    <option value="{{dbCode}}">{{displayName}} ({{campRegion.displayName}})</option>
-                    {{/each}}
-                </select>
-                <button class="buildCamp btn mbm btn-success">Build Camp</button>
-                </div>
-                {{/if}}
+            <div class="row col-md-3">
                 <table class="table table-striped">
                     <tbody>
                     {{#each allianceCamps}}
@@ -25,9 +15,19 @@
                     {{/each}}
                     </tbody>
                 </table>
+                {{#if allianceOfficer}}
+                <div>
+                    <select>
+                        {{#each availableLocationsForAlliance}}
+                        <option value="{{dbCode}}">{{displayName}} ({{campRegion.displayName}})</option>
+                        {{/each}}
+                    </select>
+                    <button class="buildCamp btn mbm btn-success">Build Camp</button>
+                </div>
+                {{/if}}
             </div>
             {{#if selectedCamp}}
-            <div class="row col-md-8">
+            <div class="row col-md-9">
                 {{> camp_fullDetail camp=selectedCamp allianceOfficer=allianceOfficer}}
             </div>
             {{/if}}

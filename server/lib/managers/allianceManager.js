@@ -57,16 +57,6 @@ Meteor.startup(function(){
             }
         },
 
-        buildCamp: function(campData) {
-            var player = PlayerManager.findOneCurrentPlayer();
-            if ( player != null ) {
-                var allianceId = player.allianceId;
-                var camp = CampManager._buildCamp(allianceId, campData);
-                return camp;
-            } else {
-                throw new Meteor.Error('No signed on player');
-            }
-        },
         createAlliance: {
             method: function() {
                 var thatManager = this.thatManager;

@@ -35,7 +35,15 @@
                         Nature of Camp:
                     </td>
                     <td>
+                        {{#if this.allianceOfficer}}
+                        <select name="skillSpecialization" data-inputfield>
+                            {{#each SkillSpecialization}}
+                            <option value="{{dbCode}}" {{isSelected this.dbCode camp.skillSpecialization.dbCode}}>{{displayName}}</option>
+                            {{/each}}
+                        </select>
+                        {{else}}
                         {{camp.skillSpecialization}}
+                        {{/if}}
                     </td>
                 </tr>
                 <tr>
@@ -53,7 +61,7 @@
                 {{#if this.allianceOfficer}}
                 <tr>
                     <td>
-                        Officer Only Notes<br><small>(Note: A computer-knowledgeable individual could read the notes)</small>
+                        Officer Only Notes
                     </td>
                     <td>
                         <textarea name="officerOnlyNotes" data-inputfield>{{camp.officerOnlyNotes}}</textarea>
@@ -95,13 +103,20 @@
                 <tr>
                     <td>Component Needs</td>
                     <td>
-                        <table><thead></thead><tbody>
+                        <table><thead>
+                        <tr>
+                            <td>Silver</td>
+                            <td>Quantity/Item</td>
+                            <td>Quantity/Item</td>
+                            <td>Quantity/Item</td>
+                        </tr>
+                        </thead><tbody>
                         {{#each upcomingStorableNeeds}}
                         <tr>
                             {{#each arrayify this}}
                             <td class="mbm">
                                 {{#if ../../allianceOfficer}}
-                                {{>storable_selection quantity=value selectedStorable=storable storableKey='fff' storables=Storables}}
+                                {{>storable_selection quantity=value selectedStorable=storable storableKey='storableNeeds_{{../index}}_{{index}}' storables=Storables}}
                                 {{else}}
                                 {{value}}
                                 {{storable.displayName}}

@@ -14,12 +14,16 @@ Template.camp_fullDetail.helpers({
     },
     Storables : function() {
         return Storables.symbols();
+    },
+    SkillSpecialization: function() {
+        return SkillSpecialization.symbols();
     }
 });
 
 Template.camp_fullDetail.events({
     'click .saveChanges': function(event, template) {
         var inputDataFields = getInputFieldData(template);
+        debugger;
         CampManager.updateCampInformation(inputDataFields);
     },
     'click .deleteCamp': function(event, template) {

@@ -1,33 +1,45 @@
 
 Meteor.startup(function(){
     _.extend(CampManagerType.prototype, {
-        /* called only via Alliance Manager */
-        _buildCamp: function(allianceId, campData) {
-            var campLocation = campData.campLocation;
+        buildCamp: {
+            method: function (campData, allianceId) {
+                var campLocation = campData.campLocation;
 
-            // make a copy of the camp storable needs ( so that an alliance can adjust as needed the requirements )
-            var skillGeneralDbCode = campData.skillSpecialization.skillGeneral.dbCode;
-            campData.storableNeeds = EJSON.parse(EJSON.stringify(CampStorable[skillGeneralDbCode]));
-
-            var camp = Camp.prototype.upsertFromUntrusted(campData,
-                {
-                    allianceId:allianceId,
-                    campLocation: campLocation.dbCode
-                },
-                {
-                    forcedValues:{
-                        allianceId:allianceId
+                var camp = Camp.prototype.upsertFromUntrusted(campData,
+                    {
+                        allianceId: allianceId,
+                        campLocation: campLocation.dbCode
+                    },
+                    {
+                        forcedValues: {
+                            allianceId: allianceId
+                        }
                     }
+                );
+                return camp;
+            },
+            permissionCheck: function(callInfo) {
+
+                var player = PlayerManager.findOneCurrentPlayer();
+                if (player != null) {
+                    var allianceId = player.allianceId;
+                    callInfo.args.push(allianceId);
                 }
-            );
-            return camp;
+            }
         },
         updateCampInformation:{
             method: function(campInformation, lookup) {
+                var thatManager = this.thatManager;
                 check(campInformation, Object);
                 check(campInformation.id, String);
+                var camp = Camp.databaseTable.find(lookup);
                 debugger;
-                var thatManager = this.thatManager;
+
+                // make a copy of the camp storable needs ( so that an alliance can adjust as needed the requirements )
+                if( campInformation.skillSpecialization != camp.skillSpecialization) {
+                    var skillGeneralDbCode = campInformation.skillSpecialization.skillGeneral.dbCode;
+                    campData.storableNeeds = EJSON.parse(EJSON.stringify(CampStorable[skillGeneralDbCode]));
+                }
                 Camp.upsertFromUntrusted(campInformation, lookup);
                 return camp;
             },
