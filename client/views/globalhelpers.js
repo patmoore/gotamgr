@@ -1,3 +1,25 @@
+
+getRouterParams = function() {
+    var router = Router.current(true);
+    if ( router && router.params) {
+        var paramsObj = _.object(_.map(Object.keys(router.params), function(e) {
+            return [e, router.params[e]];
+        }));
+        return paramsObj;
+    } else {
+        return {};
+    }
+};
+getRouteName = function() {
+    return Router.current().route.name;
+};
+getTemplateData = function(key) {
+    if ( key ) {
+        return Template.instance().data[key];
+    } else {
+        return Template.instance().data;
+    }
+};
 /**
  * When you determine that a helper is universal. Move the definition into this array to have the function get registered
  * automatically.
@@ -24,6 +46,9 @@ _.each({
         var currentRouteName = Router.current().route.name;
         return targetRouteName == currentRouteName;
     },
+    routeName: getRouteName,
+    routeParams: getRouterParams,
+    templateData: getTemplateData,
 
     /**
      * in <select> html use:
@@ -31,18 +56,18 @@ _.each({
      *
      *     to set the selected option
      * @param option
-     * @param arr
-     * @returns {*}
+     * @param currentlySelected
+     * @returns { selected : "selected"} or null
      */
-    isSelected: function(option, arr) {
-        if (arr) {
-            if (typeof(arr) === 'string' || typeof(arr) === 'number') {
-                if (option == arr) {
+    isSelected: function(option, currentlySelected) {
+        if (currentlySelected) {
+            if (typeof(currentlySelected) === 'string' || typeof(currentlySelected) === 'number') {
+                if (option == currentlySelected) {
                     return { selected : "selected"};
                 }
             } else {
-                for (var i in arr) {
-                    if (option == arr[i]) {
+                for (var i in currentlySelected) {
+                    if (option == currentlySelected[i]) {
                         return { selected : "selected"};
                     }
                 }
@@ -82,26 +107,15 @@ _.each({
      */
     arrayify: function(obj){
         var result = [];
+        var index = 0;
         for (var key in obj) {
-            result.push({key:key,value:obj[key]});
+            result.push({key:key,value:obj[key],index:index++});
         }
         return result;
     }
 }, function(func, helperKey) {
-    UI.registerHelper(helperKey, func);
+    Template.registerHelper(helperKey, func);
 });
-
-getRouterParams = function() {
-    var router = Router.current(true);
-    if ( router && router.params) {
-        var paramsObj = _.object(_.map(Object.keys(router.params), function(e) {
-            return [e, router.params[e]];
-        }));
-        return paramsObj;
-    } else {
-        return {};
-    }
-};
 
 // HACK PATM 16 may 2014: Sadly UI.body.events() does not work to add these event handlers. :-(
 DefaultEventHandlers = {
@@ -133,7 +147,12 @@ DefaultEventHandlers = {
         $('.saveChanges').removeAttr('disabled');
     }
 };
-
+/**
+ * Name separated with '.' (use _.deep() )
+ * @param jQuerySelected
+ * @returns {{}}
+ * @private
+ */
 var _getInputFieldData = function(jQuerySelected) {
     var changeMap = {};
     jQuerySelected.each(function(index, element) {
@@ -158,7 +177,7 @@ var _getInputFieldData = function(jQuerySelected) {
         } else {
             value = elemValue;
         }
-        changeMap[key] = value;
+        _.deep(changeMap, key, value);
     });
     return changeMap;
 }
