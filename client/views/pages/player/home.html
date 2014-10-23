@@ -3,14 +3,12 @@
     <section>
         <div class="container form-container">
             <div class="row mtl pll prl">
-            {{#with currentPlayer}}
                 <h2>Current Build Needs</h2>
                 {{#if currentPlayerBuildPlans}}
                     {{#each currentPlayerBuildPlans}}
                         <div><a href="{{pathFor 'player_buildPlan' playerId=playerId buildPlanId=id}}">{{displayName}}</a></div>
                     {{/each}}
                 {{/if}}
-            {{/with}}
             </div>
         </div>
     </section>

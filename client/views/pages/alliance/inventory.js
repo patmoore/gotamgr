@@ -4,7 +4,7 @@ Template.alliance_inventory.helpers({
         var allianceId = params.allianceId;
         _.extend(initialData, {
             listAlliancePlayers: AllianceManager.alliancePlayersHandle(allianceId),
-            alliancePlayersInventory: manyWithBlock(AllianceManager.alliancePlayersInventoryHandle(allianceId))
+            alliancePlayersInventory: manyAndWait(AllianceManager.alliancePlayersInventoryHandle(allianceId))
         });
         return initialData;
     },
@@ -17,9 +17,8 @@ Template.alliance_inventory.helpers({
         return 4;
     },
     storables: function() {
-
-        var inventory = alliancePlayersInventory[this.index];
-
+        var alliancePlayersInventory = getTemplateData('alliancePlayersInventory')[this.index];
+        return
     },
 
 });

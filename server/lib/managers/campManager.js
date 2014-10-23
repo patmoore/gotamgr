@@ -28,19 +28,17 @@ Meteor.startup(function(){
             }
         },
         updateCampInformation:{
-            method: function(campInformation, lookup) {
+            method: function(campInformation) {
                 var thatManager = this.thatManager;
-                check(campInformation, Object);
-                check(campInformation.id, String);
-                var camp = Camp.databaseTable.find(lookup);
+                var camp = Camp.databaseTable.findOne({_id:campInformation.id});
                 debugger;
 
                 // make a copy of the camp storable needs ( so that an alliance can adjust as needed the requirements )
                 if( campInformation.skillSpecialization != camp.skillSpecialization) {
                     var skillGeneralDbCode = campInformation.skillSpecialization.skillGeneral.dbCode;
-                    campData.storableNeeds = EJSON.parse(EJSON.stringify(CampStorable[skillGeneralDbCode]));
+                    campInformation.storableNeeds = EJSON.parse(EJSON.stringify(CampStorable[skillGeneralDbCode]));
                 }
-                Camp.upsertFromUntrusted(campInformation, lookup);
+                camp.upsertFromUntrusted({clientObj:campInformation});
                 return camp;
             },
             permissionCheck: function(callInfo) {

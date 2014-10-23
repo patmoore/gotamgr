@@ -9,13 +9,13 @@
                         <tr>
                             <td>
                                 <a href="{{pathFor 'alliance_camp' allianceId=allianceId campId=id}}">{{displayName}}
-                                    {{campLocation}} ({{campLocation.campRegion.displayName}})&nbsp;{{skillSpecialization}}&nbsp;{{currentLevel}}</a>
+                                    {{campLocation.displayName}} ({{campLocation.campRegion.displayName}})&nbsp;{{skillSpecialization}}&nbsp;{{currentLevel}}</a>
                             </td>
                         </tr>
                     {{/each}}
                     </tbody>
                 </table>
-                {{#if allianceOfficer}}
+                {{#if templateData 'allianceOfficer'}}
                 <div>
                     <select>
                         {{#each availableLocationsForAlliance}}
@@ -28,7 +28,7 @@
             </div>
             {{#if selectedCamp}}
             <div class="row col-md-9">
-                {{> camp_fullDetail camp=selectedCamp allianceOfficer=allianceOfficer}}
+                {{> Template.dynamic template='camp_fullDetail' data=fullDetailCampData}}
             </div>
             {{/if}}
         </div>

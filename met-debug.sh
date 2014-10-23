@@ -1,2 +1,2 @@
 #!/bin/sh
-NODE_OPTIONS=--debug meteor --settings cfg/settings-dev.json run
+meteor -p 4000 --debug-port 4002 run

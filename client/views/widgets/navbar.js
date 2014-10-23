@@ -5,11 +5,14 @@
  * route.options.navigationAlias
  * When defining route, displayName is used as the menu item and glyphiconClass
  */
-_.extend(Template.su_navbar, {
+Template.su_navbar.helpers({
     routes: function() {
         var routeController = Router.current(true);
         if ( routeController == null) {
             return;
+        }
+        if ( Meteor.userId == null) {
+            return; 
         }
         var route = routeController.route;
         var currentNavigationAlias = route.options.navigationAlias;

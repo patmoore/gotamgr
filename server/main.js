@@ -6,12 +6,10 @@ Accounts.config({
 
 
 Meteor.startup(function() {
-    debugger;
     var honorable = Alliance.databaseTable.findOneByAllianceInviteCode('honorable');
     if ( honorable == null ) {
-        honorable = new Alliance();
+        honorable = new Alliance({displayName: 'The Honorable',
+            allianceInviteCode: 'honorable'
+        });
     }
-    honorable.upsertFromUntrusted({displayName: 'The Honorable',
-        allianceInviteCode: 'honorable'
-    });
 });

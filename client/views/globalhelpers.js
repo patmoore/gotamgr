@@ -211,9 +211,10 @@ setInputFieldData = function(template, source) {
         if ( !key ) {
             key = $element.attr('name');
         }
-        if (_.has(source, key)) {
+        var value = _.deep(source, key);
+        if (value) {
             // TODO: How to handle radio selections?
-            $element.val(source[key]);
+            $element.val(value);
         }
     });
     return changeMap;

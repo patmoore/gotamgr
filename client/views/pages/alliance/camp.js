@@ -15,11 +15,10 @@ Template.alliance_camp.helpers({
         }
         return initialData;
     },
-    allianceOfficer: function() {
-        return this.player && this.player.allianceOfficer;
-    },
-    allianceLeader: function() {
-        return this.player && this.player.allianceLeader;
+    fullDetailCampData: function() {
+        var templateData = Template.instance().data;
+        var result = _.extend({}, templateData, {camp: templateData.selectedCamp});
+        return result;
     }
 });
 
