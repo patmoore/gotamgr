@@ -4,7 +4,7 @@ Template.alliance_inventory.helpers({
         var allianceId = params.allianceId;
         _.extend(initialData, {
             listAlliancePlayers: AllianceManager.alliancePlayersHandle(allianceId),
-            alliancePlayersInventory: AllianceManager.alliancePlayersInventoryHandle(allianceId)
+            alliancePlayersInventory: manyWithBlock(AllianceManager.alliancePlayersInventoryHandle(allianceId))
         });
         return initialData;
     },
