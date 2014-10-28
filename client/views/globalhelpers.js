@@ -1,15 +1,17 @@
 
-getRouterParams = function() {
+getRouterParams = function(key) {
     var router = Router.current(true);
+    var paramsObj;
     if ( router && router.params) {
-        var paramsObj = _.object(_.map(Object.keys(router.params), function(e) {
+        paramsObj = _.object(_.map(Object.keys(router.params), function(e) {
             return [e, router.params[e]];
         }));
-        return paramsObj;
     } else {
-        return {};
+        paramsObj= {};
     }
+    return key?paramsObj[key]:paramsObj;
 };
+
 getRouteName = function() {
     return Router.current().route.name;
 };
@@ -147,6 +149,12 @@ DefaultEventHandlers = {
         $('.saveChanges').removeAttr('disabled');
     }
 };
+
+// You'd think this would be simple.
+var isRadioChecked = function(element) {
+    return element.checked || $(element).attr('checked');
+};
+
 /**
  * Name separated with '.' (use _.deep() )
  * @param jQuerySelected
@@ -165,7 +173,7 @@ var _getInputFieldData = function(jQuerySelected) {
         var elemType = $element.attr('type');
         var type = $element.data('type') || elemType;
 
-        if (elemType === 'radio' && !isRadioChecked(element)) {
+        if ((elemType === 'radio' || elemType==='checkbox') && !isRadioChecked(element)) {
             return;
         }
 
@@ -187,13 +195,13 @@ var _getInputFieldData = function(jQuerySelected) {
  * @param template
  */
 getChangedInputFieldData = function(template) {
-    var changeMap = _getInputFieldData(($ || template.$)('.userChanged[data-inputfield]'));
+    var changeMap = _getInputFieldData(template.$('.userChanged[data-inputfield]'));
     return changeMap;
 }
 
 getInputFieldData = function(template) {
     //TODO: doesn't work for radio buttons, always return the last value
-    var changeMap = _getInputFieldData(($ || template.$)('[data-inputfield]'));
+    var changeMap = _getInputFieldData(template.$('[data-inputfield]'));
     return changeMap;
 }
 
@@ -205,7 +213,7 @@ getInputFieldData = function(template) {
 // http://silviomoreto.github.io/bootstrap-select/
 setInputFieldData = function(template, source) {
     var changeMap = {};
-    ($ || template.$)('[data-inputfield]').each(function(index, element) {
+    template.$('[data-inputfield]').each(function(index, element) {
         var $element = $(element);
         var key = $element.data('inputfield');
         if ( !key ) {
