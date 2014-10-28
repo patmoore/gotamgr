@@ -137,28 +137,23 @@ Template.player_inventory.helpers({
 });
 
 Template.player_inventory.events({
-//    'blur input.inventoryHave' : function() {
-//        var value = +event.srcElement.value;
-//        var inventoryKey = $(event.srcElement).data('inventory-key');
-//        InventoryManager.changePlayerInventory(inventoryKey, value);
-//    },
     // needed for mobile devices.
-    'click #saveInventory': function() {
-        var inputData = getChangedInputFieldData();
+    'click #saveInventory': function(event, template) {
+        var inputData = getChangedInputFieldData(template);
         if ( !_.isEmpty(inputData)) {
             InventoryManager.updatePlayerInventory(inputData);
         }
     },
-    'click #clearInventory': function() {
+    'click #clearInventory': function(event, template) {
         InventoryManager.clearPlayerInventory();
     },
-    'change select.showFilter' : function () {
+    'change select.showFilter' : function (event, template) {
         Session.set("show", event.srcElement.value);
     },
-    'change select.showOrder' : function() {
+    'change select.showOrder' : function(event, template) {
         Session.set("showOrder", event.srcElement.value);
     },
-    'change input.depth' : function() {
+    'change input.depth' : function(event, template) {
         var depth = event.srcElement.value;
         Session.set("depth", depth);
     }
