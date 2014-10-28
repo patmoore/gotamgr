@@ -52,7 +52,6 @@ Template.camp_fullDetail.events({
         }
         var camp = new Camp(inputDataFields);
         var templateData = getTemplateData();
-        debugger;
         CampManager.updateCampInformation(camp, templateData.campId, function(error, data){
             if ( !error) {
                 Router.go('alliance_camp', {allianceId:templateData.allianceId, campId:templateData.id});
@@ -61,8 +60,7 @@ Template.camp_fullDetail.events({
     },
     'click .deleteCamp': function(event, template) {
         var templateData = getTemplateData();
-        var inputDataFields = getInputFieldData(template);
-        var campId = inputDataFields.campId;
+        var campId = templateData.campId;
         CampManager.deleteCamp(campId, function(error, data){
             if ( !error) {
                 Router.go('alliance_camp', {allianceId:templateData.allianceId});
@@ -72,7 +70,6 @@ Template.camp_fullDetail.events({
     'click .editCamp': function(event, template) {
         var templateData = getTemplateData();
 
-        debugger;
         Router.go('alliance_camp_edit', {allianceId: templateData.allianceId, campId:templateData.campId});
     }
-})
+});

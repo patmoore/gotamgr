@@ -28,8 +28,7 @@ Meteor.startup(function() {
             if ( inventory == null) {
                 inventory = thatManager.createPlayerInventory(player);
             }
-            _.extend(inventory.current, changedInventory);
-            inventory._save();
+            inventory.upsertFromUntrusted({clientObj:{ current: changedInventory} });
             return inventory;
         },
         clearPlayerInventory: function() {

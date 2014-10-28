@@ -1,16 +1,29 @@
 
 Meteor.startup(function(){
+    'use strict';
+    var allianceOfficerPermissionCheck = function(callInfo) {
+        var player = PlayerManager.findOneCurrentPlayer();
+        if (player != null && player.allianceOfficer) {
+            var allianceId = player.allianceId;
+            callInfo.args.push(allianceId);
+            return true;
+        } else {
+            return false;
+        }
+    };
     _.extend(CampManagerType.prototype, {
         buildCamp: {
             method: function (campData, allianceId) {
+                debugger;
                 var campLocation = campData.campLocation;
 
-                var camp = Camp.prototype.upsertFromUntrusted(campData,
+                var camp = Camp.prototype.upsertFromUntrusted(
                     {
-                        allianceId: allianceId,
-                        campLocation: campLocation.dbCode
-                    },
-                    {
+                        clientObj:campData,
+                        lookup: {
+                            allianceId: allianceId,
+                            campLocation: campLocation.dbCode
+                        },
                         forcedValues: {
                             allianceId: allianceId
                         }
@@ -18,14 +31,7 @@ Meteor.startup(function(){
                 );
                 return camp;
             },
-            permissionCheck: function(callInfo) {
-
-                var player = PlayerManager.findOneCurrentPlayer();
-                if (player != null) {
-                    var allianceId = player.allianceId;
-                    callInfo.args.push(allianceId);
-                }
-            }
+            permissionCheck: allianceOfficerPermissionCheck
         },
         updateCampInformation:{
             method: function(campInformation) {
@@ -38,35 +44,24 @@ Meteor.startup(function(){
                     var skillGeneralDbCode = campInformation.skillSpecialization.skillGeneral.dbCode;
                     campInformation.storableNeeds = EJSON.parse(EJSON.stringify(CampStorable[skillGeneralDbCode]));
                 }
+                for(var i = 0; i < campInformation.storableNeeds.length; i++) {
+                    if ( campInformation.storableNeeds[i] == null) {
+                        campInformation.storableNeeds[i] = camp.storableNeeds[i];
+                    }
+                }
                 camp.upsertFromUntrusted({clientObj:campInformation});
                 return camp;
             },
-            permissionCheck: function(callInfo) {
-                var userId = callInfo.userId;
-                var player = PlayerManager.findOneCurrentPlayer(userId);
-                callInfo.args.push({
-                    _id: callInfo.args[0].id,
-                    allianceId: player.allianceId
-                });
-                return true;
-            }
+            permissionCheck: allianceOfficerPermissionCheck
         },
         deleteCamp: {
-            method: function(campId, lookup) {
-                check(campId, String);
+            method: function(campId, allianceId) {
                 debugger;
+                check(campId, String);
                 var thatManager = this.thatManager;
-                Camp.databaseTable.remove(lookup);
+                Camp.databaseTable.remove({_id:campId, allianceId: allianceId});
             },
-            permissionCheck: function(callInfo) {
-                var userId = callInfo.userId;
-                var player = PlayerManager.findOneCurrentPlayer(userId);
-                callInfo.args.push({
-                    _id: callInfo.args[0],
-                    allianceId: player.allianceId
-                });
-                return true;
-            }
+            permissionCheck: allianceOfficerPermissionCheck
         },
     });
 });

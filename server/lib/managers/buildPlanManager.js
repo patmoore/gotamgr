@@ -1,30 +1,35 @@
 Meteor.startup(function(){
+    'use strict';
     _.extend(BuildPlanManagerType.prototype, {
-        updatePlayerBuildPlan: function(buildPlanId, changedPlayerBuildPlan) {
-            var userId = Meteor.userId();
-            BuildPlan.prototype.upsertFromUntrusted(changedPlayerBuildPlan, buildPlanId);
+        updatePlayerBuildPlanMethod: function(buildPlanId, changedPlayerBuildPlan) {
+            var thatManager = this.thatManager;
+            var userId = this.userId;
+            BuildPlan.prototype.upsertFromUntrusted({
+                clientObj: changedPlayerBuildPlan,
+                lookup: buildPlanId
+            });
         },
-        deletePlayerBuildPlan: function(buildPlanId) {
+        deletePlayerBuildPlanMethod: function(buildPlanId) {
+            var thatManager = this.thatManager;
             var userId = Meteor.userId();
             BuildPlan.databaseTable.remove({_id:buildPlanId});
         },
-        createBuildPlan: function(buildPlanInfo) {
+        createBuildPlanMethod: function(buildPlan) {
             var thatManager = this.thatManager;
             var userId = this.userId;
-            var buildPlan;
+            var savedBuildPlan;
             if ( userId ) {
                 var currentPlayer = PlayerManager.findOneCurrentPlayer();
-                buildPlan = new BuildPlan({
-                    playerId: currentPlayer.id,
-                    userId: userId,
-                    buildOrders: {}
+                savedBuildPlan = buildPlan.upsertFromUntrusted({
+                    frozenKeys: {
+                        playerId: currentPlayer.id,
+                        userId: userId,
+                    }
                 });
-                buildPlan._save();
-                buildPlan = buildPlan.upsertFromUntrusted(buildPlanInfo);
             } else {
                 throw new Meteor(403, "Not signed in");
             }
-            return buildPlan;
+            return savedBuildPlan;
         },
         addToBuildInventory: function(buildPlanId, buildDemands) {
             var thatManager = this.thatManager;

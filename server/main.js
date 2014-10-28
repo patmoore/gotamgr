@@ -11,5 +11,6 @@ Meteor.startup(function() {
         honorable = new Alliance({displayName: 'The Honorable',
             allianceInviteCode: 'honorable'
         });
+        honorable._save();
     }
 });

@@ -3,6 +3,7 @@
     <section>
         <div class="container form-horizontal">
             <div class="row col-md-3">
+                {{#if allianceCamps}}
                 <table class="table table-striped">
                     <tbody>
                     {{#each allianceCamps}}
@@ -15,9 +16,12 @@
                     {{/each}}
                     </tbody>
                 </table>
+                {{else}}
+                No camps yet built
+                {{/if}} 
                 {{#if templateData 'allianceOfficer'}}
                 <div>
-                    <select>
+                    <select name="campLocation" data-inputfield>
                         {{#each availableLocationsForAlliance}}
                         <option value="{{dbCode}}">{{displayName}} ({{campRegion.displayName}})</option>
                         {{/each}}
