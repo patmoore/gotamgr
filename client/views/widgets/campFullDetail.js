@@ -25,7 +25,6 @@ Template.camp_fullDetail.helpers({
         return Storables.enumOf(this.key);
     },
     Storables : function() {
-
         return Storables.symbols();
     },
     SkillSpecialization: function() {
