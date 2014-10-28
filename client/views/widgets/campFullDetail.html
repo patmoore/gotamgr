@@ -59,7 +59,7 @@
                     </td>
                     <td>
                         {{#if editMode}}
-                        <input name="currentLevel" type="number" value="{{camp.currentLevel}}" data-inputfield>
+                        <input name="currentLevel" type="number" min="0" max="20" step="1" value="{{camp.currentLevel}}" data-inputfield>
                         {{else}}
                         {{camp.currentLevel}}
                         {{/if}}
@@ -91,19 +91,28 @@
                     <td>Priority</td>
                     <td>
                         {{#if editMode}}
-                        <input name="priority" type="number" data-inputfield value="{{camp.priority}}">
+                        <input name="priority" type="number" min="0" max="20" step="1" data-inputfield value="{{camp.priority}}">
                         {{else}}
                         {{camp.priority}}
                         {{/if}}
                     </td>
                 </tr>
                 <tr>
-                    <td>Ok to garrison</td>
+                    <td>Garrison</td>
                     <td>
                         {{#if editMode}}
-                        <input name="garrison" type="checkbox" {{radioChecked camp.garrison true}} data-inputfield value='true'>
+                        <input name="garrison" type="checkbox" data-type="boolean" {{radioChecked camp.garrison true}} data-inputfield value="true">Ok to Garrison
+                        <br>
+                        Garrison Specialization: 
+                        <select name="garrisonSkillSpecialization" data-inputfield>
+                            {{#each SkillSpecialization}}
+                            <option value="{{dbCode}}" {{isSelected this.dbCode ../camp.garrisonSkillSpecialization.dbCode}}>{{displayName}}</option>
+                            {{/each}}
+                        </select>
                         {{else}}
-                        {{garrisonDisplay}}
+                        {{#if camp.garrison}}
+                        {{camp.garrisonSkillSpecialization}}
+                        {{/if}}
                         {{/if}}
                     </td>
                 </tr>
@@ -113,7 +122,7 @@
                         <table><thead>
                         <tr>
                             <td>Upgrade<br>to Level</td>
-                            <td></td>
+                            <td>Silver</td>
                             <td>Quantity/Item</td>
                             <td>Quantity/Item</td>
                             <td>Quantity/Item</td>
@@ -122,7 +131,7 @@
                         {{#each upcomingStorableNeeds}}
                         <tr>
                             <td>{{level}}</td>
-                            {{#each arrayify this}}
+                            {{#each sortedNeeds}}
                             <td class="mbm">
                                 {{#if editMode}}
                                 <input type="number" name="storableNeeds.{{../level}}.{{key}}" value="{{value}}" data-inputfield size="6"><span>{{storable.displayName}}</span>

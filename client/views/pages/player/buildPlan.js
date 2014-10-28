@@ -2,7 +2,9 @@ Template.player_buildPlan.events({
     'click .createNewBuildPlan': function (event, template) {
         var buildPlanChanges = getInputFieldData(template);
         if (!_.isEmpty(buildPlanChanges.displayName)) {
-            BuildPlanManager.createBuildPlan({displayName: buildPlanChanges.displayName}, clearChangedInputFieldData.bind(null, template));
+            BuildPlanManager.createBuildPlan(
+                new BuildPlan({displayName: buildPlanChanges.displayName}),
+                clearChangedInputFieldData.bind(null, template));
         }
     },
     'click .addToBuildInventory': function (event, template) {

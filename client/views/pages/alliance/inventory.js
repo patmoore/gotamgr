@@ -4,21 +4,47 @@ Template.alliance_inventory.helpers({
         var allianceId = params.allianceId;
         _.extend(initialData, {
             listAlliancePlayers: AllianceManager.alliancePlayersHandle(allianceId),
-            alliancePlayersInventory: manyAndWait(AllianceManager.alliancePlayersInventoryHandle(allianceId))
+            alliancePlayersInventory: many(AllianceManager.alliancePlayersInventoryHandle(allianceId)),
+            allianceCamps: CampManager.allianceCampsHandle(allianceId)
         });
+        if ( initialData.allianceCamps.ready() ) {
+            initialData.allianceNeeds = {};
+            var allianceCamps = initialData.allianceCamps.findFetch();
+            _.each(allianceCamps, function(allianceCamp) {
+                _.each(allianceCamp.totalByStorable, function(quantity, storableDbCode) {
+                    if (initialData.allianceNeeds[storableDbCode] == null) {
+                        initialData.allianceNeeds[storableDbCode] = 0;
+                    }
+                    initialData.allianceNeeds[storableDbCode] += quantity;
+                });
+            });
+        }
+        debugger;
         return initialData;
+    },
+    storableDisplayName: function() {
+        return Storables.enumOf(this.key).displayName;
     },
     alliancePlayerDisplayName: function() {
         var alliancePlayer = Player.databaseTable.findOneById(this.playerId);
         return alliancePlayer.displayName;
     },
-    totalNeeded: function() {
-        // this is the storables
-        return 4;
+    playerInventory: function(key) {
+        if( this.current[key] == null) {
+            return 0;
+        } else {
+            return this.current[key];
+        }
     },
-    storables: function() {
-        var alliancePlayersInventory = getTemplateData('alliancePlayersInventory')[this.index];
-        return
+    alliancePlayerInventory: function() {
+        debugger;
+        var alliancePlayersInventory = getTemplateData('alliancePlayersInventory');
+        if ( alliancePlayersInventory ) {
+            var alliancePlayerInventory = _.findWhere(alliancePlayersInventory, {playerId: this.id});
+            if ( alliancePlayerInventory ) {
+                return alliancePlayersInventory.current;
+            }
+        }
     },
 
 });

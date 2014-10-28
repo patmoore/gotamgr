@@ -1,20 +1,21 @@
 Template.camp_fullDetail.helpers({
     upcomingStorableNeeds: function() {
         var that = this;
-        var skillGeneral = this.camp.skillSpecialization.skillGeneral;
-        var campStorable = this.camp.storableNeeds;//CampStorable[skillGeneral.dbCode];
-        var result = campStorable.slice(this.camp.currentLevel, 20);
-        for(var i = 0; i < result.length; i++) {
-            Object.defineProperties(result[i], {
-                level: {
-                    enumerable: false,
-                    value: that.camp.currentLevel + i+1,
-                    writable: false
-                }
-            });
+        var campStorable = this.camp.storableNeeds;
+        if ( campStorable ) {
+            var result = campStorable.slice(this.camp.currentLevel+1);
+            for(var i = 0; i < result.length; i++) {
+                Object.defineProperties(result[i], {
+                    level: {
+                        enumerable: false,
+                        value: that.camp.currentLevel + i+1,
+                        writable: false
+                    }
+                });
+            }
+            debugger;
+            return result;
         }
-        debugger;
-        return result;
     },
 
     garrisonDisplay: function() {

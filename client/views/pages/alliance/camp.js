@@ -16,7 +16,7 @@ Template.alliance_camp.helpers({
         return initialData;
     },
     fullDetailCampData: function() {
-        var templateData = Template.instance().data;
+        var templateData = getTemplateData();
         var result = _.extend({}, templateData, {camp: templateData.selectedCamp});
         return result;
     }
@@ -24,7 +24,7 @@ Template.alliance_camp.helpers({
 
 Template.alliance_camp.events({
    'click .buildCamp': function(event, template) {
-       var jsonInput = getInputFieldData();
-       CampManager.buildCamp(jsonInput);
+       var jsonInput = getInputFieldData(template);
+       CampManager.buildCamp(new Camp(jsonInput));
    }
 });

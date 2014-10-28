@@ -45,7 +45,7 @@
                                     {{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}
                                     {{#if adventures this}}<small>Adventures: <span class="text-capitalize">{{adventures this }}</span></small>{{/if}}
                                 </td>
-                                <td>Have: <input type="number" size="4" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
+                                <td>Have: <input type="number" size="4" min="0" step="1" class="inventoryHave form-control" data-inputfield="{{this.displayName}}" data-inventory-key="{{this}}" value="{{inventoryItemValue}}"></td>
                                 <td>
                                     {{#if storableNeededForCamp}}
                                         {{#with storableNeededForCamp}}

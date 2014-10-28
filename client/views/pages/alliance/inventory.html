@@ -5,26 +5,24 @@
             <h2>{{alliance.displayName}}</h2>
             <table class="table table-striped">
                 <thead>
-                    <tr>
+                    <tr class="row">
                         <th>Item</th>
-                        <th>Total</th>
-                        <th>Immediate<br>Future</th>
-                        <th>Expected From You</th>
+                        <th>Total Needed</th>
+                        <th>Needed From Everyone</th>
                     {{#each alliancePlayersInventory}}
                         <th>{{alliancePlayerDisplayName}}</th>
                     {{/each}}
                 </tr></thead>
                 <tbody>
-                {{#each arrayify storables}}
-                <tr class="row">
-                    <td>{{value.displayName}}</td>
-                    <td>{{totalNeeded}}</td>
-                    <td>{{immediateFuture}}</td>
-                    <td>{{expectedFromYou}}</td>
-                    {{#each alliancePlayersInventory}}
-                    <th></th>
+                {{#each arrayify allianceNeeds}}
+                {{debugTemplateHere}}
+                <tr class="row"> 
+                    <td>{{storableDisplayName}}</td>
+                    <td>{{value}}</td>
+                    <td>{{perPlayerNeeds}}</td>
+                    {{#each templateData 'alliancePlayersInventory'}}
+                    <td>{{playerInventory ../key}}</td>
                     {{/each}}
-
                 </tr>
                 {{/each}}
                 </tbody>
