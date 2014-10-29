@@ -195,13 +195,23 @@ var _getInputFieldData = function(jQuerySelected) {
  * @param template
  */
 getChangedInputFieldData = function(template) {
-    var changeMap = _getInputFieldData(template.$('.userChanged[data-inputfield]'));
+    if (template == null) {
+        template = Template.instance();
+    }
+    var changeMap = template?
+        _getInputFieldData(template.$('.userChanged[data-inputfield]')):
+        _getInputFieldData($('.userChanged[data-inputfield]'));
     return changeMap;
 }
 
 getInputFieldData = function(template) {
+    if (template == null) {
+        template = Template.instance();
+    }
     //TODO: doesn't work for radio buttons, always return the last value
-    var changeMap = _getInputFieldData(template.$('[data-inputfield]'));
+    var changeMap = template?
+    _getInputFieldData(template.$('[data-inputfield]')):
+        _getInputFieldData($('[data-inputfield]'));
     return changeMap;
 }
 
@@ -212,8 +222,10 @@ getInputFieldData = function(template) {
 // this doesn't work properly for fancy selects. see
 // http://silviomoreto.github.io/bootstrap-select/
 setInputFieldData = function(template, source) {
-    var changeMap = {};
-    template.$('[data-inputfield]').each(function(index, element) {
+    if (template == null) {
+        template = Template.instance();
+    }
+    function settingFn(index, element) {
         var $element = $(element);
         var key = $element.data('inputfield');
         if ( !key ) {
@@ -224,8 +236,13 @@ setInputFieldData = function(template, source) {
             // TODO: How to handle radio selections?
             $element.val(value);
         }
-    });
-    return changeMap;
+    }
+
+    if ( template ) {
+        template.$('[data-inputfield]').each(settingFn);
+    } else {
+        $('[data-inputfield]').each(settingFn);
+    }
 }
 /**
  * TODO: would like to not make this so global.
