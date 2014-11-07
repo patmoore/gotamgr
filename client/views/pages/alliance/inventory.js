@@ -19,8 +19,16 @@ Template.alliance_inventory.helpers({
                 });
             });
         }
-        debugger;
+        if ( initialData.alliancePlayersInventory.handle.ready() ) {
+            debugger;
+            var alliancePlayersInventory = initialData.alliancePlayersInventory.handle.findFetch();
+            initialData.currentPlayerInventory = _.findWhere(alliancePlayersInventory, {playerId:initialData.playerId});
+        }
         return initialData;
+    },
+    notYou: function() {
+        var playerId = getTemplateData('playerId');
+        return this.playerId != playerId;
     },
     storableDisplayName: function() {
         return Storables.enumOf(this.key).displayName;
@@ -36,7 +44,8 @@ Template.alliance_inventory.helpers({
             return this.current[key];
         }
     },
-    alliancePlayerInventory: function() {
+/*
+    currentPlayerInventory: function() {
         debugger;
         var alliancePlayersInventory = getTemplateData('alliancePlayersInventory');
         if ( alliancePlayersInventory ) {
@@ -46,5 +55,6 @@ Template.alliance_inventory.helpers({
             }
         }
     },
+*/
 
 });

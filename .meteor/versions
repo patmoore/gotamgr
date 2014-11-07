@@ -40,6 +40,7 @@ less@1.0.10
 livedata@1.0.11
 localstorage@1.0.1
 logging@1.0.4
+meteor-collection-management@1.1.11
 meteor-platform@1.1.2
 meteor@1.1.2
 meteorhacks:async@1.0.0
@@ -54,7 +55,6 @@ npm-bcrypt@0.7.7
 npm-container@1.0.0
 observe-sequence@1.0.3
 ordered-dict@1.0.1
-patmoore:meteor-collection-management@1.1.10
 random@1.0.1
 reactive-dict@1.0.4
 reactive-var@1.0.3

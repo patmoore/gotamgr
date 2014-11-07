@@ -27,6 +27,8 @@ Template.camp_fullDetail.helpers({
     Storables : function() {
         return Storables.symbols();
     },
+    sortedLevelNeeds: function() {
+    },
     SkillSpecialization: function() {
         return SkillSpecialization.symbols();
     },
