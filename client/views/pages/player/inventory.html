@@ -41,7 +41,7 @@
                             <tbody>
                         {{#each storables}}
                             <tr>
-                                <td class="text-capitalize">{{this}}<br>
+                                <td class="text-capitalize">{{this.displayName}}<br>
                                     {{#if buildings this}}<small>Built By: <span class="text-capitalize">{{buildings this }}</span></small>{{/if}}
                                     {{#if adventures this}}<small>Adventures: <span class="text-capitalize">{{adventures this }}</span></small>{{/if}}
                                 </td>
@@ -51,7 +51,7 @@
                                         {{#with storableNeededForCamp}}
                                         {{#if totalNeeded}}
                                             {{#each arrayify neededByCamp}}
-                                                Camp Location: {{key}}
+                                                Camp Location: {{CampLocationDisplayName key}}
                                                 {{#with value}}
                                                     ( {{currentLevel}} )
                                                     Total Needed: {{totalNeeded}}:

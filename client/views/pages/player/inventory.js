@@ -56,15 +56,6 @@ Template.player_inventory.helpers({
             storables = Storables;
         }
         var results = storables.symbols();
-//        results.sort(function(left, right) {
-//            if ( left.toString() < )
-//        });
-//        results.sort(function(leftStorableKey, rightStorableKey) {
-//            var leftStorableBuildingName =
-//            if ( Storables[leftStorableKey].buildings[0].displayName === Storables[rightStorableKey].buildings[0].displayName ) {
-//
-//            }
-//        });
         return results;
     },
     inventoryItemValue: function() {
@@ -133,6 +124,12 @@ Template.player_inventory.helpers({
         } else {
             return void(0);
         }
+    },
+    CampLocationDisplayName: function(key) {
+        if ( key != null ) {
+            var campLocation = CampLocation.enumOf(key);
+            return campLocation?campLocation.displayName : '';
+        }
     }
 });
 
@@ -141,7 +138,7 @@ Template.player_inventory.events({
     'click #saveInventory': function(event, template) {
         var inputData = getChangedInputFieldData(template);
         if ( !_.isEmpty(inputData)) {
-            InventoryManager.updatePlayerInventory(inputData);
+            InventoryManager.updatePlayerInventory(inputData, clearChangedInputFieldData.bind(null, template));
         }
     },
     'click #clearInventory': function(event, template) {
