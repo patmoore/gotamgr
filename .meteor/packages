@@ -25,4 +25,5 @@ meteorhacks:npm
 
 npm-container
 meteor-collection-management
+whalepath-utils
 
