@@ -37,16 +37,21 @@ Template.player_inventory.helpers({
     initializeData : function() {
         return {
             currentPlayer: one(PlayerManager.currentPlayerHandle()),
-            currentPlayerInventory : InventoryManager.playerInventoryHandle()
+            playerInventory : InventoryManager.playerInventoryHandle()
         }
     },
 
+    displayByAlphabetic: function() {
+        var template = Template.instance();
+        var displayOrder = template.$('.displayOrder').val();
+        return displayOrder == 'alphabetic';
+    },
+    displayByBuilding: function() {
+        var template = Template.instance();
+        var displayOrder = template.$('.displayOrder').val();
+        return displayOrder == 'building';
+    },
     storables : function () {
-        playerInventoryHandleDep.depend();
-        if ( playerInventoryHandle == null ) {
-            return [];
-        }
-        var playerInventory = playerInventoryHandle.findOne();
         var storables;
         var showFilter = $('.showFilter').val();
         switch(showFilter) {

@@ -13,13 +13,14 @@
                     <td>
                         {{#if buildingNow}}{{buildingNow}}<button class="btn mbm btn-success">Built</button>
                         {{else}}
-                        <select >
+                        <select name="buildings.{{dbCode}}">
                             <!--
                             <option value="" disabled selected>Nothing</option>
                             -->
                             {{#each storablesByBuilding}}
                             <option value="{{key}}" >{{displayName}}</option>
-                        {{/each}}</select>
+                            {{/each}}
+                        </select>
                         {{/if}}
                     </td>
                     <td></td>
