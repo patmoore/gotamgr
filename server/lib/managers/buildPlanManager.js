@@ -21,7 +21,7 @@ Meteor.startup(function(){
             if ( userId ) {
                 var currentPlayer = PlayerManager.findOneCurrentPlayer();
                 savedBuildPlan = buildPlan.upsertFromUntrusted({
-                    frozenKeys: {
+                    forcedValues: {
                         playerId: currentPlayer.id,
                         userId: userId,
                     }
