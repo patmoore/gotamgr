@@ -1,8 +1,10 @@
 <template name="storable_selection">
-    <input type="number" name="{{storableKey}}_quantity" value="{{quantity}}" data-inputfield >
-    <select name="{{storableKey}}" data-inputfield>
-        {{#each this.storables}}
-        <option value="{{dbCode}}" {{isSelected this.dbCode ../selectedStorable}}>{{displayName}}</option>
-        {{/each}}
-    </select>
+    <div class="form-group">
+        <input type="number" name="{{storableKey}}_quantity" value="{{quantity}}" data-inputfield >
+        <select name="{{storableKey}}" data-inputfield class="select-block" multiple>
+            {{#each this.storables}}
+            <option value="{{dbCode}}" {{isSelected this.dbCode ../selectedStorable}}>{{displayName}}</option>
+            {{/each}}
+        </select>
+    </div>
 </template>

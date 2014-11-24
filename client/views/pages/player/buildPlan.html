@@ -18,25 +18,29 @@
                     </div>
                 </div>
 
-                <div class="col-md-9">
+                <div class="col-md-9 buildPlan">
                     {{#if selectedBuildPlan}} {{#with selectedBuildPlan}}
+                        <input type="hidden" value="{{id}}" data-inputfield name="_id">
                     {{generateBuildOrders}}
-                    <div class="">
-                        <div class="block">{{displayName}}</div>
-                        <div>
-                            <button class="btn btn-lg mbm btn-success addToBuildInventory saveChanges"></button>
+                    <div>
+                        <div class="block">
+                            {{displayName}}
+                            {{!--<input name='displayName' data-inputfield value='{{displayName}}'>--}}
                         </div>
+                        {{!--<div>--}}
+                            {{!--<button class="btn btn-lg mbm btn-success addToBuildInventory saveChanges"></button>--}}
+                        {{!--</div>--}}
                     </div>
                     <hr>
-                    <div>
+                    <div class="buildPlanChanges">
                     I need to build
                     {{>storable_selection storableKey='storable' storables=StorableInBuildings }}
                     <button class="btn btn-lg mbm btn-success glyphicon glyphicon-plus addToBuildInventory">Add</button>
                     </div>
-                    <div class="list-group">
+                    <div class="list-group existingBuildNeeds">
                     {{#each arrayify buildDemands}}
                         <div class="list-group-item">
-                            <input name="{{key}}" value="{{value}}" type="number" data-inputfield> {{StorableByDbCode key}}
+                            <input name="{{key}}" value="{{value}}" type="number" data-inputfield> {{StorableDisplayNameByDbCode key}}
                         </div>
                     {{/each}}
                     </div>
@@ -45,7 +49,7 @@
                             <hr>
                             <table class="table-striped">
                                 <tbody>
-                            {{#each arrayify totalsByStorable}}<tr><td>{{value}}</td><td>{{StorableByDbCode key}}</td></tr>{{/each}}
+                            {{#each arrayify totalsByStorable}}<tr><td>{{value}}</td><td>{{StorableDisplayNameByDbCode key}}</td></tr>{{/each}}
                                 </tbody>
                             </table>
                         </div>

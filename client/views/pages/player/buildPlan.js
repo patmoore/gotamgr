@@ -8,8 +8,9 @@ Template.player_buildPlan.events({
         }
     },
     'click .addToBuildInventory': function (event, template) {
-        var rawBuildPlanChanges = getInputFieldData(template);
-        var storable = rawBuildPlanChanges.storable;
+        var rawBuildPlanChanges = getInputFieldData(template, null, '.existingBuildNeeds ');
+        var buildPlanChanges =getInputFieldData(template, null, '.buildPlanChanges ');
+        buildPlanChanges.storable;
         var quantity = rawBuildPlanChanges.storable_quantity;
         var buildPlanChanges = {};
         if (_.isNumber(quantity)) {
@@ -53,6 +54,9 @@ Template.player_buildPlan.helpers({
     },
     StorableByDbCode: function(dbCode){
         return Storables.enumOf(dbCode);
+    },
+    StorableDisplayNameByDbCode: function(dbCode){
+        return Storables.enumOf(dbCode).displayName;
     }
 });
 Template._buildOrder.helpers({
