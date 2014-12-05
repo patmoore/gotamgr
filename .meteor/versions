@@ -40,7 +40,7 @@ less@1.0.10
 livedata@1.0.11
 localstorage@1.0.1
 logging@1.0.4
-meteor-collection-management@1.1.14
+meteor-collection-management@1.1.17
 meteor-platform@1.1.2
 meteor@1.1.2
 meteorhacks:async@1.0.0
