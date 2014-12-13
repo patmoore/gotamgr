@@ -1,56 +1,46 @@
-var playerInventoryHandle = null;
-var allianceHandle = null;
-var campsHandle = null;
-var playerInventoryHandleDep = new Deps.Dependency();
-var allianceHandleDep = new Deps.Dependency();
-var campsHandleDep = new Deps.Dependency();
-Template.player_inventory.rendered = function() {
-    this.autorun(function() {
-        playerInventoryHandle = InventoryManager.playerInventoryHandle();
-        if (playerInventoryHandle.ready()) {
-            playerInventoryHandleDep.changed();
-        }
-    });
-    this.autorun(function() {
-        allianceHandle = AllianceManager.currentPlayerAllianceHandle();
-        if (allianceHandle.ready()) {
-            allianceHandleDep.changed();
-        }
-    });
-    this.autorun(function() {
-        if ( allianceHandle && allianceHandle.ready() ) {
-            var alliance = allianceHandle.findOne();
-            if (alliance == null) {
-                // not part of an alliance (yet)
-                campsHandle = null;
-                campsHandleDep.changed();
-            } else {
-                campsHandle = CampManager.allianceCampsHandle(alliance.id);
-                if (campsHandle.ready()) {
-                    campsHandleDep.changed();
-                }
-            }
-        }
-    });
-}
+//var playerInventoryHandle = null;
+//var allianceHandle = null;
+//var campsHandle = null;
+//var playerInventoryHandleDep = new Deps.Dependency();
+//var allianceHandleDep = new Deps.Dependency();
+//var campsHandleDep = new Deps.Dependency();
+//Template.player_inventory.rendered = function() {
+//    this.autorun(function() {
+//        playerInventoryHandle = InventoryManager.playerInventoryHandle();
+//        if (playerInventoryHandle.ready()) {
+//            playerInventoryHandleDep.changed();
+//        }
+//    });
+//    this.autorun(function() {
+//        allianceHandle = AllianceManager.currentPlayerAllianceHandle();
+//        if (allianceHandle.ready()) {
+//            allianceHandleDep.changed();
+//        }
+//    });
+//    this.autorun(function() {
+//        if ( allianceHandle && allianceHandle.ready() ) {
+//            var alliance = allianceHandle.findOne();
+//            if (alliance == null) {
+//                // not part of an alliance (yet)
+//                campsHandle = null;
+//                campsHandleDep.changed();
+//            } else {
+//                campsHandle = CampManager.allianceCampsHandle(alliance.id);
+//                if (campsHandle.ready()) {
+//                    campsHandleDep.changed();
+//                }
+//            }
+//        }
+//    });
+//}
 Template.player_inventory.helpers({
     initializeData : function() {
         return {
             currentPlayer: one(PlayerManager.currentPlayerHandle()),
-            playerInventory : InventoryManager.playerInventoryHandle()
+            playerInventory : one(InventoryManager.playerInventoryHandle())
         }
     },
 
-    displayByAlphabetic: function() {
-        var template = Template.instance();
-        var displayOrder = template.$('.displayOrder').val();
-        return displayOrder == 'alphabetic';
-    },
-    displayByBuilding: function() {
-        var template = Template.instance();
-        var displayOrder = template.$('.displayOrder').val();
-        return displayOrder == 'building';
-    },
     storables : function () {
         var storables;
         var showFilter = $('.showFilter').val();
@@ -64,11 +54,7 @@ Template.player_inventory.helpers({
         return results;
     },
     inventoryItemValue: function() {
-        playerInventoryHandleDep.depend();
-        if ( playerInventoryHandle == null ) {
-            return 0;
-        }
-        var playerInventory = playerInventoryHandle.findOne();
+        var playerInventory = getTemplateData('playerInventory');
         if (playerInventory != null) {
             return playerInventory.current[this];
         } else {

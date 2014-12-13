@@ -32,91 +32,96 @@
                 <div class="row">
                     <div class="col-md-12">
                         {{!--<div class="foldable-section mll mrl first-child">--}}
-                        <div class="mll mrl">
-                            <a class="foldable-section-title" href="#byAlphabetic">
-                                <span class="foldable-section-title-icon">
-                                    <i class="glyphicon glyphicon-chevron-right"></i>
-                                </span>Alphabetic
-                            </a>
-
-                            <div id="byAlphabetic" class="foldable-section-content clearfix">
-                                <table class="table-striped table table-condensed">
-                                    <thead>
-                                    <tr>
-                                        <td>Storable</td>
-                                        <td>Quantity</td>
-                                        <td>Alliance Camp needs</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {{#each storables}}
+                        <div class="row mll mrl">
+                            <ul id="tab" class="nav nav-tabs report-tabs" role="tablist">
+                                <li class="active">
+                                    <a href="#byAlphabetic" role="tab" data-toggle="tab">
+                                        Alphabetic
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#byBuildings" role="tab" data-toggle="tab">
+                                        Buildings
+                                    </a>
+                                </li>
+                                <li class="status-bar">
+                                    <span class="{{projectStatusColor}}">
+                                    </span>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="byAlphabetic" class="tab-pane">
+                                    <table class="table-striped table table-condensed">
+                                        <thead>
                                         <tr>
-                                            <td class="text-capitalize">{{this.displayName}}<br>
-                                                {{#if buildings this}}
-                                                    <small>Built By: <span
-                                                            class="text-capitalize">{{buildings this }}</span>
-                                                    </small>{{/if}}
-                                                {{#if adventures this}}
-                                                    <small>Adventures: <span
-                                                            class="text-capitalize">{{adventures this }}</span>
-                                                    </small>{{/if}}
-                                            </td>
-                                            <td>Have: <input type="number" size="4" min="0" step="1"
-                                                             class="inventoryHave form-control"
-                                                             data-inputfield="{{this.dbCode}}"
-                                                             data-inventory-key="{{this}}"
-                                                             value="{{inventoryItemValue}}"></td>
-                                            <td>
-                                                {{#if storableNeededForCamp}}
-                                                    {{#with storableNeededForCamp}}
-                                                        {{#if totalNeeded}}
-                                                            {{#each arrayify neededByCamp}}
-                                                                Camp Location: {{CampLocationDisplayName key}}
-                                                                {{#with value}}
-                                                                    ( {{currentLevel}} )
-                                                                    Total Needed: {{totalNeeded}}:
-                                                                    {{#each fromCurrentLevel}}
-                                                                        {{this}}
-                                                                    {{/each}}
-                                                                {{/with}}
-                                                                <br>
-                                                            {{/each}}
-                                                            <br/>
-                                                            Total Needed: {{totalNeeded}}
-                                                        {{/if}}
-                                                    {{/with}}
-                                                {{/if}}
-                                            </td>
-                                            <td>
-                                                {{#with buildPlan}}
-                                                    <div>
-                                                        {{#each buildOrders}}
-                                                            <div>Duration: {{buildTime}}</div>
-                                                            <div></div>
-                                                        {{/each}}
-                                                    </div>
-                                                {{/with}}
-                                            </td>
+                                            <td>Storable</td>
+                                            <td>Quantity</td>
+                                            <td>Alliance Camp needs</td>
                                         </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{#each storables}}
+                                            <tr>
+                                                <td class="text-capitalize">{{this.displayName}}<br>
+                                                    {{#if buildings this}}
+                                                        <small>Built By: <span
+                                                                class="text-capitalize">{{buildings this }}</span>
+                                                        </small>{{/if}}
+                                                    {{#if adventures this}}
+                                                        <small>Adventures: <span
+                                                                class="text-capitalize">{{adventures this }}</span>
+                                                        </small>{{/if}}
+                                                </td>
+                                                <td>Have: <input type="number" size="4" min="0" step="1"
+                                                                 class="inventoryHave form-control"
+                                                                 data-inputfield="{{this.dbCode}}"
+                                                                 data-inventory-key="{{this}}"
+                                                                 value="{{inventoryItemValue}}"></td>
+                                                <td>
+                                                    {{#if storableNeededForCamp}}
+                                                        {{#with storableNeededForCamp}}
+                                                            {{#if totalNeeded}}
+                                                                {{#each arrayify neededByCamp}}
+                                                                    Camp Location: {{CampLocationDisplayName key}}
+                                                                    {{#with value}}
+                                                                        ( {{currentLevel}} )
+                                                                        Total Needed: {{totalNeeded}}:
+                                                                        {{#each fromCurrentLevel}}
+                                                                            {{this}}
+                                                                        {{/each}}
+                                                                    {{/with}}
+                                                                    <br>
+                                                                {{/each}}
+                                                                <br/>
+                                                                Total Needed: {{totalNeeded}}
+                                                            {{/if}}
+                                                        {{/with}}
+                                                    {{/if}}
+                                                </td>
+                                                <td>
+                                                    {{#with buildPlan}}
+                                                        <div>
+                                                            {{#each buildOrders}}
+                                                                <div>Duration: {{buildTime}}</div>
+                                                                <div></div>
+                                                            {{/each}}
+                                                        </div>
+                                                    {{/with}}
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="byBuildings" class="tab-pane">
+
+                                    {{#each arrayify Buildings}}
+                                        <div>
+                                            hi
+                                            {{value.displayName}}
+                                        </div>
                                     {{/each}}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        {{!--<div class="foldable-section mll mrl last-child">--}}
-                        <div class="mll mrl">
-                            <a class="foldable-section-title" href="#byBuildings">
-                                <span class="foldable-section-title-icon"><i
-                                        class="glyphicon glyphicon-chevron-right"></i></span>By Buildings
-                            </a>
-
-                            <div id="byBuildings" class="foldable-section-content clearfix">
-
-                                {{#each arrayify Buildings}}
-                                    <div>
-                                        {{value.displayName}}
-                                    </div>
-                                {{/each}}
+                                </div>
                             </div>
                         </div>
                     </div>
