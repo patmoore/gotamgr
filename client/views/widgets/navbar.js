@@ -14,11 +14,12 @@ Template.su_navbar.helpers({
         if ( Meteor.userId == null) {
             return; 
         }
+        debugger;
         var route = routeController.route;
         var currentNavigationAlias = route.options.navigationAlias;
 
         var preliminaryPageNames = _.keys(Router.routes);
-        var routes = _.filter(Router.routes, function(route) {
+        var routes = _.map(_.filter(Router.routes, function(route) {
             // only display page in the toplevel navigation if the route has the same navigationAlias
             if ( currentNavigationAlias === route.options.navigationAlias
                 || (_.isArray(route.options.navigationAliases) && _.contains(route.options.navigationAliases, currentNavigationAlias))) {
@@ -36,6 +37,9 @@ Template.su_navbar.helpers({
                 }
             }
             return false;
+        }), function(route) {
+            // convert function to an object for iteration
+            return _.extend({name:route.getName()}, route);
         });
         return routes;
     },
@@ -49,7 +53,7 @@ Template.su_navbar.helpers({
     },
     tabActiveClass: function() {
         var current = Router.current(true).route;
-        if ( this.name === current.name) {
+        if ( this.name === current.getName()) {
             return "active";
         } else {
             return "";

@@ -12,23 +12,8 @@ Template.mainLayout.rendered = function(context, options) {
     }
 
     // Highlight corresponding navigation item on the main nav
-    var currentUrl = Router.current(true).path,
+    var currentUrl = Router.current(true).url,
         $currentActiveNav = $('.main-nav .nav-item.active');
-    if (currentUrl === '/') {
-        if (typeof $currentActiveNav !== 'undefined') {
-            $currentActiveNav.removeClass('active');
-        }
-    } else if (currentUrl.indexOf('/report') != -1) {
-        if (typeof $currentActiveNav !== 'undefined') {
-            $currentActiveNav.removeClass('active');
-        }
-        $currentActiveNav = $('#navReport .nav-item').addClass('active');
-    } else if (currentUrl.indexOf('/about') != -1) {
-        if (typeof $currentActiveNav !== 'undefined') {
-            $currentActiveNav.removeClass('active');
-        }
-        $currentActiveNav = $('#navAbout .nav-item').addClass('active');
-    }
 
     var $window = $(window);
 
