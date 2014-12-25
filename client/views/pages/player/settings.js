@@ -4,6 +4,11 @@ Template.player_settings.events({
         PlayerManager.updatePlayerProfile(changes, function(error, result){
             clearChangedInputFieldData(template, error, result);
         });
+    },
+    'change #extraCommandPoints': function(event, template) {
+        var player = getTemplateData('currentPlayer');
+        player.extraCommandPoints = $('#extraCommandPoints').val();
+        $('#totalCommandPoints').html(player.totalCommandPoints);
     }
 });
 

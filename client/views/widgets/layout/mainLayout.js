@@ -10,23 +10,18 @@ Template.mainLayout.rendered = function(context, options) {
             scrollTop: $('#' + hash).offset().top
         }, 600);
     }
-
-    // Highlight corresponding navigation item on the main nav
-    var currentUrl = Router.current(true).url,
-        $currentActiveNav = $('.main-nav .nav-item.active');
-
     var $window = $(window);
 
     /* ========== PARALLAX BACKGROUND ========== */
     // Don't apply effects to mobile devices
     if ($window.width() > 991) {
-        var $navbar = $('#header .navbar'),
-            $parallax = $('.parallax');
         $window.scroll(function(e) {
+            var $navbar = $('#header .navbar'),
+                $parallax = $('.parallax');
             if ($parallax.length == 0) {
                 return;
             }
-            var scrollPosition = $window.scrollTop();
+            var scrollPosition = $(window).scrollTop();
             $parallax.css('top',(0 - (scrollPosition * 0.3)) + 'px' ); // bg image moves at 30% of scrolling speed
             if (scrollPosition <= 100) {
                 $navbar.addClass('navbar-transparent-bg');
@@ -40,6 +35,7 @@ Template.mainLayout.rendered = function(context, options) {
 
     /* ========== RESIZE HERO TO MAKE SURE IT'S FULL PAGE VIEW ========== */
     $window.resize(function(e) {
+        var $window = $(window);
         var height = $window.height();
         $('#hero').css('height', height);
 

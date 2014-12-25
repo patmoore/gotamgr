@@ -9,7 +9,8 @@
                     <input name="characterFirstName" type="text" size="16" data-inputfield placeholder="First Name" value="{{characterFirstName}}">
                     <input name="characterLastName" type="text" size="16" data-inputfield placeholder="Last Name" value="{{characterLastName}}">
                     <input name="facebookName" type="text" size="16" data-inputfield placeholder="Facebook Name" value="{{facebookName}}">
-                    Extra Command Points: <input name="abilities.extraCommandPoints" type="number" min="0" step="1" max="8" size="4" data-inputfield value="{{abilities.extraCommandPoints}}">
+                    Extra Command Points: <input id="extraCommandPoints" name="extraCommandPoints" type="number" min="0" step="1" max="8" size="4" data-inputfield value="{{extraCommandPoints}}">
+                    Total Command Points: <span id="totalCommandPoints"></span>
                     Level: <input name="characterLevel" type="number" min="1" step="1" max="2000" size="4" data-inputfield value="{{characterLevel}}">
                     <div>
                         Unequipped

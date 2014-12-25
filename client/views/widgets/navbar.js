@@ -14,7 +14,6 @@ Template.su_navbar.helpers({
         if ( Meteor.userId == null) {
             return; 
         }
-        debugger;
         var route = routeController.route;
         var currentNavigationAlias = route.options.navigationAlias;
 

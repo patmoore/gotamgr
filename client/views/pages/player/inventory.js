@@ -34,11 +34,16 @@
 //    });
 //}
 Template.player_inventory.helpers({
-    initializeData : function() {
-        return {
-            currentPlayer: one(PlayerManager.currentPlayerHandle()),
+    initializeData : function(params) {
+        var initialData = _.extend({
             playerInventory : one(InventoryManager.playerInventoryHandle())
+        }, initializeDataWithPlayer(params));
+
+        if ( initialData.allianceId ) {
+            var allianceCampsHandle = CampManager.allianceCampsHandle(params.allianceId);
+            initialData.allianceCamps = many(allianceCampsHandle);
         }
+        return initialData;
     },
 
     storables : function () {
@@ -89,26 +94,24 @@ Template.player_inventory.helpers({
         var neededByCamp = {};
         var totalNeeded = 0;
         if ( storablesByCamp ) {
-            campsHandleDep.depend();
-            if (campsHandle && campsHandle.ready()) {
-                var camps = campsHandle.findFetch();
-                _.each(camps, function (camp) {
-                    var skillGeneral = camp.skillSpecialization.skillGeneral;
-                    var storableForSkillGeneral = storablesByCamp[skillGeneral];
-                    if (storableForSkillGeneral && storableForSkillGeneral.length >= camp.currentLevel) {
-                        var totalNeededForCamp = _.reduce(storableForSkillGeneral.slice(camp.currentLevel),
-                            function (memo, num) {
-                                return memo + num;
-                            }, 0);
-                        totalNeeded += totalNeededForCamp;
-                        neededByCamp[camp.campLocation] = {
-                            fromCurrentLevel: storableForSkillGeneral.slice(camp.currentLevel),
-                            currentLevel: camp.currentLevel,
-                            totalNeeded: totalNeededForCamp
-                        };
-                    }
-                });
-            }
+            //campsHandleDep.depend();
+            var camps = getTemplateData('allianceCamps');
+            _.each(camps, function (camp) {
+                var skillGeneral = camp.skillSpecialization.skillGeneral;
+                var storableForSkillGeneral = storablesByCamp[skillGeneral];
+                if (storableForSkillGeneral && storableForSkillGeneral.length >= camp.currentLevel) {
+                    var totalNeededForCamp = _.reduce(storableForSkillGeneral.slice(camp.currentLevel),
+                        function (memo, num) {
+                            return memo + num;
+                        }, 0);
+                    totalNeeded += totalNeededForCamp;
+                    neededByCamp[camp.campLocation] = {
+                        fromCurrentLevel: storableForSkillGeneral.slice(camp.currentLevel),
+                        currentLevel: camp.currentLevel,
+                        totalNeeded: totalNeededForCamp
+                    };
+                }
+            });
         }
         if ( totalNeeded > 0 ) {
             return {totalNeeded: totalNeeded, neededByCamp: neededByCamp};
