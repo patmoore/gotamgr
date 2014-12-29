@@ -28,9 +28,10 @@ Template.su_navbar.helpers({
                     // and there are no keys on the page.
                     return true;
                 } else {
+                    var params = WPUtils.getRouterParams();
                     // or the current routecontroller has all the nonoptional keys defined
                     var allNonoptionalsFound = _.every(nonoptionals, function(nonoptional){
-                        return nonoptional.name in routeController.params;
+                        return nonoptional.name in params;
                     });
                     return allNonoptionalsFound;
                 }
@@ -41,14 +42,6 @@ Template.su_navbar.helpers({
             return _.extend({name:route.getName()}, route);
         });
         return routes;
-    },
-    data: function() {
-        var routeController = Router.current(true);
-        if ( routeController == null){
-            return void(0);
-        } else {
-            return routeController.params;
-        }
     },
     tabActiveClass: function() {
         var current = Router.current(true).route;

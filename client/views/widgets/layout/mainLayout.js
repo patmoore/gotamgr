@@ -1,6 +1,6 @@
 Template.mainLayout.rendered = function(context, options) {
     // If a hash is specified, navigate to the corresponding section
-    var hash = Router.current(true).params.hash;
+    var hash = WPUtils.getRouterParams('hash');
     if (hash == null || hash === 'undefined') {
         $('html, body').animate({
             scrollTop: 0

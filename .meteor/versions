@@ -44,7 +44,7 @@ livedata@1.0.12
 localstorage@1.0.2
 logging@1.0.6
 meteor@1.1.4
-meteor-collection-management@1.4.2
+meteor-collection-management@1.5.0
 meteor-platform@1.2.1
 meteorhacks:async@1.0.0
 meteorhacks:npm@1.2.2
@@ -80,4 +80,4 @@ underscore@1.0.2
 url@1.0.3
 webapp@1.1.5
 webapp-hashing@1.0.2
-whalepath-utils@0.0.7
+whalepath-utils@0.0.9
