@@ -15,8 +15,8 @@ Template.player_buildings.helpers({
     terminalStorables : function () {
         return Object.keys(Storables).sort();
     },
-    buildPlan: function() {
-
+    Buildings: function() {
+        return Buildings;
     }
 });
 

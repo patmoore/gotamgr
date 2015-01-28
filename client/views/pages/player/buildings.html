@@ -1,8 +1,13 @@
 <template name="player_buildings">
     <nav class="navbar"><!-- spacer--></nav>
     <section>
-        <div class="container">
-
+        <div></div>
+        <div class="container form-container">
+            {{#each arrayify Buildings}}
+                {{#with value}}
+                    {{displayName}}
+                {{/with}}
+            {{/each}}
         </div>
     </section>
 </template>

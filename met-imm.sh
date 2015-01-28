@@ -1,2 +1,2 @@
 #!/bin/sh
-NODE_OPTIONS=--debug-brk meteor --settings cfg/settings-dev.json run
+NODE_OPTIONS="--debug-brk --debug=4002" meteor -p 4000 run

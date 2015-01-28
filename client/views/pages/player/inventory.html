@@ -1,7 +1,7 @@
 <template name="player_inventory">
     <nav class="navbar"><!-- spacer--></nav>
     <section>
-        <div class="container form-horizontal">
+        <div class="container form-container form-horizontal">
             <div class="row">
                 <h2>Inventory</h2>
 
@@ -29,7 +29,7 @@
                 <!--<option value="building">Buildings</option>-->
                 <!--</select>-->
                 <!--</div>-->
-                <div class="row">
+                <div class="form-group row mtl ptm pbm pll prl">
                     <div class="col-md-12">
                         {{!--<div class="foldable-section mll mrl first-child">--}}
                         <div class="row mll mrl">
@@ -43,10 +43,6 @@
                                     <a href="#byBuildings" role="tab" data-toggle="tab">
                                         Buildings
                                     </a>
-                                </li>
-                                <li class="status-bar">
-                                    <span class="{{projectStatusColor}}">
-                                    </span>
                                 </li>
                             </ul>
                             <div class="tab-content">

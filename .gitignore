@@ -1,2 +1,4 @@
 .idea
 smart.lock
+tests/cookies.json
+*.swp

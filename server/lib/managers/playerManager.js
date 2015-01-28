@@ -1,7 +1,8 @@
 Meteor.startup(function(){
+    'use strict';
     _.extend(PlayerManagerType.prototype, {
         ctor: function() {
-            var thatManager = this;
+            var thatManager = this.thatManager;
             /**
              * TODO: use the new manager code.
              * The current logged in user's information
@@ -16,6 +17,8 @@ Meteor.startup(function(){
                         });
                 }
             });
+            debugger;
+            thatManager.loadDisruptorBeamUser({id:'mmmm'});
         },
         updatePlayerProfile: function(updatedPlayerProfile) {
             var thatManager = this.thatManager;
@@ -32,6 +35,16 @@ Meteor.startup(function(){
             var player = new Player({userId:userId});
             player._save();
             InventoryManager.createPlayerInventory(player);
+        },
+        loadDisruptorBeamUser: function(player) {
+            var disruptorBeamUserId = 2245605;//player.disruptorBeamUserId;
+            //HACK ( should be loaded from db )
+            var json = Assets.getText('disruptorBeam/'+disruptorBeamUserId+'.json');
+            var disruptorBeamUser = new DisruptorBeamUser({
+                playerId:player.id,
+                disruptorBeamData:EJSON.parse(json)
+            });
+            return disruptorBeamUser;
         }
     });
 });
