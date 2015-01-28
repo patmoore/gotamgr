@@ -28,11 +28,10 @@ Template.player_buildPlan.events({
 Template.player_buildPlan.helpers({
     initializeData: function (params) {
         var buildPlanId = params.buildPlanId;
-        var data = {
-            currentPlayer: one(PlayerManager.currentPlayerHandle()),
+        var data = _.extend({
             playerInventory: one(InventoryManager.playerInventoryHandle()),
-            currentPlayerBuildPlans: BuildPlanManager.currentPlayerBuildPlansHandle()
-        };
+            currentPlayerBuildPlans: many(BuildPlanManager.currentPlayerBuildPlansHandle())
+        }, initializeDataWithPlayer(params));
 
         if (buildPlanId) {
             data.selectedBuildPlan = BuildPlan.databaseTable.findOneById(buildPlanId);
@@ -42,7 +41,9 @@ Template.player_buildPlan.helpers({
     generateBuildOrders: function() {
         var buildPlan = this;
         // Now recalculate
-        BuildPlanManager.createBuildPlansBuildOrders(buildPlan);
+        var currentPlayer = WPUtils.getTemplateData('currentPlayer');
+        debugger;
+        BuildPlanManager.createBuildPlansBuildOrders(buildPlan, { buildProcessors: [ currentPlayer ]});
     },
     StorableInBuildings: function () {
         return StorableInBuildings;

@@ -23,7 +23,7 @@ Template.su_navbar.helpers({
             if ( currentNavigationAlias === route.options.navigationAlias
                 || (_.isArray(route.options.navigationAliases) && _.contains(route.options.navigationAliases, currentNavigationAlias))) {
                 // look for any key (used to construct the path) that is not optional - TODO: look for the keys being set. (so we could display)
-                var nonoptionals = _.where(route.keys, {optional:false});
+                var nonoptionals = _.where(WPUtils.getRouteKeys(route), {optional:false});
                 if ( nonoptionals === undefined) {
                     // and there are no keys on the page.
                     return true;

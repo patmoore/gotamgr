@@ -3,9 +3,9 @@ Template.alliance_inventory.helpers({
         var initialData = initializeDataWithPlayer(params);
         var allianceId = params.allianceId;
         _.extend(initialData, {
-            listAlliancePlayers: AllianceManager.alliancePlayersHandle(allianceId),
+            listAlliancePlayers: many(AllianceManager.alliancePlayersHandle(allianceId)),
             alliancePlayersInventory: many(AllianceManager.alliancePlayersInventoryHandle(allianceId)),
-            allianceCamps: CampManager.allianceCampsHandle(allianceId)
+            allianceCamps: many(CampManager.allianceCampsHandle(allianceId))
         });
         if ( initialData.allianceCamps.ready() ) {
             initialData.allianceNeeds = {};

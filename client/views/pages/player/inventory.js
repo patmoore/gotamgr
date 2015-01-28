@@ -47,15 +47,13 @@ Template.player_inventory.helpers({
     },
 
     storables : function () {
-        var storables;
-        var showFilter = $('.showFilter').val();
-        switch(showFilter) {
-        case 'need':
-        case 'all':
-        default:
-            storables = Storables;
-        }
+        var storables = Storables;
         var results = storables.symbols();
+        return results;
+    },
+    buildings: function() {
+        var buildings = Buildings;
+        var results = buildings.symbols();
         return results;
     },
     inventoryItemValue: function() {
@@ -66,7 +64,7 @@ Template.player_inventory.helpers({
             return 0;
         }
     },
-    buildings: function(storable) {
+    buildingsFor: function(storable) {
         var buildingNames = [];
         if ( storable == null ) {
             debugger;
@@ -79,7 +77,7 @@ Template.player_inventory.helpers({
         var buildingsString = buildingNames.sort().join(', ');
         return buildingsString;
     },
-    adventures: function(storable) {
+    adventuresFor: function(storable) {
         var adventureNames = [];
         if ( typeof(storable.adventure) !== "undefined" ) {
             storable.adventure.forEach(function(adventure) {
