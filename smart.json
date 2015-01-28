@@ -1,13 +1,5 @@
 {
   "packages": {
-    "meteor-chosen": {
-      "branch": "master",
-      "git": "https://github.com/whalepath/meteor-chosen.git"
-    },
-    "meteor-flat-ui": {
-      "branch": "master",
-      "git": "https://github.com/patmoore/meteor-flat-ui.git"
-    },
     "meteor-collection-management": {
       "branch": "master",
       "git": "git@github.com:patmoore/meteor-collection-management.git"
