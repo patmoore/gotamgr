@@ -1,5 +1,5 @@
 {
-  "base_time": 1424105740,
+  "base_time": 1424105923,
   "user_group": "A",
   "player_data_seqnum": 20423,
   "provider": "armorgames",
@@ -8,7 +8,7 @@
   "ls": 10,
   "ls2": 2,
   "nps": 0,
-  "age_days": 482.39425216805654,
+  "age_days": 482.39637678558,
   "new_end": "over 1 year",
   "logins": 6493,
   "current_episode": "7.10",
@@ -29,8 +29,8 @@
     "influence_high_score": 750182,
     "facebook_first_name": "",
     "prestige": 5600,
-    "channel": "user_2245605_5eaf6bd4ea0659a62065e162cea7fbc6",
-    "alliance_channel": "alliance_41394_82d539678f3b2c0dc55979d7455bf298",
+    "channel": "user_2245605_371e501bd30d91c4e00a7c8b938b2e72",
+    "alliance_channel": "alliance_41394_57bd479b09c10f598b678c34277ae170",
     "name": "sworddance",
     "facebook_last_name": "",
     "email": "sworddance+ag@armorgames.com",
@@ -494,7 +494,7 @@
   "virtues": {},
   "faults": {},
   "modifier": {},
-  "elapsed_time": 19595,
+  "elapsed_time": 19778,
   "strings": {
     "alliance_name": "The Honorable",
     "title_and_name": "Iron Darkness Seis Mediamano",
@@ -683,7 +683,7 @@
     {
       "id": 616032033,
       "order": 2,
-      "short": "#<Enumerator:0x007fb0ebd3d288>",
+      "short": "#<Enumerator:0x007fb0e0ca1c08>",
       "symbol": "gq_coin_of_dispute",
       "priority": 10,
       "name": "Coin of Dispute",
@@ -703,7 +703,7 @@
     {
       "id": 615379071,
       "order": 1,
-      "short": "#<Enumerator:0x007fb0ebd170b0>",
+      "short": "#<Enumerator:0x007fb0e0c25e00>",
       "symbol": "q11_ss_reentering_the_ruins",
       "priority": 10,
       "name": "Re-entering the Ruins",
@@ -723,7 +723,7 @@
     {
       "id": 616836331,
       "order": 0,
-      "short": "#<Enumerator:0x007fb0ebd43de0>",
+      "short": "#<Enumerator:0x007fb0e0ca6be0>",
       "symbol": "ave_fire_at_the_arsenal_2",
       "priority": 10,
       "name": "Fire at the Arsenal",
@@ -745,7 +745,7 @@
     {
       "id": 605154751,
       "order": 0,
-      "short": "#<Enumerator:0x007fb0ebd0c138>",
+      "short": "#<Enumerator:0x007fb0e0c15578>",
       "symbol": "q1_the_past_undone",
       "priority": 10,
       "name": "The Past Undone",
@@ -765,7 +765,7 @@
     {
       "id": 616010096,
       "order": 0,
-      "short": "#<Enumerator:0x007fb0ebd3f1c8>",
+      "short": "#<Enumerator:0x007fb0e0c9de00>",
       "symbol": "q8_boss_a_good_son",
       "priority": 10,
       "name": "A Good Son (c_kempen)",
@@ -787,7 +787,7 @@
     {
       "id": 617030138,
       "order": 0,
-      "short": "#<Enumerator:0x007fb0ebd61ac0>",
+      "short": "#<Enumerator:0x007fb0e0d18790>",
       "symbol": "q14_boss_the_battle_of_the_fist",
       "priority": 10,
       "name": "The Battle of the Fist (guest_459134180995072)",
@@ -809,7 +809,7 @@
     {
       "id": 617030656,
       "order": 0,
-      "short": "#<Enumerator:0x007fb0ebd79b20>",
+      "short": "#<Enumerator:0x007fb0e0d761d8>",
       "symbol": "q11_boss_consigned_to_fire_and_sword",
       "priority": 10,
       "name": "Consigned to Fire and Sword (c_kempen)",
@@ -831,7 +831,7 @@
     {
       "id": 617030705,
       "order": 0,
-      "short": "#<Enumerator:0x007fb0ebd97bc0>",
+      "short": "#<Enumerator:0x007fb0e0dd3b30>",
       "symbol": "q11_boss_one_hundred_and_sixty_three",
       "priority": 10,
       "name": "One Hundred and Sixty Three (guest_459134180995072)",
@@ -1901,7 +1901,7 @@
     "shanty_upgrades_finished": 5,
     "warehouse_upgrades_finished": 4,
     "holdfast_upgrades_finished": 3,
-    "ftpe_viewed_character": 40,
+    "ftpe_viewed_character": 41,
     "spend_fight_talent_point": 1,
     "hunting_lodge_upgrades_finished": 2,
     "chapter_complete_5_18": 1,
@@ -1983,7 +1983,7 @@
     "daily_streak_claimed": 4,
     "level_progress": 51,
     "command": 49,
-    "current_command": 44,
+    "current_command": 0,
     "call_banner_cost": 380,
     "protection_remaining": 0,
     "got_battle": "503",
@@ -2026,7 +2026,7 @@
     "background_trade": 0,
     "background_intrigue": 1,
     "background_money": 0,
-    "pvp_incoming_seconds": -1851816,
+    "pvp_incoming_seconds": -1852936,
     "inn_built": false,
     "counting_house_built": true,
     "term": 0,
@@ -2034,8 +2034,8 @@
     "next_quest_original": 300
   },
   "buffs": [],
-  "ac": "8cb98ee07e47a6d80ea7499768a93005",
+  "ac": "efd18e332f58eaa67389ac498c246313",
   "inventory": [],
   "dropped_inventory": "",
-  "purchase_nonce": "965a3c7f462426cb18c9724058385baf"
+  "purchase_nonce": "22c7e65ad5107548517438719bfbd22e"
 }
