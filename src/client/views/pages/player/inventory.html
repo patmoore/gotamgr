@@ -1,0 +1,128 @@
+<template name="player_inventory">
+    <nav class="navbar"><!-- spacer--></nav>
+    <section>
+        <div class="container form-container form-horizontal">
+            <div class="row">
+                <h2>Inventory</h2>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Enter or adjust your current inventory.
+                    </div>
+                    <div class="col-md-7">
+                        <button id="saveInventory" class="btn mbm btn-success">Save Inventory</button>
+                        <button id="clearInventory" class="btn mbm btn-danger">Clear Inventory</button>
+                    </div>
+                </div>
+                <!--<div class="col-md-3">Show-->
+                <!--<select class="chosen-select showFilter">-->
+                <!--<option value="all">All</option>-->
+                <!--<option value="need">All Needed</option>-->
+                <!--<option value="camp">Needed for camps</option>-->
+                <!--<option value="personal">Personally Needed</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--<div class="col-md-3">Group by:-->
+                <!--<select class="showOrder chosen-select">-->
+                <!--<option value="resources">Resources First</option>-->
+                <!--<option value="alphabetical">Alphabetical</option>-->
+                <!--<option value="building">Buildings</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <div class="form-group row mtl ptm pbm pll prl">
+                    <div class="col-md-12">
+                        {{!--<div class="foldable-section mll mrl first-child">--}}
+                        <div class="row mll mrl">
+                            <ul id="tab" class="nav nav-tabs report-tabs" role="tablist">
+                                <li class="active">
+                                    <a href="#byAlphabetic" role="tab" data-toggle="tab">
+                                        Alphabetic
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#byBuildings" role="tab" data-toggle="tab">
+                                        Buildings
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="byAlphabetic" class="tab-pane">
+                                    <table class="table-striped table table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <td>Storable</td>
+                                            <td>Quantity</td>
+                                            <td>Alliance Camp needs</td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{#each storables}}
+                                            <tr>
+                                                <td class="text-capitalize">{{this.displayName}}<br>
+                                                    {{#if buildingsFor this}}
+                                                        <small>Built By: <span
+                                                                class="text-capitalize">{{buildingsFor this }}</span>
+                                                        </small>{{/if}}
+                                                    {{#if adventuresFor this}}
+                                                        <small>Adventures: <span
+                                                                class="text-capitalize">{{adventuresFor this }}</span>
+                                                        </small>{{/if}}
+                                                </td>
+                                                <td>Have: <input type="number" size="4" min="0" step="1"
+                                                                 class="inventoryHave form-control"
+                                                                 data-inputfield="{{this.dbCode}}"
+                                                                 data-inventory-key="{{this}}"
+                                                                 value="{{inventoryItemValue}}"></td>
+                                                <td>
+                                                    {{#if storableNeededForCamp}}
+                                                        {{#with storableNeededForCamp}}
+                                                            {{#if totalNeeded}}
+                                                                {{#each arrayify neededByCamp}}
+                                                                    Camp Location: {{CampLocationDisplayName key}}
+                                                                    {{#with value}}
+                                                                        ( {{currentLevel}} )
+                                                                        Total Needed: {{totalNeeded}}:
+                                                                        {{#each fromCurrentLevel}}
+                                                                            {{this}}
+                                                                        {{/each}}
+                                                                    {{/with}}
+                                                                    <br>
+                                                                {{/each}}
+                                                                <br/>
+                                                                Total Needed: {{totalNeeded}}
+                                                            {{/if}}
+                                                        {{/with}}
+                                                    {{/if}}
+                                                </td>
+                                                <td>
+                                                    {{#with buildPlan}}
+                                                        <div>
+                                                            {{#each buildOrders}}
+                                                                <div>Duration: {{buildTime}}</div>
+                                                                <div></div>
+                                                            {{/each}}
+                                                        </div>
+                                                    {{/with}}
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="byBuildings" class="tab-pane">
+
+                                    {{#each buildings}}
+                                        <div>
+
+                                            {{value.displayName}}
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

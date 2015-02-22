@@ -1,0 +1,45 @@
+<template name="alliance_inventory">
+    <nav class="navbar"><!-- spacer--></nav>
+    <section>
+        <div class="container form-horizontal">
+            <h2>{{alliance.displayName}}</h2>
+            <div><button class="saveChanges"></button></div>
+            <table class="table table-striped">
+                <thead>
+                    <tr class="row">
+                        <th>Item</th>
+                        <th>Total Needed</th>
+                        <th>Needed Per Player ({{activePlayers}})</th>
+                        <th>Remaining Needed</th>
+                        <th>You have</th>
+                        <th>You commit to</th>
+                    {{#each alliancePlayersInventory}}
+                    {{#if notYou}}
+                        <th>{{alliancePlayerDisplayName}}</th>
+                    {{/if}}
+                    {{/each}}
+                </tr></thead>
+                <tbody>
+                {{#each arrayify allianceNeeds}}
+                <tr class="row"> 
+                    <td>{{storableDisplayName}}</td>
+                    <td>{{value}}</td>
+                    <td>{{perPlayerNeeds}}</td>
+                    <td>{{remainingNeeded}}</td>
+                    {{#with currentPlayerInventory}}
+                    <td><input type="number" min="0" step="1" name="current.{{../key}}" value="{{playerInventory ../key}}" data-inputfield></td>
+                    <td><input type="number" min="0" step="1" name="commit.{{../key}}" value="{{playerInventory ../key}}" data-inputfield></td>
+                    {{/with}}
+
+                    {{#each templateData 'alliancePlayersInventory'}}
+                    {{#if notYou}}
+                    <td>{{playerInventory ../key}}</td>
+                    {{/if}}
+                    {{/each}}
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</template>

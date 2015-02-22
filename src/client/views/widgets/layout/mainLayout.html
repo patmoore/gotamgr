@@ -1,0 +1,8 @@
+<template name="mainLayout">
+    <!-- The main layout with navigation and Hero area -->
+    {{> header routePrefix=routePrefix}}
+    {{!--Note: we do not have "section" tag surrounding the yield because the nested page templates have multiple sections.
+        BUT the page template is expected to make use of section elements--}}
+    {{> yield}}
+    {{> footer}}
+</template>

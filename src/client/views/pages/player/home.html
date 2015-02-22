@@ -1,0 +1,19 @@
+<template name="player_home">
+    <nav class="navbar"><!-- spacer--></nav>
+    <section>
+        <div class="container form-container">
+            <div class="row mtl pll prl">
+                <h2>Current Build Needs</h2>
+                {{#if currentPlayerBuildPlans}}
+                    {{#each currentPlayerBuildPlans}}
+                        <div><a href="{{pathFor 'player_buildPlan' playerId=playerId buildPlanId=id}}">{{displayName}}</a></div>
+                    {{/each}}
+                {{/if}}
+            </div>
+            <div class="row mtl pll prl">
+                <button id="getDbData">Get Data</button>
+                <textarea id="player_data"></textarea>
+            </div>
+        </div>
+    </section>
+</template>

@@ -1,8 +1,0 @@
-{
-  "packages": {
-    "meteor-collection-management": {
-      "branch": "master",
-      "git": "git@github.com:patmoore/meteor-collection-management.git"
-    }
-  }
-}

@@ -1,0 +1,14 @@
+<template name="su_alliances">
+    <nav class="navbar"><!-- spacer--></nav>
+    <section>
+        <div class="container">
+            <div class="table">
+                {{#each alliances}}
+                <div class="row">
+                    {{displayName}} <button class="selectAlliance btn mbm btn-success" data-route-data='{"allianceId":"{{id}}"}'></button>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+</template>

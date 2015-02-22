@@ -1,0 +1,33 @@
+<template name="alliance_settings">
+    <nav class="navbar"><!-- spacer--></nav>
+    <section>
+        {{#if allianceOfficer}}
+        {{#with selectedAlliance}}
+        <div class="container form-horizontal">
+            <div class="row">
+                Alliance Name :
+                {{#if allianceLeader}}<input type="text" name="displayName" data-inputfield>{{else}}
+                {{displayName}}
+                {{/if}}
+            </div>
+            <div class="row">
+                Alliance Invite Code:
+                {{#if allianceLeader}}
+                <input type="text" name="allianceInviteCode" data-inputfield>
+                {{else}}
+                {{allianceInviteCode}}
+                {{/if}}
+            </div>
+            {{#if allianceLeader}}
+            <div class="row">
+                <input type="text" name="allianceOfficerInviteCode" data-inputfield>
+            </div>
+            {{/if}}
+            <div class="row">
+                <button class="saveChanges btn mbm btn-success"></button>
+            </div>
+        </div>
+        {{/with}}
+        {{/if}}
+    </section>
+</template>

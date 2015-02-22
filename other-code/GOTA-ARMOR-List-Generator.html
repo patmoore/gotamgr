@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0051)file:///C:/Users/Juha/Downloads/ssTrackerFinal.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>GOTA SS List Generator </title>
+          <script src="https://code.jquery.com/jquery.js"></script>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.13.3/jquery.tablesorter.min.js"></script>
+<style>
+h1,p {
+color:white;
+text-shadow: 5px 5px 5px #999;
+}
+button{
+background-color:green;
+color:white;
+text-shadow: 5px 5px 5px #aaa;
+}
+.container {
+padding:0px auto;
+width :100%;
+margin: 0px auto;
+/*background-image:url(https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-xaf1/v/t1.0-9/10678693_374535342697112_1869249159622368646_n.jpg?oh=f3c9e9dc48992eac059b83ca69d8ad86&oe=54BFCC46&__gda__=1425194743_b4338ea4f0fafa4315346ee24f314c35);*/
+background-size:cover;
+background-repeat:no-repeat;
+}
+
+.result {
+background-color:silver;
+width :100%;
+margin: 0px auto;
+}
+.clear{
+	clear:both;
+}
+div,textarea,iframe,fieldset{
+float : left;
+padding: 10px;
+
+}
+table,td,th
+{
+font:13px/18px verdana,arial,sans-serif;
+border:1px solid black;
+border-collapse:collapse
+}
+th{
+background-color:green;
+font-weight:bold
+}
+
+</style>
+</head>
+<body bgcolor="silver" style="zoom: 1;">
+<div class="container">
+<h1>Game of Thrones Ascent SS tracker</h1>
+<p><b>Rarity : 1- common 2-uncommon 3-rare 4- legendary 5- peerless</b></p>
+<p><b> © Copyright 2014 <br><br>Storm Blade Danah Whatever <br>Storm Blade Freedom Myre<br><br> House of The Black Goat </b></p>
+    <p><b>Improved Honorable version</p>
+	<fieldset style="border:3px solid silver; ">
+          <legend style="color:white;"> Player Data</legend>
+	<iframe id="bateekh" src="about:blank"></iframe>
+	</fieldset>
+	<textarea rows="10" cols="50"></textarea>
+	<div class="clear"></div>
+<button id="target" style="font-size:20px">Generate Armor list </button>
+</div>
+<div class="result">
+	<div id="avgRank"></div>
+	<div id="modifier"></div>
+	<div id="rarity"></div>
+	<div class="clear"></div>
+    <div id="div1" width="100%"></div>
+ </div>
+    <script>
+        var url = 'http://gota-www.disruptorbeam.com/play/player_data/';
+        //var url = 'lataus.html';
+        $(document).ready(function ()
+        {
+  $('iframe').attr('src', url);
+
+  var fr = $("#iframe").contents();
+
+  $( "#target" ).click(function() {
+  var jsonp = $('textarea').val();
+  
+  var jsonShit="[" +jsonp +"]";
+  var obj = $.parseJSON(jsonShit);
+  var index=1;
+  var sumRanks=0;
+  var avgRank;
+  var fightSum=0;
+  var harSum=0;
+  var aidSum=0;
+  var barterSum=0;
+  var swindleSum=0;
+  var bribeSum=0;
+  var spySum=0;
+  var saboSum=0;
+  var stealSum=0;
+  var pSum=0;
+  var lSum=0;
+  var rSum=0;
+  var uSum=0;
+  var cSum = 0;
+  var unittable = '<table id="unittable"><thead><tr><th>Full name</th><th> B </th><th> T </th><th> I </th><th>Permanent</th><th>Details</th></thead><tbody>';
+
+  var rowcount = 0;
+  var unitcount = 0;
+  $.each(obj, function ()
+  {
+      for (var i = 0; i < this.inventory.length; i++)
+      {
+          //if (this.inventory[i].slot == "Unit")
+          if (this.inventory[i].slot == "Armor")
+          {
+              unittable += "<tr><td>"+this.inventory[i].full_name+"</td>";
+              unittable += "<td>" + this.inventory[i].calc_battle + "</td>";
+              unittable += "<td>" + this.inventory[i].calc_trade + "</td>";
+              unittable += "<td>" + this.inventory[i].calc_intrigue + "</td>";
+              unittable += "<td>" + this.inventory[i].permanent_item + "</td>";
+              unittable += "<td>" + this.inventory[i].details + "</td></tr>";
+
+          }
+      }
+  });
+  unittable += "</tr></tbody></table>";
+  $('#div1').html(unittable);
+  $('#unittable').tablesorter();
+
+  
+});
+  
+});
+</script>
+
+
+</body></html>

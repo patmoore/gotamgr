@@ -1,0 +1,20 @@
+#!/bin/sh
+
+re500="Error 500"
+reExpired="\<h3\>Offer Expired\</h3\>"
+#reOfferCode="<p style="margin-top: 15px; color: white; font-size: 32pt">VJN6-4YDJ-SH9B-CAIT</p>"
+i=1;
+while [ "$i" -lt 100 ] 
+do
+    data=$(curl -s http://gota.disruptorbeam.com/play/special_offer/${i})
+    if [[ $data =~ $re500 ]]; then
+        echo "No Offer: ${i}";
+    elif [[ $data =~ $reExpired ]]; then
+        echo "Offer $i has expired"
+    else 
+        offerCode=$(echo $data | sed -n -e 's/.*\([A-Z0-9]\{4\}-[A-Z0-9]\{4\}-[A-Z0-9]\{4\}-[A-Z0-9]\{4\}\).*/\1/p')
+        echo "Offer ${i} ${offerCode}"
+    fi
+    i=$((i+1))
+done
+

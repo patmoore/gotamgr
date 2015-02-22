@@ -1,0 +1,154 @@
+<template name="camp_fullDetail">
+    <div>
+        <div class="btn-toolbar" role="toolbar">
+            {{#if templateData 'allianceOfficer'}}
+            <div class="btn-group">
+                {{#if editMode}}
+                <button class="saveChanges btn mbm btn-success"></button>
+                {{else}}
+                <button class="editCamp btn mbm btn-success">Edit Camp</button>
+                {{/if}}
+            </div>
+            <div class="btn-group pull-right">
+                <button class="deleteCamp btn mbm btn-danger">Delete Camp</button>
+            </div>
+            {{/if}}
+        </div>
+        <form class="mtl">
+            <input type="hidden" value="{{camp.id}}" name="_id" data-inputfield>
+
+            <table>
+                <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        {{#if editMode}}
+                        <input name="displayName" type="text" value="{{camp.displayName}}" data-inputfield>
+                        {{else}}
+                        {{camp.displayName}}
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Location:
+                    </td>
+                    <td>
+                        {{camp.campLocation.displayName}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Nature of Camp:
+                    </td>
+                    <td>
+                        {{#if editMode}}
+                        <select name="skillSpecialization" data-inputfield>
+                            {{#each SkillSpecialization}}
+                            <option value="{{dbCode}}" {{isSelected this.dbCode ../camp.skillSpecialization.dbCode}}>{{displayName}}</option>
+                            {{/each}}
+                        </select>
+                        {{else}}
+                        {{camp.skillSpecialization}}
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Camp Level
+                    </td>
+                    <td>
+                        {{#if editMode}}
+                        <input name="currentLevel" type="number" min="0" max="20" step="1" value="{{camp.currentLevel}}" data-inputfield>
+                        {{else}}
+                        {{camp.currentLevel}}
+                        {{/if}}
+                    </td>
+                </tr>
+                {{#if editMode}}
+                <tr>
+                    <td>
+                        Officer Only Notes
+                    </td>
+                    <td>
+                        <textarea name="officerOnlyNotes" data-inputfield>{{camp.officerOnlyNotes}}</textarea>
+                    </td>
+                </tr>
+                {{/if}}
+                <tr>
+                    <td>
+                        Alliance Member Notes
+                    </td>
+                    <td>
+                        {{#if editMode}}
+                        <textarea name="allianceMemberNotes" data-inputfield>{{camp.allianceMemberNotes}}</textarea>
+                        {{else}}
+                        {{camp.allianceMemberNotes}}
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Priority</td>
+                    <td>
+                        {{#if editMode}}
+                        <input name="priority" type="number" min="0" max="20" step="1" data-inputfield value="{{camp.priority}}">
+                        {{else}}
+                        {{camp.priority}}
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Garrison</td>
+                    <td>
+                        {{#if editMode}}
+                        <input name="garrison" type="checkbox" data-type="boolean" {{radioChecked camp.garrison true}} data-inputfield value="true">Ok to Garrison
+                        <br>
+                        Garrison Specialization: 
+                        <select name="garrisonSkillSpecialization" data-inputfield>
+                            {{#each SkillSpecialization}}
+                            <option value="{{dbCode}}" {{isSelected this.dbCode ../camp.garrisonSkillSpecialization.dbCode}}>{{displayName}}</option>
+                            {{/each}}
+                        </select>
+                        {{else}}
+                        {{#if camp.garrison}}
+                        {{camp.garrisonSkillSpecialization}}
+                        {{/if}}
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Component Needs</td>
+                    <td>
+                        <table><thead>
+                        <tr>
+                            <td>Upgrade<br>to Level</td>
+                            <td>Silver</td>
+                            <td>Quantity/Item</td>
+                            <td>Quantity/Item</td>
+                            <td>Quantity/Item</td>
+                        </tr>
+                        </thead><tbody>
+                        {{#each upcomingStorableNeeds}}
+                        <tr>
+                            <td>{{level}}</td>
+                            {{#each sortedNeeds}}
+                            <td class="mbm">
+                                {{#if editMode}}
+                                <input type="number" name="storableNeeds.{{../level}}.{{key}}" value="{{value}}" data-inputfield size="6"><span>{{storable.displayName}}</span>
+                                <!--{{>storable_selection quantity=value selectedStorable=this.key storableKey='storableNeeds_{{../index}}_{{index}}' storables=Storables}}-->
+                                {{else}}
+                                {{value}}
+                                {{storable.displayName}}
+                                {{/if}}
+                            </td>
+                            {{/each}}
+                        </tr>
+                        {{/each}}
+                        </tbody></table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</template>

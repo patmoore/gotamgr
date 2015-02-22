@@ -1,0 +1,43 @@
+<template name="player_planByBuildings">
+    <nav class="navbar"><!-- spacer--></nav>
+    <section>
+        <div class="container">
+            <table class="table table-stripped">
+                <thead>
+                    <tr><td>Building Name</td><td>Now building</td></tr>
+                </thead>
+                <tbody>
+                {{#each buildings}}
+                <tr>
+                    <td>{{displayName}}</td>
+                    <td>
+                        {{#if buildingNow}}{{buildingNow}}<button class="btn mbm btn-success">Built</button>
+                        {{else}}
+                        <select name="buildings.{{dbCode}}">
+                            <!--
+                            <option value="" disabled selected>Nothing</option>
+                            -->
+                            {{#each storablesByBuilding}}
+                            <option value="{{key}}" >{{displayName}}</option>
+                            {{/each}}
+                        </select>
+                        {{/if}}
+                    </td>
+                    <td></td>
+                    <td>{{#each buildOrder}}{{/each}}</td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+    <!--<div>Return at : tuesday ,</div>-->
+    <!--<div class="table">-->
+    <!--{{#each buildings}}-->
+        <!--<div class="table-row">-->
+            <!--<div class="table-col">In progress: {{inProgress}} Scheduled to be completed at __:__ ( in +hrs +min adjust)  <button class="completed">Completed</button></div>-->
+            <!--<div class="table-col">Next: {{nextItem}}</div>-->
+            <!--<div class="table-col">Begin: {{time}}</div>-->
+        <!--</div>-->
+    <!--{{/each}}-->
+        </div>
+    </section>
+</template>

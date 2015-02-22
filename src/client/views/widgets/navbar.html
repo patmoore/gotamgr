@@ -1,0 +1,14 @@
+<template name="su_navbar">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> <!--   -->
+        <ul class="admin-tabs">
+            {{#each routes}}
+                <li class="{{tabActiveClass}}"><a href="{{pathFor name data=getRouterParams}}">
+                    <i class="glyphicon {{additionalClass}}"></i>&nbsp; {{displayName}}</a>
+                </li>
+            {{/each}}
+            <li>
+                {{> loginButtons}}
+            </li>
+        </ul>
+    </nav>
+</template>

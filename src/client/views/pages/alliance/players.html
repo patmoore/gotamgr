@@ -1,0 +1,40 @@
+<template name="alliance_players">
+    <nav class="navbar"><!-- spacer--></nav>
+    <section>
+        <div class="container form-horizontal">
+            <h2>{{selectedAlliance.displayName}}</h2>
+            <div class="row">
+                <div class="col-md-9">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr><td>Character Name</td><td>Role</td></tr>
+                        </thead>
+                        <tbody>
+                            {{#each players}}
+                            <tr>
+                                <td>{{characterFirstName}}&nbsp;{{characterLastName}}</td>
+                                {{#if this.allianceOfficer}}
+                                <td>
+                                    <select name="allianceRole" data-inputfield>
+                                        {{#each AllianceRole}}
+                                        <option value="{{this.dbCode}}" {{isSelected this.dbCode ../allianceRole.dbCode}}>
+                                            {{this.displayName}}</option>{{/each}}
+                                    </select>
+                                </td>
+                                {{else}}
+                                <td>{{allianceRole.displayName}}</td>
+                                {{/if}}
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{#if allianceOfficer}}
+                <div class="col-md-3">
+                    <button class="saveChanges btn mbm btn-success"></button>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </section>
+</template>
