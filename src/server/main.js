@@ -5,6 +5,7 @@ Accounts.config({
 });
 
 
+
 Meteor.startup(function() {
     var honorable = Alliance.databaseTable.findOneByAllianceInviteCode('honorable');
     if ( honorable == null ) {

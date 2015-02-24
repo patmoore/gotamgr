@@ -3,9 +3,9 @@ Meteor.startup(function(){
         ctor: function() {
             var thatManager = this.thatManager;
             // once every 6 hours.
-            Meteor.setTimeout(thatManager.checkForOffers.bind(thatManager),
-                6*60*60*1000
-            )
+            //Meteor.setTimeout(thatManager.checkForOffers.bind(thatManager),
+            //    6*60*60*1000
+            //)
 
         },
         checkForOffers: function (player) {
@@ -18,10 +18,25 @@ Meteor.startup(function(){
         },
         updatePlayerData: {
             method: function(playerData) {
+
                 var thatManager = this.thatManager;
+                var player = PlayerManager.currentPlayerCursor(this.userId);
                 var disruptorBeamUserId = playerData.user.id;
+                if ( player.disruptorBeamUserId && player.disruptorBeamUserId != disruptorBeamUserId) {
+                    thatManager.error("Problem - player.id=", player.id, "has player.disruptorBeamUserId=", player.disruptorBeamUserId, "but updatePlayerData was passed disruptorBeamUserId=", disruptorBeamUserId, "data" );
+                    throw new Meteor.Error("Passed wrong data.");
+                } else if ( player.disruptorBeamUserId == null ) {
+                    // check to make sure this dbuserid is not assigned to someone else.
+                }
                 var disruptorBeamUser = DisruptorBeamUser.findOneById(disruptorBeamUserId);
-                // TODO deep merge because maybe incremental update.
+                if ( disruptorBeamUser != null) {
+                    // TODO deep merge because maybe incremental update.
+                    disruptorBeamUser = new DisruptorBeamUser(playerData);
+                } else {
+                    disruptorBeamUser = new DisruptorBeamUser(playerData);
+                }
+                disruptorBeamUser._save();
+
             }
         }
     });

@@ -35,12 +35,12 @@ DisruptorBeamManagerType = ManagerType.create({
         playerDataUrl: {
             // /play/player_data?client_seqnum="+userContext.player_data_seqnum+"&character=true"
             'get': function() {
-                return 'http://gota-www.disruptorbeam.com/play/player_data/';
+                return this.baseUrl+ '/play/player_data/';
             }
         },
         allianceTacticsUrl: {
             'get': function() {
-                return 'http://gota-www.disruptorbeam.com/play/alliance_tactics';
+                return this.baseUrl+ '/play/alliance_tactics';
             }
         },
         allianceMotd: {
