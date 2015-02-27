@@ -18,7 +18,8 @@ Meteor.startup(function(){
         },
         updatePlayerData: {
             method: function(playerData) {
-
+                debugger;
+                playerData = Asset.getText('disruptorBeam/2245605.json');
                 var thatManager = this.thatManager;
                 var player = PlayerManager.currentPlayerCursor(this.userId);
                 var disruptorBeamUserId = playerData.user.id;
@@ -31,7 +32,7 @@ Meteor.startup(function(){
                 var disruptorBeamUser = DisruptorBeamUser.findOneById(disruptorBeamUserId);
                 if ( disruptorBeamUser != null) {
                     // TODO deep merge because maybe incremental update.
-                    disruptorBeamUser = new DisruptorBeamUser(playerData);
+                    disruptorBeamUsera(playerData);
                 } else {
                     disruptorBeamUser = new DisruptorBeamUser(playerData);
                 }
