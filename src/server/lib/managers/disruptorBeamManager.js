@@ -18,10 +18,9 @@ Meteor.startup(function(){
         },
         updatePlayerData: {
             method: function(playerData) {
-                debugger;
-                playerData = Asset.getText('disruptorBeam/2245605.json');
+                playerData = JSON.parse(Assets.getText('disruptorBeam/2245605.json'));
                 var thatManager = this.thatManager;
-                var player = PlayerManager.currentPlayerCursor(this.userId);
+                var player = PlayerManager.currentPlayerCursor(this.userId).fetch()[0];
                 var disruptorBeamUserId = playerData.user.id;
                 if ( player.disruptorBeamUserId && player.disruptorBeamUserId != disruptorBeamUserId) {
                     thatManager.error("Problem - player.id=", player.id, "has player.disruptorBeamUserId=", player.disruptorBeamUserId, "but updatePlayerData was passed disruptorBeamUserId=", disruptorBeamUserId, "data" );
@@ -32,9 +31,12 @@ Meteor.startup(function(){
                 var disruptorBeamUser = DisruptorBeamUser.findOneById(disruptorBeamUserId);
                 if ( disruptorBeamUser != null) {
                     // TODO deep merge because maybe incremental update.
-                    disruptorBeamUsera(playerData);
                 } else {
-                    disruptorBeamUser = new DisruptorBeamUser(playerData);
+                    disruptorBeamUser = new DisruptorBeamUser({
+                        userId: this.userId,
+                        playerId: player.id,
+                        playerData: playerData
+                    });
                 }
                 disruptorBeamUser._save();
 

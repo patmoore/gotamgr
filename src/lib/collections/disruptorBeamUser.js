@@ -32,27 +32,41 @@ DisruptorBeamUser = DbObjectType.create({
         {
             'titles': {
                 'get': function() {
-                    return Object.keys(this._.titles);
+                    return this._?Object.keys(this._.titles):null;
                 }
             },
             'talents': {
                 'get': function() {
-                    return Object.keys(this._.talents);
+                    return this._?Object.keys(this._.talents):null;
                 }
             },
             'buildingUpgrades': {
                 'get': function() {
-                    return Object.keys(this._.buildingUpgrades);
+                    return this._?Object.keys(this._.buildingUpgrades):null;
                 }
             }
         }
     ],
     extensions: {
-        ctor: function () {
-            this._ = _.extend({},
-                processUnlockables(this.disruptorBeamData),
-                processInventory(this.disruptorBeamData)
-            );
+        ctor: function() {
+            if ( arguments[0] && arguments[0].playerData) {
+                this.playerData = arguments[0].playerData;
+            }
+        }
+    },
+    privateProperties: {
+        playerData: {
+            'get': function () {
+                return this.disruptorBeamData;
+            },
+            'set': function (value) {
+                debugger;
+                this.disruptorBeamData = value;
+                this._= _.extend({},
+                    processInventory(this.disruptorBeamData),
+                    processUnlockables(this.disruptorBeamData)
+                );
+            }
         }
     }
 });
@@ -96,8 +110,13 @@ var processInventory = function(disruptorBeamData) {
     var swornSwords = {};
     var buildings = {};
     var byIds = {};
+    var nonPermanentItems = [];
     _.each(disruptorBeamData.inventory, function(inventoryItem){
         byIds[inventoryItem.id] = inventoryItem;
+        if ( inventoryItem.permanent_item === false) {
+            // track items lost on reincarnation
+            nonPermanentItems.push(inventoryItem);
+        }
         switch(inventoryItem.slot) {
         case "Armor":
             break;
@@ -113,24 +132,31 @@ var processInventory = function(disruptorBeamData) {
         case "Consumable":
             break;
         case "Seal":
+            debugger;
             // archetype_id is the number in the seal slot
             // these are seals that have not been applied.
             break;
         case "Sworn Sword":
             // upgrade_points ( can be trained )
+            // hand_item_id,
+            debugger;
             break;
         case "Treasure":
+            debugger;
             break;
         case "Unit":
+            debugger;
             break;
         case "Upgrade":
             buildings[inventoryItem.category].push(inventoryItem);
             break;
         case "Weapon":
+            debugger;
             break;
         }
     });
     return {
+        buildings: buildings,
         swornSwords: swornSwords
     }
 }
