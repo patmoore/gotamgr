@@ -64,7 +64,8 @@ DisruptorBeamUser = DbObjectType.create({
                 this.disruptorBeamData = value;
                 this._= _.extend({},
                     processInventory(this.disruptorBeamData),
-                    processUnlockables(this.disruptorBeamData)
+                    processUnlockables(this.disruptorBeamData),
+                    processStat(this.disruptorBeamData)
                 );
             }
         }
@@ -159,4 +160,15 @@ var processInventory = function(disruptorBeamData) {
         buildings: buildings,
         swornSwords: swornSwords
     }
+}
+
+var processStat = function(disruptorBeamData){
+    _.each(disruptorBeamData.stat, function(value, key) {
+        var rewardInfo = key.match(/chapter_([0-9])_([0-9])_reward_(.*)/)    ;
+        if ( rewardInfo) {
+            console.log(rewardInfo);
+            debugger;
+        }
+    });
+    return {};
 }
