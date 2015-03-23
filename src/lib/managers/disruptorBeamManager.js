@@ -22,7 +22,7 @@ DisruptorBeamManagerType = ManagerType.create({
     // doLog
     properties: {
         startingSpecialOfferNumber: {
-            value: 43
+            value: 50
         },
         offers: {
             value: {}

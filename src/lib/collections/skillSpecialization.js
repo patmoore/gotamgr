@@ -12,6 +12,11 @@ SkillGeneral = new Enums.Enum({
         displayName: 'Intrigue'
     }
 });
+
+/**
+ * disrBeamModifierCode: on swornswords this is the 'modifier field
+ * @type {exports.Enum}
+ */
 SkillSpecialization = new Enums.Enum({
     Fight: {
         displayName: 'Fight',
@@ -37,6 +42,7 @@ SkillSpecialization = new Enums.Enum({
     Bribe: {
         displayName: 'Bribe',
         skillGeneral: SkillGeneral.Trade,
+        disrBeamModifierCode: 'bribe'
     },
 
     Spy: {

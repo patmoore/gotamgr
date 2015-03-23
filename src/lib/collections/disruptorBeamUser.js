@@ -108,7 +108,10 @@ var processUnlockables = function(disruptorBeamData) {
 }
 
 var processInventory = function(disruptorBeamData) {
-    var swornSwords = {};
+    var inventory = {};
+    _.each(DisruptorBeamInventorySlot.symbols(), function(symbol) {
+        inventory[symbol] = {};
+    });
     var buildings = {};
     var byIds = {};
     var nonPermanentItems = [];
@@ -118,55 +121,59 @@ var processInventory = function(disruptorBeamData) {
             // track items lost on reincarnation
             nonPermanentItems.push(inventoryItem);
         }
-        switch(inventoryItem.slot) {
-        case "Armor":
+        var disruptorBeamInventorySlot = DisruptorBeamInventorySlotfindBySlot(inventoryItem.slot);
+        inventory[disruptorBeamInventorySlot][inventoryItem.id] =inventoryItem;
+        //debugger;
+        switch(disruptorBeamInventorySlot) {
+        case DisruptorBeamInventorySlot.armor:
             break;
-        case "Boon":
+        case DisruptorBeamInventorySlot.boon:
             break;
-        case "Building":
+        case DisruptorBeamInventorySlot.building:
             buildings[inventoryItem.symbol] = [inventoryItem];
             break;
-        case "Character":
+        case DisruptorBeamInventorySlot.character:
             break;
-        case "Companion":
+        case DisruptorBeamInventorySlot.companion:
             break;
-        case "Consumable":
+        case DisruptorBeamInventorySlot.consumable:
             break;
-        case "Seal":
-            debugger;
+        case DisruptorBeamInventorySlot.seal:
             // archetype_id is the number in the seal slot
             // these are seals that have not been applied.
             break;
-        case "Sworn Sword":
+        case DisruptorBeamInventorySlot.ssword:
             // upgrade_points ( can be trained )
             // hand_item_id,
-            debugger;
             break;
-        case "Treasure":
-            debugger;
+        case DisruptorBeamInventorySlot.treasure:
             break;
-        case "Unit":
-            debugger;
+        case DisruptorBeamInventorySlot.unit:
             break;
-        case "Upgrade":
+        case DisruptorBeamInventorySlot.upgrade:
             buildings[inventoryItem.category].push(inventoryItem);
             break;
-        case "Weapon":
-            debugger;
+        case DisruptorBeamInventorySlot.weapon:
             break;
         }
     });
-    return {
-        buildings: buildings,
-        swornSwords: swornSwords
-    }
+    debugger;
+    return inventory;
 }
 
 var processStat = function(disruptorBeamData){
+    var stats = { loreBook: [] };
     _.each(disruptorBeamData.stat, function(value, key) {
         var rewardInfo = key.match(/chapter_([0-9])_([0-9])_reward_(.*)/)    ;
         if ( rewardInfo) {
-            console.log(rewardInfo);
+            if (stats.loreBook[Number(rewardBook)] == null) {
+                stats.loreBook[Number(rewardBook)] = [];
+            }
+            var loreBookChapter = stats.loreBook[Number(rewardBook)];
+            if ( rewardInfo[3] != 'chose') {
+                loreBookChapter[Number(rewardInfo[2])] = rewardInfo[3];
+            }
+            console.log(rewardInfo, key);
             debugger;
         }
     });
