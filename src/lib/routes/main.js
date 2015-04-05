@@ -45,6 +45,7 @@ if ( Meteor.isClient) {
     initializeDataWithPlayer = function (params) {
         var currentPlayerHandle = PlayerManager.currentPlayerHandle();
         var currentPlayerAllianceHandle = AllianceManager.currentPlayerAllianceHandle();
+        var currentPlayerDisruptorBeanUserHandle = DisruptorBeamManager.currentPlayerDisruptorBeanUserHandle();
         var initialData = _.extend({
             player: one(currentPlayerHandle),
             playerId: {
@@ -93,7 +94,8 @@ if ( Meteor.isClient) {
                         return player.allianceLeader;
                     }
                 }
-            }
+            },
+            currentPlayerDisruptorBeanUser: one(currentPlayerDisruptorBeanUserHandle)
         }, initializeData(params));
         return initialData;
     };

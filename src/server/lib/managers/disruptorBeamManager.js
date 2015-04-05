@@ -39,8 +39,7 @@ Meteor.startup(function(){
                     });
                 }
                 disruptorBeamUser._save();
-
             }
-        }
+        },
     });
 });

@@ -162,20 +162,27 @@ var processInventory = function(disruptorBeamData) {
 }
 
 var processStat = function(disruptorBeamData){
-    var stats = { loreBook: [] };
+    var stats = {
+        loreBook: [],
+        unclaimedRewards: [],
+    };
     _.each(disruptorBeamData.stat, function(value, key) {
         var rewardInfo = key.match(/chapter_([0-9])_([0-9])_reward_(.*)/)    ;
         if ( rewardInfo) {
-            if (stats.loreBook[Number(rewardBook)] == null) {
-                stats.loreBook[Number(rewardBook)] = [];
+            var rewardVolume = Number(rewardInfo[1]);
+            var rewardChapter = Number(rewardInfo[2]);
+            var reward = rewardInfo[3];
+            if (stats.loreBook[rewardVolume] == null) {
+                stats.loreBook[rewardVolume] = [];
             }
-            var loreBookChapter = stats.loreBook[Number(rewardBook)];
-            if ( rewardInfo[3] != 'chose') {
-                loreBookChapter[Number(rewardInfo[2])] = rewardInfo[3];
+            var loreBookChapter = stats.loreBook[rewardVolume];
+            if ( reward != 'chose' ) {
+                loreBookChapter[rewardChapter] = reward;
+                _.deep(stats.unclaimed, rewardVolume+'.'+rewardChapter, reward);
             }
-            console.log(rewardInfo, key);
             debugger;
         }
     });
-    return {};
+    _.each(stat)
+    return stats;
 }

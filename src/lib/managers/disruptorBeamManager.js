@@ -17,12 +17,18 @@ DisruptorBeamManagerType = ManagerType.create({
         }
     ],
     meteorTopicDefinitions: {
-
+        currentPlayerDisruptorBeanUser: {
+            cursor: function() {
+                var thatManager = this.thatManager;
+                var self = this;
+                return DisruptorBeamUser.findByUserId(thatManager.userId);
+            }
+        }
     },
     // doLog
     properties: {
         startingSpecialOfferNumber: {
-            value: 50
+            value: 53
         },
         offers: {
             value: {}
