@@ -35,7 +35,7 @@ Meteor.startup(function(){
         // TODO: collapse levels 0-2 : because needs the same regardless of camp type.
         case 0:
             //10m
-            _.each(SkillGeneral.symbols(), function(skillGeneral) {
+            _.each(SkillGeneral.ifSelectedChoices(), function(skillGeneral) {
                 organize(skillGeneral, i, Storables.silver, 0);
                 organize(skillGeneral, i, Storables.cloth, 20);
                 organize(skillGeneral, i, Storables.grains, 10);
@@ -44,7 +44,7 @@ Meteor.startup(function(){
             break;
         case 1:
             //1h
-            _.each(SkillGeneral.symbols(), function(skillGeneral) {
+            _.each(SkillGeneral.ifSelectedChoices(), function(skillGeneral) {
                 organize(skillGeneral, i, Storables.silver, 0);
                 organize(skillGeneral, i, Storables.wood, 30);
                 organize(skillGeneral, i, Storables.fur, 30);
@@ -54,7 +54,7 @@ Meteor.startup(function(){
 
         case 2:
             //1h
-            _.each(SkillGeneral.symbols(), function(skillGeneral) {
+            _.each(SkillGeneral.ifSelectedChoices(), function(skillGeneral) {
                 organize(skillGeneral, i, Storables.silver, 0);
                 organize(skillGeneral, i, Storables.stone, 40);
                 organize(skillGeneral, i, Storables.ore, 40);
@@ -270,7 +270,7 @@ Meteor.startup(function(){
             organize(trade, i, Storables.trebuchet, 25);
 
             organize(intrigue, i, Storables.turtle, 25);
-            _.each(SkillGeneral, function(skillGeneral) {
+            _.each(SkillGeneral.ifSelectedChoices(), function(skillGeneral) {
                 organize(skillGeneral, i, Storables.silver, 0);
                 organize(skillGeneral, i, Storables.special_7, 14);
                 organize(skillGeneral, i, Storables.special_8, 22);
