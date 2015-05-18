@@ -1,60 +1,153 @@
 SkillGeneral = new Enums.Enum({
-    Battle: {
-        dbCode: 'bat',
-        displayName: 'Battle'
+    typeName: 'SkillGeneral',
+    defs: {
+        Battle: {
+            displayName: 'Battle',
+            dbCode: 'battle',
+            disrBeamCode: 'battle'
+        },
+        Trade: {
+            displayName: 'Trade',
+            dbCode: 'trade',
+            disrBeamCode: 'trade'
+        },
+        Intrigue: {
+            displayName: 'Intrigue',
+            dbCode: 'intrigue',
+            disrBeamCode: 'intrigue'
+        },
+        None: {
+            displayName: 'None',
+            dbCode: 'none',
+            disrBeamCode: ''
+        }
     },
-    Trade: {
-        dbCode: 'trd',
-        displayName: 'Trade'
-    },
-    Intrigue: {
-        dbCode: 'int',
-        displayName: 'Intrigue'
+    properties: {
+        byDisrBeamCode: {
+            value: function (disrBeamCode) {
+                var result;
+                _.each(SkillGeneral.symbols(), function(symbol) {
+                    if ( symbol.disrBeamCode == disrBeamCode) {
+                        result = symbol;
+                    }
+                });
+                return result;
+            }
+        },
+        ifSelectedChoices: {
+            value: function() {
+                return [
+                    this.Battle,
+                    this.Trade,
+                    this.Intrigue
+                ];
+            }
+        }
     }
 });
 
 /**
- * disrBeamModifierCode: on swornswords this is the 'modifier field
+ * disrBeamCode: on swornswords this is the 'modifier field
  * @type {exports.Enum}
  */
 SkillSpecialization = new Enums.Enum({
-    Fight: {
-        displayName: 'Fight',
-        skillGeneral: SkillGeneral.Battle,
-    },
-    Harass: {
-        displayName: 'Harass',
-        skillGeneral: SkillGeneral.Battle,
-    },
-    Aid: {
-        displayName: 'Aid',
-        skillGeneral: SkillGeneral.Battle,
-    },
+    typeName: "skillSpecialization",
+    defs: {
+        Fight: {
+            displayName: 'Fight',
+            skillGeneral: SkillGeneral.Battle,
+            dbCode: 'fight',
+            disrBeamCode: 'fight'
+        },
+        Harass: {
+            displayName: 'Harass',
+            skillGeneral: SkillGeneral.Battle,
+            dbCode: 'harass',
+            disrBeamCode: 'harass'
+        },
+        Aid: {
+            displayName: 'Aid',
+            skillGeneral: SkillGeneral.Battle,
+            dbCode: 'aid',
+            disrBeamCode: 'aid'
+        },
 
-    Barter: {
-        displayName: 'Barter',
-        skillGeneral: SkillGeneral.Trade,
-    },
-    Swindle: {
-        displayName: 'Swindle',
-        skillGeneral: SkillGeneral.Trade,
-    },
-    Bribe: {
-        displayName: 'Bribe',
-        skillGeneral: SkillGeneral.Trade,
-        disrBeamModifierCode: 'bribe'
-    },
+        Barter: {
+            displayName: 'Barter',
+            skillGeneral: SkillGeneral.Trade,
+            dbCode: 'barter',
+            disrBeamCode: 'barter'
+        },
+        Swindle: {
+            displayName: 'Swindle',
+            skillGeneral: SkillGeneral.Trade,
+            dbCode: 'hoodwink',
+            disrBeamCode: 'hoodwink',
+            characterDisplayName: 'Charlatan'
+        },
+        Bribe: {
+            displayName: 'Bribe',
+            skillGeneral: SkillGeneral.Trade,
+            disrBeamCode: 'bribe',
+            dbCode: 'bribe'
+        },
 
-    Spy: {
-        displayName: 'Spy',
-        skillGeneral: SkillGeneral.Intrigue,
+        Spy: {
+            displayName: 'Spy',
+            skillGeneral: SkillGeneral.Intrigue,
+            dbCode: 'spy',
+            disrBeamCode: 'spy'
+        },
+        Sabotage: {
+            displayName: 'Sabotage',
+            skillGeneral: SkillGeneral.Intrigue,
+            dbCode: 'sabotage',
+            disrBeamCode: 'sabotage'
+        },
+        Steal: {
+            displayName: 'Steal',
+            skillGeneral: SkillGeneral.Intrigue,
+            dbCode: 'steal',
+            disrBeamCode: 'steal',
+            characterDisplayName: 'Thief'
+        },
+        None: {
+            displayName: 'No Specialization',
+            skillGeneral: SkillGeneral.None,
+            dbCode: 'none',
+            // blank modifier on sworn swords :-)
+            disrBeamCode: '',
+            characterDisplayName: ''
+        }
     },
-    Sabotage: {
-        displayName: 'Sabotage',
-        skillGeneral: SkillGeneral.Intrigue,
-    },
-    Steal: {
-        displayName: 'Steal',
-        skillGeneral: SkillGeneral.Intrigue,
+    properties: {
+        byDisrBeamCode: {
+            value: function (disrBeamCode) {
+                var result;
+                _.each(SkillSpecialization.symbols(), function(symbol) {
+                    if ( symbol.disrBeamCode == disrBeamCode) {
+                        result = symbol;
+                    }
+                });
+                return result;
+            }
+        },
+        properties: {
+            ifSelectedChoices: {
+                value: function() {
+                    return [
+                        this.Fight,
+                        this.Harass,
+                        this.Aid,
+                        this.Barter,
+                        this.Swindle,
+                        this.Bribe,
+                        this.Spy,
+                        this.Sabotage,
+                        this.Steal
+                    ];
+                }
+            }
+        }
     }
 });

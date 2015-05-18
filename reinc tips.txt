@@ -1,0 +1,93 @@
+Make sure u get 
+
+vol 1 
+chap 1 honeycakes
+chap 3 pennyroyal
+chap 6 pennyroyal
+vol 2
+chap 1 pennyroyal
+chap 3, redgem (for honeycake craft)
+chap 4, bread
+chap 5, bacon
+chap 6, pennyroyal
+vol 3
+chap 2, challenve 2d place honeycake
+chap 3, honeycake
+chap 3, challenge, kingscoopper
+vol FB
+chap 1, fortification
+chap 4, challenge - aggresive seal <--MUST HAVE. put on viper spear
+
+
+
+QUEST LIST vol 1
+----------
+The following Quests are the ONLY Quests you should spend Bread on, since these are the Quests that will help you to progress through Volume I.
+
+March of King Robert                         30m      1 Bread
+Crows on the Tower                           45m      1 Bread, 1 Bacon
+Jaws of the Beast                                BQ
+Whispers of Wedlock                          120m     4 Bread
+Embers and Ice                                  120m     4 Bread
+An Immodest Proposal                       120m     4 Bread
+Trail of Blood                                     120m     4 Bread
+The Hand's Investigation                    120m     4 Bread
+Expecting Celebration                        120m     4 Bread
+Crossroads                                        120m      4 Bread
+A Stroll Down the King's Road            120m     4 Bread
+Tourney of The Hand                         120m     4 Bread
+The Sword Aflame                              120m     4 Bread
+Steadfast                                           120m     4 Bread
+Underhanded                                     120m     4 Bread
+The Lion’s Roar                                  120m     4 Bread
+Cradle of the Vale                              120m     4 Bread
+Trial by combat                                  240m     8 Bread
+Traveling Companion                         120m     4 Bread
+Hand and Crown                                 240m     8 Bread
+The Riverlands Raid                            240m     8 Bread
+A Golden Crown (non-Martell)            240m     8 Bread
+Crowning Disappointment (Martell)  240m    8 Bread
+Stag and Lion                                      240m     8 Bread
+The Game Begins                                240m     8 Bread
+The King in the Kingswood                  240m     8 Bread
+Stirring the Depths                              240m     8 Bread
+Testament                                           240m     8 Bread
+Too Rare for Ravens                            240m     8 Bread
+
+At this point, you must complete the Roxton line 2 fealty specific quest such as drowned god’s seal and unlock “the things we love”, for heir to the iron throne to unlock.
+
+Things We Do for Love                  ???
+A Wolf in the Fold
+Req: Roxton (Line 2) & Fealty Book Quest
+Heir to the Iron Throne                       240m     8 Bread
+The Words of a Child                           300m   10 Bread 
+The Bastard’s Hand                             300m   10 Bread 
+Thinner than Water                             300m   10 Bread 
+Virulence and Vigilance                       300m   10 Bread  - no battle option
+The Battle of the Golden Tooth           BQ
+The Siege of River Run                        BQ
+Inn at the Crossroads                         300m   10 Bread 
+A Rough Journey                                300m   10 Bread 
+The Kraken Lurks                               300m   10 Bread 
+The Battle of Whispering Wood           BQ                        - it's borked, watch where you click
+Merciful Mother                                 300m   10 Bread
+Prisoner of the Crown                        300m   10 Bread
+Req: Spy in the Shadows
+Req: A Mind of her Own & Ailment at the Root
+Req: Tea and Revelations
+Til Death Do Us Part
+Req: A Wolf in the Fold
+
+This is the point where you need to be down to just the main 1st Kirth line and that’s it.
+
+A Bannerman’s Justice                      300m   10 Bread
+The journey home                            300m   10 Bread
+A New Day, a New King                    300m   10 Bread
+The Fire in the North                        300m   10 Bread
+The Hand that Shapes the Crown      300m   10 Bread
+The Unquiet Sea                               300m   10 Bread
+The Kraken’s Daughter                     300m   10 Bread
+The Dragon’s Daughter                    300m   10 Bread
+
+
+= 320 Bread and 1 Bacon, IF you don't have anything else that speeds up Quests (Burning Sword, Direwolf Patriarch, Action Speed Up Talents, Building Upgrades etc).

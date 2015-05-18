@@ -4,6 +4,8 @@ SwornSword = DbObjectType.create({
     databaseTableName: 'swornSword',
     properties: [
         'hand',
+        // SkillSpecialization
+        'modifier',
     ],
 
 });

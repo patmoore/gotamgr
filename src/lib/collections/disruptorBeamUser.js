@@ -28,6 +28,7 @@ DisruptorBeamUser = DbObjectType.create({
     properties: [
         'userId',
         'playerId',
+        'characterName',
         'disruptorBeamData',
         {
             'titles': {
@@ -67,6 +68,14 @@ DisruptorBeamUser = DbObjectType.create({
                     processUnlockables(this.disruptorBeamData),
                     processStat(this.disruptorBeamData)
                 );
+                this.characterName = _.deep(this.disruptorBeamData, 'strings.title_and_name');
+            }
+        },
+        '_' : {
+            enumerable:false,
+            defaultValue: function() {
+                console.log("created a empty object");
+                return {};
             }
         }
     }
@@ -108,18 +117,25 @@ var processUnlockables = function(disruptorBeamData) {
 }
 
 var processInventory = function(disruptorBeamData) {
-    var inventory = {};
-    _.each(DisruptorBeamInventorySlot.symbols(), function(symbol) {
-        inventory[symbol] = {};
+    var inventory = DisruptorBeamInventorySlot.createKeyedMap(function() {
+        return {};
     });
-    var buildings = {};
-    var byIds = {};
-    var nonPermanentItems = [];
+    inventory.by = {};
+    var buildings = inventory[DisruptorBeamInventorySlot.building];
+    var byIds = inventory.by.ids = {};
+    inventory.by.permanence = [[],[]];
+    var nonPermanentItems = inventory.by.permanence[0];
+    var permanentItems = inventory.by.permanence[1];
+    var swornSwordsBySkillSpecialization = SkillSpecialization.createKeyedMap(function() {
+        return Rarity.createKeyedMap();
+    });
     _.each(disruptorBeamData.inventory, function(inventoryItem){
         byIds[inventoryItem.id] = inventoryItem;
         if ( inventoryItem.permanent_item === false) {
             // track items lost on reincarnation
             nonPermanentItems.push(inventoryItem);
+        } else {
+            permanentItems.push(inventoryItem);
         }
         var disruptorBeamInventorySlot = DisruptorBeamInventorySlotfindBySlot(inventoryItem.slot);
         inventory[disruptorBeamInventorySlot][inventoryItem.id] =inventoryItem;
@@ -130,7 +146,9 @@ var processInventory = function(disruptorBeamData) {
         case DisruptorBeamInventorySlot.boon:
             break;
         case DisruptorBeamInventorySlot.building:
-            buildings[inventoryItem.symbol] = [inventoryItem];
+            // such as 'counting_house' -- used when handling the building Upgrades.
+            buildings[inventoryItem.symbol] = inventoryItem;
+            inventoryItem.upgrades = [];
             break;
         case DisruptorBeamInventorySlot.character:
             break;
@@ -143,6 +161,9 @@ var processInventory = function(disruptorBeamData) {
             // these are seals that have not been applied.
             break;
         case DisruptorBeamInventorySlot.ssword:
+            var skillSpecialization = SkillSpecialization.byDisrBeamCode(inventoryItem.modifier);
+            var rarity = Rarity.byDisrBeamCode(inventoryItem.rarity);
+            swornSwordsBySkillSpecialization[skillSpecialization][rarity].push(inventoryItem);
             // upgrade_points ( can be trained )
             // hand_item_id,
             break;
@@ -151,38 +172,60 @@ var processInventory = function(disruptorBeamData) {
         case DisruptorBeamInventorySlot.unit:
             break;
         case DisruptorBeamInventorySlot.upgrade:
-            buildings[inventoryItem.category].push(inventoryItem);
+            buildings[inventoryItem.category].upgrades.push(inventoryItem);
             break;
         case DisruptorBeamInventorySlot.weapon:
             break;
         }
     });
     debugger;
+    _.each(swornSwordsBySkillSpecialization, function(bySkillSpecialization, key) {
+        var skillSpecialization = SkillSpecialization.enumOf(key);
+        _.each(bySkillSpecialization, function(byRarity, key) {
+            var rarity = Rarity.enumOf(key);
+            console.log(skillSpecialization.displayName, rarity.displayName, "sworn sword", byRarity.length);
+        });
+    });
     return inventory;
 }
 
 var processStat = function(disruptorBeamData){
+    'use strict';
     var stats = {
         loreBook: [],
         unclaimedRewards: [],
     };
     _.each(disruptorBeamData.stat, function(value, key) {
-        var rewardInfo = key.match(/chapter_([0-9])_([0-9])_reward_(.*)/)    ;
+        var rewardInfo = key.match(/chapter_([0-9])_([0-9])_reward_(.*)/);
+        var disruptorBeamBadKey = key.match(/^#{@/);
         if ( rewardInfo) {
             var rewardVolume = Number(rewardInfo[1]);
             var rewardChapter = Number(rewardInfo[2]);
             var reward = rewardInfo[3];
+            console.log('vol=',rewardVolume, 'ch=', rewardChapter, 'reward=', reward, 'value=', value);
+            // because volumes and chapters start at '1'
+            rewardVolume--;
+            rewardChapter--;
             if (stats.loreBook[rewardVolume] == null) {
                 stats.loreBook[rewardVolume] = [];
             }
             var loreBookChapter = stats.loreBook[rewardVolume];
-            if ( reward != 'chose' ) {
+            if ( reward == 'bonus' ) {
+
+            } else if ( reward != 'chose' ) {
                 loreBookChapter[rewardChapter] = reward;
+                _.deep(stats.unclaimed, rewardVolume+'.'+rewardChapter, null);
+            } else {
                 _.deep(stats.unclaimed, rewardVolume+'.'+rewardChapter, reward);
             }
             debugger;
+        } else if ( disruptorBeamBadKey ) {
+            // disruptor beam has a bug in their output because this is really 'buildings_upgrades_added'
+            console.log("bad key removing:", key, value);
+            delete disruptorBeamData.stat[key];
         }
     });
-    _.each(stat)
+    console.log(JSON.stringify(stats));
+    debugger;
     return stats;
 }
