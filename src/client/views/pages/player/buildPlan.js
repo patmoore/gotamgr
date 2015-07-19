@@ -42,7 +42,6 @@ Template.player_buildPlan.helpers({
         var buildPlan = this;
         // Now recalculate
         var currentPlayer = WPUtils.getTemplateData('currentPlayer');
-        debugger;
         BuildPlanManager.createBuildPlansBuildOrders(buildPlan, { buildProcessors: [ currentPlayer ]});
     },
     StorableInBuildings: function () {
