@@ -1,0 +1,283 @@
+Seis's MediaMano Guide: Getting started basics
+By Pat Moore on Sunday, April 27, 2014 at 11:21pm
+Getting fast start
+
+Notes for reading:
+This is for beginners - once you get a little bit of time in you will probably make slightly different choices. But if you are new stick to this list until you understand the "why" for each suggestion.
+New players just need a "do this" list - so I did not present alternatives or anything that requires choices
+The sections are ordered in sequence based on when the player will encounter the question
+Additional info is available on this site: http://gotascent.wikia.com/
+
+SS = Sworn Swords
+PtP = Player to Player
+AvA = Alliance v. Alliance.
+Hostile Attack = Any attack that is not Barter/Bribe/Aid. Spy is "hostile" but innocent.
+
+Lore Book Notes:
+
+Start all volumes
+Allows maximum resources/silver generation: SS on quests do not count against command points like SS on adventures do. 
+Focus on Volume I - so you can reincarnate faster
+Focus on Volume IV - there are some good equipment items that normally you have to buy 
+Focus on Volume "You" - because it has the best seals. Including in Part 20 - the Seal of the Hand of the King.
+Collecting Free Permanent Items
+
+Permanent Valyrian Steel Dagger (90% alignment): 
+Make the path choices based on which alignments are attached to the choice. You want to get to 100% of an alignment (Family,New Ways, Truthful, Realm, Old Ways, Cunning) Note that Family is opposite of Realm, New ways Opposite of Old Ways, Truthful opposite of Cunning)
+Go to Volume II Chapter 1 and use the back button in the book to go to Volume 1 Epilogue when you are at 90% to collect the dagger.
+Dagger is permanent so it lasts when you reincarnate
+
+Permanent Obsidian Dagger (400 PtP wins):
+Make lots of friends
+Barter/Bribe/Aid/Spy the lowest level friends to maximize chances of winning. These are helpful/harmless "attacks".
+Go to Volume II Chapter 1 and use the back button twice in the book to go to Volume 1 Chapter 10 when you are at 400 PtP to collect the dagger.
+Dagger is permanent so it lasts when you reincarnate
+
+'Account open' rewards (see http://www.disruptorbeam.com/blog/entry/new-loyalty-awards-for-our-players):
+
+for 7 days, Westerosi Steed (Companion, 7/7/7, +1% to attacks and defense, permanent) + 5000 silver
+for 14 days, Westerosi Steel (Hand, 7/7/7, +1% to attacks, permanent)
+for 14 days, Westerosi Plate (Body, 7/7/7, +1% to defense, permanent)
+for 1 month, Seal of Celebration (2/2/2, +2% to wound recovery) + 10 gold
+for 2 months, 10,000 silver + 10 gold
+for 6 months, Seal of Festivities (3/3/3, +3% silver from Quests and Adventures)
+for 1 year, Faithful Hound (13/13/13, +7% to Quest and Adventure speed, permanent)
+
+Get Free Food
+
+Go to this page and follow the links to collect the food and other nice things. http://gotascent.wikia.com/wiki/Free_Stuff  If you use armorgames then use the facebook links.
+
+Getting the right resources
+
+http://gotascent.wikia.com/wiki/Category:Adventures will help you find which adventures you need to have your Sworn Swords going to.
+
+Sworn Swords
+
+Buying
+
+Only buy :
+Common Swords (1200 silver) because they are cheap. 
+Peerless Swords (24000 silver) because they are the best. (30 talents in one skill)
+Don't bother with the other choices.
+
+Adventures
+
+Training a Sworn Sword
+Pick a specialty that is in the general talent that the Peerless has the basic 30 points.
+Only train that speciality.
+For example, a Peerless has 0/30/0 ( 0 Battle, 30 Trade, 0 Intrigue). He should be trained in trade for level 1, so how he is 0/32/0 Level 2, the peerless speciality should be Merchant (Barter), Charlatan (Swindle), or Corruptor (Bribe) From then on train only the specialty. Training the specialty results in maximum strength. There is NO benefit to a general purpose Sworn Sword with stats spread all over the attributes.
+
+Hurt/Dying
+
+Your character cannot be hurt in PtP nor AvA - only SS.
+
+SS get hurt if they fail:
+a hostile attack in Adventures or Quests (not Boss Quests)
+a hostile attack in PtP
+fail to defend a camp that they are part of the defending garrison
+you are attacked in PtP by a hostile attack and the SS is defensing and fails to defend.
+5 wounds kills. It takes an hour for each wound to heal. It is safe to send a single wounded SS on an adventure/quest that lasts longer than 1 hour, the wound will be healed before any failure will rewound the SS. If the SS has 2 wounds, heal the SS or just let them sit for a while. (Do not pay for the healing items)
+
+It takes real creativity (stupidity) to kill a SS by adventuring/questing.
+
+SS will dying defending a camp - this is why we need a lot of defenders to avoid a single SS taking all the attacks. 
+
+
+What happens on death?
+
+The SS can be replaced by a SS that is 1 level lower and has lost 2 points of an random attribute. This costs the SS original price in silver. It takes 24 hours to replace the SS.
+
+What does this mean?
+Garrison ONLY Common SS. 
+Equip SS with defensive items.
+If garrisoning a Peerless SS in a camp so as to have that Peerless SS do an attack, be around to immediately pull him out of the garrison after the attack.
+I have seen lags between the SS dying and being able to get the SS ungarrisoned. (i.e. the SS looks heavily wounded but not dead - but it really was dead so healing items were wasted.) - ungarrison before healing to make sure the SS really isn't dead. This might be improved now, but it doesn't hurt.
+
+Protecting SS from attack
+
+You are under PtP attack, and you have a wounded SS that might get hurt. The safest place for that SS is on an adventure. Find the longest adventure/quest you can send him on and do it. The wounds will heal on the adventure/quest and the SS is safe from PtP attacks.
+
+Questions I don't know answer to:
+AFAIK, gold purchased SS are replaced by having to pay in silver - but i don't know
+What happens to seals on SS do they go to the new SS? - I haven't risked my Peerless Permanent SS on garrisoning.
+
+Gold
+
+Getting gold
+If you log on once a day, you will get a daily reward. The seventh day you will get between 2-5 gold. (~3.6 gold/ week)  Clearly this will take you months to get any item in the shop. Use this gold to make game more enjoyable. See the following sections on spending gold.
+
+You will also get 1 time gold drops on accounts that are:
+1 month old ( 10 gold )
+2 months old (10 gold)
+
+Buying Gold
+If you decide to spend money. Wait for a sale, DB will occasionally offer an item or companion with your purchase. This means that you get your first gold bonus + bonus items. 
+
+Spending Gold
+Buying these things in this order:
+Brewhouse (10 gold) - build more than 1 resource at the Village Center (makes resources less of a pain)
+Making 1 Peerless Sworn Sword Permanent (3 gold): by clicking on the first seal. (ONLY after you understand about how to train SS properly) Having Permanent SS will make reincarnation go faster and allow you to spend silver on other things.
+Make the Goose (http://gotascent.wikia.com/wiki/Free_Stuff) Permanent by renaming it (2 gold) The goose is awesome because it has 5 unlocked seals
+Talents/Party/Adventures/Proper Assignments (2 gold) - Makes using the party feature less annoying.
+Shipyard/LongBoat (5 gold) (Greyjoy)- improved chance when crafting units
+Glasshouse/Aviary (5 gold) (Martell) - improved chance when crafting armor
+Hunting Lodge/Hunting Dogs (5 gold) (Stark) - improved chance when crafting weapons
+Stables/Saddles (5 gold) - more silver from adventures 
+Alchemist/Stash of Old Wildfire (5 gold) - complete adventures faster
+Total gold: 27 ( ~9 weeks ) + 15 (~5 weeks) for the fealty features to unlock. With the new "account open" rewards you will get 20 additional gold the first 2 months of playing.
+
+Once the core enhancements/talent are paid for, you *may* want to use gold to:
+Making additional Peerless SS permanent (allows all the early silver after a reincarnation to be spent on building)
+Making really, really good crafted items permanent.
+Market/Exchange (5 gold) - reduces resource build time further.
+Smithy/Horseshoes (5 gold) - decrease battle attack time by 5% (helps with reincarnation speed)
+Embassy/Foreign Diplomat (5 gold) - decrease spy attack time by 10% (helps with reincarnation speed)
+Treasury/Jeweled Sword (5 gold) - (15000 silver - 150000 silver break even point) increase silver from quests by 10% - only limited number of quests compared to adventures so definitely less valuable that the Alchemist/Stash.
+Siege Works/(3x2gold) - 3 different siege engines that are used for challenges and making high level camps.
+
+
+Do NOT buy with gold:
+Any resources
+Silver
+Consumables - i.e. Food: make the bread/mead/nettice poultice yourself
+Sword Swords (you can get peerless with silver - save gold for other things)
+Pay for refreshing anything.
+DO NOT BUY anything that has a random pay off - DB has reported that they make good money on the random packs.
+DO NOT BUY any shop pack with boons or consumables. 
+Fealty Talents: Some fealty talents are only available if you pay gold, do NOT buy those. (talent can not be used when reincarnated to a different fealty)
+Do NOT buy these enhancements (in decreasing order of silliness for buying):
+Warehouse/Draft Horses - 10% less silver to buy SS. You don't buy SS that often esp. once you make some Peerless SS permanent.
+Watchtower/Alarmbell - silver is so easily acquired that protecting silver is silly.
+Artisan Quarters/Statue - spend 15000 silver to save 10% on shop items? (break even happens after 150000 in silver spend in shop) there just isn't that much to buy in the shop with silver.
+Workshop/Laboratory - chance the PtP sabotage applies a 2nd fault. (faults are temporary negatives to victim - not worth it)
+Arbor/Grape Press - making pure water - there are other ways of getting water.
+Reliquary/Throne - 15000 silver to have a 5% of a spy attack showing false information. Yawn
+Practice Yard/Master at Arms - increase PtP aid duration by 10% (like faults, aid is temporary positives to "victim" - not worth it)
+Fishery/Pier - Random resource - lots and lots of other ways to get resources. It would be different if you could select the resource.
+Feast/Roast Boar - (15000 silver) 10% less silver on unit building: (150000 silver in build just to break even) 
+Mine/Silversmith - 5% less silver on all production (15000 silver - 300000 silver in build just to break even)
+Shanty/Moneylender - steal 15% more silver. (100000 silver to steal before at breakeven point)
+Armory/Plate Mail - 5% less chance of a SS wound to losing SS. Might be worth it with the new AvA rules.
+Tourney Arena/Grand Jousts - spend 15000 silver to get 5% more silver from defense. (you need to collect 300,000 in defense silver just to break even)
+The exception to the "don't buy" on the enhancements is if you have gold laying around (haha) and you want the additional attributes that come with  buying those additional building enhancements.
+
+Proper use of the Shop
+
+Always buy these items from the shop
+Leatherbound book
+Longsword
+Leather Armor
+They are always available and keep the buildings free for other items.Always look for Gear/Companions that are components of other things OR is needed by the alliance to build camps. In particular:
+Militia
+Trader
+Merchant
+Gold Torc
+Silver Torc
+Silver Chain ( not necklace)
+BlindEye
+Saboteur
+Thief
+Broadsword
+Shortsword
+Shortbow
+Composite Bow
+Bowman
+Check shop before building anything that has a component that maybe in the Shop. Always buy and always use no matter what bonuses you see on the purchased item.
+
+Proper Use of Seals
+
+Look at the Sept, Godswood, and R'hllor Temple. Notice that each of these buildings will upgrade certain common seals to Treasurer's imprint, Warrior's imprint and Mark of the Little Birds. (uncommon seals ) Look at the Fealty building. Each Fealty Building will upgrade uncommon seals to better seals. There are other common, uncommon seals around seals - those are junk seals. Apply these crap seals to random crap items with unsealed slots. (do not accidentally unseal slots - waste of gold)
+
+Don't attach seals to anything until you get more experience. (but just do it before reincarnating)
+
+Finding out about Disruptor Beam deals
+
+Read their release notes and announcements. Some of the announcements have been special items to craft. https://gota.zendesk.com/forums/22106726-Announcements
+
+What to build in the buildings?
+
+What the Alliance needs! https://docs.google.com/spreadsheet/ccc?key=0AqX6hccYq4qbdDB5VU9ielZPM0NtdFU2eHpORTJGd3c&usp=sharing#gid=4
+
+Consumables
+
+Consumables will survive reincarnation. Consumables are a good way of converting grain/wood/cloth in one life to value in the next life. Even if you have a lot of Bread/Mead/Nettice Poultice keep on making it, because the grain can't transferred to the next life anyway else.
+
+Bread - cuts 30 minutes off the Quests/Adventures. (Sept)
+Mead - cuts 30 minutes off the build time. (Godswood)
+Nettice Poultice - Heals a wound. (R'hllor Temple)
+
+Reincarnation
+
+Reincarnation is the "Cycle of Rebirth" quest that appears when Volume I is complete. Volume I is complete when there is a checkmark on the Volume I indicator in the Lore Book.
+Read more here: http://gotascent.wikia.com/wiki/Reincarnation
+
+When can I reincarnate?
+
+Note: There is a bit of a bug with regards to the quest some times disappearing. if you do not see the quest but you do have the checkmark on the Volume I, then follow these steps to reincarnate :
+Click on the Lore Book.
+Click on the "Menu" Book icon at the center top of the lore book
+Select "Lineage"
+You will then see a "reincarnate" button IF you can reincarnate AND the quest has disappear from the quest list.
+Note: Restart is NOT reincarnation. You do not want to restart.
+
+
+Why reincarnate?
+
+The primary reason is to get access to all the Fealty Buildings, which
+is necessary to be a powerful player (eventually)
+is necessary for hatching a dragon egg
+gives extra buildings to build resources
+additional building enhancements which dramatically increases your battle/trade/intrigue
+Other reasons:
+allows getting multiple Valyrian Steel Daggers, Obsidian Daggers
+multiple passes through the lore book to collect seals like Seal of the Hand of the King ( 2/2/2 +2% all attacks)
+gives you something to do other than AvA once you run through all the lore book.
+makes 1 talent point permanent ( always make the talent that unlocks the fealty building your first choice)
+You have collected the 2 permanent daggers.
+Why not reincarnate?
+You haven't gotten the 2 permanent daggers: the Valyrian and Obsidian Dagger are very, very useful. Make sure to always get them.
+Going through the lore book is boring. How many quests do you want to do? And your choices really don't really matter (as far as I can tell) with the exception of the Caidan option which gives a very weak SS.
+Your trade, intrigue, battle stats are reset to 0 : you are weak again and will be for about 10 days.
+You lose all your stockpiled resources
+All your non-permanent weapons, SS, armor, companions, silver are discarded (applying a seal does not make something permanent) There are many items that are good but not worth spending gold on that you will lose.
+Making reincarnation less boring
+
+Before reincarnating:
+Have at least 1 permanent Peerless SS level 12+. These SS will go through the Volume I quests like butter. They will also be used on adventures to harvest the resources you need to rebuild the buildings.
+Make (~300) bread to accelerate the key quests in Volume I. (Key quests are listed explicitly in the lore book)
+Make mead to make building buildings go fast
+Make lots of friends who can help with the boss (cooperative) quests.
+After reincarnating:
+
+Use bread to accelerate the early quests in Volume I that are listed in the Lore Book.
+
+Target these quests to get good companions, armor, and weapons without spending money you can get them early in the game:
+Pack Horse ( http://gotascent.wikia.com/wiki/Pack_Horse ) 
+Mistwood Dagger ( http://gotascent.wikia.com/wiki/Mistwood_Dagger )
+Reincarnation checklist
+
+Timing -Just because you can doesn't mean you should:
+did you collect the 2 daggers? 
+did you collect all the juicy seals in Volume You?
+you have an hour or two to start the reincarnated character on his/her journey - remember all the early quests? 
+Do you have any items being built that you want to see if they are going to be luckily awesome?
+Going for it:
+Go through the Lore book end-to-end collecting any uncollected items, especially PennyRoyal and food items.
+Donate everything you can to the challenges or the camps.
+Deequip all SS you are not perm-ing: i.e. all non-Peerless SS (do NOT perm Caidan)
+Apply seals to permanent SS, weapons, and companions: If it is permanent all unlocked seal slots should be filled.
+Go to shop: select "sell item" - anything listed there will lost. Permanent items cannot be sold. This is a good check to see what you will be losing.
+Do NOT perm anything you got in the Lore Book. Nothing there good enough to be worth the gold.
+If there is an active Alliance Phase happening and a camp needs silver then sell everything you don't want to perm to get the silver to donate.
+Make sure that you have unlocked your Fealty building or applied a talent point to the talent you want to make permanent.
+Start the reincarnation ( you will get several chances to back out during this process)
+There is a warning dialog that pops up about what gets lost. READ IT.
+How fast does it take?
+
+I did 1 complete reincarnation that took TWO days. I had:
+2 Direwolf patraichs 
+Burning Sword
+Robb Stark Armor
+300 bread
+a few seals to accelerate quests.
+Importantly, I had a one SS equiped with the majority of the speed up gear. This allowed me to save bread.
