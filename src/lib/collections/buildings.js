@@ -3019,6 +3019,17 @@ Buildings = new Enums.Enum({
                 lead : function(inventory) { return 8; },
                 precious_ore : function(inventory) { return 6; },
             },
+            high_valyrian_scroll: {
+                caravan: function(inventory) {
+                    return 2;
+                },
+                intent_scholar: function(inventory) {
+                    return 2;
+                },
+                valyrian_glyph: function(inventory) {
+                    return 9;
+                }
+            }
         },
         upgradeData : {
             hired_guards_0 : {
@@ -3270,6 +3281,17 @@ Buildings = new Enums.Enum({
                 courtesan : function(inventory) { return 3; },
                 dyed_textile : function(inventory) { return 15; },
                 precious_ore : function(inventory) { return 15; },
+            },
+            illustrious_madam : {
+                silver : function(inventory) {
+                    return 20000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,12,0); // handle discount
+                },
+                madam : function(inventory) { return 1; },
+                delicate_satin_cloak : function(inventory) { return 3; },
+                grand_rope_belt : function(inventory) { return 4; },
             },
         },
         upgradeData : {
@@ -3927,6 +3949,17 @@ Buildings = new Enums.Enum({
                 smuggling_vessel : function(inventory) { return 2; },
                 fire_archer : function(inventory) { return 2; }
             },
+            warlock : {
+                silver : function(inventory) {
+                    return 2500; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(1,4,0); // handle discount
+                },
+                nightshade : function(inventory) { return 2; },
+                delicate_satin_cloak : function(inventory) { return 2; },
+                sacrifice : function(inventory) { return 9; }
+            },
 //            uncommon_resource : { // chance
 //                silver : function(inventory) {
 //                    return 50; // handle discount
@@ -3949,8 +3982,189 @@ Buildings = new Enums.Enum({
                 offering : function(inventory) { return 1; },
                 incense : function(inventory) { return 7; }
             },
-        }
+            baby_red_dragon : {
+                silver : function(inventory) {
+                    return 10000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,6,0); // handle discount
+                },
+                dragon_egg : function(inventory) { return 1; },
+                apprentice_pryomancer : function(inventory) { return 1; },
+                sacrifice : function(inventory) { return 7; }
+            },
+            baby_green_dragon : {
+                silver : function(inventory) {
+                    return 10000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,6,0); // handle discount
+                },
+                dragon_egg : function(inventory) { return 1; },
+                apprentice_pryomancer : function(inventory) { return 1; },
+                weirwood : function(inventory) { return 7; }
+            },
+            baby_tan_dragon : {
+                silver : function(inventory) {
+                    return 10000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,6,0); // handle discount
+                },
+                dragon_egg : function(inventory) { return 1; },
+                apprentice_pryomancer : function(inventory) { return 1; },
+                valyrian_glyphs : function(inventory) { return 7; }
+            },
+            young_red_dragon : {
+                silver : function(inventory) {
+                    return 10000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,6,0); // handle discount
+                },
+                young_dragon : function(inventory) { return 1; },
+                apprentice_pryomancer : function(inventory) { return 1; },
+                sacrifice : function(inventory) { return 7; }
+            },
+            young_green_dragon : {
+                silver : function(inventory) {
+                    return 10000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,6,0); // handle discount
+                },
+                young_dragon : function(inventory) { return 1; },
+                apprentice_pryomancer : function(inventory) { return 1; },
+                weirwood : function(inventory) { return 7; }
+            },
+            young_tan_dragon : {
+                silver : function(inventory) {
+                    return 10000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,6,0); // handle discount
+                },
+                young_dragon : function(inventory) { return 1; },
+                apprentice_pryomancer : function(inventory) { return 1; },
+                valyrian_glyphs : function(inventory) { return 7; }
+            },
+        },
         // unlockable_stash_of_old_wildfire
+    },
+    dragon_pit : {
+        builds : {
+            aurochs : {
+                silver : function(inventory) {
+                    return 3000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,15,0); // handle discount
+                },
+                grains : function(inventory) { return 27; },
+                pure_water : function(inventory) { return 5; },
+                horse : function(inventory) { return 18; },
+            },
+            great_horn : {
+                silver : function(inventory) {
+                    return 10000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(1,4,0); // handle discount
+                },
+                aurochs : function(inventory) { return 3; },
+                forest_armor : function(inventory) { return 1; },
+                crystal_sword : function(inventory) { return 4; },
+            },
+            jeweled_armor : {
+                silver : function(inventory) {
+                    return 20000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(1,4,0); // handle discount
+                },
+                forest_armor : function(inventory) { return 3; },
+                sparkling_jewel : function(inventory) { return 12; },
+                steel : function(inventory) { return 20; },
+            },
+            dragon_horn : {
+                silver : function(inventory) {
+                    return 2500; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(1,4,0); // handle discount
+                },
+                great_horn : function(inventory) { return 1; },
+                valyrian_glyphs : function(inventory) { return 15; },
+                jeweled_armor : function(inventory) { return 1; },
+            },
+            baby_dragon : {
+                silver : function(inventory) {
+                    return 5000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(1,12,0); // handle discount
+                },
+                dragon_egg : function(inventory) { return 1; },
+                pyre : function(inventory) { return 5; },
+                dragon_horn : function(inventory) { return 1; },
+            },
+            dracarys : { // chance of fireship
+                silver : function(inventory) {
+                    return 8000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,3,0); // handle discount
+                },
+                high_valyrian_scroll : function(inventory) { return 1; },
+                weirwood_ash : function(inventory) { return 2; },
+                incense : function(inventory) { return 7; }
+            },
+
+            young_dragon : {
+                silver : function(inventory) {
+                    return 50000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,14,0); // handle discount
+                },
+                baby_dragon : function(inventory) { return 1; },
+                dracarys : function(inventory) { return 1; },
+                warlock : function(inventory) { return 1; }
+            },
+            young_red_dragon : {
+                silver : function(inventory) {
+                    return 50000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,14,0); // handle discount
+                },
+                baby_dragon : function(inventory) { return 1; },
+                dracarys : function(inventory) { return 1; },
+                warlock : function(inventory) { return 1; }
+            },
+            young_green_dragon : {
+                silver : function(inventory) {
+                    return 50000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,14,0); // handle discount
+                },
+                baby_dragon : function(inventory) { return 1; },
+                dracarys : function(inventory) { return 1; },
+                warlock : function(inventory) { return 1; }
+            },
+            young_tan_dragon : {
+                silver : function(inventory) {
+                    return 50000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,14,0); // handle discount
+                },
+                baby_dragon : function(inventory) { return 1; },
+                dracarys : function(inventory) { return 1; },
+                warlock : function(inventory) { return 1; }
+            },
+        }
     },
     shop : {
         builds : {
@@ -4242,6 +4456,18 @@ var storables = {
             {
                 volume: 3,
                 level: 79
+            }
+        ],
+    },
+    grand_rope_belt: {
+        adventure: [
+            {
+                volume: 1,
+                level: 74,
+            },
+            {
+                volume: 3,
+                level: 99
             }
         ],
     },
