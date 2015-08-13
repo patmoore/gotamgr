@@ -23,7 +23,7 @@ BuildPlan = DbObjectType.create({
 //        // these are the build orders required to fulfill the demand.
 //        'componentBuildOrders',
         // key is building.key, values are links to the buildOrders
-//        'buildingsBuildSchedule'
+        'buildingsBuildSchedule'
 //        'totals'
     ],
     databaseTableName: 'buildPlan',

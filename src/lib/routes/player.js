@@ -6,12 +6,12 @@ Router.map(function() {
         navigationAliases: ['alliance', 'player'],
         displayName: 'Player Home'
     });
-    this.route('player_building', {
-        path : '/player/:playerId/building',
-        layoutTemplate: 'player_mainLayout',
-        navigationAlias: 'player',
-        displayName: 'Building'
-    });
+    //this.route('player_building', {
+    //    path : '/player/:playerId/building',
+    //    layoutTemplate: 'player_mainLayout',
+    //    navigationAlias: 'player',
+    //    displayName: 'Building'
+    //});
     this.route('player_inventory', {
         path : '/player/:playerId/inventory',
         layoutTemplate: 'player_mainLayout',

@@ -63,11 +63,6 @@ DisruptorBeamUser = DbObjectType.create({
             'set': function (value) {
                 debugger;
                 this.disruptorBeamData = value;
-                this._= _.extend({},
-                    processInventory(this.disruptorBeamData),
-                    processUnlockables(this.disruptorBeamData),
-                    processStat(this.disruptorBeamData)
-                );
                 this.characterName = _.deep(this.disruptorBeamData, 'strings.title_and_name');
             }
         },
@@ -77,10 +72,24 @@ DisruptorBeamUser = DbObjectType.create({
                 console.log("created a empty object");
                 return {};
             }
+        },
+        inventory: {
+            get: function() {
+                if ( this._.inventory == null ) {
+                    processDisrUserData(this.disruptorBeamData);
+                }
+                return this._.inventory;
+            }
         }
     }
 });
-
+var processDisrUserData = function(disruptorBeamData) {
+    return _.extend({},
+        processInventory(disruptorBeamData),
+        processUnlockables(disruptorBeamData),
+        processStat(disruptorBeamData)
+    );
+}
 var processUnlockables = function(disruptorBeamData) {
     // process unlockables
     // Note: that some titles end up duplicated ( 'duelist' - which can be earned every RI )

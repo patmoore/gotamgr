@@ -63,7 +63,7 @@ if ( Meteor.isClient) {
                 method: function() {
                     if ( this.ready()) {
                         var player = this.findOne();
-                        return player.id;
+                        return _.deep(player, 'id');
                     }
                 }
             },
@@ -73,7 +73,7 @@ if ( Meteor.isClient) {
                 method: function() {
                     if ( this.ready()) {
                         var player = this.findOne();
-                        return player.allianceId;
+                        return _.deep(player, 'allianceId');
                     }
                 }
             },
@@ -82,7 +82,7 @@ if ( Meteor.isClient) {
                 method: function() {
                     if (this.ready()) {
                         var player = this.findOne();
-                        return player.allianceOfficer;
+                        return _.deep(player, 'allianceOfficer');
                     }
                 }
             },
@@ -91,7 +91,7 @@ if ( Meteor.isClient) {
                 method: function() {
                     if (this.ready()) {
                         var player = this.findOne();
-                        return player.allianceLeader;
+                        return _.deep(player, 'allianceLeader');
                     }
                 }
             },
