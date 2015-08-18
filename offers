@@ -3,8 +3,8 @@
 re500="Error 500"
 reExpired="\<h3\>Offer Expired\</h3\>"
 #reOfferCode="<p style="margin-top: 15px; color: white; font-size: 32pt">VJN6-4YDJ-SH9B-CAIT</p>"
-i=75;
-while [ "$i" -lt 90 ] 
+i=76;
+while [ "$i" -lt 85 ] 
 do
     data=$(curl -s http://gota.disruptorbeam.com/play/special_offer/${i})
     if [[ $data =~ $re500 ]]; then
