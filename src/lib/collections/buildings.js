@@ -99,6 +99,17 @@ Buildings = new Enums.Enum({
                 hefty_broadsword : function(inventory) { return 3; },
                 steel : function(inventory) { return 11; },
                 hard_wood : function(inventory) { return 7; },
+            },
+            glorious_greatsword : {
+                silver : function(inventory) {
+                    return 20000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,14,0); // handle discount
+                },
+                masterwork_greatsword : function(inventory) { return 1; },
+                heavy_knight : function(inventory) { return 2; },
+                grand_ice_axe : function(inventory) { return 4; },
             }
         },
         upgradeData : {
@@ -143,13 +154,12 @@ Buildings = new Enums.Enum({
                         }
                     },
                     armor_rack: {
-                        maxUpgradeCount: 4,
+                        maxUpgradeCount: 1,
                         storables: {
 
                         },
                         benefit: {
                             //battle +2
-                            // -3% silver battle weapons
                             // enables axe
                         }
                     },
@@ -231,8 +241,33 @@ Buildings = new Enums.Enum({
                             }
                         },
                         benefit: {
-                            // +3 battle
-                            // +3% battle attacks
+                            // +3
+                            // +1% fast battle
+                        }
+                    }
+                },
+                {
+                    blacksmiths: {
+                        unlock: {
+                            gold: function (inventory) {
+                                return 10;
+                            },
+                            unlockableCode:'blacksmiths'
+                        },
+                        maxUpgradeCount: 3,
+                        storables: {
+                            silver: function (inventory) {
+                                return 1000;
+                            },
+                            stone: function (inventory) {
+                                return 1;
+                            },
+                            iron: function (inventory) {
+                                return 1;
+                            }
+                        },
+                        benefit: {
+                            // +1 production
                         }
                     }
                 }
@@ -531,6 +566,32 @@ Buildings = new Enums.Enum({
 
                         }
                     }
+                },
+                {
+                    magistrates: {
+                        unlock: {
+                            gold: function (inventory) {
+                                return 10;
+                            },
+                            unlockableCode: 'magistrates'
+                        },
+
+                        maxUpgradeCount: 3,
+                        storables: {
+                            silver: function (inventory) {
+                                return 1000;
+                            },
+                            cloth: function (inventory) {
+                                return 1;
+                            },
+                            fish: function (inventory) {
+                                return 1;
+                            }
+                        },
+                        benefit: {
+                            // +1 production
+                        }
+                    }
                 }
             ]
         }
@@ -711,6 +772,32 @@ Buildings = new Enums.Enum({
                     ore_stall: {
                         maxUpgradeCount: 1
                     }
+                },
+                {
+                    peddlers: {
+                        unlock: {
+                            gold: function (inventory) {
+                                return 10;
+                            },
+                            unlockableCode: 'magistrates'
+                        },
+
+                        maxUpgradeCount: 3,
+                        storables: {
+                            silver: function (inventory) {
+                                return 1000;
+                            },
+                            wood: function (inventory) {
+                                return 1;
+                            },
+                            iron: function (inventory) {
+                                return 1;
+                            }
+                        },
+                        benefit: {
+                            // +1 production
+                        }
+                    }
                 }
             ]
         }
@@ -818,6 +905,9 @@ Buildings = new Enums.Enum({
 
                 },
                 {
+
+                },
+                {
                     altar_to_the_stranger: {
                         unlock: {
                             gold: function (inventory) {
@@ -837,6 +927,33 @@ Buildings = new Enums.Enum({
                         },
                         benefit: {
 
+                        }
+                    }
+                },
+                {
+                    seven_pointed_star: {
+                        unlock: {
+                            gold: function (inventory) {
+                                return 10;
+                            },
+                            unlockableCode: 'seven_pointed_star'
+                        },
+
+                        maxUpgradeCount: 3,
+                        storables: {
+                            silver: function (inventory) {
+                                return 1000;
+                            },
+                            wood: function (inventory) {
+                                return 1;
+                            },
+                            iron: function (inventory) {
+                                return 1;
+                            }
+                        },
+                        benefit: {
+                            // +1 production
+                            // +1 battle
                         }
                     }
                 }
@@ -962,6 +1079,24 @@ Buildings = new Enums.Enum({
                 },
                 breastplate: function (inventory) {
                     return 2;
+                },
+            },
+            jasons_reforged_sword: {
+                // (chance)
+                silver: function (inventory) {
+                    return 25000; // handle discount
+                },
+                seconds: function (inventory) {
+                    return timeInSeconds(0, 16, 0); // handle discount
+                },
+                remnants_of_jasons_sword: function (inventory) {
+                    return 1;
+                },
+                masterwork_greatsword: function (inventory) {
+                    return 1;
+                },
+                valyrian_glyphs: function (inventory) {
+                    return 5;
                 },
             },
             warriors_imprint: {
@@ -1326,6 +1461,26 @@ Buildings = new Enums.Enum({
                 steel : function(inventory) { return 9; },
                 dyed_textile : function(inventory) { return 5; },
             },
+            valyrian_steel_ingot : {
+                silver : function(inventory) {
+                    return 12000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,3,0); // handle discount
+                },
+                valyrian_steel_shards : function(inventory) { return 8; },
+            },
+            ice_sword_of_the_north : {
+                silver : function(inventory) {
+                    return 800; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,15,0); // handle discount
+                },
+                ice : function(inventory) { return 1; },
+                valyrian_steel_ingot : function(inventory) { return 6; },
+                master_crafted_longbow : function(inventory) { return 3; },
+            },
         },
         upgradeData : {
             seconds : function(inventory) {
@@ -1478,7 +1633,7 @@ Buildings = new Enums.Enum({
                 grains : function(inventory) { return 8; },
                 fish : function(inventory) { return 4; },
             },
-            cart_of_tools : {
+            tools_cart : {
                 silver : function(inventory) {
                     return 450; // handle discount
                 },
@@ -1510,6 +1665,26 @@ Buildings = new Enums.Enum({
                 blindeye : function(inventory) { return 2; },
                 lead : function(inventory) { return 7; },
                 dyed_textile : function(inventory) { return 7; },
+            },
+            exalted_elixir : {
+                silver : function(inventory) {
+                    return 12000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,3,0); // handle discount
+                },
+                alchemical_reagents : function(inventory) { return 8; },
+            },
+            spear_of_oberyn_the_red_viper : {
+                silver : function(inventory) {
+                    return 800; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,15,0); // handle discount
+                },
+                the_red_vipers_spear : function(inventory) { return 1; },
+                exalted_elixir : function(inventory) { return 6; },
+                noblemans_coat : function(inventory) { return 3; },
             },
         }
     },
@@ -1601,6 +1776,28 @@ Buildings = new Enums.Enum({
                 gold_ring : function(inventory) { return 6; },
                 precious_ore : function(inventory) { return 10; },
                 steel : function(inventory) { return 4; },
+            },
+            lightbringer_red_sword_of_heroes : {
+                silver : function(inventory) {
+                    return 12000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,15,0); // handle discount
+                },
+                ice : function(inventory) { return 1; },
+                valyrian_steel_ingot : function(inventory) { return 6; },
+                master_crafted_warhammer : function(inventory) { return 3; },
+            },
+            golden_hand_of_the_kingslayer : {
+                silver : function(inventory) {
+                    return 12000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,15,0); // handle discount
+                },
+                jamies_golden_hand : function(inventory) { return 1; },
+                valyrian_steel_ingot : function(inventory) { return 6; },
+                extravagant_torc : function(inventory) { return 3; },
             },
         },
         // unlockable_jewelled_sword_upgrade
@@ -1885,9 +2082,10 @@ Buildings = new Enums.Enum({
                 seconds : function(inventory) {
                     return timeInSeconds(0,15,0); // handle discount
                 },
-                poisoned_cask : function(inventory) { return 3; },
-                fine_wood : function(inventory) { return 15; },
-                hard_wood : function(inventory) { return 15; },
+
+                mark_of_the_little_birds : function(inventory) { return 3; },
+                agents_sign : function(inventory) { return 3; },
+                saboteurs_sign : function(inventory) { return 3; },
             },
             nobleman_coat : {
                 // chance -evolve
@@ -2028,7 +2226,7 @@ Buildings = new Enums.Enum({
                 },
                 mark_of_the_little_birds : function(inventory) { return 3; },
                 agents_sign : function(inventory) { return 3; },
-                cutpursers_mark : function(inventory) { return 3; },
+                cutpurses_sign : function(inventory) { return 3; },
             },
         }
     },
@@ -3293,6 +3491,18 @@ Buildings = new Enums.Enum({
                 delicate_satin_cloak : function(inventory) { return 3; },
                 grand_rope_belt : function(inventory) { return 4; },
             },
+            seal_of_the_falcon : {
+                silver : function(inventory) {
+                    return 5500; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,15,0); // handle discount
+                },
+
+                mark_of_the_little_birds : function(inventory) { return 3; },
+                saboteurs_sign : function(inventory) { return 3; },
+                cutpurses_sign : function(inventory) { return 3; },
+            },
         },
         upgradeData : {
             tenements : {
@@ -3423,6 +3633,18 @@ Buildings = new Enums.Enum({
                 grand_breastplate : function(inventory) { return 2; },
                 // great wyk
                 grand_short_hauberk : function(inventory) { return 4; },
+            },
+            marquiss_grand_breastplate : {
+                silver : function(inventory) {
+                    return 20000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,12,0); // handle discount
+                },
+                marquiss_rusty_breastplate : function(inventory) { return 1; },
+                grand_breastplate : function(inventory) { return 3; },
+                // great wyk
+                valyrian_glyphs : function(inventory) { return 10; },
             },
         }
     },
@@ -3670,6 +3892,32 @@ Buildings = new Enums.Enum({
                 // greenblood
                 grand_pewter_chain : function(inventory) { return 4; },
             },
+            illustrious_spicer : {
+                // chance -evolve
+                silver : function(inventory) {
+                    return 20000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,12,0); // handle discount
+                },
+                master_spicer : function(inventory) { return 1; },
+                secure_lockbox : function(inventory) { return 2; },
+                // greenblood
+                stolen_heavy_coinage : function(inventory) { return 4; },
+            },
+            illustrious_furrier : {
+                // chance -evolve
+                silver : function(inventory) {
+                    return 20000; // handle discount
+                },
+                seconds : function(inventory) {
+                    return timeInSeconds(0,12,0); // handle discount
+                },
+                master_furrier : function(inventory) { return 1; },
+                tools_cart : function(inventory) { return 2; },
+                // greenblood
+                grand_mistwood_dagger : function(inventory) { return 4; },
+            }
         }
     },
     stables : {
@@ -4283,6 +4531,22 @@ Buildings = new Enums.Enum({
 });
 
 var storables = {
+    alchemical_reagents: {
+        adventure: [
+            {
+                // Vaes Dothrak (Level 10, Search the Eastern Market)
+            },
+            {
+                // Red Mountains (Level 35, Loot the Lonely Caravans),
+            },
+            {
+                // Great Wyk (Level 72, Traitor to your House)
+            },
+            {
+                // Braavos (Level 90, Hire Faceless Men).
+            }
+        ]
+    },
     black_ash: {
         adventure: [
             {
@@ -4382,6 +4646,10 @@ var storables = {
             {
                 volume: 1,
                 level: 91
+            },
+            {
+                volume: 3,
+                level: 89
             }
         ]
     },
@@ -4390,6 +4658,23 @@ var storables = {
             {
                 volume: 1,
                 level: 77
+            },
+            {
+                volume: 3,
+                level: 96
+            }
+        ],
+        silver: 3600
+    },
+    grand_ice_axe : {
+        adventure: [
+            {
+                volume: 1,
+                level: 85
+            },
+            {
+                volume: 3,
+                level: 100
             }
         ],
         silver: 3600
@@ -4399,7 +4684,11 @@ var storables = {
             {
                 volume: 1,
                 level:97
-            }
+            },
+            {
+                volume: 3,
+                level:89
+            },
         ],
         silver: 2700
     },
@@ -4669,6 +4958,14 @@ var storables = {
             }
         ]
     },
+    marquiss_rusty_breastplate: {
+        adventure: [
+            {
+                volume: 1,
+                level:125
+            }
+        ],
+    },
     mistwood_dagger: {
         adventure: [
             {
@@ -4841,6 +5138,19 @@ var storables = {
             }
         ]
     },
+    stolen_heavy_coinage: {
+        adventure: [
+            {
+                volume: 1,
+                level: 71
+            },
+            {
+                volume: 3,
+                level: 99
+            }
+        ],
+        silver: 148
+    },
     rainwood_cloak: {
         adventure: [
             {
@@ -4853,6 +5163,14 @@ var storables = {
             }
         ],
         silver: 148
+    },
+    remnants_of_jasons_sword: {
+        adventure: [
+            {
+                volume: 1,
+                level: 150 //Seek First man's relics
+            },
+        ]
     },
     common_black_gem: {
         displayName: 'Black Gem (common)',
@@ -4903,6 +5221,16 @@ var storables = {
             }
         ],
         silver: 2
+    },
+    valyrian_steel_shards: {
+        adventure: [
+            {
+                // Volantis (Level 10, Research Valyrian Armor),
+                // Cape Wrath (Level 33, Find the Escaped Convicts),
+                // The Marches (Level 73, Resettle a Tarth Bastard),
+                // and Braavos (Level 90, Patrol the Narrow Sea).
+            }
+        ]
     },
     wierwood: {
         adventure: [
