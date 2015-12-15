@@ -27,3 +27,5 @@ npm-container
 meteor-collection-management
 whalepath-utils
 
+standard-minifiers
+react
